@@ -1,0 +1,58 @@
+.buttons {
+	background-color: #d6dbe1;
+	padding: 5px;
+	min-height: 95vh;
+}
+
+.buttons_text {
+	display: flex;
+}
+
+.buttons_contained {
+	display: flex;
+}
+
+.buttons_outlined {
+	display: flex;
+}
+
+.buttons_only_icon {
+	display: flex;
+	padding: 5px;
+}
+
+.inputs {
+	display: inline-block;
+}
+
+.input_textarea {
+	display: flex;
+}
+
+.container {
+	margin: 5px;
+}
+
+.modal {
+	margin: 0 20px;
+}
+
+.other_content {
+	display: flex;
+}
+
+.checkbox {
+	margin: 0 20px;
+}
+
+.select {
+}
+
+.slider {
+	background: #eecfcf;
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	border-radius: 10px;
+	margin: 5px;
+}

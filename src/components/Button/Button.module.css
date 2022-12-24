@@ -1,0 +1,210 @@
+.button_container {
+	display: flex;
+}
+
+.button {
+	font-weight: var(--button-font-weight);
+	font-size: var(--button-font-size);
+	border-radius: var(--button-border-radius);
+	font-family: var(--prymary-font);
+	cursor: pointer;
+	padding: var(--button-padding);
+	margin: var(--button-margin);
+	white-space: nowrap;
+}
+
+.fullSize {
+	width: 100%;
+}
+
+.text {
+	display: flex;
+	color: var(--button-text-color);
+	transition: all 0.2s ease;
+	border: none;
+	background-color: initial;
+}
+
+.text:hover {
+	background-color: var(--button-text-background-color-hover);
+	color: gray;
+	transition: all 0.3s ease-in-out;
+}
+
+.text:disabled {
+	display: flex;
+	color: var(--button-text-disabled-hover-color);
+	pointer-events: none;
+	border-radius: var(--button-border-radius);
+}
+
+.text.submit {
+	background-color: initial;
+	color: var(--button-text-color-submit);
+}
+
+.text.submit:hover {
+	text-shadow: var(--button-text-color-hover-shadow);
+}
+
+.text.error {
+	background-color: initial;
+	color: var(--button-text-error-label-color);
+}
+
+.text.error:hover {
+	text-shadow: var(--button-text-error-hover-shadow);
+}
+
+.outlined {
+	display: flex;
+	font-family: var(--prymary-font);
+	border: var(--button-outlined-border);
+	background-color: transparent;
+	color: var(--button-outlined-color);
+}
+
+.outlined:hover {
+	border-color: var(--button-outlined-hover);
+	box-shadow: var(--button-outlined-hover-shadow);
+}
+
+.outlined:disabled {
+	display: flex;
+	cursor: auto;
+	pointer-events: none;
+}
+
+.outlined.submit {
+	color: var(--button-outlined-submit);
+}
+
+.outlined.error {
+	color: var(--button-outlined-error-label-color);
+}
+
+.outlined.select {
+}
+
+.contained {
+	display: flex;
+	font-family: var(--prymary-font);
+	border: none;
+	background-color: var(--button-contained-background);
+	color: var(--button-contained-color);
+}
+
+.contained:hover {
+	background-color: var(--button-contained-background-hover);
+}
+
+.contained:disabled {
+	display: flex;
+	background-color: var(--button-contained-background-disabled);
+	color: var(--button-contained-color-disabled);
+	pointer-events: none;
+	border-radius: var(--button-contained-border-radius-disabled);
+}
+
+.contained.submit {
+	background-color: var(--button-contained-submit-background);
+	color: var(--button-contained-color-submit);
+}
+
+.contained.submit:hover {
+	background-color: var(--button-contained-background-submit-hover);
+}
+
+.contained.blue {
+	background-color: var(--button-contained-blue-background);
+	color: var(--button-contained-color-blue);
+}
+
+.contained.blue:hover {
+	background-color: var(--button-contained-background-blue-hover);
+}
+
+.contained.error {
+	background-color: var(--button-contained-background-error);
+	color: var(--button-contained-color-error);
+}
+
+.contained.error:hover {
+	background-color: var(--button-contained-color-error-hover);
+}
+
+.only_icon {
+	display: flex;
+	padding: initial;
+	align-items: center;
+	justify-content: center;
+}
+
+.just_icon {
+	padding: var(--button-just-icon-padding);
+	margin: var(--button-just-icon-margin);
+	font-size: var(--button-just-icon-font-sie);
+	background-color: var(--button-just-icon-background);
+	border: none;
+	cursor: pointer;
+}
+
+.just_icon:hover {
+	background-color: var(--button-just-icon-background-hover);
+}
+
+.just_icon:disabled {
+	display: flex;
+	cursor: auto;
+	border: none;
+	pointer-events: none;
+}
+
+.just_icon.sized {
+	background-color: initial;
+	transition: var(--button-just-icon-sized-transition);
+}
+
+.just_icon.changed {
+	color: var(--button-just-icon-changed-color);
+}
+
+.just_icon.opacity {
+	opacity: 0.5;
+}
+
+.just_icon.opacity:hover {
+	opacity: 1;
+}
+
+.just_icon.sized:hover {
+	transform: var(--button-just-icon-sized-hover-transform);
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: var(--button-label-margin);
+}
+
+.startIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.endIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2px;
+	transform: var(--button-end-icon-transform);
+}
+
+.card_creator {
+	color: var(--button-text-color);
+	border-radius: var(--button-border-radius);
+	transition: all 0.2s ease;
+	cursor: pointer;
+}

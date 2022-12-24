@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&family=Ubuntu:ital,wght@0,400;1,300;1,400&display=swap');
+
+:root {
+
+    --header-color: rgba(0, 0, 0, 0.38);
+    --prymary-font: "ubuntu";
+    --main-font-size: 17px;
+    --main-background-color: rgba(39, 13, 155, 0.81);
+
+    --list-card-font-size: 12px;
+    --list-wrapper-font-size: 14px;
+    --decision-date-font-size: 14px;
+    --checkout-font-size: 14px;
+
+    --button-font-weight: 200;
+    --button-font-size: 0.8rem;
+    --button-padding: 8px 10px;
+    --button-margin: 0;
+
+    --button-label-margin: 0 5px;
+    --button-background-hover: #ffffff;
+    --button-border-radius: 5px;
+
+    --button-text-color: #7a6f74;
+    --button-text-color-hover: #6b6464;
+    --button-text-background-color-hover: white;
+    --button-text-color-hover-shadow: 1px 1px 2px #276727;
+    --button-text-color-submit: #038303;
+    --button-text-error-hover-shadow: 1px 1px 2px rgb(168, 4, 4);
+    --button-text-error-label-color: #ff2828;
+    --button-text-disabled-hover-color: #9d9d9d;
+
+    --button-outlined-border: 2px solid;
+    --button-outlined-color: #7e7878;
+    --button-outlined-hover: #6c6767;
+    --button-outlined-hover-shadow: 1px 0px 5px 0px inset;
+    --button-outlined-submit: green;
+    --button-outlined-error-label-color: rgb(168, 4, 4);
+
+    --button-contained-background: rgba(0, 0, 0, 0.29);
+    --button-contained-color: #efe4e4;
+    --button-contained-color-disabled: #8a8282;
+    --button-contained-background-hover: rgba(0, 0, 0, 0.48);
+    --button-contained-background-disabled: #e0c6c6;
+    --button-contained-border-radius-disabled: 5px;
+    --button-contained-submit-background: #67d9b9;
+    --button-contained-color-submit: #222622;
+    --button-contained-color-blue: white;
+    --button-contained-background-submit-hover: #3cc29d;
+    --button-contained-blue-background: #51b0d0;
+    --button-contained-background-blue-hover: #72d0ef;
+    --button-contained-background-error: #dc0000;
+    --button-contained-color-error: white;
+    --button-contained-color-error-hover: #640303;
+
+    --button-just-icon-background-hover: rgba(201, 187, 187, 0.45);
+    --button-just-icon-sized-transition: all 0.4s ease-in-out;
+    --button-just-icon-sized-hover-transform: scale(1.3);
+    --button-just-icon-changed-color: #0457c4;
+    --button-just-icon-padding: 5px;
+    --button-just-icon-margin: 2px;
+    --button-just-icon-font-sie: 1rem;
+    --button-just-icon-background: transparent;
+    --button-end-icon-transform: scale(1.5);
+
+    --input-container-margin: 0;
+    --input-container-border-radius: 5px;
+    --input-container-background-color: #ffffff;
+    --input-font-weight: 600;
+    --input-padding: 5px;
+    --input-margin: 2px 10px;
+    --input-border-radius: 5px;
+    --input-background-color: #ffffff;
+    --input-label-font-size: 1rem;
+    --textarea-font-weight: 500;
+    --textarea-padding: 5px;
+    --textarea-margin: 5px 0;
+    --textarea-border-radius: 5px;
+
+    --modal-background-color: rgba(0, 0, 0, 0.66);
+    --modal-card-background-color: rgba(252, 252, 252, 0);
+    --modal-background-padding: 10px;
+    --modal-background-border-radius: 10px;
+
+    --checkbox-container-padding: 5px;
+    --checkbox-container-margin: 5px;
+    --checkbox-container-font-size: 1rem;
+    --checkbox-container-background-color: transparent;
+    --checkbox-container-background-color-hover: rgba(52, 147, 213, 0.37);
+    --checkbox-container-text-hover: 1px 1px 2px rgba(40, 44, 40, 0.35);
+    --checkbox-container-outlined-border: solid 1px;
+    --checkbox-container-outlined-color: #5e5858;
+    --checkbox-container-outlined-hover-shadow: 1px 0 5px 0 inset;
+    --checkbox-label-padding: 2px 5px;
+    --checkbox-border-radius: 5px;
+    --checkbox-disabled-color: #989191;
+    --checkbox-disabled-padding: 5px;
+    --checkbox-disabled-margin: 5px;
+    --checkbox-text-hover-color: blue;
+
+    --select-box-shadow: 0 0 0 1px #7373d0;
+    --select-button-outlined-margin: 0;
+    --select-label-margin: 0 5px;
+    --dropdown-border-radius: 5px;
+    --dropdown-list-background: #ded4d4;
+    --dropdown-list-border-radius: 6px;
+    --dropdown-list-box-shadow: 0 4px 8px rgb(162, 162, 168);
+    --dropdown-list-item-padding: 10px 20px;
+    --dropdown-list-item-border: 1px solid rgba(162, 162, 168, 0.6);
+    --dropdown-list-item-margin: 0;
+    --dropdown-list-item-first-border-radius: 5px 5px 0 0;
+    --dropdown-list-item-last-border-radius: 0 0 5px 5px;
+
+    --context-menu-background-color:#eee4e4;
+    --context-menu-border: solid 1px #bb9999;
+    --context-menu-border-radius: 5px;
+    --context-menu-color: #383131;
+    --context-menu-box-shadow: 1px 1px 7px 1px rgba(128, 128, 128, 0.58);
+    --context-menu-header-padding: 10px 10px 5px 10px;
+    --context-menu-ul-padding-inline-start: 0;
+    --context-menu-ul-margin-top: 5px;
+    --context-menu-ul-margin-bottom: 5px;
+    --context-menu-li-padding: 10px;
+    --context-menu-li-background-color-hover: #ffffff;
+
+    --card-checkout-padding: 3px 5px;
+    --card-checkout-margin: 5px;
+    --card-checkout-border-radius: 5px;
+    --card-checkout-background-color: #71e1c2;
+    --card-box-shadow: 0 1px 0 rgba(16, 44, 66, 0.34);
+    --card-background-color: #ffffff;
+    --card-decision-date-background-color: rgba(245, 53, 10, 0.37);
+    --card-decision-date-background-color-hover: #d39191;
+    --card-decision-date-border-radius: 5px;
+    --card-decision-date-padding: 3px 5px;
+    --card-decision-date-margin:   0px;
+
+
+    --card-modal-background-color: #ffeaea;
+    --card-modal-text-color: #172b4d;
+
+    --list-wrapper: rgba(0, 0, 0, 0.38);
+    --list-creator-background: rgba(0, 0, 0, 0.35);
+    --list-context-menu-background: #ccd7cc;
+    --list-context-color: #463b3b;
+
+    --content_edit_opacity: 100%;
+    --list-header-color: #9595a6;
+    --menu-color: rgba(0, 0, 0, 0.28);
+}
