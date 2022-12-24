@@ -1,7 +1,11 @@
+.wrapper_uikit{
+	width: 100vw;
+	height: 100vh;
+}
 .buttons {
-	background-color: #d6dbe1;
-	padding: 5px;
-	min-height: 95vh;
+	background-color: #bbcbcb;
+	min-height: 100%;
+	width: 100%;
 }
 
 .buttons_text {
