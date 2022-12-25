@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import Button from './Button/Button'
 import Input from './Input'
+import Modal from './Modal'
+import Checkbox from './Checkbox'
 import {
 	AiOutlineBgColors,
 	AiOutlinePlus,
@@ -14,7 +16,8 @@ import {
 
 import classes from './UIKit.module.css'
 import '../GlobalStyles.css'
-import Modal from './Modal'
+import Select from './Select'
+
 
 function submit(e: any) {
 	e.preventDefault()
@@ -22,6 +25,24 @@ function submit(e: any) {
 
 export default function UiKit() {
 	const [openModal, setOpenModal] = useState(false)
+	const [form, setForm] = useState({ name: "" });
+	const selectValue = [
+		{ id: 1, value: "item value 1" },
+		{ id: 2, value: "item value 2" },
+		{ id: 3, value: "item value 3" },
+		{ id: 4, value: "item value 4" },
+		{ id: 5, value: "item value 5" },
+		{ id: 6, value: "item value 6" }
+	];
+	function onChange(e) {
+		if (e.target) {
+			setForm((prev) => ({
+				...prev, [e.target.name]: e.target.value
+			}));
+		} else setForm((prev) => ({
+			...prev, [e.name]: e.value
+		}));
+	}
 
 	return (
 		<form onSubmit={submit} className={classes.wrapper_uikit}>
@@ -114,19 +135,37 @@ export default function UiKit() {
 							placeholder='Введите название доски'
 						/>
 					</div>
-				</div>
-				<div className={classes.modal}>
-					<div className={classes.container}>
-						<Button variant='contained' onClick={() => setOpenModal(true)}>
-							Модалка
-						</Button>
-						<Modal open={openModal} onClose={() => setOpenModal(false)}>
-							<div>
-								<p>Модальное окно</p>
-							</div>
-						</Modal>
+					<div className={classes.modal}>
+						<div className={classes.container}>
+							<Button variant='contained' onClick={() => setOpenModal(true)}>
+								Модалка
+							</Button>
+							<Modal open={openModal} onClose={() => setOpenModal(false)}>
+								<div>
+									<p>Модальное окно</p>
+								</div>
+							</Modal>
+						</div>
+					</div>
+
+					<div className={classes.checkbox}>
+						<Checkbox label="checkbox with label" />
+						<Checkbox label="contained checkbox" variant="contained" />
+						<Checkbox label="outlined checkbox" variant="outlined" />
+						<Checkbox label="disabled text" disabled={true} />
+						<Checkbox variant="contained" label="disabled contained" disabled={true} />
+						<Checkbox variant="outlined" label="disabled outlined" disabled={true} />
+					</div>
+
+					<div className={classes.select}>
+						<Select
+							variant="outlined"
+							values={[selectValue[0], selectValue[1], selectValue[2]]}
+							onChange={onChange} />
 					</div>
 				</div>
+
+
 			</div>
 		</form>
 	)
