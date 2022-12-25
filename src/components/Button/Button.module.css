@@ -12,6 +12,11 @@
 	margin: var(--button-margin);
 	white-space: nowrap;
 }
+.button,
+.button:active,
+.button:focus {
+	outline: none;
+}
 
 .fullSize {
 	width: 100%;

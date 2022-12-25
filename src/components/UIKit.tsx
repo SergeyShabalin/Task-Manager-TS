@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import Button from './Button/Button'
 import Input from './Input'
 import {
@@ -13,12 +14,15 @@ import {
 
 import classes from './UIKit.module.css'
 import '../GlobalStyles.css'
+import Modal from './Modal'
 
 function submit(e: any) {
 	e.preventDefault()
 }
 
-const UiKit = () => {
+export default function UiKit() {
+	const [openModal, setOpenModal] = useState(false)
+
 	return (
 		<form onSubmit={submit} className={classes.wrapper_uikit}>
 			<div className={classes.buttons}>
@@ -85,25 +89,45 @@ const UiKit = () => {
 							iconLeft={<Button variant='just_icon' variety={true} icon={<HiOutlineSearch />} />}
 							value='icon left'
 						/>
-
 						<Input
 							iconRight={<Button variant='just_icon' variety={true} icon={<HiOutlineSearch />} />}
 							value='icon right'
 						/>
-
-						<Input variant="transparent" container="custom" placeholder="placeholder" />
-						<Input placeholder="placeholder" />
-						<Input disabled={true} value="disabled" />
-						<Input label="label" />
-						<Input label="label textarea" placeholder="placeholder textarea" cols={25} rows={3} value="textarea" />
-						<Input placeholder="placeholder textarea" cols={25} rows={3} />
-						<Input rows={3} cols={36} autoFocus variant="large" container="custom"
-									 placeholder="Введите название доски" />
+						<Input variant='transparent' container='custom' placeholder='placeholder' />
+						<Input placeholder='placeholder' />
+						<Input disabled={true} value='disabled' />
+						<Input label='label' />
+						<Input
+							label='label textarea'
+							placeholder='placeholder textarea'
+							cols={25}
+							rows={3}
+							value='textarea'
+						/>
+						<Input placeholder='placeholder textarea' cols={25} rows={3} />
+						<Input
+							rows={3}
+							cols={36}
+							autoFocus
+							variant='large'
+							container='custom'
+							placeholder='Введите название доски'
+						/>
+					</div>
+				</div>
+				<div className={classes.modal}>
+					<div className={classes.container}>
+						<Button variant='contained' onClick={() => setOpenModal(true)}>
+							Модалка
+						</Button>
+						<Modal open={openModal} onClose={() => setOpenModal(false)}>
+							<div>
+								<p>Модальное окно</p>
+							</div>
+						</Modal>
 					</div>
 				</div>
 			</div>
 		</form>
 	)
 }
-
-export default UiKit
