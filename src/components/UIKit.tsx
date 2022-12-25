@@ -18,30 +18,32 @@ import classes from './UIKit.module.css'
 import '../GlobalStyles.css'
 import Select from './Select'
 
-
 function submit(e: any) {
 	e.preventDefault()
 }
 
 export default function UiKit() {
 	const [openModal, setOpenModal] = useState(false)
-	const [form, setForm] = useState({ name: "" });
+	const [form, setForm] = useState({ name: '' })
 	const selectValue = [
-		{ id: 1, value: "item value 1" },
-		{ id: 2, value: "item value 2" },
-		{ id: 3, value: "item value 3" },
-		{ id: 4, value: "item value 4" },
-		{ id: 5, value: "item value 5" },
-		{ id: 6, value: "item value 6" }
-	];
+		{ id: 1, value: 'item value 1' },
+		{ id: 2, value: 'item value 2' },
+		{ id: 3, value: 'item value 3' },
+		{ id: 4, value: 'item value 4' },
+		{ id: 5, value: 'item value 5' },
+		{ id: 6, value: 'item value 6' }
+	]
 	function onChange(e) {
 		if (e.target) {
-			setForm((prev) => ({
-				...prev, [e.target.name]: e.target.value
-			}));
-		} else setForm((prev) => ({
-			...prev, [e.name]: e.value
-		}));
+			setForm(prev => ({
+				...prev,
+				[e.target.name]: e.target.value
+			}))
+		} else
+			setForm(prev => ({
+				...prev,
+				[e.name]: e.value
+			}))
 	}
 
 	return (
@@ -149,23 +151,22 @@ export default function UiKit() {
 					</div>
 
 					<div className={classes.checkbox}>
-						<Checkbox label="checkbox with label" />
-						<Checkbox label="contained checkbox" variant="contained" />
-						<Checkbox label="outlined checkbox" variant="outlined" />
-						<Checkbox label="disabled text" disabled={true} />
-						<Checkbox variant="contained" label="disabled contained" disabled={true} />
-						<Checkbox variant="outlined" label="disabled outlined" disabled={true} />
+						<Checkbox label='checkbox with label' />
+						<Checkbox label='contained checkbox' variant='contained' />
+						<Checkbox label='outlined checkbox' variant='outlined' />
+						<Checkbox label='disabled text' disabled={true} />
+						<Checkbox variant='contained' label='disabled contained' disabled={true} />
+						<Checkbox variant='outlined' label='disabled outlined' disabled={true} />
 					</div>
 
 					<div className={classes.select}>
 						<Select
-							variant="outlined"
+							variant='outlined'
 							values={[selectValue[0], selectValue[1], selectValue[2]]}
-							onChange={onChange} />
+							onChange={onChange}
+						/>
 					</div>
 				</div>
-
-
 			</div>
 		</form>
 	)

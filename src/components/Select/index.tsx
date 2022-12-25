@@ -5,10 +5,7 @@ import classes from './Select.module.css'
 import Button from '../Button/Button'
 
 interface SelectTypes {
-	values: [
-		key: number,
-		value: string,
-	]
+	values: [key: number, value: string]
 	name: string
 	onChange: () => void
 	variant: string

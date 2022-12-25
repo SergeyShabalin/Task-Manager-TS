@@ -1,12 +1,9 @@
 import './App.css'
-import UIKit from './components/UIKit'
+import { Button } from './components'
+import UIKit from '@/components/UIKit'
 
 function App() {
-	return (
-
-			<UIKit/>
-
-	)
+	return <UIKit />
 }
 
 export default App

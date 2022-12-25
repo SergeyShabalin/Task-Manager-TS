@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './Button'
+import Button from './Button.tsx'
 import '../../GlobalStyles.css'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { CgMenuGridO, MdKeyboardArrowDown } from 'react-icons/all.js'
