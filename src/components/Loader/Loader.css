@@ -117,13 +117,26 @@
     }
 }
 
+.small{
+    transform: scale(0.4);
+}
+
+.normal{
+    transform: scale(0.6);
+}
+
+.large{
+    transform: scale(0.9);
+}
+
 .black {
-    position: absolute;
-    top: 45%;
-    left: 48%;
+
+    top: 0;
+    left: 0;
     display: flex;
-    width: 10px;
-    height: 10px;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
     z-index: 11;
 }
 
@@ -139,8 +152,8 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background-color: #0e0e0e;
-    box-shadow:  0 0 15px 4px rgba(3, 209, 236, 0.86);
+    background-color: #000000;
+    box-shadow: 0 0 15px 4px rgba(3, 166, 236, 0.86);
     margin: -4px 1px 0 -4px;
 }
 

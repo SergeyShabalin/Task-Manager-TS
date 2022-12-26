@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Loader, CheckBox, Button, Input, Modal } from '@/components/index'
+import { Loader, Checkbox, Button, Input, Modal } from '@/components/index'
 
 import {
 	AiOutlineBgColors,
@@ -14,10 +14,6 @@ import {
 import classes from './UIKit.module.css'
 import '../GlobalStyles.css'
 
-
-import Checkbox from '@/components/Checkbox'
-
-
 function submit(e: any) {
 	e.preventDefault()
 }
@@ -26,6 +22,7 @@ export default function UiKit() {
 	const [openModal, setOpenModal] = useState(false)
 	const [openLoaderWhite, setOpenLoaderWhite] = useState(false)
 	const [openLoaderDark, setOpenLoaderDark] = useState(false)
+	const [coordinates, setCoordinates] = useState()
 
 	const selectValue = [
 		{ id: 1, value: 'item value 1' },
@@ -36,13 +33,16 @@ export default function UiKit() {
 		{ id: 6, value: 'item value 6' }
 	]
 
-	function openWhiteLoader(){
+	function openWhiteLoader() {
 		setOpenLoaderWhite(true)
-		setTimeout(()=> setOpenLoaderWhite(false), 2000)
+		setTimeout(() => setOpenLoaderWhite(false), 2000)
 	}
-	function openDarkLoader(){
+
+	function openDarkLoader(e: any) {
+		const coords = e.currentTarget.getBoundingClientRect()
+		setCoordinates(coords)
 		setOpenLoaderDark(true)
-		setTimeout(()=> setOpenLoaderDark(false), 2000)
+		setTimeout(() => setOpenLoaderDark(false), 2000)
 	}
 
 	return (
@@ -142,7 +142,7 @@ export default function UiKit() {
 								Модалка
 							</Button>
 							<Modal open={openModal} onClose={() => setOpenModal(false)}>
-								<div>
+								<div className={classes.modalContent}>
 									<p>Модальное окно</p>
 								</div>
 							</Modal>
@@ -158,12 +158,17 @@ export default function UiKit() {
 						<Checkbox variant='outlined' label='disabled outlined' disabled={true} />
 					</div>
 
-					{	openLoaderDark &&	<Loader variant='modal' color='black' />}
-					{	openLoaderWhite &&	<Loader />}
 
+					{openLoaderWhite && <Loader />}
+					<div className={classes.load_wrapper}>
+						<Button variant='contained' label='Лоадер 1' onClick={openWhiteLoader} />
+						<Button variant='contained' label='Лоадер 2' onClick={(e) => openDarkLoader(e)} />
+						{openLoaderDark &&
+							<Loader size='small' variant='lds_wrapper' color='black' coords={coordinates}/>}
+					</div>
 				</div>
-				<Button variant='contained' label='Лоадер 1' onClick={openWhiteLoader}/>
-				<Button variant='contained' label='Лоадер 2' onClick={openDarkLoader}/>
+
+
 			</div>
 		</form>
 	)
