@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
+import { Loader, CheckBox, Button, Input, Modal } from '@/components/index'
 
-import Button from './Button/Button'
-import Input from './Input'
-import Modal from './Modal'
-import Checkbox from './Checkbox'
 import {
 	AiOutlineBgColors,
 	AiOutlinePlus,
@@ -16,7 +13,10 @@ import {
 
 import classes from './UIKit.module.css'
 import '../GlobalStyles.css'
-import Select from './Select'
+
+
+import Checkbox from '@/components/Checkbox'
+
 
 function submit(e: any) {
 	e.preventDefault()
@@ -24,7 +24,9 @@ function submit(e: any) {
 
 export default function UiKit() {
 	const [openModal, setOpenModal] = useState(false)
-	const [form, setForm] = useState({ name: '' })
+	const [openLoaderWhite, setOpenLoaderWhite] = useState(false)
+	const [openLoaderDark, setOpenLoaderDark] = useState(false)
+
 	const selectValue = [
 		{ id: 1, value: 'item value 1' },
 		{ id: 2, value: 'item value 2' },
@@ -33,17 +35,14 @@ export default function UiKit() {
 		{ id: 5, value: 'item value 5' },
 		{ id: 6, value: 'item value 6' }
 	]
-	function onChange(e) {
-		if (e.target) {
-			setForm(prev => ({
-				...prev,
-				[e.target.name]: e.target.value
-			}))
-		} else
-			setForm(prev => ({
-				...prev,
-				[e.name]: e.value
-			}))
+
+	function openWhiteLoader(){
+		setOpenLoaderWhite(true)
+		setTimeout(()=> setOpenLoaderWhite(false), 2000)
+	}
+	function openDarkLoader(){
+		setOpenLoaderDark(true)
+		setTimeout(()=> setOpenLoaderDark(false), 2000)
 	}
 
 	return (
@@ -159,14 +158,12 @@ export default function UiKit() {
 						<Checkbox variant='outlined' label='disabled outlined' disabled={true} />
 					</div>
 
-					<div className={classes.select}>
-						<Select
-							variant='outlined'
-							values={[selectValue[0], selectValue[1], selectValue[2]]}
-							onChange={onChange}
-						/>
-					</div>
+					{	openLoaderDark &&	<Loader variant='modal' color='black' />}
+					{	openLoaderWhite &&	<Loader />}
+
 				</div>
+				<Button variant='contained' label='Лоадер 1' onClick={openWhiteLoader}/>
+				<Button variant='contained' label='Лоадер 2' onClick={openDarkLoader}/>
 			</div>
 		</form>
 	)
