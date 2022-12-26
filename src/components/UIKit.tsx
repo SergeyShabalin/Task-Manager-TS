@@ -101,7 +101,9 @@ export default function UiKit() {
 					<Button variant='just_icon' variety={true} icon={<AiOutlinePlus />} />
 					<Button variant='just_icon' variety={true} icon={<GoKebabHorizontal />} />
 					<Button variant='just_icon' variety={true} icon={<CgMenuGridO />} />
-					<Button variant='just_icon' variety={true} color='changed' icon={<AiOutlineBgColors />} />
+					<Button variant='just_icon' variety={true} color_icon='red' icon={<AiOutlineBgColors />} />
+					<Button variant='just_icon' variety={true} color_icon='green' icon={<AiOutlineBgColors />} />
+					<Button variant='just_icon' variety={true} color_icon='blue' icon={<AiOutlineBgColors />} />
 				</div>
 				<hr />
 
@@ -161,10 +163,10 @@ export default function UiKit() {
 
 					{openLoaderWhite && <Loader />}
 					<div className={classes.load_wrapper}>
-						<Button variant='contained' label='Лоадер 1' onClick={openWhiteLoader} />
-						<Button variant='contained' label='Лоадер 2' onClick={(e) => openDarkLoader(e)} />
+						<Button variant='contained' label='Лоадер общий' onClick={openWhiteLoader} />
+						<Button variant='contained' label='Лоадер локальный ' onClick={(e) => openDarkLoader(e)} />
 						{openLoaderDark &&
-							<Loader size='small' variant='lds_wrapper' color='black' coords={coordinates}/>}
+							<Loader size='normal' variant='lds_wrapper' color='black' />}
 					</div>
 				</div>
 

@@ -170,8 +170,16 @@
 	transition: var(--button-just-icon-sized-transition);
 }
 
-.just_icon.changed {
-	color: var(--button-just-icon-changed-color);
+.just_icon.green {
+	color: #2db22f;
+}
+
+.just_icon.red {
+	color: #b20a0a;
+}
+
+.just_icon.blue {
+	color: #045cc0;
 }
 
 .just_icon.opacity {

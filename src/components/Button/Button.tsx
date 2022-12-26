@@ -9,6 +9,7 @@ interface buttonProps {
 	endIcon?: React.ReactNode
 	disabled?: boolean
 	color?: string
+	color_icon?:string
 	children?: any
 	variant?: string
 	fullSize?: boolean
@@ -25,6 +26,7 @@ export default function Button({
 	variant = 'text',
 	disabled,
 	color = '',
+	color_icon = '',
 	variety = false,
 	children,
 	onClick,
@@ -42,6 +44,7 @@ export default function Button({
 				${fullSize && classes.fullSize}
 				${opacity && classes.opacity}
 				${classes[color]}
+				${classes[color_icon]}
 				${variety && classes.sized}
 				${classes.button}`}
 			>

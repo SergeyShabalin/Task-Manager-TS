@@ -2,7 +2,8 @@ import React from 'react'
 import Button from './Button.tsx'
 import '../../GlobalStyles.css'
 import { AiOutlinePlus } from 'react-icons/ai'
-import { CgMenuGridO, MdKeyboardArrowDown } from 'react-icons/all.js'
+import { MdKeyboardArrowDown } from 'react-icons/all.js'
+import { AiOutlineBgColors } from 'react-icons/all'
 
 
 export default {
@@ -26,6 +27,16 @@ export default {
 				type: 'radio',
 				default: 'btn'
 			}
+		},
+
+		color_icon: {
+			type: 'string',
+			description: 'Цвет для кнопки "только иконка" ',
+			options: [ 'red', 'green' , 'blue'],
+			control: {
+				type: 'radio',
+				default: 'btn'
+			}
 		}
 
 	}
@@ -41,8 +52,8 @@ Default.args = {
 
 export const onlyIcon = Template.bind({})
 onlyIcon.args = {
-	variant: 'outlined',
-	icon: <AiOutlinePlus />
+	variant: 'just_icon',
+	icon: <AiOutlineBgColors />
 }
 
 export const startIcon = Template.bind({})

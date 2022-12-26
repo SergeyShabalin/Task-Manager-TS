@@ -125,8 +125,12 @@
     transform: scale(0.6);
 }
 
-.large{
+.big{
     transform: scale(0.9);
+}
+
+.large{
+    transform: scale(1.2);
 }
 
 .black {
