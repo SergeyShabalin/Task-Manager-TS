@@ -38,7 +38,7 @@ export default function UiKit() {
 		setTimeout(() => setOpenLoaderWhite(false), 2000)
 	}
 
-	function openDarkLoader(e: any) {
+	function openDarkLoader(e) {
 		const coords = e.currentTarget.getBoundingClientRect()
 		setCoordinates(coords)
 		setOpenLoaderDark(true)

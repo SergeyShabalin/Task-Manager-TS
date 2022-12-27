@@ -1,9 +1,27 @@
 import './App.css'
-import { Button, Loader } from './components'
+import { Routes, Route, useLocation } from "react-router-dom";
 import UIKit from '@/components/UIKit'
+import Main from '@/pages/main'
 
 function App() {
-	return <UIKit />
+	const location = useLocation();
+	const background = location.state && location.state.background;
+
+	return (
+		<>
+			<Routes location={background || location}>
+				<Route path="/*" element={<Main/>} />
+				<Route path="/board/:boardId" element={<Main/>}/>
+				<Route path="/ui" element={<UIKit />} />
+				{/*<Route path="/board/:boardId/card/:cardId" element={<CardModal/>}/>*/}
+			</Routes>
+			{/*{background && (*/}
+			{/*	<Routes>*/}
+					{/*<Route path="/board/:boardId/card/:cardId" element={<CardModal/>}/>*/}
+				{/*</Routes>*/}
+			{/*)}*/}
+		</>
+	);
 }
 
 export default App
