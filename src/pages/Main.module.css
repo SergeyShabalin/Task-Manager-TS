@@ -1,8 +1,9 @@
 .main {
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: url("https://images.wallpaperscraft.ru/image/single/gory_skaly_vershiny_151531_1920x1080.jpg");
-    background-size: auto;
+    /*background-image: url("https://images.wallpaperscraft.ru/image/single/gory_skaly_vershiny_151531_1920x1080.jpg");*/
+    background-color: #adcdd7;
+    background-size: unset;
     font-size: var(--main-font-size);
     min-height: 100vh;
 }
