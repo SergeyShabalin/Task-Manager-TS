@@ -1,8 +1,8 @@
 export const defaultState={
 	cards: {
 		checkList: [{_id:1}],
-		header: '',
-		description: '',
+		header: 'aasas',
+		description: 'dasdfda',
 		decisionDate: new Date(),
 		order: 0
 	},
