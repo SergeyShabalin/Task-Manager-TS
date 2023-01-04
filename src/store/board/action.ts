@@ -1,11 +1,8 @@
-import {BOARD_TYPES} from "./constants";
+import { BOARD_TYPES, BoardAPI, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
+
 
 export const BoardAC = {
-	viewBoard: (payload) => ({type: BOARD_TYPES.VIEW_BOARD, payload}),
-	viewAllBoards: (payload) => ({type: BOARD_TYPES.VIEW_ALL_BOARD, payload}),
-	addNewBoard: (payload) => ({type: BOARD_TYPES.ADD_NEW_BOARD, payload}),
-	updateBoard: (payload) => ({type: BOARD_TYPES.UPDATE_BOARD, payload}),
-	updateAllBoards:  (payload) => ({type: BOARD_TYPES.UPDATE_ALL_BOARD, payload}),
-	isErrorServer: (payload) => ({type: BOARD_TYPES.CHANGE_IS_ERROR, payload}),
-	isLoading: (payload) => ({type: BOARD_TYPES.IS_LOADING_CHANGE, payload}),
+	startFetching: (): StartFetching => ({type: BOARD_TYPES.START_FETCHING_BOARD}),
+	successFetching: (payload: BoardAPI): SuccessFetching => ({type: BOARD_TYPES.SUCCESS_FETCHING_BOARD, payload}),
+	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 };

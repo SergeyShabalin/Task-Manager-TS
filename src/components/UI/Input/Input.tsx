@@ -6,7 +6,7 @@ interface inputProps {
 	rows?: number
 	cols?: number
 	placeholder?: string
-	onChange?: ()=> void
+	onChange?: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=> void
 	label?: string
 	disabled?: boolean
 	iconLeft?: React.ReactNode

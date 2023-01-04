@@ -1,8 +1,10 @@
 import '../../App.css'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import UIKit from '@/components/UIKit'
-import Main from '@/pages/main'
-import UiTest from '@/components/UiTest'
+
+import '../../GlobalStyles.css'
+
+import Main from '@/layouts/Main'
+
 
 function App() {
 	const location = useLocation()
@@ -10,18 +12,8 @@ function App() {
 
 	return (
 		<>
-			<Routes location={background || location}>
-				<Route path='/*' element={<Main />} />
-				<Route path='/board/:boardId' element={<Main />} />
-				<Route path='/ui' element={<UIKit />} />
-				<Route path='/test' element={<UiTest />} />
-				{/*<Route path="/board/:boardId/card/:cardId" element={<CardModal/>}/>*/}
-			</Routes>
-			{/*{background && (*/}
-			{/*	<Routes>*/}
-			{/*<Route path="/board/:boardId/card/:cardId" element={<CardModal/>}/>*/}
-			{/*</Routes>*/}
-			{/*)}*/}
+
+			<Main/>
 		</>
 	)
 }

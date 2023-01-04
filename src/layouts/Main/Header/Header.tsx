@@ -2,8 +2,9 @@ import React from "react";
 import { CgMenuGridO } from "react-icons/cg";
 import { RiTrelloFill } from "react-icons/ri";
 
+import { Button } from "@/components/UI";
+
 import classes from "./Header.module.css";
-import { Button } from '@/components/UI'
 
 export default function Header() {
 
@@ -13,12 +14,11 @@ export default function Header() {
 				<Button
 					variant="just_icon"
 					variety={true}
-					color="blue"
+					color="changed"
 					icon={<CgMenuGridO />}
 				/>
 			</div>
-			{/*<Creator />*/}
-			{/*{!visibility && <Share/>}*/}
+
 			<div className={classes.logo}>
 				<span className={classes.icon}> <RiTrelloFill /> </span>
 				<span>TASK MANAGER</span>

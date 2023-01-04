@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiOutlineClose, AiOutlineCreditCard } from 'react-icons/ai'
 
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
 import classes from './Header.module.css'
 
 interface ModalHeaderTypes {

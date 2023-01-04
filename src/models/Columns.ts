@@ -1,6 +1,8 @@
-export interface Columns{
+
+export interface Column{
 	header: string
-	cards: []
-	sortArr: [],
-	boardId: number
+	cards: string[]
+	sortArr: number[],
+	boardId: string,
+	_id: string
 }

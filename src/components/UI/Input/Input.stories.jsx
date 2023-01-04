@@ -1,5 +1,5 @@
-import Input from './Input'
-import '../../GlobalStyles.css'
+import Input from './Input.js'
+import '../../../GlobalStyles.css'
 
 export default {
 	title: 'Input',

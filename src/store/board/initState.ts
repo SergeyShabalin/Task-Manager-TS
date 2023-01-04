@@ -1,9 +1,11 @@
-export const defaultState = {
+import { BoardState } from '@/models/Boards'
+
+export const defaultState: BoardState = {
 	currentBoard:  {
 		title: "",
 		columns: []
 	},
 	isLoading: false,
-	isErrorServer: false,
-	allBoards: []
+	isError: false,
+	allCards: {}
 }

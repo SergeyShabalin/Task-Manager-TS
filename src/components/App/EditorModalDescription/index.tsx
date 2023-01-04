@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { MdClear } from "react-icons/md";
 
-import Input from "@/components/Input";
-import Button from "@/components/Button";
+import Input from "@/components/UI/Input";
+import Button from "@/components/UI/Button";
 import useOnClickOutside from "@/hooks/UseOnClickOutside";
 import classes from "./Editor.module.css";
 

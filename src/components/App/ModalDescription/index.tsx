@@ -5,7 +5,7 @@ import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import useOpenCloseContext from '@/hooks/UseOpenCloseContext'
 import Editor from '@/components/App/EditorModalDescription'
-import Button from '@/components/Button'
+import Button from '@/components/UI/Button'
 import classes from './Description.module.css'
 
 interface DescriptionTypes {

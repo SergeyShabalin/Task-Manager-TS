@@ -1,31 +1,36 @@
-import { BOARD_TYPES } from "./constants";
-import { defaultState } from "./initState";
+import { defaultState } from './initState'
+import { BoardActions, BOARD_TYPES } from '@/models/Boards'
+import { Action } from 'redux'
 
-export default function boardReducer(state = defaultState, { type, payload }) {
-
-	switch (type) {
-		case BOARD_TYPES.VIEW_BOARD:
-			return { ...state, currentBoard: payload };
-
-		case BOARD_TYPES.VIEW_ALL_BOARD:
-			return { ...state, allBoards: payload };
-
-		case BOARD_TYPES.ADD_NEW_BOARD:
-			return { ...state, currentBoard: payload };
-
-		case BOARD_TYPES.UPDATE_BOARD:
-			return { ...state, currentBoard: { title: payload} };
-
-		case BOARD_TYPES.UPDATE_ALL_BOARD:
-			return { ...state, allBoards: payload };
-
-		case BOARD_TYPES.CHANGE_IS_ERROR:
-			return { ...state, isErrorServer: payload };
-
-		case BOARD_TYPES.IS_LOADING_CHANGE:
-			return { ...state, isLoading: payload };
+export default function boardReducer(state = defaultState, action: BoardActions) {
+	switch (action.type) {
+		case BOARD_TYPES.START_FETCHING_BOARD:
+			return {
+				...state,
+				isLoading: true,
+				isError: false
+			}
+		case BOARD_TYPES.SUCCESS_FETCHING_BOARD:
+			return {
+				...state,
+				isLoading: false,
+				isError: false,
+				currentBoard: action.payload.currentBoard,
+				allCards: action.payload.allCards
+			}
+		case BOARD_TYPES.ERROR_FETCHING_BOARD:
+			return {
+				...state,
+				isLoading: false,
+				isError: true,
+				currentBoard: {
+					title: '',
+					columns: []
+				},
+				allCards: {}
+			}
 
 		default:
-			return (state);
+			return state
 	}
 }

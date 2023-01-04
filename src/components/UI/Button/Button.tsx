@@ -2,20 +2,20 @@ import React from 'react'
 
 import classes from './Button.module.css'
 
-interface buttonProps {
+interface ButtonProps {
 	label?: string
 	icon?: React.ReactNode
 	startIcon?: React.ReactNode
 	endIcon?: React.ReactNode
 	disabled?: boolean
-	color?: string
-	color_icon?:string
+	color?: 'submit' | 'error' | 'changed' | ''
+	color_icon?: string
 	children?: any
-	variant?: string
+	variant?: 'contained' | 'outlined' | 'text' | 'just_icon'
 	fullSize?: boolean
 	opacity?: boolean
 	variety?: boolean
-	onClick?: () => void
+	onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 export default function Button({
@@ -33,7 +33,7 @@ export default function Button({
 	fullSize = false,
 	opacity = false,
 	...props
-}: buttonProps) {
+}: ButtonProps) {
 	return (
 		<div className={classes.button_container}>
 			<button

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Loader, Checkbox, Button, Input, Modal } from '@/components/index'
+import { Loader, Checkbox, Button, Input, Modal } from '@/components/UI'
 
 import {
 	AiOutlineBgColors,

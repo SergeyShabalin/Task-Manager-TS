@@ -1,0 +1,23 @@
+.board_header {
+    width: 100%;
+    margin: 8px 0 8px 0;
+    padding-left: 16px;
+    font-weight: 500;
+    color: rgba(220, 204, 204, 0.67);
+    cursor: pointer;
+}
+
+.columns {
+    display: flex;
+}
+
+.wrapper_list {
+    padding-top: 10px;
+    display: flex;
+}
+
+.add_list {
+    padding: 5px;
+    transition: 0.55s ease-out all;
+}
+
