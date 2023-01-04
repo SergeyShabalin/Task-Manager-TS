@@ -1,35 +1,33 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 // import { dragDropCard, dragDropCardOneColumn } from "../../../../store/cards/asyncActions";
-import Checkout from "../Checkout";
+import Checkout from '../Checkout'
 // import ContentEdit from "../ContentEdit";
-import DecisionDate from "../DecisionDate";
-import "./Card.css";
+import DecisionDate from '../DecisionDate'
+import './Card.css'
 // import "../Columns/ColumnWrapper.css";
 
 export default function Card({ columnId, columnHeader, boardId, targetCard, ...props }) {
-
-	const [shadowIn, setIsShadowIn] = useState(false);
-	const dispatch = useDispatch();
-	const [now] = useState(new Date().getTime()+1000000000);
+	const [shadowIn, setIsShadowIn] = useState(false)
+	const dispatch = useDispatch()
+	const [now] = useState(new Date().getTime() + 1000000000)
 	function handleDragOver() {
-		setIsShadowIn(true);
+		setIsShadowIn(true)
 	}
 
 	function handleDragEnd() {
-		setIsShadowIn(false);
+		setIsShadowIn(false)
 	}
 
 	function handleDragLeave(e) {
-		if (e.target.className !== "cardShadow")
-			setIsShadowIn(false);
+		if (e.target.className !== 'cardShadow') setIsShadowIn(false)
 	}
 
 	function handleDrop(e) {
-		setIsShadowIn(false);
-		const card = JSON.parse(e.dataTransfer.getData("card"));
-		const currentColumnId = e.dataTransfer.getData("currentColumnId");
+		setIsShadowIn(false)
+		const card = JSON.parse(e.dataTransfer.getData('card'))
+		const currentColumnId = e.dataTransfer.getData('currentColumnId')
 		const data = {
 			targetColumnId: columnId,
 			currentCard: card,
@@ -37,17 +35,17 @@ export default function Card({ columnId, columnHeader, boardId, targetCard, ...p
 			currentOrder: card.order,
 			targetCardId: targetCard._id,
 			targetOrder: targetCard.order
-		};
+		}
 		if (columnId === currentColumnId) {
 			console.log('dispatch(dragDropCardOneColumn(data));')
-		} else
-			console.log('dispatch(dragDropCard(data));')
+		} else console.log('dispatch(dragDropCard(data));')
 	}
 
 	return (
 		<>
 			<div
-				className="list_card" {...props}
+				className='list_card'
+				{...props}
 				onDragLeave={handleDragLeave}
 				onDragEnd={handleDragEnd}
 				onDrop={handleDrop}
@@ -62,19 +60,14 @@ export default function Card({ columnId, columnHeader, boardId, targetCard, ...p
 				{/*	columnHeader={columnHeader}*/}
 				{/*/>*/}
 
-				<div className="footer">
+				<div className='footer'>
 					{/*{targetCard.decisionDate &&*/}
-						<DecisionDate decisionDate={now} />
+					<DecisionDate decisionDate={now} />
 					{/*}*/}
-					<Checkout
-						countTask={5}
-						doneTask={5}
-					/>
+					<Checkout countTask={5} doneTask={5} />
 				</div>
-
 			</div>
-			{shadowIn && <div className="cardShadow"></div>}
+			{shadowIn && <div className='cardShadow'></div>}
 		</>
-
-	);
+	)
 }

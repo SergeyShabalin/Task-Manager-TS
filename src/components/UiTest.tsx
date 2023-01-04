@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
-import Checkout from '@/components/App/Checkout'
-import DecisionDate from '@/components/App/DecisionDate'
 import Card from '@/components/App/Cards'
+import { ModalHeader } from '@/components/App/ModalHeader'
+import Description from '@/components/App/ModalDescription'
 
-export default function UiTest(){
+export default function UiTest() {
+	function closeModal() {
+		console.log('закрыто')
+	}
 
 	return (
 		<div>
-{/*<Checkout countTask={7} doneTask={7}/>*/}
-			{/*<DecisionDate decisionDate={now}/>*/}
-
-			<Card/>
+			<Card />
+			<ModalHeader closeModal={closeModal} title='Название карточки в модальном окне' />
+			<Description/>
 		</div>
 	)
 }
-
