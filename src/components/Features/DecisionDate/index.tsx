@@ -4,22 +4,22 @@ import { ru } from "date-fns/locale";
 import { AiOutlineFieldTime } from "react-icons/ai";
 
 import classes from "./DecisionDate.module.css";
-
+// TODO переименовать с импортами index и проверить
 interface DecisionDateTypes{
-	decisionDate: number
+	decisionDate: Date
 }
 
 export default function DecisionDate({ decisionDate }: DecisionDateTypes) {
 
-	const [isYear, setYear] = useState(false);
+	const [isYear, setIsYear] = useState(false);
 	const changedDate = new Date(decisionDate).getTime();
-	const [now] = useState(new Date().getTime());
+	const now = new Date().getTime();
 
 	const yearNow = new Date().getFullYear();
 	const year = new Date(decisionDate).getFullYear();
 
 	useEffect(() => {
-		if (yearNow !== year) setYear(true);
+		if (yearNow !== year) setIsYear(true);
 	}, [decisionDate]);
 
 	const cardDateWithYear = format(changedDate, "PP", { locale: ru });

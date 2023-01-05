@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from './Column.module.css'
-import MiniCard from '@/components/App/MiniCard'
+import MiniCard from '@/components/Features/MiniCard'
 import { useSelector } from 'react-redux'
 
 import { Column as ColumnT } from '@/models/Columns'

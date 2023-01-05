@@ -2,55 +2,39 @@ import React from 'react'
 
 import classes from './Button.module.css'
 
-interface ButtonProps {
-	label?: string
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	title?: string
 	icon?: React.ReactNode
 	startIcon?: React.ReactNode
 	endIcon?: React.ReactNode
 	disabled?: boolean
-	color?: 'submit' | 'error' | 'changed' | ''
-	color_icon?: string
-	children?: any
+	color?: 'primary' | 'secondary' | 'error'
 	variant?: 'contained' | 'outlined' | 'text' | 'just_icon'
 	fullSize?: boolean
-	opacity?: boolean
-	variety?: boolean
-	onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
 export default function Button({
-	label,
+	title,
 	icon,
 	startIcon,
 	endIcon,
 	variant = 'text',
-	disabled,
-	color = '',
-	color_icon = '',
-	variety = false,
+	color = 'secondary',
 	children,
-	onClick,
 	fullSize = false,
-	opacity = false,
 	...props
 }: ButtonProps) {
+	function classNames() {
+		let arrayClasses = [classes.button, classes[variant], classes[color]]
+		if (fullSize) arrayClasses.push(classes.fullSize)
+		return arrayClasses.join(' ')
+	}
 	return (
 		<div className={classes.button_container}>
-			<button
-				disabled={disabled}
-				onClick={onClick}
-				{...props}
-				className={`${classes[variant]}
-				${fullSize && classes.fullSize}
-				${opacity && classes.opacity}
-				${classes[color]}
-				${classes[color_icon]}
-				${variety && classes.sized}
-				${classes.button}`}
-			>
+			<button className={classNames()} {...props}>
 				{startIcon && <div className={classes.startIcon}>{startIcon}</div>}
 				{icon && <div className={classes.only_icon}>{icon}</div>}
-				{label && <span className={classes.label}>{label}</span>}
+				{title && <span className={classes.label}>{title}</span>}
 				{children}
 				{endIcon && <div className={classes.endIcon}>{endIcon}</div>}
 			</button>

@@ -1,7 +1,7 @@
-import '../../App.css'
+import '../../../App.css'
 import { Routes, Route, useLocation } from 'react-router-dom'
 
-import '../../GlobalStyles.css'
+import '../../../GlobalStyles.css'
 
 import Main from '@/layouts/Main'
 
@@ -12,7 +12,6 @@ function App() {
 
 	return (
 		<>
-
 			<Main/>
 		</>
 	)

@@ -49,40 +49,40 @@ export default function UiKit() {
 		<form onSubmit={submit} className={classes.wrapper_uikit}>
 			<div className={classes.buttons}>
 				<div className={classes.buttons_text}>
-					<Button label='text' />
-					<Button label='text start icon' startIcon={<AiOutlinePlus />} />
-					<Button label='text end icon' endIcon={<MdKeyboardArrowDown />} />
-					<Button color='submit' label='text submit' />
-					<Button color='error' label='error' />
-					<Button disabled={true} label='text disabled' />
+					<Button title='text' />
+					<Button title='text start icon' startIcon={<AiOutlinePlus />} />
+					<Button title='text end icon' endIcon={<MdKeyboardArrowDown />} />
+					<Button color='primary' title='text submit' />
+					<Button color='error' title='error' />
+					<Button disabled={true} title='text disabled' />
 				</div>
 
 				<div className={classes.buttons_contained}>
-					<Button variant='contained' label='contained' />
-					<Button variant='contained' label='contained start icon' startIcon={<AiOutlinePlus />} />
+					<Button variant='contained' title='contained' />
+					<Button variant='contained' title='contained start icon' startIcon={<AiOutlinePlus />} />
 					<Button
 						variant='contained'
-						label='contained end icon'
+						title='contained end icon'
 						endIcon={<MdKeyboardArrowDown />}
 					/>
-					<Button variant='contained' color='submit' label='contained submit' />
-					<Button variant='contained' color='error' label='contained error' />
-					<Button variant='contained' disabled={true} label='contained disabled' />
+					<Button variant='contained' color='submit' title='contained submit' />
+					<Button variant='contained' color='error' title='contained error' />
+					<Button variant='contained' disabled={true} title='contained disabled' />
 				</div>
 
 				<div className={classes.buttons_outlined}>
-					<Button variant='outlined' label='outlined' />
-					<Button variant='outlined' label='outlined start icon' startIcon={<AiOutlinePlus />} />
-					<Button variant='outlined' label='outlined end icon' endIcon={<MdKeyboardArrowDown />} />
-					<Button variant='outlined' color='submit' label='outlined submit' />
-					<Button variant='outlined' color='error' label='outlined error' />
-					<Button variant='outlined' disabled={true} label='outlined disabled' />
+					<Button variant='outlined' title='outlined' />
+					<Button variant='outlined' title='outlined start icon' startIcon={<AiOutlinePlus />} />
+					<Button variant='outlined' title='outlined end icon' endIcon={<MdKeyboardArrowDown />} />
+					<Button variant='outlined' color='submit' title='outlined submit' />
+					<Button variant='outlined' color='error' title='outlined error' />
+					<Button variant='outlined' disabled={true} title='outlined disabled' />
 				</div>
 
 				<div className='button_full_sized'>
-					<Button fullSize={true} label='text full size' />
-					<Button variant='contained' fullSize={true} label='contained full size' />
-					<Button variant='outlined' fullSize={true} label='outlined full size' />
+					<Button fullSize={true} title='text full size' />
+					<Button variant='contained' fullSize={true} title='contained full size' />
+					<Button variant='outlined' fullSize={true} title='outlined full size' />
 				</div>
 
 				<div className={classes.buttons_only_icon}>
@@ -126,7 +126,7 @@ export default function UiKit() {
 							placeholder='placeholder textarea'
 							cols={25}
 							rows={3}
-							value='textarea'
+
 						/>
 						<Input placeholder='placeholder textarea' cols={25} rows={3} />
 						<Input
@@ -163,8 +163,10 @@ export default function UiKit() {
 
 					{openLoaderWhite && <Loader />}
 					<div className={classes.load_wrapper}>
-						<Button variant='contained' label='Лоадер общий' onClick={openWhiteLoader} />
-						<Button variant='contained' label='Лоадер локальный ' onClick={(e) => openDarkLoader(e)} />
+						<Button variant='contained' title='Лоадер общий' onClick={openWhiteLoader} />
+						<Button startIcon={
+							openLoaderDark &&
+							<Loader size='normal' variant='lds_wrapper' color='black' />} variant='contained' title='Лоадер локальный ' onClick={(e) => openDarkLoader(e)} />
 						{openLoaderDark &&
 							<Loader size='normal' variant='lds_wrapper' color='black' />}
 					</div>

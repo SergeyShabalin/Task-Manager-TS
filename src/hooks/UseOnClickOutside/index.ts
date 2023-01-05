@@ -1,5 +1,6 @@
 import {useEffect } from "react";
 
+// TODO сделать норм типизацию
 
 export default function useOnClickOutside(ref : any, handler: any) {
 	useEffect(

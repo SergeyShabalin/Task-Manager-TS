@@ -5,12 +5,23 @@ import classes from './Modal.module.css'
 
 const modalRootElement: any = document.querySelector('#modal')
 
+interface Coordinates {
+	x: number
+	y: number
+	width: number
+	height: number
+	top: number
+	right: number
+	bottom: number
+	left: number
+}
+
 interface ModalProps {
 	children: React.ReactNode
 	open: boolean
 	onClose: () => void
-	coordinates?: any
-	ref?: any
+	coordinates?: Coordinates
+	ref?: React.LegacyRef<HTMLDivElement>
 }
 
 const Modal = ({ children, open, onClose, coordinates, ref }: ModalProps) => {

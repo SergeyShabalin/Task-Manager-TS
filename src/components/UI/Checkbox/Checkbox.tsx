@@ -2,9 +2,9 @@ import React from 'react'
 
 import classes from './Checkbox.module.css'
 
-interface CheckboxTypes {
+interface CheckboxTypes extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string
-	variant?: string
+	variant?: 'text' | 'contained' | 'outlined'
 	disabled?: boolean
 }
 
@@ -17,11 +17,11 @@ export default function Checkbox({
 	return (
 		<div>
 			<div
-				className={
-					disabled
-						? `${classes.disabled}  ${classes.checkbox_container} ${classes[variant]}`
-						: `${classes.checkbox_container} ${classes[variant]}`
-				}
+				className={`
+				${classes.checkbox_container} 
+				${classes[variant]} 
+				${disabled && classes.disabled}
+				`}
 			>
 				<input disabled={disabled} type='checkbox' className={classes.custom_checkbox} {...props} />
 				{label && <span className={classes.label}>{label}</span>}
