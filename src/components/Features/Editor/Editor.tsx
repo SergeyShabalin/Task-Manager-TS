@@ -3,7 +3,7 @@ import { Button, Input } from '@/components/UI'
 import { GrClose } from 'react-icons/gr'
 import useOpenClose from '@/hooks/UseOpenClose'
 
-// TODO сделать клик по ентеру
+// TODO сделать клик по ентеру ++++
 //TODO добавить лоадер после onSubmit в кнопку сохранить.
 // Если выйдет ошибка(если onSubmit вернул false)!!
 // - не закрывать модалку вывеcти notification
@@ -12,6 +12,8 @@ import useOpenClose from '@/hooks/UseOpenClose'
 // поставить alios на папку features и UI (возможно еще что-то удобное сделать)
 //TODO стилистика норм
 //TODO роутинг как время останется
+
+//TODO сделать заметку с гитигнор
 
 interface EditorProps {
 	buttonSubmitTitle: string
@@ -39,6 +41,13 @@ export default function Editor({
 		setInputValue(target.value)
 	}
 
+	function saveChanged(e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
+		if (e.keyCode === 13) {
+			onSubmit(inputValue)
+			onClose()
+		}
+	}
+
 	function sendValue() {
 		onSubmit(inputValue)
 		onClose()
@@ -49,10 +58,12 @@ export default function Editor({
 	return (
 		<div>
 			<Input
+				autoFocus
 				rows={rows}
 				value={inputValue}
 				placeholder={placeholder}
 				cols={cols}
+				onKeyDown={saveChanged}
 				onChange={changeInput}
 			/>
 			<Button color='primary' title={buttonSubmitTitle} onClick={sendValue} />
