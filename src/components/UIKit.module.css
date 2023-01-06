@@ -3,9 +3,10 @@
 	height: 100vh;
 }
 .buttons {
-	background-color: #bbcbcb;
+	background-color: rgba(0, 0, 0, 0.32);
 	min-height: 100%;
 	width: 100%;
+	padding: 0 10px;
 }
 
 .buttons_text {
@@ -74,4 +75,8 @@
 	background-color: white;
 	padding: 20px;
 	border-radius: 5px;
+}
+
+.colors{
+	display: flex;
 }

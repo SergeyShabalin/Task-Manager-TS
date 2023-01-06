@@ -16,7 +16,6 @@
     --button-font-size: 0.8rem;
     --button-padding: 8px 10px;
     --button-margin: 0;
-
     --button-label-margin: 0 5px;
     --button-background-hover: #ffffff;
     --button-border-radius: 5px;
@@ -24,18 +23,33 @@
     --button-text-color: #7a6f74;
     --button-text-color-hover: #6b6464;
     --button-text-background-color-hover: white;
-    --button-text-color-hover-shadow: 1px 1px 2px #276727;
-    --button-text-color-submit: #038303;
-    --button-text-error-hover-shadow: 1px 1px 2px rgb(168, 4, 4);
-    --button-text-error-label-color: #ff2828;
-    --button-text-disabled-hover-color: #9d9d9d;
+
+
+    --button-prymary-color-text: #3b3bd7;
+    --button-prymary-color-text-hover: #0a0a85;
+    --button-secondary-color-text: #d7d7e1;
+    --button-secondary-color-text-hover: #9b9ba2;
+    --button-error-color-text: #d93434;
+    --button-error-color-text-hover: #8d0519;
+    --button-text-disabled-color: #090909;
 
     --button-outlined-border: 2px solid;
     --button-outlined-color: #7e7878;
     --button-outlined-hover: #6c6767;
-    --button-outlined-hover-shadow: 1px 0px 5px 0px inset;
-    --button-outlined-submit: green;
-    --button-outlined-error-label-color: rgb(168, 4, 4);
+
+    --button-prymary-color-outlined-border: 2px solid #3b3bd7;
+    --button-prymary-color-outlined-border-hover: 2px solid #070783;
+    --button-prymary-outlined-color: #3b3bd7;
+    --button-prymary-outlined-hover: #070783;
+    --button-secondary-color-outlined-border: 2px solid #babacc;
+    --button-secondary-color-outlined-border-hover: 2px solid #9b9ba2;
+    --button-secondary-outlined-color: #babacc;
+    --button-secondary-outlined-hover: #9b9ba2;
+    --button-error-color-outlined-border: 2px solid #d93434;
+    --button-error-color-outlined-border-hover: 2px solid #8d0519;
+    --button-error-outlined-color: #d93434;
+    --button-error-outlined-hover: #8d0519;
+
 
     --button-contained-background: rgba(0, 0, 0, 0.29);
     --button-contained-color: #efe4e4;
@@ -43,15 +57,37 @@
     --button-contained-background-hover: rgba(0, 0, 0, 0.48);
     --button-contained-background-disabled: #e0c6c6;
     --button-contained-border-radius-disabled: 5px;
-    --button-contained-submit-background: #67d9b9;
+
+    --button-prymary-color-contained-background: #336afd;
+    --button-prymary-color-contained-background-hover: #1b47d7;
+    --button-prymary-contained-color: #d1d1dc;
+    --button-prymary-contained-color-hover: #babacc;
+    --button-secondary-color-contained-background: transparent;
+    --button-secondary-color-contained-background-hover: #ffffff;
+    --button-secondary-contained-color: #d5d5e0;
+    --button-secondary-contained-color-hover: #626265;
+    --button-error-color-contained-background: #d93434;
+    --button-error-color-contained-background-hover: #8d0519;
+    --button-error-contained-color: #d5d5e0;
+    --button-error-contained-color-hover: #dbdbe8;
+
+
     --button-contained-color-submit: #222622;
     --button-contained-color-blue: white;
-    --button-contained-background-submit-hover: #3cc29d;
-    --button-contained-blue-background: #51b0d0;
-    --button-contained-background-blue-hover: #72d0ef;
-    --button-contained-background-error: #dc0000;
-    --button-contained-color-error: white;
-    --button-contained-color-error-hover: #640303;
+
+    --button-prymary-background-color-contained: #0fa4d9;
+    --button-prymary-background-color-hover-contained: #193db4;
+    --button-prymary-color-contained: #ebebee;
+    --button-prymary-background-color-outlined: #0fa4d9;
+    --button-prymary-background-color-hover-outlined: #193db4;
+
+
+    --button-secondary-background-color: transparent;
+    --button-secondary-color: gray;
+
+    --button-contained-background-error: #e72222;
+    --button-contained-color-error: #f1ebeb;
+    --button-contained-color-error-hover: #be0f0f;
 
     --button-just-icon-background-hover: rgba(201, 187, 187, 0.45);
     --button-just-icon-sized-transition: all 0.4s ease-in-out;

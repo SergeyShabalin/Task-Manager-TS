@@ -1,15 +1,33 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
+import classes from './Notifications.module.css'
+import { IoWarningOutline } from 'react-icons/all'
 
-//TODO snackbar из MUI закрытие по таймауту
-
+//TODO появляется скролл справа, убрать
 
 interface NotificationsTypes {
 	open: boolean
 	onClose?: () => void
 	ref?: React.LegacyRef<HTMLDivElement>
+	message: string
 }
 
-export default function Notifications({ open, onClose, ref }: NotificationsTypes) {
-	if (!open) return null
-	return <div style={{ position: 'absolute', right: '50px', top: '50px' }}>snackkk</div>
+export default function Notifications({ open, onClose, ref, message }: NotificationsTypes) {
+	const [view, setView] = useState(open)
+
+	useEffect(() => {
+		setView(open)
+	}, [open])
+
+	useEffect(() => {
+		 	setTimeout(() => setView(false), 3000)
+	}, [])
+
+	if (!view) return null
+
+	return (
+			<div className={classes.wrapper}>
+				<IoWarningOutline />
+				<span className={classes.message}>{message}</span>
+			</div>
+	)
 }

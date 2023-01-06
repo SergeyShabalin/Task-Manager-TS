@@ -24,41 +24,34 @@
 
 .text {
 	display: flex;
-	color: var(--button-text-color);
 	transition: all 0.2s ease;
 	border: none;
 	background-color: initial;
 }
 
-.text:hover {
-	background-color: var(--button-text-background-color-hover);
-	color: gray;
-	transition: all 0.3s ease-in-out;
-}
-
 .text:disabled {
 	display: flex;
-	color: var(--button-text-disabled-hover-color);
 	pointer-events: none;
 	border-radius: var(--button-border-radius);
 }
 
-.text.submit {
-	background-color: initial;
-	color: var(--button-text-color-submit);
+.text.primary{
+	color: var(--button-prymary-color-text)
 }
-
-.text.submit:hover {
-	text-shadow: var(--button-text-color-hover-shadow);
+.text.primary:hover{
+	color: var(--button-prymary-color-text-hover)
 }
-
-.text.error {
-	background-color: initial;
-	color: var(--button-text-error-label-color);
+.text.secondary{
+	color: var(--button-secondary-color-text)
 }
-
-.text.error:hover {
-	text-shadow: var(--button-text-error-hover-shadow);
+.text.secondary:hover{
+	color: var(--button-secondary-color-text-hover)
+}
+.text.error{
+	color: var(--button-error-color-text)
+}
+.text.error:hover{
+	color: var(--button-error-color-text-hover)
 }
 
 .outlined {
@@ -68,39 +61,42 @@
 	background-color: transparent;
 	color: var(--button-outlined-color);
 }
-
-.outlined:hover {
-	border-color: var(--button-outlined-hover);
-	box-shadow: var(--button-outlined-hover-shadow);
-}
-
 .outlined:disabled {
 	display: flex;
 	cursor: auto;
 	pointer-events: none;
 }
 
-.outlined.submit {
-	color: var(--button-outlined-submit);
+.outlined.primary{
+	border: var(--button-prymary-color-outlined-border);
+	color: var(--button-prymary-outlined-color)
+}
+.outlined.primary:hover{
+	border: var(--button-prymary-color-outlined-border-hover);
+	color: var(--button-prymary-outlined-hover)
+}
+.outlined.secondary{
+	border: var(--button-secondary-color-outlined-border);
+	color: var(--button-secondary-outlined-color)
+}
+.outlined.secondary:hover{
+	border: var(--button-secondary-color-outlined-border-hover);
+	color: var(--button-secondary-outlined-hover)
+}
+.outlined.error{
+	border: var(--button-error-color-outlined-border);
+	color: var(--button-error-outlined-color)
+}
+.outlined.error:hover{
+	border: var(--button-error-color-outlined-border-hover);
+	color: var(--button-error-outlined-hover)
 }
 
-.outlined.error {
-	color: var(--button-outlined-error-label-color);
-}
-
-.outlined.select {
-}
 
 .contained {
 	display: flex;
 	font-family: var(--prymary-font);
 	border: none;
-	background-color: var(--button-contained-background);
-	color: var(--button-contained-color);
-}
-
-.contained:hover {
-	background-color: var(--button-contained-background-hover);
 }
 
 .contained:disabled {
@@ -111,32 +107,31 @@
 	border-radius: var(--button-contained-border-radius-disabled);
 }
 
-.contained.submit {
-	background-color: var(--button-contained-submit-background);
-	color: var(--button-contained-color-submit);
+.contained.primary{
+	background-color: var(--button-prymary-color-contained-background);
+	color: var(--button-prymary-contained-color)
+}
+.contained.primary:hover{
+	background-color: var(--button-prymary-color-contained-background-hover);
+	color: var(--button-prymary-contained-color-hover)
+}
+.contained.secondary{
+	background-color: var(--button-secondary-color-contained-background);
+	color: var(--button-secondary-contained-color)
+}
+.contained.secondary:hover{
+	background-color: var(--button-secondary-color-contained-background-hover);
+	color: var(--button-secondary-contained-color-hover)
+}
+.contained.error{
+	background-color: var(--button-error-color-contained-background);
+	color: var(--button-error-contained-color)
+}
+.contained.error:hover{
+	background-color: var(--button-error-color-contained-background-hover);
+	color: var(--button-error-contained-color-hover)
 }
 
-.contained.submit:hover {
-	background-color: var(--button-contained-background-submit-hover);
-}
-
-.contained.blue {
-	background-color: var(--button-contained-blue-background);
-	color: var(--button-contained-color-blue);
-}
-
-.contained.blue:hover {
-	background-color: var(--button-contained-background-blue-hover);
-}
-
-.contained.error {
-	background-color: var(--button-contained-background-error);
-	color: var(--button-contained-color-error);
-}
-
-.contained.error:hover {
-	background-color: var(--button-contained-color-error-hover);
-}
 
 .only_icon {
 	display: flex;
@@ -168,18 +163,6 @@
 .just_icon.sized {
 	background-color: initial;
 	transition: var(--button-just-icon-sized-transition);
-}
-
-.just_icon.green {
-	color: #2db22f;
-}
-
-.just_icon.red {
-	color: #b20a0a;
-}
-
-.just_icon.blue {
-	color: #045cc0;
 }
 
 .just_icon.opacity {

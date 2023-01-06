@@ -16,21 +16,21 @@ export default function Main() {
 
 	return (
 		<div className={classes.main}>
-			<div className={classes.header_main}>
-				<Header />
-				<div className={classes.work_space}>
-					{/*<UiKit />*/}
+			{/*<div className={classes.header_main}>*/}
+			{/*	<Header />*/}
+			{/*	<div className={classes.work_space}>*/}
+					<UiKit />
 					{/*<Board />*/}
-					<Editor
-						buttonSubmitTitle='добавление колонки'
-						defaultValue='дефолтное'
-						placeholder='введите значение'
-						onSubmit={addNewColumn}
-					>
-						<div>Кликнуть по чилдрену</div>
-					</Editor>
-				</div>
-			</div>
+					{/*<Editor*/}
+					{/*	buttonSubmitTitle='добавление колонки'*/}
+					{/*	defaultValue='дефолтное'*/}
+					{/*	placeholder='введите значение'*/}
+					{/*	onSubmit={addNewColumn}*/}
+					{/*>*/}
+					{/*	<div>Кликнуть по чилдрену</div>*/}
+					{/*</Editor>*/}
+			{/*	</div>*/}
+			{/*</div>*/}
 		</div>
 	)
 }

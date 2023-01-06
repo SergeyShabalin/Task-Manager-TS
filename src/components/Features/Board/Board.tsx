@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './Board.module.css'
 import Column from '@/components/Features/Column'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,14 +15,15 @@ export default function Board() {
 	useEffect(() => {
 		getCurrentBoard('dfasdfsf')
 	}, [])
-	console.log(currentBoard)
+
 	const columns = currentBoard?.map(column => (<Column key={column._id} {...column} />))
 
 	return (
 		<div>
-			<Notification open={isError}/>
+
 			<div className={classes.wrapper_list}>
 				<div className={classes.columns}>
+					<Notification open={isError} message='isError'/>
 					{columns}
 				</div>
 				<div className={classes.add_list}>ListCreator</div>

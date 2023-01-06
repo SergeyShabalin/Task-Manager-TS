@@ -52,9 +52,7 @@ export default function UiKit() {
 					<Button title='text' />
 					<Button title='text start icon' startIcon={<AiOutlinePlus />} />
 					<Button title='text end icon' endIcon={<MdKeyboardArrowDown />} />
-					<Button color='primary' title='text submit' />
-					<Button color='error' title='error' />
-					<Button disabled={true} title='text disabled' />
+					<Button disabled title='text disabled' />
 				</div>
 
 				<div className={classes.buttons_contained}>
@@ -65,8 +63,6 @@ export default function UiKit() {
 						title='contained end icon'
 						endIcon={<MdKeyboardArrowDown />}
 					/>
-					<Button variant='contained' color='submit' title='contained submit' />
-					<Button variant='contained' color='error' title='contained error' />
 					<Button variant='contained' disabled={true} title='contained disabled' />
 				</div>
 
@@ -74,8 +70,6 @@ export default function UiKit() {
 					<Button variant='outlined' title='outlined' />
 					<Button variant='outlined' title='outlined start icon' startIcon={<AiOutlinePlus />} />
 					<Button variant='outlined' title='outlined end icon' endIcon={<MdKeyboardArrowDown />} />
-					<Button variant='outlined' color='submit' title='outlined submit' />
-					<Button variant='outlined' color='error' title='outlined error' />
 					<Button variant='outlined' disabled={true} title='outlined disabled' />
 				</div>
 
@@ -84,6 +78,27 @@ export default function UiKit() {
 					<Button variant='contained' fullSize={true} title='contained full size' />
 					<Button variant='outlined' fullSize={true} title='outlined full size' />
 				</div>
+
+				<div className={classes.colors}>
+					<div className={classes.colors_variants}>
+						<Button color='primary' title='primary' />
+						<Button color='error' title='error' />
+						<Button color='secondary' title='secondary' />
+					</div>
+					<div className={classes.colors_variants}>
+						<Button color='primary' variant='contained'  title='primary' />
+						<Button color='error'  variant='contained' title='error' />
+						<Button color='secondary' variant='contained' title='secondary' />
+					</div>
+					<div className={classes.colors_variants}>
+						<Button color='primary' variant='outlined' title='primary' />
+						<Button color='error' variant='outlined' title='error' />
+						<Button color='secondary' variant='outlined' title='secondary' />
+					</div>
+
+				</div>
+
+
 
 				<div className={classes.buttons_only_icon}>
 					<Button variant='just_icon' icon={<MdOutlineModeEditOutline />} />
@@ -101,9 +116,24 @@ export default function UiKit() {
 					<Button variant='just_icon' variety={true} icon={<AiOutlinePlus />} />
 					<Button variant='just_icon' variety={true} icon={<GoKebabHorizontal />} />
 					<Button variant='just_icon' variety={true} icon={<CgMenuGridO />} />
-					<Button variant='just_icon' variety={true} color_icon='red' icon={<AiOutlineBgColors />} />
-					<Button variant='just_icon' variety={true} color_icon='green' icon={<AiOutlineBgColors />} />
-					<Button variant='just_icon' variety={true} color_icon='blue' icon={<AiOutlineBgColors />} />
+					<Button
+						variant='just_icon'
+						variety={true}
+						color_icon='red'
+						icon={<AiOutlineBgColors />}
+					/>
+					<Button
+						variant='just_icon'
+						variety={true}
+						color_icon='green'
+						icon={<AiOutlineBgColors />}
+					/>
+					<Button
+						variant='just_icon'
+						variety={true}
+						color_icon='blue'
+						icon={<AiOutlineBgColors />}
+					/>
 				</div>
 				<hr />
 
@@ -121,13 +151,7 @@ export default function UiKit() {
 						<Input placeholder='placeholder' />
 						<Input disabled={true} value='disabled' />
 						<Input label='label' />
-						<Input
-							label='label textarea'
-							placeholder='placeholder textarea'
-							cols={25}
-							rows={3}
-
-						/>
+						<Input label='label textarea' placeholder='placeholder textarea' cols={25} rows={3} />
 						<Input placeholder='placeholder textarea' cols={25} rows={3} />
 						<Input
 							rows={3}
@@ -160,19 +184,20 @@ export default function UiKit() {
 						<Checkbox variant='outlined' label='disabled outlined' disabled={true} />
 					</div>
 
-
 					{openLoaderWhite && <Loader />}
 					<div className={classes.load_wrapper}>
 						<Button variant='contained' title='Лоадер общий' onClick={openWhiteLoader} />
-						<Button startIcon={
-							openLoaderDark &&
-							<Loader size='normal' variant='lds_wrapper' color='black' />} variant='contained' title='Лоадер локальный ' onClick={(e) => openDarkLoader(e)} />
-						{openLoaderDark &&
-							<Loader size='normal' variant='lds_wrapper' color='black' />}
+						<Button
+							startIcon={
+								openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />
+							}
+							variant='contained'
+							title='Лоадер локальный '
+							onClick={e => openDarkLoader(e)}
+						/>
+						{openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />}
 					</div>
 				</div>
-
-
 			</div>
 		</form>
 	)
