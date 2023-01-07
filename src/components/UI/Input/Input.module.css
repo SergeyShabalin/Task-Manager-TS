@@ -8,22 +8,36 @@
     margin: var(--input-margin);
     border-radius: var(--input-border-radius);
     background-color: var(--input-background-color);
+    min-width: 140px;
+    /*background-color: var(--input-background-color);*/
     resize: none;
 }
 
+.input.white {
+   color: #202123;
+}
+.input.black {
+  color: #cbc3c3;
+}
+.input.transparent {
+    color: #8a8383;
+}
+
 .input_container {
-    background-color: var(--input-container-background-color);
     display: flex;
     border-radius: var(--input-container-border-radius);
     margin: var(--input-container-margin);
 }
 
-.custom {
-    background-color: transparent;
-    display: flex;
-    width: 100%;
-    border: solid 1px #3ab4d9;
-    border-radius: 5px;
+.input_container.white {
+    background-color: var(--input-container-background-color-white);
+}
+.input_container.black {
+    background-color: var(--input-container-background-color-black);
+}
+.input_container.transparent {
+    background-color: var(--input-container-background-color-transparent);
+    border: 1px solid #0b6fb4;
 }
 
 .text_area {
@@ -41,28 +55,32 @@
     font-size: var(--input-label-font-size);
 }
 
-.transparent, .large, .transparent_column_header {
-    border: none;
-    resize: none;
-    outline: none;
-    width: 100%;
-    font-size: 0.82rem;
-    padding: var(--input-padding);
-    margin: var(--input-margin);
-    background-color: transparent;
-    font-weight: 500;
-    color: #090957;
-    font-family: var(--prymary-font);
-    resize: none;
-}
+/*.transparent, .large, .transparent_column_header {*/
+/*    border: none;*/
+/*    resize: none;*/
+/*    outline: none;*/
+/*    width: 100%;*/
+/*    font-size: 0.82rem;*/
+/*    padding: var(--input-padding);*/
+/*    margin: var(--input-margin);*/
+/*    background-color: transparent;*/
+/*    font-weight: 500;*/
+/*    color: #090957;*/
+/*    font-family: var(--prymary-font);*/
+/*    resize: none;*/
+/*}*/
 
 .large {
-    max-height: 20px;
+    /*max-height: 20px;*/
     font-size: var(--main-font-size);
     font-weight: 500;
-    color: rgba(220, 204, 204, 0.67)
+    /*color: rgba(220, 204, 204, 0.67)*/
 }
 
-.transparent_column_header{
-    color: var(--list-header-color)
+.normal {
+    /*max-height: 20px;*/
+    font-size: 14px;
+    font-weight: 500;
+    /*color: rgba(220, 204, 204, 0.67)*/
 }
+

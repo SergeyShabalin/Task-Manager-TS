@@ -1,4 +1,12 @@
-import { BOARD_TYPES, BoardAPI, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
+import {
+	BOARD_TYPES,
+	BoardAPI,
+	ErrorFetching,
+	StartFetching,
+	SuccessFetching
+} from '@/models/Boards'
+import { AddNewColumn, Column, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
+import { AddNewCard, Card, CARD_TYPES } from '@/models/Cards'
 
 
 export const BoardAC = {
@@ -6,3 +14,12 @@ export const BoardAC = {
 	successFetching: (payload: BoardAPI): SuccessFetching => ({type: BOARD_TYPES.SUCCESS_FETCHING_BOARD, payload}),
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 };
+
+export const ColumnAC = {
+	new : (payload: Column): AddNewColumn => ({type: COLUMN_TYPES.ADD_NEW_COLUMN, payload}),
+	delete : (payload: Column[]) : DeleteColumn => ({type: COLUMN_TYPES.DELETE_COLUMN, payload}),
+}
+
+export const CardAC = {
+	new: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload})
+}

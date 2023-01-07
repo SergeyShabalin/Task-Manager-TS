@@ -8,26 +8,26 @@ export interface Board {
 }
 export interface BoardAPI {
 	currentBoard: Board
-	allCards: {[key: string]: Card}
+	allCards: { [key: string]: Card }
 }
 
 export enum BOARD_TYPES {
-	START_FETCHING_BOARD = "START_FETCHING_BOARD",
+	START_FETCHING_BOARD = 'START_FETCHING_BOARD',
 	SUCCESS_FETCHING_BOARD = 'SUCCESS_FETCHING_BOARD',
-	ERROR_FETCHING_BOARD = 'ERROR_FETCHING_BOARD'
+	ERROR_FETCHING_BOARD = 'ERROR_FETCHING_BOARD',
 }
 
 export interface SuccessFetching extends Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD> {
-	payload: BoardAPI;
+	payload: BoardAPI
 }
-export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>;
-export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>;
+export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
+export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
+
 
 export interface BoardState {
 	currentBoard: Board
-	isLoading: boolean,
-	isError: boolean,
-	allCards: {[key: string]: Card}
+	isLoading: boolean
+	isError: boolean
+	allCards: { [key: string]: Card }
 }
 
-export type BoardActions = StartFetching | SuccessFetching | ErrorFetching

@@ -5,7 +5,6 @@
     font-weight: 500;
     color: rgba(220, 204, 204, 0.67);
     cursor: pointer;
-
 }
 
 .columns {
@@ -15,6 +14,7 @@
 .wrapper_list {
     padding-top: 10px;
     display: flex;
+    overflow-x: auto;
 }
 
 .add_list {

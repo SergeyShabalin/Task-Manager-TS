@@ -1,11 +1,7 @@
 .wrapper_uikit{
 	width: 100vw;
 	height: 100vh;
-}
-.buttons {
-	background-color: rgba(0, 0, 0, 0.32);
-	min-height: 100%;
-	width: 100%;
+	background-color: rgba(0, 0, 0, 0.33);
 	padding: 0 10px;
 }
 
@@ -63,7 +59,8 @@
 }
 
 .load_wrapper{
-	box-shadow: 1px 1px 11px 3px rgba(101, 101, 117, 0.25);
+	background-color: rgba(255, 255, 255, 0.57);
+	border-radius: 5px;
 	position: relative;
 	display: flex;
 	align-items: center;

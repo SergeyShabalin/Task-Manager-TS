@@ -1,32 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import classes from './Board.module.css'
 import Column from '@/components/Features/Column'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCurrentBoard } from '@/store/board/asyncActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
-import { Notification } from '@/components/UI'
+import { Button, Notification } from '@/components/UI'
+import Editor from '@/components/Features/Editor'
 
 export default function Board() {
-	const {getCurrentBoard} = useActions()
-	const currentBoard = useTypedSelector(state => state.board.currentBoard.columns)
+	const {getCurrentBoard, addNewColumn} = useActions()
+	const allColumns = useTypedSelector(state => state.board.currentBoard.columns)
 	const isError = useTypedSelector(state => state.board.isError)
+
 
 	useEffect(() => {
 		getCurrentBoard('dfasdfsf')
 	}, [])
 
-	const columns = currentBoard?.map(column => (<Column key={column._id} {...column} />))
+	function addColumn(title: string){
+		addNewColumn(title)
+	}
+
+	const columns = allColumns?.map(column => (<Column key={column._id} {...column} />))
 
 	return (
 		<div>
-
+			<Notification open={isError} message='isError'/>
 			<div className={classes.wrapper_list}>
 				<div className={classes.columns}>
-					<Notification open={isError} message='isError'/>
 					{columns}
 				</div>
-				<div className={classes.add_list}>ListCreator</div>
+				<div className={classes.add_list}>
+					<Editor
+						buttonSubmitTitle='добавление колонки'
+						placeholder='введите значение'
+						onSubmit={addColumn}
+					>
+						<div><Button variant='contained' title='Добавить колонку'/></div>
+					</Editor>
+				</div>
 			</div>
 		</div>
 	)

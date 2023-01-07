@@ -6,21 +6,16 @@ import { IoWarningOutline } from 'react-icons/all'
 
 interface NotificationsTypes {
 	open: boolean
-	onClose?: () => void
-	ref?: React.LegacyRef<HTMLDivElement>
 	message: string
 }
 
-export default function Notifications({ open, onClose, ref, message }: NotificationsTypes) {
+export default function Notifications({ open, message }: NotificationsTypes) {
 	const [view, setView] = useState(open)
 
 	useEffect(() => {
 		setView(open)
+		// if(open) setTimeout(() => setView(false), 3000)
 	}, [open])
-
-	useEffect(() => {
-		 	setTimeout(() => setView(false), 3000)
-	}, [])
 
 	if (!view) return null
 

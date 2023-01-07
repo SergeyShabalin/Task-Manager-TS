@@ -16,11 +16,11 @@ export default function Main() {
 
 	return (
 		<div className={classes.main}>
-			{/*<div className={classes.header_main}>*/}
-			{/*	<Header />*/}
+			<div className={classes.header_main}>
+				<Header />
 			{/*	<div className={classes.work_space}>*/}
-					<UiKit />
-					{/*<Board />*/}
+			{/*		<UiKit />*/}
+					<Board />
 					{/*<Editor*/}
 					{/*	buttonSubmitTitle='добавление колонки'*/}
 					{/*	defaultValue='дефолтное'*/}
@@ -29,7 +29,7 @@ export default function Main() {
 					{/*>*/}
 					{/*	<div>Кликнуть по чилдрену</div>*/}
 					{/*</Editor>*/}
-			{/*	</div>*/}
+				</div>
 			{/*</div>*/}
 		</div>
 	)

@@ -14,7 +14,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({
-	//TODO вариант и цвет работают в совокупности
 	title,
 	icon,
 	startIcon,

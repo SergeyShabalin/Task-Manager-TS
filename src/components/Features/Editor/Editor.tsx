@@ -3,7 +3,7 @@ import { Button, Input } from '@/components/UI'
 import { GrClose } from 'react-icons/gr'
 import useOpenClose from '@/hooks/UseOpenClose'
 
-// TODO сделать клик по ентеру ++++
+
 //TODO добавить лоадер после onSubmit в кнопку сохранить.
 // Если выйдет ошибка(если onSubmit вернул false)!!
 // - не закрывать модалку вывеcти notification
@@ -19,8 +19,8 @@ interface EditorProps {
 	buttonSubmitTitle: string
 	rows?: number
 	cols?: number
-	placeholder: string
-	defaultValue: string
+	placeholder?: string
+	defaultValue?: string
 	onSubmit: (value: string) => void
 	children: React.ReactElement
 }
@@ -28,7 +28,7 @@ interface EditorProps {
 export default function Editor({
 	buttonSubmitTitle,
 	onSubmit,
-	defaultValue,
+	defaultValue = '',
 	rows = 3,
 	placeholder,
 	cols = 32,
@@ -42,21 +42,18 @@ export default function Editor({
 	}
 
 	function saveChanged(e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
-		if (e.keyCode === 13) {
-			onSubmit(inputValue)
-			onClose()
-		}
+		if (e.code === 'Enter') sendValue()
 	}
 
 	function sendValue() {
 		onSubmit(inputValue)
 		onClose()
 	}
-
+//TODO при закрытии чистить value у инпута
 	if (!isOpen) return <div onClick={onOpen}>{children}</div>
 
 	return (
-		<div>
+		<div style={{background: 'gray'}}>
 			<Input
 				autoFocus
 				rows={rows}
@@ -66,8 +63,11 @@ export default function Editor({
 				onKeyDown={saveChanged}
 				onChange={changeInput}
 			/>
-			<Button color='primary' title={buttonSubmitTitle} onClick={sendValue} />
-			<Button variant='just_icon' icon={<GrClose />} onClick={onClose} />
+			<div style={{display: 'flex'}}>
+				<Button variant='contained' color='primary' title={buttonSubmitTitle} onClick={sendValue} />
+				<Button variant='just_icon' icon={<GrClose />} onClick={onClose} />
+			</div>
+
 		</div>
 	)
 }

@@ -1,6 +1,8 @@
 import { CheckList } from '@/models/CheckList'
+import { Action } from 'redux'
 
 export interface Card{
+	_id: string
 	header: string
 	description: string
 	column_id: string
@@ -9,4 +11,12 @@ export interface Card{
 	doneTask: number
 	order: number
 	checkList: CheckList[]
+}
+
+export enum CARD_TYPES {
+	ADD_NEW_CARD = 'ADD_NEW_CARD'
+}
+
+export interface AddNewCard extends Action<CARD_TYPES.ADD_NEW_CARD> {
+	payload: Card
 }

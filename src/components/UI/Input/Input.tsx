@@ -4,27 +4,30 @@ import classes from './Input.module.css'
 interface inputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
 	rows?: number
 	cols?: number
-	label?: string
 	iconLeft?: React.ReactNode
 	iconRight?: React.ReactNode
-	variant?: 'transparent' | 'input' | 'large'
+	variant?: 'normal' | 'large'
+	color?: 'black' | 'white' | 'transparent'
 }
-
+//TODO допилить textarea
 export default function Input({
 	rows = 1,
-	label,
 	iconLeft,
 	iconRight,
-	variant = 'input',
+	variant = 'normal',
+	color = 'white',
 	...props
 }: inputProps) {
 	if (rows > 1) {
 		return (
-			<div className={classes.input_container}>
-				{label && <span className={classes.label}>{label}</span>}
+			<div className={` ${classes[color]}`}>
 				<textarea
-					rows={rows}
-					className={classes[variant]}
+					rows={3}
+					className={`
+					 ${classes.text_area} 
+					${classes[variant]}
+					 ${classes[color]}
+					 `}
 					{...props}
 				/>
 			</div>
@@ -32,12 +35,11 @@ export default function Input({
 	}
 	return (
 		<div>
-			{label && <span className={classes.label}>{label}</span>}
-			<div className={classes.input_container}>
+			<div className={`${classes.input_container} ${classes[color]}`}>
 				{iconLeft && iconLeft}
 				<input
 					type='text'
-					className={classes[variant]}
+					className={`${classes.input} ${classes[variant]} ${classes[color]}`}
 					{...props}
 				/>
 				{iconRight && iconRight}

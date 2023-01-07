@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Loader, Checkbox, Button, Input, Modal } from '@/components/UI'
+import { Button, Checkbox, Input, Loader, Modal } from '@/components/UI'
 
 import {
-	AiOutlineBgColors,
 	AiOutlinePlus,
 	CgMenuGridO,
 	GoKebabHorizontal,
@@ -38,7 +37,7 @@ export default function UiKit() {
 		setTimeout(() => setOpenLoaderWhite(false), 2000)
 	}
 
-	function openDarkLoader(e) {
+	function openDarkLoader(e: any) {
 		const coords = e.currentTarget.getBoundingClientRect()
 		setCoordinates(coords)
 		setOpenLoaderDark(true)
@@ -47,156 +46,170 @@ export default function UiKit() {
 
 	return (
 		<form onSubmit={submit} className={classes.wrapper_uikit}>
-			<div className={classes.buttons}>
-				<div className={classes.buttons_text}>
-					<Button title='text' />
-					<Button title='text start icon' startIcon={<AiOutlinePlus />} />
-					<Button title='text end icon' endIcon={<MdKeyboardArrowDown />} />
-					<Button disabled title='text disabled' />
-				</div>
+			<div className={classes.buttons_text}>
+				<Button title='text' />
+				<Button title='text start icon' startIcon={<AiOutlinePlus />} />
+				<Button title='text end icon' endIcon={<MdKeyboardArrowDown />} />
+				<Button disabled title='text disabled' />
+			</div>
 
-				<div className={classes.buttons_contained}>
-					<Button variant='contained' title='contained' />
-					<Button variant='contained' title='contained start icon' startIcon={<AiOutlinePlus />} />
-					<Button
-						variant='contained'
-						title='contained end icon'
-						endIcon={<MdKeyboardArrowDown />}
+			<div className={classes.buttons_contained}>
+				<Button variant='contained' title='contained' />
+				<Button variant='contained' title='contained start icon' startIcon={<AiOutlinePlus />} />
+				<Button variant='contained' title='contained end icon' endIcon={<MdKeyboardArrowDown />} />
+				<Button variant='contained' disabled={true} title='contained disabled' />
+			</div>
+
+			<div className={classes.buttons_outlined}>
+				<Button variant='outlined' title='outlined' />
+				<Button variant='outlined' title='outlined start icon' startIcon={<AiOutlinePlus />} />
+				<Button variant='outlined' title='outlined end icon' endIcon={<MdKeyboardArrowDown />} />
+				<Button variant='outlined' disabled={true} title='outlined disabled' />
+			</div>
+
+			<div className='button_full_sized'>
+				<Button fullSize={true} title='text full size' />
+				<Button variant='contained' fullSize={true} title='contained full size' />
+				<Button variant='outlined' fullSize={true} title='outlined full size' />
+			</div>
+
+			<div className={classes.colors}>
+				<div className={classes.colors_variants}>
+					<Button color='primary' title='primary' />
+					<Button color='error' title='error' />
+					<Button color='secondary' title='secondary' />
+				</div>
+				<div className={classes.colors_variants}>
+					<Button color='primary' variant='contained' title='primary' />
+					<Button color='error' variant='contained' title='error' />
+					<Button color='secondary' variant='contained' title='secondary' />
+				</div>
+				<div className={classes.colors_variants}>
+					<Button color='primary' variant='outlined' title='primary' />
+					<Button color='error' variant='outlined' title='error' />
+					<Button color='secondary' variant='outlined' title='secondary' />
+				</div>
+			</div>
+
+			<div className={classes.buttons_only_icon}>
+				<Button variant='just_icon' icon={<MdOutlineModeEditOutline />} />
+				<Button variant='just_icon' icon={<MdKeyboardArrowDown />} />
+				<Button variant='just_icon' icon={<AiOutlinePlus />} />
+				<Button variant='just_icon' icon={<GoKebabHorizontal />} />
+				<Button variant='just_icon' icon={<CgMenuGridO />} />
+				<Button variant='just_icon' disabled icon={<MdOutlineModeEditOutline />} />
+				<Button variant='just_icon' disabled icon={<MdKeyboardArrowDown />} />
+				<Button variant='just_icon' disabled icon={<AiOutlinePlus />} />
+				<Button variant='just_icon' disabled icon={<GoKebabHorizontal />} />
+				<Button variant='just_icon' disabled icon={<CgMenuGridO />} />
+			</div>
+			<hr />
+
+			<div className={classes.other_content}>
+				<div className={classes.inputs}>
+					<Input
+						iconLeft={<Button variant='just_icon' icon={<HiOutlineSearch />} />}
+						placeholder='icon left'
 					/>
-					<Button variant='contained' disabled={true} title='contained disabled' />
-				</div>
-
-				<div className={classes.buttons_outlined}>
-					<Button variant='outlined' title='outlined' />
-					<Button variant='outlined' title='outlined start icon' startIcon={<AiOutlinePlus />} />
-					<Button variant='outlined' title='outlined end icon' endIcon={<MdKeyboardArrowDown />} />
-					<Button variant='outlined' disabled={true} title='outlined disabled' />
-				</div>
-
-				<div className='button_full_sized'>
-					<Button fullSize={true} title='text full size' />
-					<Button variant='contained' fullSize={true} title='contained full size' />
-					<Button variant='outlined' fullSize={true} title='outlined full size' />
-				</div>
-
-				<div className={classes.colors}>
-					<div className={classes.colors_variants}>
-						<Button color='primary' title='primary' />
-						<Button color='error' title='error' />
-						<Button color='secondary' title='secondary' />
-					</div>
-					<div className={classes.colors_variants}>
-						<Button color='primary' variant='contained'  title='primary' />
-						<Button color='error'  variant='contained' title='error' />
-						<Button color='secondary' variant='contained' title='secondary' />
-					</div>
-					<div className={classes.colors_variants}>
-						<Button color='primary' variant='outlined' title='primary' />
-						<Button color='error' variant='outlined' title='error' />
-						<Button color='secondary' variant='outlined' title='secondary' />
-					</div>
-
-				</div>
-
-
-
-				<div className={classes.buttons_only_icon}>
-					<Button variant='just_icon' icon={<MdOutlineModeEditOutline />} />
-					<Button variant='just_icon' icon={<MdKeyboardArrowDown />} />
-					<Button variant='just_icon' icon={<AiOutlinePlus />} />
-					<Button variant='just_icon' icon={<GoKebabHorizontal />} />
-					<Button variant='just_icon' icon={<CgMenuGridO />} />
-					<Button variant='just_icon' disabled={true} icon={<MdOutlineModeEditOutline />} />
-					<Button variant='just_icon' disabled={true} icon={<MdKeyboardArrowDown />} />
-					<Button variant='just_icon' disabled={true} icon={<AiOutlinePlus />} />
-					<Button variant='just_icon' disabled={true} icon={<GoKebabHorizontal />} />
-					<Button variant='just_icon' disabled={true} icon={<CgMenuGridO />} />
-					<Button variant='just_icon' variety={true} icon={<MdOutlineModeEditOutline />} />
-					<Button variant='just_icon' variety={true} icon={<MdKeyboardArrowDown />} />
-					<Button variant='just_icon' variety={true} icon={<AiOutlinePlus />} />
-					<Button variant='just_icon' variety={true} icon={<GoKebabHorizontal />} />
-					<Button variant='just_icon' variety={true} icon={<CgMenuGridO />} />
-					<Button
-						variant='just_icon'
-						variety={true}
-						color_icon='red'
-						icon={<AiOutlineBgColors />}
+					<Input
+						iconRight={<Button variant='just_icon' icon={<HiOutlineSearch />} />}
+						placeholder='icon right'
 					/>
-					<Button
-						variant='just_icon'
-						variety={true}
-						color_icon='green'
-						icon={<AiOutlineBgColors />}
-					/>
-					<Button
-						variant='just_icon'
-						variety={true}
-						color_icon='blue'
-						icon={<AiOutlineBgColors />}
+					<Input disabled placeholder='disabled' />
+					<Input placeholder='textarea' cols={25} rows={3} />
+					<Input
+						rows={3}
+						cols={36}
+						autoFocus
+						variant='large'
+						placeholder='Введите название доски'
 					/>
 				</div>
-				<hr />
 
-				<div className={classes.other_content}>
-					<div className={classes.inputs}>
-						<Input
-							iconLeft={<Button variant='just_icon' variety={true} icon={<HiOutlineSearch />} />}
-							value='icon left'
-						/>
-						<Input
-							iconRight={<Button variant='just_icon' variety={true} icon={<HiOutlineSearch />} />}
-							value='icon right'
-						/>
-						<Input variant='transparent' container='custom' placeholder='placeholder' />
-						<Input placeholder='placeholder' />
-						<Input disabled={true} value='disabled' />
-						<Input label='label' />
-						<Input label='label textarea' placeholder='placeholder textarea' cols={25} rows={3} />
-						<Input placeholder='placeholder textarea' cols={25} rows={3} />
-						<Input
-							rows={3}
-							cols={36}
-							autoFocus
-							variant='large'
-							container='custom'
-							placeholder='Введите название доски'
-						/>
+				<div className={classes.inputs}>
+					<Input
+						iconLeft={<Button variant='just_icon' icon={<HiOutlineSearch />} />}
+						placeholder='icon left'
+						color='black'
+					/>
+					<Input
+						iconRight={<Button variant='just_icon' icon={<HiOutlineSearch />} />}
+						placeholder='icon right'
+						color='black'
+					/>
+					<Input disabled placeholder='disabled' color='black' />
+					<Input placeholder='textarea' cols={25} rows={3} color='black' />
+					<Input
+						rows={3}
+						cols={36}
+						autoFocus
+						variant='large'
+						placeholder='textarea large'
+						color='black'
+					/>
+				</div>
+				<div className={classes.inputs}>
+					<Input
+						iconLeft={<Button variant='just_icon' icon={<HiOutlineSearch />} />}
+						placeholder='icon left'
+						color='transparent'
+					/>
+					<Input
+						iconRight={<Button variant='just_icon' icon={<HiOutlineSearch />} />}
+						placeholder='icon right'
+						color='transparent'
+					/>
+					<Input disabled placeholder='disabled' color='transparent' />
+					<Input placeholder='textarea' cols={25} rows={3} color='transparent' />
+					<Input
+						rows={3}
+						cols={36}
+						autoFocus
+						variant='large'
+						placeholder='textarea large'
+						color='transparent'
+					/>
+				</div>
+				<div className={classes.modal}>
+					<div className={classes.container}>
+						<Button variant='contained' onClick={() => setOpenModal(true)}>
+							Модалка
+						</Button>
+						<Modal open={openModal} onClose={() => setOpenModal(false)}>
+							<div className={classes.modalContent}>
+								<p>Модальное окно</p>
+							</div>
+						</Modal>
 					</div>
-					<div className={classes.modal}>
-						<div className={classes.container}>
-							<Button variant='contained' onClick={() => setOpenModal(true)}>
-								Модалка
-							</Button>
-							<Modal open={openModal} onClose={() => setOpenModal(false)}>
-								<div className={classes.modalContent}>
-									<p>Модальное окно</p>
-								</div>
-							</Modal>
-						</div>
-					</div>
+				</div>
 
-					<div className={classes.checkbox}>
-						<Checkbox label='checkbox with label' />
-						<Checkbox label='contained checkbox' variant='contained' />
-						<Checkbox label='outlined checkbox' variant='outlined' />
-						<Checkbox label='disabled text' disabled={true} />
-						<Checkbox variant='contained' label='disabled contained' disabled={true} />
-						<Checkbox variant='outlined' label='disabled outlined' disabled={true} />
-					</div>
+				<div className={classes.checkbox}>
+					<Checkbox label='checkbox with label' />
+					<Checkbox label='contained checkbox' variant='contained' />
+					<Checkbox label='outlined checkbox' variant='outlined' />
+					<Checkbox label='disabled text' disabled={true} />
+					<Checkbox variant='contained' label='disabled contained' disabled={true} />
+					<Checkbox variant='outlined' label='disabled outlined' disabled={true} />
+				</div>
 
-					{openLoaderWhite && <Loader />}
-					<div className={classes.load_wrapper}>
-						<Button variant='contained' title='Лоадер общий' onClick={openWhiteLoader} />
-						<Button
-							startIcon={
-								openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />
-							}
-							variant='contained'
-							title='Лоадер локальный '
-							onClick={e => openDarkLoader(e)}
-						/>
-						{openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />}
-					</div>
+				{openLoaderWhite && <Loader />}
+				<div className={classes.load_wrapper}>
+					<Button
+						variant='outlined'
+						color='primary'
+						title='Лоадер общий'
+						onClick={openWhiteLoader}
+					/>
+					<Button
+						startIcon={
+							openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />
+						}
+						variant='outlined'
+						color='primary'
+						title='Лоадер локальный '
+						onClick={e => openDarkLoader(e)}
+					/>
+					{openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />}
 				</div>
 			</div>
 		</form>
