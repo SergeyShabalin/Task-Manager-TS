@@ -15,12 +15,17 @@ export interface Card{
 
 export enum CARD_TYPES {
 	ADD_NEW_CARD = 'ADD_NEW_CARD',
-	DELETE_CARD = 'DELETE_CARD'
+	DELETE_CARD = 'DELETE_CARD',
+	CHANGE_TITLE_CARD = 'CHANGE_TITLE_CARD'
 }
 
 export interface PayloadForDeleteCard {
 	newCardIds: string[]
 	cardId: string
+}
+export interface PayloadForChangeTitleCard {
+	cardId: string
+	title: string
 }
 
 export interface AddNewCard extends Action<CARD_TYPES.ADD_NEW_CARD> {
@@ -29,4 +34,8 @@ export interface AddNewCard extends Action<CARD_TYPES.ADD_NEW_CARD> {
 
 export interface DeleteCard extends Action<CARD_TYPES.DELETE_CARD>{
 	payload:  PayloadForDeleteCard
+}
+
+export interface ChangeTitleCard extends Action<CARD_TYPES.CHANGE_TITLE_CARD> {
+	payload: PayloadForChangeTitleCard
 }

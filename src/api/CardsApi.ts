@@ -10,10 +10,9 @@ class CardsApi {
 		return Api.delete(`/cards/${cardId}`);
 	}
 
-	//
-	// async updateCardHeaderAPI(cardId, newTitle) {
-	// 	return Api.patch(`/cards/title/${cardId}`, { header: newTitle });
-	// }
+	async changeCardTitleAPI(cardId : string, title: string) : Promise<AxiosResponse<Card>> {
+		return Api.patch(`/cards/title/${cardId}`, { header: title });
+	}
 	//
 	// async updateCardDescriptionAPI(cardId, descriptionValue) {
 	// 	return Api.patch(`/cards/descriptions/${cardId}`, { description: descriptionValue });

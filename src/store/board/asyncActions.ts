@@ -78,7 +78,21 @@ export const cardActions = {
 			} catch (e) {
 				console.log(e)
 			}
+		},
+
+		changeTitle: (cardId: string, title: string)=>
+			async (dispatch: Dispatch<BoardActions>): Promise<any>=>{
+		try {
+			await CardsApi.changeCardTitleAPI(cardId, title)
+			const payload = {
+				cardId,
+				title
+			}
+			dispatch(CardAC.changeTitle(payload))
+		} catch (e){
+			console.log(e)
 		}
+			}
 }
 
 export const boardActions = {
@@ -94,3 +108,5 @@ export const boardActions = {
 			}
 		}
 }
+
+

@@ -7,6 +7,11 @@
     transition: 0.3s ease-in-out;
 }
 
+.title{
+    cursor: pointer;
+    padding: 5px;
+}
+
 .list_card:hover {
     background: #f8ebeb;
 }
