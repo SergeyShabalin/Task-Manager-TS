@@ -6,6 +6,7 @@ import ColumnsApi from '@/api/ColumnsApi'
 
 import { Column, PayloadForDeleteColumn } from '@/models/Columns'
 import CardsApi from '@/api/CardsApi'
+import { PayloadForDeleteCard } from '@/models/Cards'
 
 //TODO протипизировать getState и Promise
 
@@ -35,9 +36,9 @@ export const columnsActions = {
 				const { board } = getState()
 				const allColumnIds = board?.currentBoard?.columns
 				const newColumns: string[] = allColumnIds?.filter((id: string) => id !== columnId)
-				const payload: PayloadForDeleteColumn={
-					 newColumns,
-					 columnId
+				const payload: PayloadForDeleteColumn = {
+					newColumns,
+					columnId
 				}
 				dispatch(ColumnAC.delete(payload))
 			} catch (e) {
@@ -62,9 +63,18 @@ export const cardActions = {
 		(cardId: string) =>
 		async (dispatch: Dispatch<BoardActions>, getState: any): Promise<any> => {
 			try {
-				// await CardsApi.deleteCardAPI(cardId)
-				const data = getState()
-				console.log(data)
+				await CardsApi.deleteCardAPI(cardId)
+				const { board } = getState()
+				const columnId = board.allCards[cardId].column_id
+				const currentColumn = board.allColumns[columnId]
+				//TODO id потому что getState не типизирован
+				const newCardIds = currentColumn.cards.filter(id => id !== cardId)
+				const payload: PayloadForDeleteCard  = {
+					newCardIds,
+					cardId
+				}
+				dispatch(CardAC.delete(payload))
+
 			} catch (e) {
 				console.log(e)
 			}

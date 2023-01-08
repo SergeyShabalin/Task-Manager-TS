@@ -18,11 +18,15 @@ export enum CARD_TYPES {
 	DELETE_CARD = 'DELETE_CARD'
 }
 
+export interface PayloadForDeleteCard {
+	newCardIds: string[]
+	cardId: string
+}
+
 export interface AddNewCard extends Action<CARD_TYPES.ADD_NEW_CARD> {
 	payload: Card
 }
 
-
 export interface DeleteCard extends Action<CARD_TYPES.DELETE_CARD>{
-	payload: Card[]
+	payload:  PayloadForDeleteCard
 }

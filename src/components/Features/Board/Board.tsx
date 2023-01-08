@@ -13,7 +13,7 @@ export default function Board() {
 	const allColumns = useTypedSelector(state=> state.board.allColumns)
 	const isError = useTypedSelector(state => state.board.isError)
 
-	console.log(allColumns)
+
 	useEffect(() => {
 		getCurrentBoard('dfasdfsf')
 	}, [])
