@@ -1,10 +1,10 @@
 import BoardApi from '@/api/BoardApi'
 import { BoardAC, CardAC, ColumnAC } from './action'
 import { Dispatch } from 'redux'
-import { BoardActions } from '@/models/Boards'
+import { BoardActions } from '@/store/board/reducer'
 import ColumnsApi from '@/api/ColumnsApi'
 
-import { Column } from '@/models/Columns'
+import { Column, PayloadForDeleteColumn } from '@/models/Columns'
 import CardsApi from '@/api/CardsApi'
 
 //TODO протипизировать getState и Promise
@@ -33,27 +33,43 @@ export const columnsActions = {
 			try {
 				await ColumnsApi.deleteColumn(columnId)
 				const { board } = getState()
-				const allColumns = board?.currentBoard?.columns
-				const newColumns = allColumns?.filter((item: Column) => item._id !== columnId)
-				dispatch(ColumnAC.delete(newColumns))
+				const allColumnIds = board?.currentBoard?.columns
+				const newColumns: string[] = allColumnIds?.filter((id: string) => id !== columnId)
+				const payload: PayloadForDeleteColumn={
+					 newColumns,
+					 columnId
+				}
+				dispatch(ColumnAC.delete(payload))
 			} catch (e) {
 				console.log(e)
 			}
 		}
 }
 
-export const cardActions ={
-	 addNewCard : (columnId: string, title: string) =>
-			async (dispatch: Dispatch<BoardActions>, getState: any): Promise<any> => {
-				try {
-					const { data } = await CardsApi.addNewCardAPI(columnId, title)
-					dispatch(CardAC.new(data))
-				} catch (e) {
-					console.log(e)
-				}
+export const cardActions = {
+	addNewCard:
+		(columnId: string, title: string) =>
+		async (dispatch: Dispatch<BoardActions>): Promise<any> => {
+			try {
+				const { data } = await CardsApi.addNewCardAPI(columnId, title)
+				dispatch(CardAC.new(data))
+			} catch (e) {
+				console.log(e)
 			}
-}
+		},
 
+	deleteCard:
+		(cardId: string) =>
+		async (dispatch: Dispatch<BoardActions>, getState: any): Promise<any> => {
+			try {
+				// await CardsApi.deleteCardAPI(cardId)
+				const data = getState()
+				console.log(data)
+			} catch (e) {
+				console.log(e)
+			}
+		}
+}
 
 export const boardActions = {
 	getCurrentBoard:

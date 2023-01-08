@@ -17,7 +17,7 @@ export default function Column({ header, cards, _id }: ColumnT) {
 	const allCards = useTypedSelector(state => state.board.allCards)
 
 	const miniCards = cards?.map(id => {
-		const card = allCards && allCards[id]
+		const card =  allCards[id]
 		return <MiniCard key={id} {...card} />
 	})
 

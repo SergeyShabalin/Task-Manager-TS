@@ -7,5 +7,6 @@ export const defaultState: BoardState = {
 	},
 	isLoading: false,
 	isError: false,
-	allCards: {}
+	allCards: {},
+	allColumns: {}
 }

@@ -4,11 +4,12 @@ import { Action } from 'redux'
 
 export interface Board {
 	title: string
-	columns: Column[]
+	columns: string[]
 }
 export interface BoardAPI {
 	currentBoard: Board
 	allCards: { [key: string]: Card }
+	allColumns: { [key: string] : Column}
 }
 
 export enum BOARD_TYPES {
@@ -24,10 +25,8 @@ export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
 export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
 
 
-export interface BoardState {
-	currentBoard: Board
+export interface BoardState extends BoardAPI{
 	isLoading: boolean
 	isError: boolean
-	allCards: { [key: string]: Card }
 }
 

@@ -5,13 +5,15 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Button, Notification } from '@/components/UI'
 import Editor from '@/components/Features/Editor'
+import MiniCard from '@/components/Features/MiniCard/MiniCard'
 
 export default function Board() {
 	const {getCurrentBoard, addNewColumn} = useActions()
-	const allColumns = useTypedSelector(state => state.board.currentBoard.columns)
+	const columnIds = useTypedSelector(state => state.board.currentBoard.columns)
+	const allColumns = useTypedSelector(state=> state.board.allColumns)
 	const isError = useTypedSelector(state => state.board.isError)
 
-
+	console.log(allColumns)
 	useEffect(() => {
 		getCurrentBoard('dfasdfsf')
 	}, [])
@@ -20,7 +22,10 @@ export default function Board() {
 		addNewColumn(title)
 	}
 
-	const columns = allColumns?.map(column => (<Column key={column._id} {...column} />))
+	const columns = columnIds?.map(id =>	{
+		const column =  allColumns[id]
+		return <Column key={column._id} {...column}/>
+	})
 
 	return (
 		<div>

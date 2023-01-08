@@ -4,14 +4,12 @@ import { AxiosResponse } from 'axios'
 
 class CardsApi {
 	async addNewCardAPI(columnId: string, title: string) : Promise<AxiosResponse<Card>> {
-		return Api.post(`/cards/`, { header: title, column_id: columnId, description: "",  doneTask: 0, countTask: 0});
+		return Api.post(`/cards/`, { header: title, column_id: columnId, description: ""});
+	}
+		async deleteCardAPI(cardId: string) {
+		return Api.delete(`/cards/${cardId}`);
 	}
 
-	//TODO на сервере записать doneTask и CountTask, а не передвавать их
-
-	// async deleteCardAPI(cardId) {
-	// 	return Api.delete(`/cards/${cardId}`);
-	// }
 	//
 	// async updateCardHeaderAPI(cardId, newTitle) {
 	// 	return Api.patch(`/cards/title/${cardId}`, { header: newTitle });

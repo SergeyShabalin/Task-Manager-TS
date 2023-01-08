@@ -2,7 +2,7 @@ import { defaultState } from './initState'
 
 import { BOARD_TYPES, StartFetching, SuccessFetching, ErrorFetching } from '@/models/Boards'
 import { AddNewColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
-import { AddNewCard, CARD_TYPES } from '@/models/Cards'
+import { AddNewCard, CARD_TYPES, DeleteCard } from '@/models/Cards'
 
 export type BoardActions =
 	| StartFetching
@@ -11,6 +11,7 @@ export type BoardActions =
 	| AddNewColumn
 	| DeleteColumn
 	| AddNewCard
+	| DeleteCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -25,8 +26,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				...state,
 				isLoading: false,
 				isError: false,
-				currentBoard: action.payload.currentBoard,
-				allCards: action.payload.allCards
+				...action.payload
 			}
 		case BOARD_TYPES.ERROR_FETCHING_BOARD:
 			return {
@@ -45,33 +45,34 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				...state,
 				currentBoard: {
 					...state.currentBoard,
-					columns: [...state.currentBoard.columns, action.payload]
-				}
+					columns: [...state.currentBoard.columns, action.payload._id]
+				},
+				 allColumns: {...state.allColumns,[action.payload._id]: action.payload }
 			}
 		}
 
 		case COLUMN_TYPES.DELETE_COLUMN: {
+			const newAllColumns = {...state.allColumns}
+			delete newAllColumns[action.payload.columnId]
 			return {
 				...state,
-				currentBoard: { ...state.currentBoard, columns: action.payload }
+				currentBoard: { ...state.currentBoard, columns: action.payload.newColumns},
+				allColumns: newAllColumns
 			}
+
 		}
 
 		case CARD_TYPES.ADD_NEW_CARD: {
 			const id = action.payload._id
 			const card = action.payload
-
-			const allColumns = state?.currentBoard?.columns.map(column => {
-				if (column._id === action.payload.column_id) {
-					return { ...column, cards: [...column.cards, id] }
-				}
-				return column
-			})
+			const columnId = 	action.payload.column_id
+			const currentColumn = {...state.allColumns[columnId]}
+			const currentCards = [...currentColumn.cards, id]
 
 			return {
 				...state,
 				allCards: { ...state.allCards, [id]: card },
-				currentBoard: { ...state.currentBoard, columns: allColumns }
+				allColumns: {...state.allColumns, [columnId] : {...currentColumn, cards: currentCards} }
 			}
 		}
 
