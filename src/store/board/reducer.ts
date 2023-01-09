@@ -84,7 +84,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			const currentColumn = state.allColumns[columnId]
 			const newCurrentColumn = { ...currentColumn, cards: newCardIds }
 			const newAllColumns = { ...state.allColumns, [columnId]: newCurrentColumn }
-
 			const newAllCards = { ...state.allCards }
 			delete newAllCards[action.payload.cardId]
 
@@ -95,7 +94,8 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 
-		case CARD_TYPES.CHANGE_TITLE_CARD: {
+		//TODO сделать универсальным для обновления любого из полей
+		case CARD_TYPES.CHANGE_CARD: {
 			const currentCard = { ...state.allCards[action.payload.cardId] }
 			const newCard = { ...currentCard, header: action.payload.title }
 			return {

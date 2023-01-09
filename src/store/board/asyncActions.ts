@@ -6,7 +6,7 @@ import ColumnsApi from '@/api/ColumnsApi'
 
 import { Column, PayloadForDeleteColumn } from '@/models/Columns'
 import CardsApi from '@/api/CardsApi'
-import { PayloadForDeleteCard } from '@/models/Cards'
+import { ChangeTitleCard, PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 
 //TODO протипизировать getState и Promise
 
@@ -80,15 +80,16 @@ export const cardActions = {
 			}
 		},
 
-		changeTitle: (cardId: string, title: string)=>
+		changeCard: (payload: ChangeTitleCard) =>
 			async (dispatch: Dispatch<BoardActions>): Promise<any>=>{
 		try {
-			await CardsApi.changeCardTitleAPI(cardId, title)
-			const payload = {
-				cardId,
-				title
-			}
-			dispatch(CardAC.changeTitle(payload))
+			await CardsApi.changeCard(payload)
+			console.log(payload)
+			// const payload = {
+			// 	cardId,
+			// 	title
+			// }
+			// dispatch(CardAC.change(payload))
 		} catch (e){
 			console.log(e)
 		}

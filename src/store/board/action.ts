@@ -1,6 +1,14 @@
 import { BOARD_TYPES, BoardAPI, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
 import { AddNewColumn, Column, COLUMN_TYPES, DeleteColumn, PayloadForDeleteColumn } from '@/models/Columns'
-import { AddNewCard, Card, CARD_TYPES, ChangeTitleCard, DeleteCard, PayloadForDeleteCard, PayloadForChangeTitleCard } from '@/models/Cards'
+import {
+	AddNewCard,
+	Card,
+	CARD_TYPES,
+	ChangeTitleCard,
+	DeleteCard,
+	PayloadForDeleteCard,
+	PayloadForChangeCard
+} from '@/models/Cards'
 
 
 export const BoardAC = {
@@ -17,5 +25,5 @@ export const ColumnAC = {
 export const CardAC = {
 	new: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload}),
 	delete: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
-	changeTitle: (payload : PayloadForChangeTitleCard) : ChangeTitleCard => ({type: CARD_TYPES.CHANGE_TITLE_CARD, payload})
+	change: (payload : PayloadForChangeCard) : ChangeTitleCard => ({type: CARD_TYPES.CHANGE_CARD, payload})
 }

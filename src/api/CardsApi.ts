@@ -1,5 +1,5 @@
 import { Api } from "./index";
-import { Card } from '../models/Cards'
+import { Card, ChangeTitleCard } from '../models/Cards'
 import { AxiosResponse } from 'axios'
 
 class CardsApi {
@@ -12,6 +12,11 @@ class CardsApi {
 
 	async changeCardTitleAPI(cardId : string, title: string) : Promise<AxiosResponse<Card>> {
 		return Api.patch(`/cards/title/${cardId}`, { header: title });
+	}
+
+	async changeCard(payload) : Promise<AxiosResponse<Card>> {
+		console.log(payload._id)
+		return Api.patch(`/cards/update/${payload._id}`, {payload});
 	}
 	//
 	// async updateCardDescriptionAPI(cardId, descriptionValue) {

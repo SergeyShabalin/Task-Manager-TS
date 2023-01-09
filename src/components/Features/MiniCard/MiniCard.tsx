@@ -10,14 +10,18 @@ import { BiEditAlt } from 'react-icons/all'
 import Editor from '@/components/Features/Editor'
 
 export default function Card({ header, _id }: CardT) {
-	const { deleteCard, changeTitle } = useActions()
+	const { deleteCard, changeCard } = useActions()
 
 	function cardDelete() {
 		deleteCard(_id)
 	}
 
 	function changeCardTitle(title: string) {
-		changeTitle(_id, title)
+		const payload = {
+			_id,
+			title
+		}
+		changeCard(payload)
 	}
 
 	return (
