@@ -24,7 +24,7 @@ export interface PayloadForDeleteCard {
 	cardId: string
 }
 export interface PayloadForChangeCard {
-	cardId: string
+	_id: string
 	title?: string
 	description?: string
 	decisionDate?: Date

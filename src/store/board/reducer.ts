@@ -96,11 +96,9 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 
 		//TODO сделать универсальным для обновления любого из полей
 		case CARD_TYPES.CHANGE_CARD: {
-			const currentCard = { ...state.allCards[action.payload.cardId] }
-			const newCard = { ...currentCard, header: action.payload.title }
 			return {
 				...state,
-				allCards: { ...state.allCards, [action.payload.cardId]: newCard }
+				allCards: { ...state.allCards, [action.payload._id]: action.payload }
 			}
 		}
 

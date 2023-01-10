@@ -3,10 +3,9 @@ import { BoardAC, CardAC, ColumnAC } from './action'
 import { Dispatch } from 'redux'
 import { BoardActions } from '@/store/board/reducer'
 import ColumnsApi from '@/api/ColumnsApi'
-
-import { Column, PayloadForDeleteColumn } from '@/models/Columns'
 import CardsApi from '@/api/CardsApi'
-import { ChangeTitleCard, PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
+import { PayloadForDeleteColumn } from '@/models/Columns'
+import { PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 
 //TODO протипизировать getState и Promise
 
@@ -61,7 +60,7 @@ export const cardActions = {
 
 	deleteCard:
 		(cardId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: any): Promise<any> => {
+		async (dispatch: Dispatch<BoardActions>, getState: () => state): Promise<any> => {
 			try {
 				await CardsApi.deleteCardAPI(cardId)
 				const { board } = getState()
@@ -69,31 +68,26 @@ export const cardActions = {
 				const currentColumn = board.allColumns[columnId]
 				//TODO id потому что getState не типизирован
 				const newCardIds = currentColumn.cards.filter(id => id !== cardId)
-				const payload: PayloadForDeleteCard  = {
+				const payload: PayloadForDeleteCard = {
 					newCardIds,
 					cardId
 				}
 				dispatch(CardAC.delete(payload))
-
 			} catch (e) {
 				console.log(e)
 			}
 		},
 
-		changeCard: (payload: ChangeTitleCard) =>
-			async (dispatch: Dispatch<BoardActions>): Promise<any>=>{
-		try {
-			await CardsApi.changeCard(payload)
-			console.log(payload)
-			// const payload = {
-			// 	cardId,
-			// 	title
-			// }
-			// dispatch(CardAC.change(payload))
-		} catch (e){
-			console.log(e)
-		}
+	changeCard:
+		(payload: PayloadForChangeCard) =>
+		async (dispatch: Dispatch<BoardActions>): Promise<any> => {
+			try {
+				const { data } = await CardsApi.changeCard(payload)
+				dispatch(CardAC.change(data))
+			} catch (e) {
+				console.log(e)
 			}
+		}
 }
 
 export const boardActions = {
@@ -109,5 +103,3 @@ export const boardActions = {
 			}
 		}
 }
-
-

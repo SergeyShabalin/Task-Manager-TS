@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from './MiniCard.module.css'
-import { Link } from 'react-router-dom'
-
-import { Card as CardT } from '@/models/Cards'
+import { Card } from '@/models/Cards'
 import { Button } from '@/components/UI'
 import { GrClose } from 'react-icons/gr'
 import { useActions } from '@/hooks/useActions/useActions'
-import { BiEditAlt } from 'react-icons/all'
 import Editor from '@/components/Features/Editor'
 
-export default function Card({ header, _id }: CardT) {
+export default function MiniCard({ header, _id, countTask, doneTask }: Card) {
 	const { deleteCard, changeCard } = useActions()
 
 	function cardDelete() {
@@ -17,10 +14,7 @@ export default function Card({ header, _id }: CardT) {
 	}
 
 	function changeCardTitle(title: string) {
-		const payload = {
-			_id,
-			title
-		}
+		const payload = {_id,title}
 		changeCard(payload)
 	}
 
@@ -42,7 +36,8 @@ export default function Card({ header, _id }: CardT) {
 				</Editor>
 				{/*</Link>*/}
 				<div className={classes.footer}>
-					decisionDate Checkout
+					{/*<span>{decisionDate}</span>*/}
+					<span>{countTask}/{doneTask}</span>
 					<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />
 				</div>
 			</div>

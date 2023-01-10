@@ -8,11 +8,10 @@ import useOpenClose from '@/hooks/UseOpenClose'
 // - не закрывать модалку вывеcти notification
 // и задизейблить кнопку пока состояние не изменится
 // повесить useclickOutside внутри компонента
-// поставить alios на папку features и UI (возможно еще что-то удобное сделать)
+// !поставить alios на папку features и UI (возможно еще что-то удобное сделать)
 //TODO стилистика норм
 //TODO роутинг как время останется
 
-//TODO сделать заметку с гитигнор
 
 interface EditorProps {
 	buttonSubmitTitle: string
