@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
-import { Button } from '@/components/UI'
+import { Button } from '@UI/'
 import { GrClose } from 'react-icons/gr'
 import { useActions } from '@/hooks/useActions/useActions'
-import Editor from '@/components/Features/Editor'
+import Editor from '@Features/Editor'
 
 export default function MiniCard({ header, _id, countTask, doneTask }: Card) {
 	const { deleteCard, changeCard } = useActions()

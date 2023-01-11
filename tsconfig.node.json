@@ -6,7 +6,9 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@Features*": [".src/components/Features/*"],
+      "@UI*": [".src/components/UI/*"],
     }
   },
   "include": ["vite.config.ts"]

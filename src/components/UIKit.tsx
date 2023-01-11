@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Input, Loader, Modal } from '@/components/UI'
+import { Button, Checkbox, Input, Loader, Modal } from '@UI/'
 
 import {
 	AiOutlinePlus,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Input } from '@/components/UI'
+import { Button, Input } from '@UI/'
 import { GrClose } from 'react-icons/gr'
 import useOpenClose from '@/hooks/UseOpenClose'
 

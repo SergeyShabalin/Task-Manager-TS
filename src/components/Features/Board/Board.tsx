@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import classes from './Board.module.css'
-import Column from '@/components/Features/Column'
+import Column from '@Features/Column'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Button, Notification } from '@/components/UI'

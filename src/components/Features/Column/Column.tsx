@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classes from './Column.module.css'
-import MiniCard from '@/components/Features/MiniCard'
+import MiniCard from '@Features/MiniCard'
 import { useSelector } from 'react-redux'
 
 import { Column as ColumnT } from '@/models/Columns'
@@ -8,7 +8,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@/components/UI'
 import { AiOutlinePlus } from 'react-icons/all'
 import { useActions  } from '@/hooks/useActions/useActions'
-import Editor from '@/components/Features/Editor'
+import Editor from '@Features/Editor'
 
 
 export default function Column({ header, cards, _id }: ColumnT) {
