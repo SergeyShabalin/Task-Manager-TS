@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
 import { Button } from '@UI/'
 import { GrClose } from 'react-icons/gr'
 import { useActions } from '@/hooks/useActions/useActions'
 import Editor from '@Features/Editor'
+import { useSelector } from 'react-redux'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 export default function MiniCard({ header, _id, countTask, doneTask }: Card) {
 	const { deleteCard, changeCard } = useActions()
+	// const isLoading = useTypedSelector(state => state.board.isLoading)
+
 
 	function cardDelete() {
 		deleteCard(_id)
@@ -31,6 +35,8 @@ export default function MiniCard({ header, _id, countTask, doneTask }: Card) {
 					onSubmit={changeCardTitle}
 					placeholder='Введите название карточки'
 					isAdd={false}
+					isLoading={false}
+					error={false}
 				>
 					<div className={classes.title}>{header}</div>
 				</Editor>

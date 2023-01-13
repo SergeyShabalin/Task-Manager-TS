@@ -14,7 +14,7 @@ export default function Notifications({ open, message }: NotificationsTypes) {
 
 	useEffect(() => {
 		setView(open)
-		// if(open) setTimeout(() => setView(false), 3000)
+		 if(open) setTimeout(() => setView(false), 3000)
 	}, [open])
 
 	if (!view) return null

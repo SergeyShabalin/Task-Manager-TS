@@ -9,7 +9,6 @@
     border-radius: var(--input-border-radius);
     background-color: var(--input-background-color);
     min-width: 140px;
-    /*background-color: var(--input-background-color);*/
     resize: none;
 }
 
@@ -49,6 +48,8 @@
     border-radius: var(--textarea-border-radius);
     font-family: var(--prymary-font);
     resize: none;
+    outline: none;
+    overflow: hidden;
 }
 
 .label {

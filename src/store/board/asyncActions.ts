@@ -82,10 +82,13 @@ export const cardActions = {
 		(payload: PayloadForChangeCard) =>
 		async (dispatch: Dispatch<BoardActions>): Promise<any> => {
 			try {
+				dispatch(BoardAC.startFetching())
 				const { data } = await CardsApi.changeCard(payload)
 				dispatch(CardAC.change(data))
+				dispatch(BoardAC.successFetching(data))
 			} catch (e) {
-				console.log(e)
+				dispatch(BoardAC.errorFetching(e))
+
 			}
 		}
 }

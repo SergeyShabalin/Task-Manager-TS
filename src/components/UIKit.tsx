@@ -193,25 +193,24 @@ export default function UiKit() {
 				</div>
 
 				{openLoaderWhite && <Loader />}
-				<div className={classes.load_wrapper}>
-					<Button
-						variant='outlined'
-						color='primary'
-						title='Лоадер общий'
-						onClick={openWhiteLoader}
-					/>
-					<Button
-						startIcon={
-							openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />
-						}
-						variant='outlined'
-						color='primary'
-						title='Лоадер локальный '
-						onClick={e => openDarkLoader(e)}
-					/>
-					{openLoaderDark && <Loader size='normal' variant='lds_wrapper' color='black' />}
-				</div>
+				{/*<div className={classes.load_wrapper}>*/}
+
 			</div>
+			<Button
+			variant='outlined'
+			color='primary'
+			title='Лоадер общий'
+			onClick={openWhiteLoader}
+		/>
+			<Button
+				startIcon={
+					openLoaderDark && <Loader size='small'  color='lds-black' />
+				}
+				variant='contained'
+				color='primary'
+				title='Лоадер локальный'
+				onClick={e => openDarkLoader(e)}
+			/>
 		</form>
 	)
 }

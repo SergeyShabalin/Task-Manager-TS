@@ -1,0 +1,26 @@
+.wrapper{
+   background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding: 5px;
+   border-radius: 5px;
+}
+
+.add_btn {
+    display: flex;
+    position: relative;
+}
+
+.btn_loader {
+    position: absolute;
+    width: 100%;
+}
+
+.editor_loader{
+    position: absolute;
+    top: 5%;
+     left: 37%;
+}
+
+.control{
+    display: flex;
+}
