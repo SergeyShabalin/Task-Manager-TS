@@ -4,11 +4,12 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
+    "strict": true,
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],
-      "@Features*": [".src/components/Features/*"],
-      "@UI*": [".src/components/UI/*"],
+      "@Features": ["./components/Features"],
+      "@UI": ["./components/UI"],
     }
   },
   "include": ["vite.config.ts"]

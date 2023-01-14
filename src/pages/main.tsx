@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Main.module.css'
-import Header from '@Features/Header'
+import { Header } from '@Features'
 
 export default function Main() {
 	return (

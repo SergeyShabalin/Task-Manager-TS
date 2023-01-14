@@ -5,7 +5,10 @@ import { Action } from 'redux'
 export interface Board {
 	title: string
 	columns: string[]
+
 }
+
+
 export interface BoardAPI {
 	currentBoard: Board
 	allCards: { [key: string]: Card }
@@ -24,9 +27,9 @@ export interface SuccessFetching extends Action<BOARD_TYPES.SUCCESS_FETCHING_BOA
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
 export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
 
-
 export interface BoardState extends BoardAPI{
 	isLoading: boolean
 	isError: boolean
+	cardInfo: Card
 }
 

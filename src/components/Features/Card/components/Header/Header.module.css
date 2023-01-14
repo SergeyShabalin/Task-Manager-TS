@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title_wrapper {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 0;
+    width: 90%;
+}
+
+.icon_wrapper{
+    display: flex;
+    align-items: center;
+}
+.icons {
+    transform: scale(1.35);
+    color: #172b4d
+}
+
+.title {
+    padding: 0 10px 0 12px;
+    margin: 5px;
+    display: flex;
+
+}
+
+.form_close {
+    margin: 15px 5px 10px 10px;
+}

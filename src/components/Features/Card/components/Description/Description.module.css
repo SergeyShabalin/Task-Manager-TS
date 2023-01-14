@@ -1,0 +1,20 @@
+.description_card {
+    margin: 0 30px 0 30px;
+    cursor: pointer;
+}
+
+.icons {
+    transform: scale(1.35);
+    color: #030a36
+}
+
+.description_wrapper {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 20px 0;
+}
+
+.description_title {
+    padding: 0 10px 0 12px;
+    margin: 5px;
+}

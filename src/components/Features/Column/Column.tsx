@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import classes from './Column.module.css'
-import MiniCard from '@Features/MiniCard'
+import { MiniCard } from '@Features'
 import { useSelector } from 'react-redux'
 
 import { Column as ColumnT } from '@/models/Columns'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { Button } from '@/components/UI'
+import { Button } from '@UI'
 import { AiOutlinePlus } from 'react-icons/all'
 import { useActions  } from '@/hooks/useActions/useActions'
-import Editor from '@Features/Editor'
+import { Editor } from '@Features'
 
 
 export default function Column({ header, cards, _id }: ColumnT) {
-	const { deleteColumn, addNewCard } = useActions()
+	const { deleteColumn, addNewCard, changeColumn } = useActions()
 
 	const allCards = useTypedSelector(state => state.board.allCards)
 
@@ -26,13 +26,25 @@ export default function Column({ header, cards, _id }: ColumnT) {
 	}
 
 	function addCard(value: string) {
-		addNewCard(_id,value)
+	return addNewCard(_id,value)
+	}
+
+	function columnChange(value: string) {
+	return changeColumn(_id,value )
 	}
 
 	return (
 		<div className={classes.wrapper}>
 			<div className={classes.list_wrapper}>
-				{header}
+				<Editor
+					buttonSubmitTitle='изменить'
+					onSubmit={columnChange}
+					placeholder='Введите название карточки'
+					errorMessage='Произошла ошибка изменения карточки'
+					defaultValue={header}
+				>
+				<div>{header}</div>
+				</Editor>
 				<Button variant={'just_icon'} icon={<AiOutlinePlus />} onClick={columnDelete} />
 				<div className={classes.cards_wrapper}>{miniCards}</div>
 				<div className={classes.card_creator}>
@@ -40,6 +52,7 @@ export default function Column({ header, cards, _id }: ColumnT) {
 						buttonSubmitTitle='Добавить'
 						onSubmit={addCard}
 						placeholder='Введите название карточки'
+						errorMessage='Произошла ошибка добавления карточки'
 					>
 						<Button variant='contained' title='Добавить карточку' />
 					</Editor>

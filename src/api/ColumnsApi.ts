@@ -12,6 +12,10 @@ class ColumnsAPI {
 		return Api.delete(`/columns/${columnId}`)
 	}
 
+	async changeColumn(columnId: string, header: string): Promise<AxiosResponse> {
+		return Api.patch(`/columns/${columnId}`, { header });
+	}
+
 }
 
 export default new ColumnsAPI();

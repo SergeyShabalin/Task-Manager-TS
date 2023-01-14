@@ -8,5 +8,16 @@ export const defaultState: BoardState = {
 	isLoading: false,
 	isError: true,
 	allCards: {},
-	allColumns: {}
+	allColumns: {},
+	cardInfo: {
+	_id: '',
+		checkList: [],
+		header: '',
+		description: '',
+		decisionDate: new Date(),
+		order: 0,
+		column_id: '',
+		countTask: 0,
+		doneTask: 0
+	}
 }

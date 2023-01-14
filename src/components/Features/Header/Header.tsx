@@ -3,7 +3,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { RiTrelloFill } from "react-icons/ri";
 
 import classes from "./Header.module.css";
-import { Button } from '@UI/'
+import { Button } from '@UI'
 
 export default function Header() {
 

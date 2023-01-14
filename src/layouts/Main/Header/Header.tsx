@@ -2,7 +2,7 @@ import React from "react";
 import { CgMenuGridO } from "react-icons/cg";
 import { RiTrelloFill } from "react-icons/ri";
 
-import { Button } from "@/components/UI";
+import { Button } from "@UI";
 
 import classes from "./Header.module.css";
 

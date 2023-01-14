@@ -1,8 +1,8 @@
 import { defaultState } from './initState'
 
-import { BOARD_TYPES, StartFetching, SuccessFetching, ErrorFetching } from '@/models/Boards'
-import { AddNewColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
-import { AddNewCard, CARD_TYPES, DeleteCard, ChangeTitleCard } from '@/models/Cards'
+import { BOARD_TYPES, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
+import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
+import { AddNewCard, CARD_TYPES, ChangeTitleCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 
 export type BoardActions =
 	| StartFetching
@@ -13,6 +13,8 @@ export type BoardActions =
 	| AddNewCard
 	| DeleteCard
 	| ChangeTitleCard
+	| ChangeColumn
+	| GetCardInfo
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -62,6 +64,13 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 
+		case COLUMN_TYPES.CHANGE_COLUMN: {
+			return {
+				...state,
+				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
+			}
+		}
+
 		case CARD_TYPES.ADD_NEW_CARD: {
 			const id = action.payload._id
 			const card = action.payload
@@ -93,12 +102,16 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allCards: newAllCards
 			}
 		}
-
-		//TODO сделать универсальным для обновления любого из полей
 		case CARD_TYPES.CHANGE_CARD: {
 			return {
 				...state,
 				allCards: { ...state.allCards, [action.payload._id]: action.payload }
+			}
+		}
+
+		case CARD_TYPES.GET_CARD_INFO: {
+			return {
+				...state, cardInfo: action.payload
 			}
 		}
 

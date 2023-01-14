@@ -5,7 +5,7 @@ import { BoardActions } from '@/store/board/reducer'
 import ColumnsApi from '@/api/ColumnsApi'
 import CardsApi from '@/api/CardsApi'
 import { PayloadForDeleteColumn } from '@/models/Columns'
-import { PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
+import { Card, PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 
 //TODO протипизировать getState и Promise
 
@@ -24,7 +24,11 @@ export const columnsActions = {
 					boardId: data.boardId
 				}
 				dispatch(ColumnAC.new(newColumn))
-			} catch {}
+				return true
+			} catch (e) {
+				console.log(e)
+				return false
+			}
 		},
 
 	deleteColumn:
@@ -43,6 +47,20 @@ export const columnsActions = {
 			} catch (e) {
 				console.log(e)
 			}
+		},
+
+	changeColumn:
+		(columnId: string, title: string) =>
+		async (dispatch: Dispatch<BoardActions>): Promise<any> => {
+			try {
+				const { data } = await ColumnsApi.changeColumn(columnId, title)
+				data.title = data.header
+				dispatch(ColumnAC.change(data))
+				return true
+			} catch (e) {
+				console.log(e)
+				return false
+			}
 		}
 }
 
@@ -53,14 +71,16 @@ export const cardActions = {
 			try {
 				const { data } = await CardsApi.addNewCardAPI(columnId, title)
 				dispatch(CardAC.new(data))
+				return true
 			} catch (e) {
 				console.log(e)
+				return false
 			}
 		},
 
 	deleteCard:
 		(cardId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => state): Promise<any> => {
+		async (dispatch: Dispatch<BoardActions>, getState: any): Promise<any> => {
 			try {
 				await CardsApi.deleteCardAPI(cardId)
 				const { board } = getState()
@@ -78,19 +98,28 @@ export const cardActions = {
 			}
 		},
 
-	changeCard:
+	changeCardOne:
 		(payload: PayloadForChangeCard) =>
-		async (dispatch: Dispatch<BoardActions>): Promise<any> => {
+		async (dispatch: Dispatch<BoardActions>): Promise<boolean> => {
 			try {
-				dispatch(BoardAC.startFetching())
 				const { data } = await CardsApi.changeCard(payload)
-				dispatch(CardAC.change(data))
-				dispatch(BoardAC.successFetching(data))
+				dispatch(CardAC.changeCard(data))
+				return true
 			} catch (e) {
-				dispatch(BoardAC.errorFetching(e))
-
+				console.log(e)
+				return false
 			}
+		},
+
+	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const { data } = await CardsApi.getCardInfo(cardId)
+			console.log(data)
+			dispatch(CardAC.getCardInfo(data))
+		} catch (e) {
+			console.log(e)
 		}
+	}
 }
 
 export const boardActions = {

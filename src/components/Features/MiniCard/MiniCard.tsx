@@ -1,52 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
-import { Button } from '@UI/'
+import { Button } from '@UI'
 import { GrClose } from 'react-icons/gr'
 import { useActions } from '@/hooks/useActions/useActions'
-import Editor from '@Features/Editor'
-import { useSelector } from 'react-redux'
-import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
-export default function MiniCard({ header, _id, countTask, doneTask }: Card) {
-	const { deleteCard, changeCard } = useActions()
-	// const isLoading = useTypedSelector(state => state.board.isLoading)
+import { Link, useLocation } from 'react-router-dom'
 
+export default function MiniCard({ header, _id, countTask, doneTask,  }: Card) {
+	const { deleteCard, changeCardOne } = useActions()
+	const location = useLocation();
 
 	function cardDelete() {
 		deleteCard(_id)
 	}
 
 	function changeCardTitle(title: string) {
-		const payload = {_id,title}
-		changeCard(payload)
+		const payload = { _id, header: title }
+		const isSuccess = changeCardOne(payload)
+		return isSuccess
+		//TODO разобраться с именами чтобы не пересекались названия АС и экшенов смотри в action
 	}
 
 	return (
-		<>
+		<Link state={{ background: location }} to={`/board/63ad83c2097128dd4caad35a/card/${_id}`}>
 			<div className={classes.list_card}>
-				{/*<Link*/}
-				{/*	className={classes.link}*/}
-				{/*	state={{ background: location }}*/}
-				{/*	to={`/board/${'boardId'}/card/${'cardId'}`}*/}
+				{/*<Editor*/}
+				{/*	buttonSubmitTitle='Добавить'*/}
+				{/*	onSubmit={changeCardTitle}*/}
+				{/*	placeholder='Введите название карточки'*/}
+				{/*	defaultValue={header}*/}
+				{/*	errorMessage='Произошла ошибка изменения заголовка'*/}
 				{/*>*/}
-				<Editor
-					buttonSubmitTitle='Добавить'
-					onSubmit={changeCardTitle}
-					placeholder='Введите название карточки'
-					isAdd={false}
-					isLoading={false}
-					error={false}
-				>
 					<div className={classes.title}>{header}</div>
-				</Editor>
-				{/*</Link>*/}
+				{/*</Editor>*/}
 				<div className={classes.footer}>
-					{/*<span>{decisionDate}</span>*/}
-					<span>{countTask}/{doneTask}</span>
+					<span>
+						{countTask}/{doneTask}
+					</span>
 					<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />
 				</div>
 			</div>
-		</>
+		</Link>
 	)
 }
