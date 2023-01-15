@@ -7,7 +7,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 
 import { Link, useLocation } from 'react-router-dom'
 
-export default function MiniCard({ header, _id, countTask, doneTask,  }: Card) {
+export default function MiniCard({ title, _id, countTask, doneTask,  }: Card) {
 	const { deleteCard, changeCardOne } = useActions()
 	const location = useLocation();
 
@@ -16,7 +16,7 @@ export default function MiniCard({ header, _id, countTask, doneTask,  }: Card) {
 	}
 
 	function changeCardTitle(title: string) {
-		const payload = { _id, header: title }
+		const payload = { _id, title }
 		const isSuccess = changeCardOne(payload)
 		return isSuccess
 		//TODO разобраться с именами чтобы не пересекались названия АС и экшенов смотри в action
@@ -32,7 +32,7 @@ export default function MiniCard({ header, _id, countTask, doneTask,  }: Card) {
 				{/*	defaultValue={header}*/}
 				{/*	errorMessage='Произошла ошибка изменения заголовка'*/}
 				{/*>*/}
-					<div className={classes.title}>{header}</div>
+					<div className={classes.title}>{title}</div>
 				{/*</Editor>*/}
 				<div className={classes.footer}>
 					<span>

@@ -27,7 +27,7 @@ export interface ChangeColumn extends Action<COLUMN_TYPES.CHANGE_COLUMN> {
 }
 
 export interface Column {
-	header: string
+	title: string
 	cards: string[]
 	sortArr: number[]
 	boardId: string

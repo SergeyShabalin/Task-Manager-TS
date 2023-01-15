@@ -3,7 +3,7 @@ import { Action } from 'redux'
 
 export interface Card{
 	_id: string
-	header: string
+	title: string
 	description: string
 	column_id: string
 	decisionDate: Date

@@ -12,7 +12,7 @@ export const defaultState: BoardState = {
 	cardInfo: {
 	_id: '',
 		checkList: [],
-		header: '',
+		title: '',
 		description: '',
 		decisionDate: new Date(),
 		order: 0,

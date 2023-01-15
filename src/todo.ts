@@ -14,7 +14,7 @@
 
 
 
-//TODO исправить весь header  на title везде
+//TODO исправить весь header  на title везде +
 //TODO убрать все any
 //TODO переименовать action creators
 //TODO поправить все типы

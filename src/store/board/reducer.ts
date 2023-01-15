@@ -42,7 +42,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				},
 				allCards: {}
 			}
-
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
 				...state,
@@ -53,7 +52,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
 			}
 		}
-
 		case COLUMN_TYPES.DELETE_COLUMN: {
 			const newAllColumns = { ...state.allColumns }
 			delete newAllColumns[action.payload.columnId]
@@ -63,14 +61,12 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allColumns: newAllColumns
 			}
 		}
-
 		case COLUMN_TYPES.CHANGE_COLUMN: {
 			return {
 				...state,
 				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
 			}
 		}
-
 		case CARD_TYPES.ADD_NEW_CARD: {
 			const id = action.payload._id
 			const card = action.payload
@@ -84,7 +80,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allColumns: { ...state.allColumns, [columnId]: { ...currentColumn, cards: currentCards } }
 			}
 		}
-
 		case CARD_TYPES.DELETE_CARD: {
 			const newCardIds = action.payload.newCardIds
 			const cardId = action.payload.cardId
@@ -108,7 +103,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allCards: { ...state.allCards, [action.payload._id]: action.payload }
 			}
 		}
-
 		case CARD_TYPES.GET_CARD_INFO: {
 			return {
 				...state, cardInfo: action.payload

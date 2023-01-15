@@ -26,7 +26,7 @@ export default function Card () {
 	return (
 		<Modal onClose={closeModal} open>
 			<div className={classes.card_modal_wrapper}>
-				<Header closeModal={closeModal}  title={cardInfo.header}/>
+				<Header closeModal={closeModal}  title={cardInfo.title}/>
 				<Description description='описание' />
 				 </div>
 		</Modal>

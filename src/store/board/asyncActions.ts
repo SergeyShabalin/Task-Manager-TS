@@ -17,7 +17,7 @@ export const columnsActions = {
 				const { board } = getState()
 				const { data } = await ColumnsApi.addNewColumnAPI(title, board.currentBoard._id)
 				const newColumn = {
-					header: title,
+					title: title,
 					_id: data._id,
 					cards: [],
 					sortArr: [],
@@ -54,7 +54,6 @@ export const columnsActions = {
 		async (dispatch: Dispatch<BoardActions>): Promise<any> => {
 			try {
 				const { data } = await ColumnsApi.changeColumn(columnId, title)
-				data.title = data.header
 				dispatch(ColumnAC.change(data))
 				return true
 			} catch (e) {
@@ -114,7 +113,6 @@ export const cardActions = {
 	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CardsApi.getCardInfo(cardId)
-			console.log(data)
 			dispatch(CardAC.getCardInfo(data))
 		} catch (e) {
 			console.log(e)

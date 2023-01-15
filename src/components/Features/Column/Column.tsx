@@ -11,7 +11,7 @@ import { useActions  } from '@/hooks/useActions/useActions'
 import { Editor } from '@Features'
 
 
-export default function Column({ header, cards, _id }: ColumnT) {
+export default function Column({ title, cards, _id }: ColumnT) {
 	const { deleteColumn, addNewCard, changeColumn } = useActions()
 
 	const allCards = useTypedSelector(state => state.board.allCards)
@@ -41,9 +41,9 @@ export default function Column({ header, cards, _id }: ColumnT) {
 					onSubmit={columnChange}
 					placeholder='Введите название карточки'
 					errorMessage='Произошла ошибка изменения карточки'
-					defaultValue={header}
+					defaultValue={title}
 				>
-				<div>{header}</div>
+				<div>{title}</div>
 				</Editor>
 				<Button variant={'just_icon'} icon={<AiOutlinePlus />} onClick={columnDelete} />
 				<div className={classes.cards_wrapper}>{miniCards}</div>

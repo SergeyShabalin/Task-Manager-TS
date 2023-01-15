@@ -1,10 +1,10 @@
 import { Api } from './index'
-import { Card, PayloadForChangeCard, PayloadForGetOneCard } from '../models/Cards'
+import { Card, PayloadForChangeCard } from '../models/Cards'
 import { AxiosResponse } from 'axios'
 
 class CardsApi {
 	async addNewCardAPI(columnId: string, title: string): Promise<AxiosResponse<Card>> {
-		return Api.post(`/cards/`, { header: title, column_id: columnId, description: '' })
+		return Api.post(`/cards/`, { title, column_id: columnId, description: '' })
 	}
 	async deleteCardAPI(cardId: string) {
 		return Api.delete(`/cards/${cardId}`)
