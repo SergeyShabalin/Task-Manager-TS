@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 
-import { Button, Input, Notification } from '@UI'
+import { Button, Input } from '@UI'
 import useOpenClose from '@/hooks/UseOpenClose'
 
 import classes from './Editor.module.css'
-
-//TODO повесить useclickOutside внутри компонента
-//TODO стилистика норм
 
 interface EditorProps {
 	buttonSubmitTitle: string
@@ -17,7 +14,6 @@ interface EditorProps {
 	defaultValue?: string
 	onSubmit: (title: string) => any
 	children: React.ReactElement
-	errorMessage?: string
 }
 
 export default function Editor({
@@ -27,14 +23,12 @@ export default function Editor({
 	rows = 3,
 	placeholder,
 	cols = 32,
-	children,
-	errorMessage='Что-то пошло не так...'
+	children
 }: EditorProps) {
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
 
 	const [isLoad, setIsLoad] = useState(false)
-	const [isError, setIsError] = useState(false)
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setInputValue(target.value)
@@ -45,21 +39,19 @@ export default function Editor({
 	}
 
 	async function sendValue() {
-		setIsError(() => false)
 		setIsLoad(() => true)
 		const isSuccess = await onSubmit(inputValue)
 		setIsLoad(() => false)
 		if (isSuccess) {
 			onClose()
 			setInputValue(defaultValue)
-		} else setIsError(true)
+		}
 	}
 
 	if (!isOpen) return <div onClick={onOpen}>{children}</div>
 
 	return (
 		<>
-			<Notification open={isError} message={errorMessage} />
 			<div className={classes.wrapper}>
 				<Input
 					autoFocus
@@ -77,14 +69,13 @@ export default function Editor({
 				{/*	</div>*/}
 				{/*)}*/}
 				<div className={classes.control}>
-						{/*{isLoad && isAdd && (*/}
-						{/*	<div className={classes.btn_loader}>*/}
-						{/*		<Loader size='small' variant='global' color='lds-white' />*/}
-						{/*	</div>*/}
-						{/*)}*/}
-
-						{ buttonSubmitTitle && (
-							<div className={classes.add_btn}>
+					{/*{isLoad && isAdd && (*/}
+					{/*	<div className={classes.btn_loader}>*/}
+					{/*		<Loader size='small' variant='global' color='lds-white' />*/}
+					{/*	</div>*/}
+					{/*)}*/}
+					{buttonSubmitTitle && (
+						<div className={classes.add_btn}>
 							<Button
 								disabled={isLoad}
 								variant={isLoad ? 'outlined' : 'contained'}
@@ -92,9 +83,9 @@ export default function Editor({
 								title={buttonSubmitTitle}
 								onClick={sendValue}
 							/>
-						 <Button variant='just_icon' icon={<GrClose />} onClick={onClose} />
-							</div>
-						)}
+							<Button variant='just_icon' icon={<GrClose />} onClick={onClose} />
+						</div>
+					)}
 				</div>
 			</div>
 		</>

@@ -29,7 +29,7 @@ export default function Board() {
 
 	return (
 		<div>
-			<Notification open={isError} message='isError' />
+			{/*<Notification open={isError} message='isError' />*/}
 			<div className={classes.wrapper_list}>
 				<div className={classes.columns}>{columns}</div>
 				<div className={classes.add_list}>

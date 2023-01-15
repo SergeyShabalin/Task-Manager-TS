@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { GrClose } from 'react-icons/gr'
+
 import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
 import { Button } from '@UI'
-import { GrClose } from 'react-icons/gr'
 import { useActions } from '@/hooks/useActions/useActions'
 
-import { Link, useLocation } from 'react-router-dom'
-
-export default function MiniCard({ title, _id, countTask, doneTask,  }: Card) {
+export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 	const { deleteCard, changeCardOne } = useActions()
-	const location = useLocation();
+	const location = useLocation()
 
 	function cardDelete() {
 		deleteCard(_id)
@@ -19,7 +19,6 @@ export default function MiniCard({ title, _id, countTask, doneTask,  }: Card) {
 		const payload = { _id, title }
 		const isSuccess = changeCardOne(payload)
 		return isSuccess
-		//TODO разобраться с именами чтобы не пересекались названия АС и экшенов смотри в action
 	}
 
 	return (
@@ -29,10 +28,9 @@ export default function MiniCard({ title, _id, countTask, doneTask,  }: Card) {
 				{/*	buttonSubmitTitle='Добавить'*/}
 				{/*	onSubmit={changeCardTitle}*/}
 				{/*	placeholder='Введите название карточки'*/}
-				{/*	defaultValue={header}*/}
-				{/*	errorMessage='Произошла ошибка изменения заголовка'*/}
+				{/*	defaultValue={title}*/}
 				{/*>*/}
-					<div className={classes.title}>{title}</div>
+				<div className={classes.title}>{title}</div>
 				{/*</Editor>*/}
 				<div className={classes.footer}>
 					<span>

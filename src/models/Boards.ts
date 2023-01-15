@@ -3,10 +3,10 @@ import { Card } from '@/models/Cards'
 import { Action } from 'redux'
 
 export interface Board {
+	_id: string
 	title: string
 	columns: string[]
 }
-
 
 export interface BoardAPI {
 	currentBoard: Board

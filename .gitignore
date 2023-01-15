@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-src/todo.ts
+src/todo.js
 
 node_modules
 dist

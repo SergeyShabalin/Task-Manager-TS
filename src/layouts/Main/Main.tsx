@@ -9,9 +9,7 @@ import Editor from '@/components/Features/Editor'
 
 export default function Main() {
 	function addNewColumn(value: any) {
-		console.log('value', value)
-		// const isAdded = await dispatch(addNewColumn())
-		// return isAdded TODO (если onSubmit вернул false)!!
+
 	}
 
 	return (

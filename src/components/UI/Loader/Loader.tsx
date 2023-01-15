@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Loader.module.css'
-// TODO исправить названия
+
 interface LoaderTypes {
 	variant?: 'global' | 'local'
 	color?: 'lds-white'|'lds-black'

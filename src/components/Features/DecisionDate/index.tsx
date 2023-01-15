@@ -4,7 +4,7 @@ import { ru } from "date-fns/locale";
 import { AiOutlineFieldTime } from "react-icons/ai";
 
 import classes from "./DecisionDate.module.css";
-// TODO переименовать с импортами index и проверить
+
 interface DecisionDateTypes{
 	decisionDate: Date
 }

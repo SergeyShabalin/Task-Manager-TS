@@ -24,16 +24,16 @@ export const BoardAC = {
 	successFetching: (payload: BoardAPI): SuccessFetching => ({type: BOARD_TYPES.SUCCESS_FETCHING_BOARD, payload}),
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 };
-//TODO сделать уникальные имена(todo minicard 24 строка)
+
 export const ColumnAC = {
-	new : (payload: Column): AddNewColumn => ({type: COLUMN_TYPES.ADD_NEW_COLUMN, payload}),
-	delete : (payload: PayloadForDeleteColumn) : DeleteColumn => ({type: COLUMN_TYPES.DELETE_COLUMN, payload}),
-	change: (payload: PayloadForChangeColumn) : ChangeColumn => ({type: COLUMN_TYPES.CHANGE_COLUMN, payload})
+	addColumnAC : (payload: Column): AddNewColumn => ({type: COLUMN_TYPES.ADD_NEW_COLUMN, payload}),
+	deleteColumnAC : (payload: PayloadForDeleteColumn) : DeleteColumn => ({type: COLUMN_TYPES.DELETE_COLUMN, payload}),
+	changeColumnAC: (payload: PayloadForChangeColumn) : ChangeColumn => ({type: COLUMN_TYPES.CHANGE_COLUMN, payload})
 }
 
 export const CardAC = {
-	new: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload}),
-	delete: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
-	changeCard: (payload : PayloadForChangeCard) : ChangeTitleCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
-	getCardInfo: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload})
+	newCardAC: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload}),
+	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
+	changeCardCardAC: (payload : PayloadForChangeCard) : ChangeTitleCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
+	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload})
 }
