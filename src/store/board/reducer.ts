@@ -3,6 +3,7 @@ import { defaultState } from './initState'
 import { BOARD_TYPES, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeTitleCard, DeleteCard, GetCardInfo } from '@/models/Cards'
+import { AddNewTask, CHECKLIST_TYPES } from '@/models/CheckList'
 
 export type BoardActions =
 	| StartFetching
@@ -15,7 +16,7 @@ export type BoardActions =
 	| ChangeTitleCard
 	| ChangeColumn
 	| GetCardInfo
-
+	| AddNewTask
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -106,7 +107,14 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		}
 		case CARD_TYPES.GET_CARD_INFO: {
 			return {
-				...state, cardInfo: action.payload
+				...state,
+				cardInfo: action.payload
+			}
+		}
+		case CHECKLIST_TYPES.ADD_NEW_TASK: {
+			return {
+				...state,
+				cardInfo: { ...state.cardInfo, checkList: [...state.cardInfo.checkList, action.payload] }
 			}
 		}
 

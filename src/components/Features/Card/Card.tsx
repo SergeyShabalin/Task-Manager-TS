@@ -16,7 +16,7 @@ export default function Card() {
 	const cardInfo = useTypedSelector(state => state.board.cardInfo)
 	const { getOneCard, addNewTask } = useActions()
 
-	console.log(cardInfo)
+
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
 	}, [])
@@ -30,7 +30,7 @@ export default function Card() {
 	}
 
 	function addTask(value: string) {
-		if(cardId) addNewTask(cardId, value)
+		if(cardId) return addNewTask(cardId, value)
 	}
 
 	return (

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 
-import { BoardAC, CardAC, ColumnAC } from './action'
+import { BoardAC, CardAC, ChecklistAC, ColumnAC } from './action'
 import BoardApi from '@/api/BoardApi'
 import ColumnsApi from '@/api/ColumnsApi'
 import CardsApi from '@/api/CardsApi'
@@ -129,8 +129,11 @@ export const checklistActions = {
 	addNewTask: (cardId: string, taskTitle: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const {data} = await CheckListApi.addNewTaskAPI(cardId, taskTitle)
+			dispatch(ChecklistAC.addNewTaskAC(data))
+			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка добавления задачи')
+			return false
 		}
 	}
 }

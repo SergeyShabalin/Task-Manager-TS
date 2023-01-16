@@ -17,6 +17,7 @@ import {
 	PayloadForChangeCard,
 	PayloadForDeleteCard
 } from '@/models/Cards'
+import { AddNewTask, CheckList, CHECKLIST_TYPES } from '@/models/CheckList'
 
 
 export const BoardAC = {
@@ -36,4 +37,8 @@ export const CardAC = {
 	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
 	changeCardCardAC: (payload : PayloadForChangeCard) : ChangeTitleCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload})
+}
+
+export const ChecklistAC = {
+	addNewTaskAC: (payload: CheckList) : AddNewTask => ({type: CHECKLIST_TYPES.ADD_NEW_TASK, payload})
 }
