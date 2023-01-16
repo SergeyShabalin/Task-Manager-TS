@@ -16,6 +16,7 @@ export type BoardActions =
 	| ChangeColumn
 	| GetCardInfo
 
+
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
 		case BOARD_TYPES.START_FETCHING_BOARD:

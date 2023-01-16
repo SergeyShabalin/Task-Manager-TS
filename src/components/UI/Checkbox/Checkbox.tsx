@@ -3,7 +3,7 @@ import React from 'react'
 import classes from './Checkbox.module.css'
 
 interface CheckboxTypes extends React.InputHTMLAttributes<HTMLInputElement> {
-	label: string
+	label?: string
 	variant?: 'text' | 'contained' | 'outlined'
 	disabled?: boolean
 }

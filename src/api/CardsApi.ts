@@ -18,20 +18,6 @@ class CardsApi {
 		return Api.get(`/cards/${cardId}`)
 	}
 
-	//
-	// async updateCardDescriptionAPI(cardId, descriptionValue) {
-	// 	return Api.patch(`/cards/descriptions/${cardId}`, { description: descriptionValue });
-	// }
-	//
-	// async updateCardDecisionDateAPI(cardId, decisionDate) {
-	// 	return Api.patch(`/cards/decisionDate/${cardId}`, { decisionDate: decisionDate });
-	// }
-	//
-
-	//
-	// async dragDropCardAPI(currentCardId, targetColumnId ) {
-	// 	return Api.patch(`/cards/dragDrop/${currentCardId}`, {targetColumnId});
-	// }
 }
 
 export default new CardsApi()

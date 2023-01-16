@@ -40,7 +40,6 @@ export default function Column({ title, cards, _id }: ColumnT) {
 					buttonSubmitTitle='изменить'
 					onSubmit={columnChange}
 					placeholder='Введите название карточки'
-					errorMessage='Произошла ошибка изменения карточки'
 					defaultValue={title}
 				>
 				<div>{title}</div>
@@ -52,7 +51,6 @@ export default function Column({ title, cards, _id }: ColumnT) {
 						buttonSubmitTitle='Добавить'
 						onSubmit={addCard}
 						placeholder='Введите название карточки'
-						errorMessage='Произошла ошибка добавления карточки'
 					>
 						<Button variant='contained' title='Добавить карточку' />
 					</Editor>

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 
 import { Button, Input } from '@UI'
 import useOpenClose from '@/hooks/UseOpenClose'
+import useOnClickOutside from '@/hooks/UseOnClickOutside'
 
 import classes from './Editor.module.css'
+
 
 interface EditorProps {
 	buttonSubmitTitle: string
@@ -27,9 +29,11 @@ export default function Editor({
 }: EditorProps) {
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
-
 	const [isLoad, setIsLoad] = useState(false)
+	const ref = useRef<HTMLDivElement>();
+  useOnClickOutside(ref, onClose)
 
+//TODO протипизировать useRef
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setInputValue(target.value)
 	}
@@ -51,8 +55,7 @@ export default function Editor({
 	if (!isOpen) return <div onClick={onOpen}>{children}</div>
 
 	return (
-		<>
-			<div className={classes.wrapper}>
+			<div className={classes.wrapper} ref={ref}>
 				<Input
 					autoFocus
 					rows={rows}
@@ -88,6 +91,5 @@ export default function Editor({
 					)}
 				</div>
 			</div>
-		</>
 	)
 }

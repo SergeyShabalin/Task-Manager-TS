@@ -9,11 +9,11 @@ import { PayloadForDeleteColumn } from '@/models/Columns'
 import { PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
+import CheckListApi from '@/api/CheckListApi'
 
 export const columnsActions = {
 	addNewColumn:
-		(title: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: ()=> RootState) => {
+		(title: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { board } = getState()
 				const { data } = await ColumnsApi.addNewColumnAPI(title, board.currentBoard._id)
@@ -33,8 +33,7 @@ export const columnsActions = {
 		},
 
 	deleteColumn:
-		(columnId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		(columnId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				await ColumnsApi.deleteColumnAPI(columnId)
 				const { board } = getState()
@@ -50,37 +49,32 @@ export const columnsActions = {
 			}
 		},
 
-	changeColumn:
-		(columnId: string, title: string) =>
-		async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				const { data } = await ColumnsApi.changeColumnAPI(columnId, title)
-				dispatch(ColumnAC.changeColumnAC(data))
-				return true
-			} catch (e) {
-				Notification.error('Произошла ошибка изменения колонки')
-				return false
-			}
+	changeColumn: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const { data } = await ColumnsApi.changeColumnAPI(columnId, title)
+			dispatch(ColumnAC.changeColumnAC(data))
+			return true
+		} catch (e) {
+			Notification.error('Произошла ошибка изменения колонки')
+			return false
 		}
+	}
 }
 
 export const cardActions = {
-	addNewCard:
-		(columnId: string, title: string) =>
-		async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				const { data } = await CardsApi.addNewCardAPI(columnId, title)
-				dispatch(CardAC.newCardAC(data))
-				return true
-			} catch (e) {
-				Notification.error('Произошла ошибка добавления карточки')
-				return false
-			}
-		},
+	addNewCard: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const { data } = await CardsApi.addNewCardAPI(columnId, title)
+			dispatch(CardAC.newCardAC(data))
+			return true
+		} catch (e) {
+			Notification.error('Произошла ошибка добавления карточки')
+			return false
+		}
+	},
 
 	deleteCard:
-		(cardId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: ()=> RootState) => {
+		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				await CardsApi.deleteCardAPI(cardId)
 				const { board } = getState()
@@ -97,21 +91,18 @@ export const cardActions = {
 			}
 		},
 
-	changeCardOne:
-		(payload: PayloadForChangeCard) =>
-		async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				const { data } = await CardsApi.changeCardAPI(payload)
-				dispatch(CardAC.changeCardCardAC(data))
-				return true
-			} catch (e) {
-				Notification.error('Произошла ошибка изменения карточки')
-				return false
-			}
-		},
+	changeCardOne: (payload: PayloadForChangeCard) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const { data } = await CardsApi.changeCardAPI(payload)
+			dispatch(CardAC.changeCardCardAC(data))
+			return true
+		} catch (e) {
+			Notification.error('Произошла ошибка изменения карточки')
+			return false
+		}
+	},
 
-	getOneCard: (cardId: string) =>
-		async (dispatch: Dispatch<BoardActions>) => {
+	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CardsApi.getCardInfoAPI(cardId)
 			dispatch(CardAC.getCardInfoCardAC(data))
@@ -122,16 +113,24 @@ export const cardActions = {
 }
 
 export const boardActions = {
-	getCurrentBoard:
-		(boardId: string) =>
-		async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				dispatch(BoardAC.startFetching())
-				const resp = await BoardApi.getBoardAPI(boardId)
-				dispatch(BoardAC.successFetching(resp.data))
-			} catch (error) {
-				Notification.error('Произошла ошибка открытия доски')
-				dispatch(BoardAC.errorFetching())
-			}
+	getCurrentBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			dispatch(BoardAC.startFetching())
+			const resp = await BoardApi.getBoardAPI(boardId)
+			dispatch(BoardAC.successFetching(resp.data))
+		} catch (error) {
+			Notification.error('Произошла ошибка открытия доски')
+			dispatch(BoardAC.errorFetching())
 		}
+	}
+}
+
+export const checklistActions = {
+	addNewTask: (cardId: string, taskTitle: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const {data} = await CheckListApi.addNewTaskAPI(cardId, taskTitle)
+		} catch (error) {
+			Notification.error('Произошла ошибка добавления задачи')
+		}
+	}
 }

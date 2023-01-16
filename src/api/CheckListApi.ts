@@ -1,10 +1,12 @@
 import {Api} from './index';
+import { AxiosResponse } from 'axios'
+import { CheckList } from '@/models/CheckList'
 
-class CardsApi {
-	// async addNewTaskAPI(cardId, task) {
-	// 	return Api.post(`/checklist/`, { task: task, cardId: cardId, done: false }, );
-	// }
-	//
+ class CheckListApi {
+	async addNewTaskAPI(cardId: string, task: string):Promise<AxiosResponse<CheckList>> {
+		return Api.post(`/checklist/`, { task: task, cardId: cardId }, );
+	}
+
 	// async deleteTaskAPI(cardId, checkListId) {
 	// 	return Api.delete(`/checklist/${cardId}/${checkListId}`);
 	// }
@@ -17,6 +19,6 @@ class CardsApi {
 	// 	return Api.patch(`/checklist/value/${checkListId}`, { done: taskDone, cardId });
 	// }
 
-}
+ }
 
-export default new CardsApi();
+ export default new CheckListApi();
