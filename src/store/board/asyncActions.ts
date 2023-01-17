@@ -10,6 +10,7 @@ import { PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
 import CheckListApi from '@/api/CheckListApi'
+import { PayloadForChangedTask } from '@/models/CheckList'
 
 export const columnsActions = {
 	addNewColumn:
@@ -128,11 +129,22 @@ export const boardActions = {
 export const checklistActions = {
 	addNewTask: (cardId: string, taskTitle: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			const {data} = await CheckListApi.addNewTaskAPI(cardId, taskTitle)
+			const { data } = await CheckListApi.addNewTaskAPI(cardId, taskTitle)
 			dispatch(ChecklistAC.addNewTaskAC(data))
 			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка добавления задачи')
+			return false
+		}
+	},
+
+	changeTask: (payload: PayloadForChangedTask) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		try {
+			const { data } = await CheckListApi.updateTaskAPI(payload)
+
+			return true
+		} catch (error) {
+			Notification.error('Произошла ошибка изменения задачи')
 			return false
 		}
 	}

@@ -44,7 +44,7 @@ export default function Card() {
 					onSubmit={addTask}
 					placeholder='Введите название задачи'
 				>
-					<Button variant='outlined' color='primary' title='Добавить карточку' />
+					<Button variant='outlined'  title='Добавить карточку' />
 				</Editor>
 			</div>
 		</Modal>

@@ -42,7 +42,7 @@ export interface DeleteCard extends Action<CARD_TYPES.DELETE_CARD>{
 	payload:  PayloadForDeleteCard
 }
 
-export interface ChangeTitleCard extends Action<CARD_TYPES.CHANGE_CARD> {
+export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 	payload: PayloadForChangeCard
 }
 
