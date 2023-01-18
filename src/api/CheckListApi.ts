@@ -11,8 +11,8 @@ class CheckListApi {
 		return Api.patch(`/checklist/${payload._id}`, { task: payload.task, done: payload.done, cardId: payload.cardId })
 	}
 
-	async deleteTaskAPI(cardId: string, checkListId: string): Promise<AxiosResponse<CheckList>> {
-		return Api.delete(`/checklist/${cardId}/${checkListId}`)
+	async deleteTaskAPI(cardId: string, taskId: string): Promise<AxiosResponse<CheckList>> {
+		return Api.delete(`/checklist/${cardId}/${taskId}`)
 	}
 
 }

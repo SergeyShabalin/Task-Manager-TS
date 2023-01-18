@@ -4,7 +4,8 @@ import { Card } from '@/models/Cards'
 
 export enum CHECKLIST_TYPES {
 	ADD_NEW_TASK = 'ADD_NEW_TASK',
-	CHANGE_TASK = 'CHANGE_TASK'
+	CHANGE_TASK = 'CHANGE_TASK',
+	DELETE_TASK = 'DELETE_TASK'
 }
 
 export interface CheckList{
@@ -34,6 +35,6 @@ export interface ChangeTask extends Action<CHECKLIST_TYPES.CHANGE_TASK> {
 	payload: PayloadForChangedTask[]
 }
 
-export interface DeleteTask extends Action<CHECKLIST_TYPES.CHANGE_TASK> {
-	payload: PayloadForChangedTask[]
+export interface DeleteTask extends Action<CHECKLIST_TYPES.DELETE_TASK> {
+	payload: CheckList[]
 }
