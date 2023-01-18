@@ -1,26 +1,20 @@
-import {Api} from './index';
+import { Api } from './index'
 import { AxiosResponse } from 'axios'
-import { CheckList, PayloadForChangedTask } from '@/models/CheckList'
+import { CheckList, PayloadForChangedTask, PromiseChecklist } from '@/models/CheckList'
 
- class CheckListApi {
-	async addNewTaskAPI(cardId: string, task: string):Promise<AxiosResponse<CheckList>> {
-		return Api.post(`/checklist/`, { task: task, cardId: cardId } );
+class CheckListApi {
+	async addNewTaskAPI(cardId: string, task: string): Promise<AxiosResponse<PromiseChecklist>> {
+		return Api.post(`/checklist/`, { task: task, cardId: cardId })
 	}
 
-	 async updateTaskAPI(payload: PayloadForChangedTask): Promise<AxiosResponse<CheckList>> {
-	 	return Api.patch(`/checklist/${payload._id}`, { task: payload.task, done: payload.done, cardId: payload.cardId });
-	 }
+	async updateTaskAPI(payload: PayloadForChangedTask): Promise<AxiosResponse<PromiseChecklist>> {
+		return Api.patch(`/checklist/${payload._id}`, { task: payload.task, done: payload.done, cardId: payload.cardId })
+	}
 
-	// async deleteTaskAPI(cardId, checkListId) {
-	// 	return Api.delete(`/checklist/${cardId}/${checkListId}`);
-	// }
-	//
+	async deleteTaskAPI(cardId: string, checkListId: string): Promise<AxiosResponse<CheckList>> {
+		return Api.delete(`/checklist/${cardId}/${checkListId}`)
+	}
 
-	//
-	// async updateValueTaskAPI(taskDone, checkListId, cardId) {
-	// 	return Api.patch(`/checklist/value/${checkListId}`, { done: taskDone, cardId });
-	// }
+}
 
- }
-
- export default new CheckListApi();
+export default new CheckListApi()

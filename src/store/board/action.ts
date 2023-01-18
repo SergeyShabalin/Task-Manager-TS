@@ -36,7 +36,7 @@ export const ColumnAC = {
 export const CardAC = {
 	newCardAC: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload}),
 	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
-	changeCardCardAC: (payload : PayloadForChangeCard) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
+	changeCardAC: (payload : PayloadForChangeCard) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload})
 }
 

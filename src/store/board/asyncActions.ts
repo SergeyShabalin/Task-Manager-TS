@@ -10,7 +10,7 @@ import { PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
 import CheckListApi from '@/api/CheckListApi'
-import { PayloadForChangedTask } from '@/models/CheckList'
+import { CheckList, PayloadForChangedTask } from '@/models/CheckList'
 
 export const columnsActions = {
 	addNewColumn:
@@ -95,7 +95,7 @@ export const cardActions = {
 	changeCardOne: (payload: PayloadForChangeCard) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CardsApi.changeCardAPI(payload)
-			dispatch(CardAC.changeCardCardAC(data))
+			dispatch(CardAC.changeCardAC(data))
 			return true
 		} catch (e) {
 			Notification.error('Произошла ошибка изменения карточки')
@@ -130,7 +130,8 @@ export const checklistActions = {
 	addNewTask: (cardId: string, taskTitle: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CheckListApi.addNewTaskAPI(cardId, taskTitle)
-			dispatch(ChecklistAC.addNewTaskAC(data))
+			dispatch(ChecklistAC.addNewTaskAC(data.task))
+			dispatch(CardAC.changeCardAC(data.card))
 			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка добавления задачи')
@@ -143,14 +144,24 @@ export const checklistActions = {
 			const { data } = await CheckListApi.updateTaskAPI(payload)
 			const { board } = getState()
 			const newCheckList = board.cardInfo.checkList.map(task => {
-				if (task._id === payload._id) return data
+				if (task._id === payload._id) return data.task
 				else return task
 			})
 			console.log(newCheckList)
 			dispatch(ChecklistAC.changeTaskAC(newCheckList))
+			dispatch(CardAC.changeCardAC(data.card))
 			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка изменения задачи')
+			return false
+		}
+	},
+
+	deleteTask: (cardId: string, checkListId: string) => async (dispatch: Dispatch<BoardActions>) =>{
+		try {
+			await CheckListApi.deleteTaskAPI(cardId, checkListId)
+		} catch (error){
+			Notification.error('Произошла ошибка удаления задачи')
 			return false
 		}
 	}

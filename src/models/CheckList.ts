@@ -1,4 +1,5 @@
 import { Action } from 'redux'
+import { Card } from '@/models/Cards'
 
 
 export enum CHECKLIST_TYPES {
@@ -13,6 +14,11 @@ export interface CheckList{
 	cardId: string
 }
 
+export interface PromiseChecklist{
+	card: Card
+	task: CheckList
+}
+
 export interface PayloadForChangedTask{
 	_id: string
 	task?: string
@@ -25,5 +31,9 @@ export interface AddNewTask extends Action<CHECKLIST_TYPES.ADD_NEW_TASK> {
 }
 
 export interface ChangeTask extends Action<CHECKLIST_TYPES.CHANGE_TASK> {
+	payload: PayloadForChangedTask[]
+}
+
+export interface DeleteTask extends Action<CHECKLIST_TYPES.CHANGE_TASK> {
 	payload: PayloadForChangedTask[]
 }

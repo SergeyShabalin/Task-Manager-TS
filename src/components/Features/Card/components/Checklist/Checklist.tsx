@@ -10,23 +10,22 @@ import { useActions } from '@/hooks/useActions/useActions'
 export default function Checklist({ done, _id, cardId, task }: CheckList) {
 
 	const [isChecked, setChecked] = useState(done)
-	const { changeTask } = useActions()
+	const { changeTask, deleteTask } = useActions()
 
 	function changeTaskDone({ target }: React.ChangeEvent<HTMLInputElement>) {
 		const checked = target.checked
 		setChecked(checked)
-		const payload = { _id, done:target.checked, cardId }
+		const payload = { _id, done: target.checked, cardId }
 		changeTask(payload)
 	}
 
-	function deleteTask() {
-
+	function taskDelete() {
+		deleteTask(cardId, _id)
 	}
 
 	function changeTaskTitle(task: string) {
 		const payload = { _id, task, cardId }
-	return	changeTask(payload)
-
+		return changeTask(payload)
 	}
 
 	return (
@@ -37,6 +36,7 @@ export default function Checklist({ done, _id, cardId, task }: CheckList) {
 					buttonSubmitTitle='Сохранить'
 					onSubmit={changeTaskTitle}
 					placeholder='Введите название задачи'
+					defaultValue={task}
 				>
              <span
 							 className={isChecked ? `${classes.checkbox_title_none}`
@@ -49,7 +49,7 @@ export default function Checklist({ done, _id, cardId, task }: CheckList) {
 				<div className={classes.delete_btn_wrapper}>
 					{!isChecked &&
 						<Button
-							onClick={deleteTask}
+							onClick={taskDelete}
 							variant='just_icon'
 							icon={<MdClear />}
 						/>}

@@ -6,6 +6,7 @@ import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
+import { Checkout } from '@/components/Features'
 
 export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 	const { deleteCard, changeCardOne } = useActions()
@@ -34,7 +35,7 @@ export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 				{/*</Editor>*/}
 				<div className={classes.footer}>
 					<span>
-						{countTask}/{doneTask}
+						<Checkout countTask={countTask} doneTask={doneTask}/>
 					</span>
 					<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />
 				</div>
