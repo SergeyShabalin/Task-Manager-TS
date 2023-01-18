@@ -42,5 +42,5 @@ export const CardAC = {
 
 export const ChecklistAC = {
 	addNewTaskAC: (payload: CheckList) : AddNewTask => ({type: CHECKLIST_TYPES.ADD_NEW_TASK, payload}),
-	changeTaskAC: (payload: PayloadForChangedTask) : ChangeTask  => ({type: CHECKLIST_TYPES.CHANGE_TASK, payload})
+	changeTaskAC: (payload: PayloadForChangedTask[]) : ChangeTask  => ({type: CHECKLIST_TYPES.CHANGE_TASK, payload})
 }

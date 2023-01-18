@@ -141,7 +141,13 @@ export const checklistActions = {
 	changeTask: (payload: PayloadForChangedTask) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
 			const { data } = await CheckListApi.updateTaskAPI(payload)
-
+			const { board } = getState()
+			const newCheckList = board.cardInfo.checkList.map(task => {
+				if (task._id === payload._id) return data
+				else return task
+			})
+			console.log(newCheckList)
+			dispatch(ChecklistAC.changeTaskAC(newCheckList))
 			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка изменения задачи')

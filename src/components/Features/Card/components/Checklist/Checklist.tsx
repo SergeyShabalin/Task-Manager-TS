@@ -16,7 +16,6 @@ export default function Checklist({ done, _id, cardId, task }: CheckList) {
 		const checked = target.checked
 		setChecked(checked)
 		const payload = { _id, done:target.checked, cardId }
-
 		changeTask(payload)
 	}
 
@@ -26,7 +25,7 @@ export default function Checklist({ done, _id, cardId, task }: CheckList) {
 
 	function changeTaskTitle(task: string) {
 		const payload = { _id, task, cardId }
-		changeTask(payload)
+	return	changeTask(payload)
 
 	}
 

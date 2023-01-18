@@ -17,7 +17,7 @@ export interface PayloadForChangedTask{
 	_id: string
 	task?: string
 	done?: boolean
-	cardId?: string
+	cardId: string
 }
 
 export interface AddNewTask extends Action<CHECKLIST_TYPES.ADD_NEW_TASK> {
@@ -25,5 +25,5 @@ export interface AddNewTask extends Action<CHECKLIST_TYPES.ADD_NEW_TASK> {
 }
 
 export interface ChangeTask extends Action<CHECKLIST_TYPES.CHANGE_TASK> {
-	payload: PayloadForChangedTask
+	payload: PayloadForChangedTask[]
 }
