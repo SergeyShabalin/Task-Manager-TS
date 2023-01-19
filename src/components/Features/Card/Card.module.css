@@ -11,6 +11,21 @@
     margin-top: 10px;
 }
 
+.checkbox_title_wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.checkbox_title {
+    padding: 0 10px 0 15px;
+}
+
+.icons {
+    transform: scale(1.3);
+    color: #030a36
+}
+
 .checklists_wrapper {
     overflow-y: auto;
     height: 35vh;

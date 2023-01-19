@@ -103,9 +103,12 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CARD_TYPES.CHANGE_CARD: {
+			const newDescription =action.payload.description
+			const newTitle = action.payload.title
 			return {
 				...state,
-				allCards: { ...state.allCards, [action.payload._id]: action.payload }
+				allCards: { ...state.allCards, [action.payload._id]: action.payload },
+				cardInfo:{...state.cardInfo, description: newDescription , title: newTitle}
 			}
 		}
 		case CARD_TYPES.GET_CARD_INFO: {
@@ -121,7 +124,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CHECKLIST_TYPES.CHANGE_TASK: {
-
 			return{
 				...state,
 				 cardInfo: { ...state.cardInfo, checkList:  action.payload}
@@ -130,7 +132,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CHECKLIST_TYPES.DELETE_TASK:{
 			return{
 				...state,
-				cardInfo: { ...state.cardInfo, checkList:  action.payload}
+				cardInfo: { ...state.cardInfo, checkList: action.payload}
 			}
 		}
 

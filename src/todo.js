@@ -17,10 +17,10 @@
 // поправить все типы +++
 // TODO редактирование заголовка модалки и карты
 // TODO описание редактирование и доделать
-// TODO отрисовка чеклиста
-// TODO повесить useclickOutside внутри компонента Editor
+// отрисовка чеклиста +++
+// повесить useclickOutside внутри компонента Editor +++
 // TODO поправить лоадер в Editor
-// TODO типизировать useClickOutside
+// типизировать useClickOutside
 // TODO
 // TODO
 // TODO

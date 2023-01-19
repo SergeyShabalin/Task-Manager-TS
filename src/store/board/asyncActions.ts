@@ -92,7 +92,7 @@ export const cardActions = {
 			}
 		},
 
-	changeCardOne: (payload: PayloadForChangeCard) => async (dispatch: Dispatch<BoardActions>) => {
+	changeCard: (payload: PayloadForChangeCard) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CardsApi.changeCardAPI(payload)
 			dispatch(CardAC.changeCardAC(data))

@@ -9,6 +9,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import Description from '@/components/Features/Card/components/Description'
 import Checklist from '@/components/Features/Card/components/Checklist'
 import { Editor } from '@/components/Features'
+import { FiCheckSquare } from 'react-icons/all'
 
 export default function Card() {
 	const navigate = useNavigate()
@@ -36,8 +37,15 @@ export default function Card() {
 	return (
 		<Modal onClose={closeModal} open>
 			<div className={classes.card_modal_wrapper}>
-				<Header closeModal={closeModal} title={cardInfo.title} />
-				<Description description='описание' />
+				<Header closeModal={closeModal} cardId ={cardInfo._id} title={cardInfo.title} />
+				<Description description={cardInfo.description} cardId ={cardInfo._id} />
+				<div className={classes.checkbox_title_wrapper}>
+					<FiCheckSquare className={classes.icons} />
+					<h4 className={classes.checkbox_title}>Чек-лист</h4>
+				</div>
+				<div className={classes.slider}>
+
+				</div>
 				{CheckLists}
 				<Editor
 					buttonSubmitTitle='Добавить задачу'
