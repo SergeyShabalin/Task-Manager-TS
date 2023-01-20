@@ -26,6 +26,8 @@ export default function DecisionDate({ decisionDate }: DecisionDateTypes) {
 	const cardDate = format(changedDate, "d MMMM", { locale: ru });
 
 	return (
+	<>
+		{decisionDate &&
 		<div className={changedDate < now
 			? `${classes.over_decision_date}`
 			: `${classes.decision_date}`}>
@@ -37,6 +39,7 @@ export default function DecisionDate({ decisionDate }: DecisionDateTypes) {
 					? cardDate
 					: cardDateWithYear}
 			</div>
-		</div>
+		</div>}
+		</>
 	);
 };

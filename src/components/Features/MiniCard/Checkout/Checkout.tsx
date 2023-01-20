@@ -12,7 +12,7 @@ export default function Checkout({ countTask, doneTask }: CheckoutTypes) {
 	return (
 		<>
 			{/*TODO поправить*/}
-			{' '}
+
 			{countTask >= 1 && (
 				<div className={doneTask === countTask ? classes.checkout_done : classes.checkout}>
 					<div className={classes.icon}>

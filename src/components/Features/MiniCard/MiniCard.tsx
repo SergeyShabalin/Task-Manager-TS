@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
-
-import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
-import { Checkout, Editor } from '@/components/Features'
+import { Checkout, DecisionDate, Editor } from '@/components/Features'
 import { FiEdit3 } from 'react-icons/all'
+import Description from '@/components/Features/MiniCard/Description'
 
-export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
+import classes from './MiniCard.module.css'
+
+
+export default function MiniCard({ title, _id, countTask, doneTask, decisionDate }: Card) {
 	const { deleteCard, changeCard } = useActions()
 	const location = useLocation()
 
@@ -25,7 +27,7 @@ export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 
 	return (
 			<div className={classes.list_card}>
-				<Link state={{ background: location }} to={`/board/63ad83c2097128dd4caad35a/card/${_id}`}>
+				<Link className={classes.link} state={{ background: location }} to={`/board/63ad83c2097128dd4caad35a/card/${_id}`}>
 				<div className={classes.title}>{title}</div>
 				</Link>
 				<Editor
@@ -36,11 +38,13 @@ export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 				>
 				<Button variant='just_icon' icon={<FiEdit3 />}  />
 				</Editor>
-				
+
 				<div className={classes.footer}>
-					<span>
+
+						<DecisionDate decisionDate={decisionDate}/>
 						<Checkout countTask={countTask} doneTask={doneTask}/>
-					</span>
+						<Description  />
+
 					<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />
 				</div>
 			</div>

@@ -3,7 +3,7 @@ import { Button, Modal } from '@UI'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import classes from './Card.module.css'
-import Header from './components/Header/Header'
+
 import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import Description from '@/components/Features/Card/components/Description'
@@ -11,6 +11,8 @@ import Checklist from '@/components/Features/Card/components/Checklist'
 import { Editor } from '@/components/Features'
 import { FiCheckSquare } from 'react-icons/all'
 import Slider from '@/components/UI/Slider'
+import Deadline from '@/components/Features/Card/components/Deadline'
+import Header from '@/components/Features/Card/components/Header'
 
 export default function Card() {
 	const navigate = useNavigate()
@@ -41,7 +43,8 @@ export default function Card() {
 		<Modal onClose={closeModal} open>
 			<div className={classes.card_modal_wrapper}>
 				<Header closeModal={closeModal} cardId={cardInfo._id} title={cardInfo.title} />
-				<Description description={cardInfo.description} cardId={cardInfo._id} />
+				<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate}/>
+				<Description description={cardInfo.description} _id={cardInfo._id} />
 				<div className={classes.checkbox_title_wrapper}>
 					<FiCheckSquare className={classes.icons} />
 					<h4 className={classes.checkbox_title}>Чек-лист</h4>

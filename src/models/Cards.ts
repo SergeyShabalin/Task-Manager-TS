@@ -29,7 +29,7 @@ export interface PayloadForChangeCard {
 	_id: string
 	title?: string
 	description?: string
-	decisionDate?: Date
+	decisionDate?: Date | null
 	countTask?: number
 	doneTask?: number
 }
