@@ -132,7 +132,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CHECKLIST_TYPES.DELETE_TASK:{
 			return{
 				...state,
-				cardInfo: { ...state.cardInfo, checkList: action.payload}
+				cardInfo: { ...state.cardInfo, checkList: action.payload },
 			}
 		}
 

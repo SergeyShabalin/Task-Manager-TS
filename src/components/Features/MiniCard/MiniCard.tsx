@@ -6,7 +6,8 @@ import classes from './MiniCard.module.css'
 import { Card } from '@/models/Cards'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
-import { Checkout } from '@/components/Features'
+import { Checkout, Editor } from '@/components/Features'
+import { FiEdit3 } from 'react-icons/all'
 
 export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 	const { deleteCard, changeCard } = useActions()
@@ -25,16 +26,17 @@ export default function MiniCard({ title, _id, countTask, doneTask }: Card) {
 	return (
 			<div className={classes.list_card}>
 				<Link state={{ background: location }} to={`/board/63ad83c2097128dd4caad35a/card/${_id}`}>
-
-				{/*<Editor*/}
-				{/*	buttonSubmitTitle='Добавить'*/}
-				{/*	onSubmit={changeCardTitle}*/}
-				{/*	placeholder='Введите название карточки'*/}
-				{/*	defaultValue={title}*/}
-				{/*>*/}
 				<div className={classes.title}>{title}</div>
-				{/*</Editor>*/}
 				</Link>
+				<Editor
+					buttonSubmitTitle='Добавить'
+					onSubmit={changeCardTitle}
+					placeholder='Введите название карточки'
+					defaultValue={title}
+				>
+				<Button variant='just_icon' icon={<FiEdit3 />}  />
+				</Editor>
+				
 				<div className={classes.footer}>
 					<span>
 						<Checkout countTask={countTask} doneTask={doneTask}/>

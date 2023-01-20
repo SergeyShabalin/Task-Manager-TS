@@ -158,10 +158,11 @@ export const checklistActions = {
 
 	deleteTask: (cardId: string, taskId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
-			await CheckListApi.deleteTaskAPI(cardId, taskId)
+		const {data}	= await CheckListApi.deleteTaskAPI(cardId, taskId)
 			const { board } = getState()
 	   	const newChecklist =	board.cardInfo.checkList.filter(task=> task._id !== taskId)
 			dispatch(ChecklistAC.deleteTaskAC(newChecklist))
+			dispatch(CardAC.changeCardAC(data))
 		} catch (error) {
 			Notification.error('Произошла ошибка удаления задачи')
 			return false

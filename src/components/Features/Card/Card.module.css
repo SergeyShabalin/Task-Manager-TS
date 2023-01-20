@@ -21,6 +21,11 @@
     padding: 0 10px 0 15px;
 }
 
+
+.slider{
+    margin: 0 25px 5px 10px;
+}
+
 .icons {
     transform: scale(1.3);
     color: #030a36
