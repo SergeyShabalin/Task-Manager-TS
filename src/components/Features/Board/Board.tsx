@@ -3,19 +3,20 @@ import classes from './Board.module.css'
 import { Column } from '@Features'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
-import { Button, Notification } from '@UI'
+import { Button } from '@UI'
 import { Editor } from '@Features'
-import MiniCard from '@/components/Features/MiniCard/MiniCard'
+import { useParams } from 'react-router-dom'
 
 export default function Board() {
 	const { getCurrentBoard, addNewColumn } = useActions()
+	const { boardId } = useParams()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const {changeBoard} = useActions()
 
 	useEffect(() => {
-		getCurrentBoard('dfasdfsf')
-	}, [])
+	if(boardId)	getCurrentBoard(boardId)
+	}, [boardId])
 
 	async function addColumn(title: string) {
 		const isSuccess = await addNewColumn(title)

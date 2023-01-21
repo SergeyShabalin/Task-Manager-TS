@@ -1,6 +1,6 @@
 import { defaultState } from './initState'
 
-import { BOARD_TYPES, BoardAction, BoardChange, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
+import { BOARD_TYPES, BoardAction, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
@@ -51,7 +51,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			return {
 			...state, currentBoard: action.payload
 			}
-
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
 				...state,
@@ -62,7 +61,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
 			}
 		}
-
 		case COLUMN_TYPES.DELETE_COLUMN: {
 			const newAllColumns = { ...state.allColumns }
 			delete newAllColumns[action.payload.columnId]
@@ -111,7 +109,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CARD_TYPES.CHANGE_CARD: {
 			return {
 				...state,
-				allCards: { ...state.allCards, [action.payload._id]: action.payload },
+				allCards: { ...state.allCards, [action.payload._id!]: action.payload },
 				cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
 			}
 		}

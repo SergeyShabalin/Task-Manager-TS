@@ -39,7 +39,7 @@ export const BoardAC = {
 	startFetching: (): StartFetching => ({type: BOARD_TYPES.START_FETCHING_BOARD}),
 	successFetching: (payload: BoardAPI): SuccessFetching => ({type: BOARD_TYPES.SUCCESS_FETCHING_BOARD, payload}),
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
-	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload})
+	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload}),
 };
 
 export const ColumnAC = {

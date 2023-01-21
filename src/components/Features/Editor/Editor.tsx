@@ -33,7 +33,6 @@ export default function Editor({
 	const editorRef = useRef(null);
   useOnClickOutside(editorRef, onClose)
 
-//TODO протипизировать useRef
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setInputValue(target.value)
 	}
