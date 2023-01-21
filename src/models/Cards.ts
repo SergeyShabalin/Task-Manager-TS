@@ -25,15 +25,6 @@ export interface PayloadForDeleteCard {
 	cardId: string
 }
 
-export interface PayloadForChangeCard {
-	_id: string
-	title?: string
-	description?: string
-	decisionDate?: Date | null
-	countTask?: number
-	doneTask?: number
-}
-
 export interface AddNewCard extends Action<CARD_TYPES.ADD_NEW_CARD> {
 	payload: Card
 }
@@ -43,7 +34,7 @@ export interface DeleteCard extends Action<CARD_TYPES.DELETE_CARD>{
 }
 
 export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
-	payload: PayloadForChangeCard
+	payload: Partial<Card>
 }
 
 export interface GetCardInfo extends  Action<CARD_TYPES.GET_CARD_INFO> {

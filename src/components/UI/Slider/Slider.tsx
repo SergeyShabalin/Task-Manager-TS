@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import classes from './Slider.module.css'
+import { Card } from '@/models/Cards'
 
-export interface SliderProps{
-	allTask: number
-	doneTask: number
-}
+type SliderProps = Pick<Card, 'countTask' | 'doneTask'>
 
-export default function Slider({allTask, doneTask}: SliderProps) {
+export default function Slider({countTask, doneTask}: SliderProps) {
 
 	const [progress, setProgress] = useState(1);
-	const checkListsProgress =((doneTask/allTask)*100)
+	const checkListsProgress =((doneTask/countTask)*100)
 
 	useEffect(() => {
-		if (allTask!==0) setProgress(checkListsProgress);
+		if (countTask!==0) setProgress(checkListsProgress);
 	}, [checkListsProgress]);
 
 	function changeValue() {}
@@ -23,7 +21,7 @@ export default function Slider({allTask, doneTask}: SliderProps) {
 
 	return (
 		<div className={classes.wrapper}>
-			<span className={classes.progress_percent}>{allTask && progress.toFixed(0).toString()}%</span>
+			<span className={classes.progress_percent}>{countTask && progress.toFixed(0).toString()}%</span>
 			<input
 				type="range"
 				min="0"

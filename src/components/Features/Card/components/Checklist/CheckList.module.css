@@ -1,5 +1,16 @@
-.checkList_wrapper {
-    color: #172b4d;
+.checklist_title_wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.checklist_title_wrapper h4 {
+    padding: 0 10px 0 15px;
+}
+
+.icons {
+    transform: scale(1.3);
+    color: #030a36;
 }
 
 .checkbox {
@@ -40,11 +51,5 @@
     opacity: 0;
 }
 
-
-.delete_btn_wrapper{
-    display: flex;
-    justify-content: right;
-    cursor: pointer;
-}
 
 

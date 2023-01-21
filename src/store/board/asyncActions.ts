@@ -6,11 +6,12 @@ import ColumnsApi from '@/api/ColumnsApi'
 import CardsApi from '@/api/CardsApi'
 import { BoardActions } from '@/store/board/reducer'
 import { PayloadForDeleteColumn } from '@/models/Columns'
-import { PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
+import { Card, PayloadForChangeCard, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
 import CheckListApi from '@/api/CheckListApi'
-import { CheckList, PayloadForChangedTask } from '@/models/CheckList'
+import { PayloadForChangedTask } from '@/models/CheckList'
+import { Board } from '@/models/Boards'
 
 export const columnsActions = {
 	addNewColumn:
@@ -92,7 +93,7 @@ export const cardActions = {
 			}
 		},
 
-	changeCard: (payload: PayloadForChangeCard) => async (dispatch: Dispatch<BoardActions>) => {
+	changeCard: (payload: Partial<Card>) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CardsApi.changeCardAPI(payload)
 			dispatch(CardAC.changeCardAC(data))
@@ -122,6 +123,16 @@ export const boardActions = {
 		} catch (error) {
 			Notification.error('Произошла ошибка открытия доски')
 			dispatch(BoardAC.errorFetching())
+		}
+	},
+	changeBoard: (payload: Partial<Board>) => async (dispatch: Dispatch<BoardActions>) =>{
+		try {
+			const {data} = await BoardApi.updateBoardAPI(payload)
+			dispatch(BoardAC.changeBoardAC(data))
+			return true
+		} catch (error){
+			Notification.error('Произошла ошибка изменения доски')
+			return false
 		}
 	}
 }

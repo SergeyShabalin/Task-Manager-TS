@@ -1,9 +1,9 @@
 import { defaultState } from './initState'
 
-import { BOARD_TYPES, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
+import { BOARD_TYPES, BoardAction, BoardChange, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
-import { AddNewTask, ChangeTask, DeleteTask, CHECKLIST_TYPES } from '@/models/CheckList'
+import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
 
 export type BoardActions =
 	| StartFetching
@@ -19,7 +19,7 @@ export type BoardActions =
 	| AddNewTask
 	| ChangeTask
 	| DeleteTask
-
+	| BoardAction
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -47,6 +47,11 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				},
 				allCards: {}
 			}
+		case BOARD_TYPES.CHANGE_BOARD:
+			return {
+			...state, currentBoard: action.payload
+			}
+
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
 				...state,
@@ -57,6 +62,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
 			}
 		}
+
 		case COLUMN_TYPES.DELETE_COLUMN: {
 			const newAllColumns = { ...state.allColumns }
 			delete newAllColumns[action.payload.columnId]
@@ -103,12 +109,10 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CARD_TYPES.CHANGE_CARD: {
-			const newDescription =action.payload.description
-			const newTitle = action.payload.title
 			return {
 				...state,
 				allCards: { ...state.allCards, [action.payload._id]: action.payload },
-				cardInfo:{...state.cardInfo, description: newDescription , title: newTitle}
+				cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
 			}
 		}
 		case CARD_TYPES.GET_CARD_INFO: {
@@ -124,15 +128,15 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CHECKLIST_TYPES.CHANGE_TASK: {
-			return{
+			return {
 				...state,
-				 cardInfo: { ...state.cardInfo, checkList:  action.payload}
+				cardInfo: { ...state.cardInfo, checkList: action.payload }
 			}
 		}
-		case CHECKLIST_TYPES.DELETE_TASK:{
-			return{
+		case CHECKLIST_TYPES.DELETE_TASK: {
+			return {
 				...state,
-				cardInfo: { ...state.cardInfo, checkList: action.payload },
+				cardInfo: { ...state.cardInfo, checkList: action.payload }
 			}
 		}
 

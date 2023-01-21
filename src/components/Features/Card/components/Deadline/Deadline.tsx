@@ -11,23 +11,21 @@ import useOnClickOutside from '../../../../../hooks/UseOnClickOutside'
 import classes from './Deadline.module.css'
 import useOpenClose from '@/hooks/UseOpenClose'
 import { useActions } from '@/hooks/useActions/useActions'
+import { Card } from '@/models/Cards'
 
-export interface DeadlineProps {
-	decisionDate: Date
-	_id: string
-}
+type DeadlineProps = Pick<Card, 'decisionDate' | '_id'>
+
+const emptyDateText = 'Установить срок'
 
 export default function Deadline({ decisionDate, _id }: DeadlineProps) {
-
-
-	const ref = useRef()
+	const datePickerRef = useRef(null)
 	const { onOpen, onClose, isOpen } = useOpenClose()
 	const { changeCard } = useActions()
 
-	useOnClickOutside(ref, onClose)
+	useOnClickOutside(datePickerRef, onClose)
 
-	function handleChange(date: Date) {
-		const payload = { _id, decisionDate: date }
+	function handleChange(decisionDate: Date) {
+		const payload = { _id, decisionDate }
 		changeCard(payload)
 		onClose()
 	}
@@ -37,26 +35,33 @@ export default function Deadline({ decisionDate, _id }: DeadlineProps) {
 		changeCard(payload)
 	}
 
-	const convertDateTime = decisionDate ? format(new Date(decisionDate), 'd MMMM yyyy', { locale: ru }) : null
+	const convertDateTime = decisionDate
+		? format(new Date(decisionDate), 'd MMMM yyyy', { locale: ru })
+		: null
 
 	return (
 		<div className={classes.wrapper}>
 			<p className={classes.title}>Срок</p>
 			<div className={classes.date_wrapper}>
-        <span className={classes.date_time} onClick={onOpen}>
-          {decisionDate ? convertDateTime : 'Установить срок'}
-					<div className={classes.icon}> <MdKeyboardArrowDown /></div>
-        </span>
-				{decisionDate && <Button
-					onClick={deleteDate}
-					variant='just_icon'
-					icon={<AiOutlineClose />} />}
+				<span className={classes.date_time} onClick={onOpen}>
+					{decisionDate ? convertDateTime : emptyDateText}
+					<div className={classes.icon}>
+						<MdKeyboardArrowDown />
+					</div>
+				</span>
+				{decisionDate && (
+					<Button onClick={deleteDate} variant='just_icon' icon={<AiOutlineClose />} />
+				)}
 				{isOpen && (
-					<div className={classes.calendar_wrapper} ref={ref}>
-						<DatePicker selected={decisionDate && new Date(decisionDate)} onChange={handleChange} inline />
+					<div className={classes.calendar_wrapper} ref={datePickerRef}>
+						<DatePicker
+							selected={decisionDate && new Date(decisionDate)}
+							onChange={handleChange}
+							inline
+						/>
 					</div>
 				)}
 			</div>
 		</div>
 	)
-};
+}

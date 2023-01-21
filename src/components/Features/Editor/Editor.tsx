@@ -30,8 +30,8 @@ export default function Editor({
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
 	const [isLoad, setIsLoad] = useState(false)
-	const ref = useRef<HTMLDivElement>();
-  useOnClickOutside(ref, onClose)
+	const editorRef = useRef(null);
+  useOnClickOutside(editorRef, onClose)
 
 //TODO протипизировать useRef
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -55,7 +55,7 @@ export default function Editor({
 	if (!isOpen) return <div onClick={onOpen}>{children}</div>
 
 	return (
-			<div className={classes.wrapper} ref={ref}>
+			<div className={classes.wrapper} ref={editorRef}>
 				<Input
 					autoFocus
 					rows={rows}

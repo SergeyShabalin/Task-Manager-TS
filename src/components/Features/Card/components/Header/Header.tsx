@@ -1,23 +1,23 @@
-import React from "react";
-import { AiOutlineClose, AiOutlineCreditCard } from "react-icons/ai";
+import React from 'react'
+import { AiOutlineClose, AiOutlineCreditCard } from 'react-icons/ai'
 
-import { Button } from "@UI";
-import classes from "./Header.module.css";
+import { Button } from '@UI'
+import classes from './Header.module.css'
 import { Editor } from '@Features'
 import { useActions } from '@/hooks/useActions/useActions'
+import { Card } from '@/models/Cards'
 
-interface HeaderProps {
+type CardProps = Pick <Card, 'title'|'_id'>
+
+interface HeaderProps extends CardProps{
 	closeModal: () => void
-	title: string
-	cardId: string
 }
 
-export default function Header({ closeModal, title, cardId }: HeaderProps) {
-
+export default function Header({ closeModal, title, _id }: HeaderProps) {
 	const { changeCard } = useActions()
 
-	function changeCardTitle(value: string) {
-		const payload = { _id: cardId, title: value }
+	function changeCardTitle(title: string) {
+		const payload = { _id, title }
 		const isSuccess = changeCard(payload)
 		return isSuccess
 	}
@@ -34,17 +34,12 @@ export default function Header({ closeModal, title, cardId }: HeaderProps) {
 					placeholder='Введите название карточки'
 					defaultValue={title}
 				>
-				<h3 className={classes.title}>{title}</h3>
+					<h3 className={classes.title}>{title}</h3>
 				</Editor>
-
 			</div>
 			<div className={classes.form_close}>
-				<Button
-					onClick={closeModal}
-					variant="just_icon"
-					icon={<AiOutlineClose />}
-				/>
+				<Button onClick={closeModal} variant='just_icon' icon={<AiOutlineClose />} />
 			</div>
 		</div>
-	);
-};
+	)
+}

@@ -11,7 +11,7 @@ import Description from '@/components/Features/MiniCard/Description'
 import classes from './MiniCard.module.css'
 
 
-export default function MiniCard({ title, _id, countTask, doneTask, decisionDate }: Card) {
+export default function MiniCard({ title, _id, countTask, doneTask, decisionDate, description }: Card) {
 	const { deleteCard, changeCard } = useActions()
 	const location = useLocation()
 
@@ -30,6 +30,7 @@ export default function MiniCard({ title, _id, countTask, doneTask, decisionDate
 				<Link className={classes.link} state={{ background: location }} to={`/board/63ad83c2097128dd4caad35a/card/${_id}`}>
 				<div className={classes.title}>{title}</div>
 				</Link>
+
 				<Editor
 					buttonSubmitTitle='Добавить'
 					onSubmit={changeCardTitle}
@@ -40,10 +41,9 @@ export default function MiniCard({ title, _id, countTask, doneTask, decisionDate
 				</Editor>
 
 				<div className={classes.footer}>
-
 						<DecisionDate decisionDate={decisionDate}/>
 						<Checkout countTask={countTask} doneTask={doneTask}/>
-						<Description  />
+						<Description isOpen = {description} />
 
 					<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />
 				</div>

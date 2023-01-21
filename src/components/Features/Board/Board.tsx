@@ -9,9 +9,9 @@ import MiniCard from '@/components/Features/MiniCard/MiniCard'
 
 export default function Board() {
 	const { getCurrentBoard, addNewColumn } = useActions()
-	const columnIds = useTypedSelector(state => state.board.currentBoard.columns)
 	const allColumns = useTypedSelector(state => state.board.allColumns)
-	const isError = useTypedSelector(state => state.board.isError)
+	const board = useTypedSelector(state => state.board.currentBoard)
+	const {changeBoard} = useActions()
 
 	useEffect(() => {
 		getCurrentBoard('dfasdfsf')
@@ -22,14 +22,25 @@ export default function Board() {
 		return isSuccess
 	}
 
-	const columns = columnIds?.map(id => {
+	const columns = board.columns?.map(id => {
 		const column = allColumns[id]
 		return <Column key={column._id} {...column} />
 	})
 
+	function changeTitleBoard(title: string) {
+	const payload = {_id:board._id, title}
+	return	changeBoard(payload)
+	}
+
 	return (
 		<div>
-			{/*<Notification open={isError} message='isError' />*/}
+			<Editor
+				buttonSubmitTitle='изменить наименование доски'
+				placeholder='введите значение'
+				onSubmit={changeTitleBoard}
+			>
+				<h4>{board.title}</h4>
+			</Editor>
 			<div className={classes.wrapper_list}>
 				<div className={classes.columns}>{columns}</div>
 				<div className={classes.add_list}>
@@ -37,7 +48,6 @@ export default function Board() {
 						buttonSubmitTitle='добавление колонки'
 						placeholder='введите значение'
 						onSubmit={addColumn}
-						errorMessage='Произошла ошибка добавления колонки'
 					>
 						<div>
 							<Button variant='contained' title='Добавить колонку' />

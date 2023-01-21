@@ -21,11 +21,11 @@
 // повесить useclickOutside внутри компонента Editor +++
 // TODO поправить лоадер в Editor
 // типизировать useClickOutside
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
+// TODO сделать индексный файл, в который импортировать все хуки
+// TODO поправить datapicker
+// TODO изменить default value у editor
+// TODO сделать проверку на удаление чего-либо
+// TODO error boundary создать компонент которым обернуть другие которые могут закрашиться
 // TODO
 // TODO
 // TODO

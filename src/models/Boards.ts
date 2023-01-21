@@ -18,13 +18,19 @@ export enum BOARD_TYPES {
 	START_FETCHING_BOARD = 'START_FETCHING_BOARD',
 	SUCCESS_FETCHING_BOARD = 'SUCCESS_FETCHING_BOARD',
 	ERROR_FETCHING_BOARD = 'ERROR_FETCHING_BOARD',
+	CHANGE_BOARD = 'CHANGE_BOARD'
 }
+export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
+export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
+export type BoardChange = Action<BOARD_TYPES.CHANGE_BOARD>
 
 export interface SuccessFetching extends Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD> {
 	payload: BoardAPI
 }
-export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
-export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
+
+export interface BoardAction extends BoardChange {
+	payload: Board
+}
 
 export interface BoardState extends BoardAPI{
 	isLoading: boolean

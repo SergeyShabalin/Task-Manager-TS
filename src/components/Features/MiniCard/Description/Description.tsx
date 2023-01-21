@@ -2,10 +2,14 @@ import React from 'react'
 import classes from './Description.module.css'
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/all'
 
-export default function Description( isOpen : boolean){
+interface DescriptionProps{
+	isOpen: boolean | string
+}
+
+export default function Description({ isOpen }: DescriptionProps){
 	return (
 		<div className={classes.wrapper}>
-			<BsReverseLayoutTextWindowReverse/>
+			{isOpen &&	<BsReverseLayoutTextWindowReverse/> }
 		</div>
 	)
 }
