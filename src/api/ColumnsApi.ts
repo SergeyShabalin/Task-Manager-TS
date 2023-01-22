@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
 
 import { Api } from "./index";
-import { Column } from '@/models/Columns'
+import { Column, PayloadForDropCard } from '@/models/Columns'
 
 class ColumnsAPI {
 
@@ -15,6 +15,10 @@ class ColumnsAPI {
 
 	async changeColumnAPI(columnId: string, title: string): Promise<AxiosResponse<Column>> {
 		return Api.patch(`/columns/${columnId}`, { title });
+	}
+
+	async dragDropCardAPI(payload: PayloadForDropCard ) : Promise<AxiosResponse> {
+		return Api.patch(`/cards/dragDrop/${payload.currentCardId}`, {targetColumnId:payload.dropColumnId});
 	}
 
 }

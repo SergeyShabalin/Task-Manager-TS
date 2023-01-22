@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { BoardAC } from '@/store/board/action'
+import { BoardAC, ColumnAC } from '@/store/board/action'
 import { CardAC } from '@/store/board/action'
 import {
 	cardActions,
@@ -16,6 +16,7 @@ export const useActions = () => {
 		{
 			...BoardAC,
 			...CardAC,
+			...ColumnAC,
 			...boardActions,
 			...columnsActions,
 			...cardActions,

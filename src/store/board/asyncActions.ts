@@ -5,7 +5,7 @@ import BoardApi from '@/api/BoardApi'
 import ColumnsApi from '@/api/ColumnsApi'
 import CardsApi from '@/api/CardsApi'
 import { BoardActions } from '@/store/board/reducer'
-import { PayloadForDeleteColumn } from '@/models/Columns'
+import { PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
@@ -59,6 +59,15 @@ export const columnsActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка изменения колонки')
 			return false
+		}
+	},
+
+	dragAndDropCard: (payload: PayloadForDropCard) => async(dispatch : Dispatch<BoardActions>)=>{
+		try {
+			await ColumnsApi.dragDropCardAPI(payload)
+			dispatch(ColumnAC.dropCard(payload))
+		} catch (error){
+			Notification.error('Произошла ошибка изменения колонки')
 		}
 	}
 }

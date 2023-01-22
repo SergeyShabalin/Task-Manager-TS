@@ -12,9 +12,9 @@ import {
 	ChangeColumn,
 	Column,
 	COLUMN_TYPES,
-	DeleteColumn,
+	DeleteColumn, DropCard,
 	PayloadForChangeColumn,
-	PayloadForDeleteColumn
+	PayloadForDeleteColumn, PayloadForDropCard
 } from '@/models/Columns'
 import {
 	AddNewCard,
@@ -45,7 +45,8 @@ export const BoardAC = {
 export const ColumnAC = {
 	addColumnAC : (payload: Column): AddNewColumn => ({type: COLUMN_TYPES.ADD_NEW_COLUMN, payload}),
 	deleteColumnAC : (payload: PayloadForDeleteColumn) : DeleteColumn => ({type: COLUMN_TYPES.DELETE_COLUMN, payload}),
-	changeColumnAC: (payload: PayloadForChangeColumn) : ChangeColumn => ({type: COLUMN_TYPES.CHANGE_COLUMN, payload})
+	changeColumnAC: (payload: PayloadForChangeColumn) : ChangeColumn => ({type: COLUMN_TYPES.CHANGE_COLUMN, payload}),
+	dropCard: (payload: PayloadForDropCard) : DropCard => ({type: COLUMN_TYPES.DROP_CARD, payload})
 }
 
 export const CardAC = {

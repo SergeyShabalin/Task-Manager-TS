@@ -3,7 +3,8 @@ import { Action } from 'redux'
 export enum COLUMN_TYPES {
 	ADD_NEW_COLUMN = 'ADD_NEW_COLUMN',
 	DELETE_COLUMN = 'DELETE_COLUMN',
-	CHANGE_COLUMN = 'CHANGE_COLUMN'
+	CHANGE_COLUMN = 'CHANGE_COLUMN',
+	DROP_CARD = 'DROP_CARD'
 }
 export interface AddNewColumn extends Action<COLUMN_TYPES.ADD_NEW_COLUMN> {
 	payload: Column
@@ -17,6 +18,16 @@ export interface PayloadForDeleteColumn {
 export interface PayloadForChangeColumn {
 	_id: string
 	title: string
+}
+export interface PayloadForDropCard{
+	currentColumnId: string
+	currentCardId: string
+	dropColumnId: string
+	dropCardId: string
+}
+
+export interface DropCard extends Action<COLUMN_TYPES.DROP_CARD>{
+	payload: PayloadForDropCard
 }
 
 export interface DeleteColumn extends Action<COLUMN_TYPES.DELETE_COLUMN> {

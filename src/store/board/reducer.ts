@@ -1,7 +1,13 @@
 import { defaultState } from './initState'
 
-import { BOARD_TYPES, BoardAction, ErrorFetching, StartFetching, SuccessFetching } from '@/models/Boards'
-import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn } from '@/models/Columns'
+import {
+	BOARD_TYPES,
+	BoardAction,
+	ErrorFetching,
+	StartFetching,
+	SuccessFetching
+} from '@/models/Boards'
+import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
 
@@ -20,6 +26,7 @@ export type BoardActions =
 	| ChangeTask
 	| DeleteTask
 	| BoardAction
+	| DropCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -49,7 +56,8 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		case BOARD_TYPES.CHANGE_BOARD:
 			return {
-			...state, currentBoard: action.payload
+				...state,
+				currentBoard: action.payload
 			}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
@@ -135,6 +143,43 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			return {
 				...state,
 				cardInfo: { ...state.cardInfo, checkList: action.payload }
+			}
+		}
+		case COLUMN_TYPES.DROP_CARD: {
+			const { dropColumnId, currentColumnId, currentCardId, dropCardId } = action.payload
+
+			const dropColumn = JSON.parse(JSON.stringify(state.allColumns[dropColumnId]))
+			const dragColumn = dropColumnId === currentColumnId
+				? dropColumn : JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
+
+			const newDragCardIds = dragColumn.cards.filter(id => id !== currentCardId)
+			dragColumn.cards = newDragCardIds
+
+			const newArr = []
+			if (dropColumn.cards.length === 0) {
+				dropColumn.cards.push(currentCardId)
+			} else {
+				while (dropColumn.cards.length) {
+					const cardId = dropColumn.cards.shift()
+					if (cardId !== dropCardId) newArr.push(cardId)
+					else newArr.push(cardId, currentCardId)
+				}
+				dropColumn.cards = newArr
+			}
+			return {
+				...state,
+				allColumns: {
+					...state.allColumns,
+					[currentColumnId]: dragColumn,
+					[dropColumnId]: dropColumn
+
+				},
+				allCards: {
+					...state.allCards, [currentCardId]: {
+						...state.allCards[currentCardId],
+						column_id: dropColumnId
+					}
+				}
 			}
 		}
 
