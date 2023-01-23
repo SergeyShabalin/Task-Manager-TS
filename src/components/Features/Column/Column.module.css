@@ -12,6 +12,7 @@
     width: 33vh;
     background-color: var(--list-wrapper);
     border-radius: 5px;
+    /*background-color: rgba(51, 173, 23, 0.7);*/
 }
 
 .cards_wrapper{

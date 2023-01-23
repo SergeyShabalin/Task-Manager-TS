@@ -18,7 +18,7 @@ class ColumnsAPI {
 	}
 
 	async dragDropCardAPI(payload: PayloadForDropCard ) : Promise<AxiosResponse> {
-		return Api.patch(`/cards/dragDrop/${payload.currentCardId}`, {targetColumnId:payload.dropColumnId});
+		return Api.patch(`/cards/dragDrop/${payload.currentCardId}`, {targetColumnId:payload.targetColumnId});
 	}
 
 }

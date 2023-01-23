@@ -22,8 +22,8 @@ export interface PayloadForChangeColumn {
 export interface PayloadForDropCard{
 	currentColumnId: string
 	currentCardId: string
-	dropColumnId: string
-	dropCardId: string
+	targetColumnId: string
+	targetCardId: string
 }
 
 export interface DropCard extends Action<COLUMN_TYPES.DROP_CARD>{
