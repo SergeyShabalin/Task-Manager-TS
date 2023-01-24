@@ -64,11 +64,10 @@ export const columnsActions = {
 
 	dragAndDropCard: (payload: PayloadForDropCard) => async(dispatch : Dispatch<BoardActions>)=>{
 		try {
-			console.log(payload)
-			// await ColumnsApi.dragDropCardAPI(payload)
+			await ColumnsApi.dragDropCardAPI(payload)
 			dispatch(ColumnAC.dropCard(payload))
 		} catch (error){
-			Notification.error('Произошла ошибка изменения колонки')
+			Notification.error('Произошла ошибка переноса карточки')
 		}
 	}
 }

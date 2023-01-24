@@ -47,6 +47,8 @@ export default function Column({ title, cards, _id }: ColumnT) {
 		e.preventDefault()
 		let currentCardId = e.dataTransfer.getData('cardId')
 		let currentColumnId = e.dataTransfer.getData('columnId')
+		//TODO transfer через onDragEnter не работает
+
 
 		const payload = {
 			currentColumnId,

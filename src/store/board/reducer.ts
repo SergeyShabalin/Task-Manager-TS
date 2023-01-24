@@ -149,30 +149,30 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 
 			const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
 
-			const dropColumn = JSON.parse(JSON.stringify(state.allColumns[targetColumnId]))
-			const dragColumn = targetColumnId === currentColumnId
-				? dropColumn : JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
+			const targetColumn = JSON.parse(JSON.stringify(state.allColumns[targetColumnId]))
+			const currentColumn = targetColumnId === currentColumnId
+				? targetColumn : JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
 
-			const newDragCardIds = dragColumn.cards.filter((id: string) => id !== currentCardId)
-			dragColumn.cards = newDragCardIds
+			const newDragCardIds = currentColumn.cards.filter((id: string) => id !== currentCardId)
+			currentColumn.cards = newDragCardIds
 
 			const newArr = []
-			if (dropColumn.cards.length === 0) {
-				dropColumn.cards.push(currentCardId)
+			if (targetColumn.cards.length === 0) {
+				targetColumn.cards.push(currentCardId)
 			} else {
-				while (dropColumn.cards.length) {
-					const cardId = dropColumn.cards.shift()
+				while (targetColumn.cards.length) {
+					const cardId = targetColumn.cards.shift()
 					if (cardId !== targetCardId) newArr.push(cardId)
 					else newArr.push(cardId, currentCardId)
 				}
-				dropColumn.cards = newArr
+				targetColumn.cards = newArr
 			}
 			return {
 				...state,
 				allColumns: {
 					...state.allColumns,
-					[currentColumnId]: dragColumn,
-					[targetColumnId]: dropColumn
+					[currentColumnId]: currentColumn,
+					[targetColumnId]: targetColumn
 
 				},
 				allCards: {
