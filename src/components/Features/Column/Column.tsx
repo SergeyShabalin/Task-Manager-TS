@@ -27,28 +27,27 @@ export default function Column({ title, cards, _id }: ColumnT) {
 		return changeColumn(_id, value)
 	}
 
-	function onDragStart(e: React.DragEvent<HTMLDivElement>, columnId: string, cardId: string) {
+	function onDragStartCard(e: React.DragEvent<HTMLDivElement>, columnId: string, cardId: string) {
 		e.dataTransfer.effectAllowed = 'move'
 		e.dataTransfer.setData('cardId', cardId)
 		e.dataTransfer.setData('columnId', columnId)
+		targetCardId = ''
 	}
 
-	function onDragEnter(e: React.DragEvent<HTMLDivElement>) {
+	function onDragEnterColumn(e: React.DragEvent<HTMLDivElement>, columnId: string) {
 		e.preventDefault()
 		e.dataTransfer.dropEffect = 'move'
 	}
 
-	function onDragOver(e: React.DragEvent<HTMLDivElement>) {
+	function onDragOverColumn(e: React.DragEvent<HTMLDivElement>) {
 		e.preventDefault()
 		e.dataTransfer.dropEffect = 'move'
 	}
 
-	function onDrop(e: React.DragEvent<HTMLDivElement>, status: string, targetColumnId: string) {
+	function onDropColumn(e: React.DragEvent<HTMLDivElement>, status: string, targetColumnId: string) {
 		e.preventDefault()
 		let currentCardId = e.dataTransfer.getData('cardId')
 		let currentColumnId = e.dataTransfer.getData('columnId')
-		//TODO transfer через onDragEnter не работает
-
 
 		const payload = {
 			currentColumnId,
@@ -59,11 +58,13 @@ export default function Column({ title, cards, _id }: ColumnT) {
 		dragAndDropCard(payload)
 	}
 
-	function onDragEnd(e: React.DragEvent<HTMLDivElement>, cardId: string) {
+	function onDragLeaveCard(e: React.DragEvent<HTMLDivElement>) {
 		e.preventDefault()
 		e.dataTransfer.effectAllowed = 'move'
-		targetCardId = cardId
-		e.dataTransfer.setData('dropCardId', cardId)
+	}
+
+	function onDropCard(e: React.DragEvent<HTMLDivElement>, cardId: string) {
+		targetCardId=cardId
 	}
 
 	const miniCards = cards?.map(id => {
@@ -73,8 +74,9 @@ export default function Column({ title, cards, _id }: ColumnT) {
 				key={id}
 				id={id}
 				draggable
-				onDragStart={e => onDragStart(e, card.column_id, id)}
-				onDragLeave={e => onDragEnd(e, id)}
+				onDragStart={e => onDragStartCard(e, card.column_id, id)}
+				onDragLeave={e => onDragLeaveCard(e)}
+				onDrop={e => onDropCard(e, id)}
 				className={classes.list_card}
 			>
 				<MiniCard {...card} />
@@ -82,14 +84,15 @@ export default function Column({ title, cards, _id }: ColumnT) {
 		)
 	})
 
+
 	return (
-		<div className={classes.wrapper} >
+		<div className={classes.wrapper}>
 			<div
 				id={_id}
 				className={classes.list_wrapper}
-				onDragEnter={e => onDragEnter(e)}
-				onDragOver={e => onDragOver(e)}
-				onDrop={e => onDrop(e, 'new', _id)}
+				onDragEnter={e => onDragEnterColumn(e, _id)}
+				onDragOver={e => onDragOverColumn(e)}
+				onDrop={e => onDropColumn(e, 'new', _id)}
 			>
 				<Editor
 					buttonSubmitTitle='изменить'
@@ -100,9 +103,7 @@ export default function Column({ title, cards, _id }: ColumnT) {
 					<div>{title}</div>
 				</Editor>
 				<Button variant={'just_icon'} icon={<AiOutlinePlus />} onClick={columnDelete} />
-				<div className={classes.cards_wrapper}>
-					{miniCards}
-				</div>
+				<div className={classes.cards_wrapper}>{miniCards}</div>
 				<div className={classes.card_creator}>
 					<Editor
 						buttonSubmitTitle='Добавить'

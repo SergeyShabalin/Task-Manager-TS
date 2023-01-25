@@ -40,9 +40,3 @@ export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 export interface GetCardInfo extends  Action<CARD_TYPES.GET_CARD_INFO> {
 	payload: Card
 }
-
-export interface CardState {
-	isLoading: false
-	isError: true
-	cardInfo: Card
-}
