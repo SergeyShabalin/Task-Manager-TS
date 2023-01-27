@@ -6,7 +6,7 @@ interface UseOpenCloseTypes {
 	isOpen: boolean
 }
 
-export default function useOpenClose( defaultValue =false ): UseOpenCloseTypes {
+export default function useOpenClose( defaultValue = false ): UseOpenCloseTypes {
 	const [isOpen, setIsOpen] = useState(defaultValue)
 
 	function onOpen() {

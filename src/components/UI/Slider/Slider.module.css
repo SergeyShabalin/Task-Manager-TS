@@ -2,7 +2,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    margin: 0 25px 5px 10px;
+    margin: 5px;
+    padding: 15px 0;
 }
 
 .progress_percent{
@@ -22,6 +23,7 @@
     background-repeat: no-repeat;
     transition: ease-in-out 0.5s;
 }
+
 .done{
     -webkit-appearance: none;
     height: 8px;

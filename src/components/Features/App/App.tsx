@@ -6,6 +6,8 @@ import '../../../GlobalStyles.css'
 import Main from '@/layouts/Main'
 import UiKit from '@/components/UIKit'
 import { Card } from '@Features'
+import ContextMenu from '@/components/Features/MiniCard/ContextMenu'
+
 
 
 function App() {

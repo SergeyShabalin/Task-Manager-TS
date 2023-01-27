@@ -44,7 +44,11 @@ export default function Column({ title, cards, _id }: ColumnT) {
 		e.dataTransfer.dropEffect = 'move'
 	}
 
-	function onDropColumn(e: React.DragEvent<HTMLDivElement>, status: string, targetColumnId: string) {
+	function onDropColumn(
+		e: React.DragEvent<HTMLDivElement>,
+		status: string,
+		targetColumnId: string
+	) {
 		e.preventDefault()
 		let currentCardId = e.dataTransfer.getData('cardId')
 		let currentColumnId = e.dataTransfer.getData('columnId')
@@ -64,7 +68,7 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	}
 
 	function onDropCard(e: React.DragEvent<HTMLDivElement>, cardId: string) {
-		targetCardId=cardId
+		targetCardId = cardId
 	}
 
 	const miniCards = cards?.map(id => {
@@ -83,7 +87,6 @@ export default function Column({ title, cards, _id }: ColumnT) {
 			</div>
 		)
 	})
-
 
 	return (
 		<div className={classes.wrapper}>

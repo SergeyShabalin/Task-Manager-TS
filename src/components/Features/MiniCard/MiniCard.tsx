@@ -1,26 +1,28 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
 import { Card } from '@/models/Cards'
-import { Button } from '@UI'
+import { Button, Modal } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Checkout, DecisionDate, Editor } from '@/components/Features'
-import { FiEdit3 } from 'react-icons/all'
+import { BsThreeDots, FiEdit3 } from 'react-icons/all'
 import Description from '@/components/Features/MiniCard/Description'
 
 import classes from './MiniCard.module.css'
+import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
 
 export default function MiniCard({
-	title,
-	_id,
-	countTask,
-	doneTask,
-	decisionDate,
-	description, column_id
-}: Card) {
+																	 title,
+																	 _id,
+																	 countTask,
+																	 doneTask,
+																	 decisionDate,
+																	 description
+																 }: Card) {
 	const { deleteCard, changeCard } = useActions()
-
+	const { boardId } = useParams()
 	const location = useLocation()
+	const [isOpenContext, setIsOpenContext] = useState(false)
 
 	function cardDelete() {
 		deleteCard(_id)
@@ -32,43 +34,45 @@ export default function MiniCard({
 		return isSuccess
 	}
 
+	function contextClose() {
+		setIsOpenContext(false)
+	}
 
+	function contextOpen() {
+		setIsOpenContext(true)
+	}
 
 	return (
-		<div
-			// draggable
-			// onDragStart={(e) => handleDragStart(e, column_id, _id)}
-			// onDrop={(e) => handleDrop(e, column_id)}
-			className={classes.list_card}
-			// onDragLeave={handleDragLeave}
-			// onDragEnd={handleDragEnd}
-			// // onDrop={handleDrop}
-			// onDragOver={handleDragOver}
-		>
-			<Link
-				className={classes.link}
-				state={{ background: location }}
-				to={`/board/63ad83c2097128dd4caad35a/card/${_id}`}
-			>
-				<div className={classes.title}>{title}</div>
-			</Link>
+		<div className={classes.list_card}>
+			{isOpenContext &&
+				<ContextMenu
+					contextClose={contextClose}
+					changeCardTitle={changeCardTitle}
+					cardDelete = {cardDelete}
+				/>}
+			<div className={classes.header}>
 
-			<Editor
-				buttonSubmitTitle='Добавить'
-				onSubmit={changeCardTitle}
-				placeholder='Введите название карточки'
-				defaultValue={title}
-			>
-				<Button variant='just_icon' icon={<FiEdit3 />} />
-			</Editor>
+				<Link
+					className={classes.link}
+					state={{ background: location }}
+					to={`/board/${boardId}/card/${_id}`}
+				>
+					<div className={classes.title}>{title}</div>
+				</Link>
+				<div className={classes.edit}>
+						<Button variant='just_icon' icon={<BsThreeDots />} onClick={contextOpen} />
+				</div>
+			</div>
 
 			<div className={classes.footer}>
 				<DecisionDate decisionDate={decisionDate} />
 				<Checkout countTask={countTask} doneTask={doneTask} />
 				<Description isOpen={description} />
 
-				<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />
+				{/*<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />*/}
 			</div>
 		</div>
+
+
 	)
 }

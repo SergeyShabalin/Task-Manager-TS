@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 
 import { Button, Input } from '@UI'
@@ -7,7 +7,6 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 
 import classes from './Editor.module.css'
 
-
 interface EditorProps {
 	buttonSubmitTitle: string
 	rows?: number
@@ -15,7 +14,9 @@ interface EditorProps {
 	placeholder?: string
 	defaultValue?: string
 	onSubmit: (title: string) => any
-	children: React.ReactElement
+	children?: React.ReactElement,
+	nonChildren?: boolean
+
 }
 
 export default function Editor({
@@ -25,13 +26,18 @@ export default function Editor({
 	rows = 3,
 	placeholder,
 	cols = 32,
-	children
+	children,
+	nonChildren = false,
 }: EditorProps) {
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
 	const [isLoad, setIsLoad] = useState(false)
 	const editorRef = useRef(null);
   useOnClickOutside(editorRef, onClose)
+
+	useEffect(()=>{
+		if(nonChildren) onOpen()
+	}, [])
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setInputValue(target.value)
@@ -46,7 +52,7 @@ export default function Editor({
 		const isSuccess = await onSubmit(inputValue)
 		setIsLoad(() => false)
 		if (isSuccess) {
-			onClose()
+			 onClose()
 			setInputValue(defaultValue)
 		}
 	}
@@ -54,7 +60,7 @@ export default function Editor({
 	if (!isOpen) return <div onClick={onOpen}>{children}</div>
 
 	return (
-			<div className={classes.wrapper} ref={editorRef}>
+			<div className={classes.wrapper} ref={editorRef} >
 				<Input
 					autoFocus
 					rows={rows}
@@ -65,17 +71,7 @@ export default function Editor({
 					onChange={changeInput}
 					disabled={isLoad}
 				/>
-				{/*{isLoad && !isAdd && (*/}
-				{/*	<div className={classes.editor_loader}>*/}
-				{/*		<Loader size='normal' variant='global' color='lds-black' />*/}
-				{/*	</div>*/}
-				{/*)}*/}
 				<div className={classes.control}>
-					{/*{isLoad && isAdd && (*/}
-					{/*	<div className={classes.btn_loader}>*/}
-					{/*		<Loader size='small' variant='global' color='lds-white' />*/}
-					{/*	</div>*/}
-					{/*)}*/}
 					{buttonSubmitTitle && (
 						<div className={classes.add_btn}>
 							<Button
