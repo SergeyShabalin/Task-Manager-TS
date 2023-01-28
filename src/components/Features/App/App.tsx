@@ -7,6 +7,7 @@ import Main from '@/layouts/Main'
 import UiKit from '@/components/UIKit'
 import { Card } from '@Features'
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu'
+import Registration from '@/pages/registration'
 
 
 
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/*" element={<Main/>} />
 					<Route path="/board/:boardId" element={<Main/>}/>
 					<Route path="/ui" element={<UiKit />} />
+					<Route path="/registration" element={<Registration />} />
 					<Route path="/board/:boardId/card/:cardId" element={<Card/>}/>
 				</Routes>
 				{background && (

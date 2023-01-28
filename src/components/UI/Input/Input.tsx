@@ -8,6 +8,7 @@ interface inputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTe
 	iconRight?: React.ReactNode
 	variant?: 'normal' | 'large'
 	color?: 'black' | 'white' | 'transparent'
+	name?: string
 }
 
 export default function Input({
@@ -16,6 +17,7 @@ export default function Input({
 	iconRight,
 	variant = 'normal',
 	color = 'white',
+	name = 'input',
 	...props
 }: inputProps) {
 	if (rows > 1) {
@@ -38,6 +40,7 @@ export default function Input({
 			<div className={`${classes.input_container} ${classes[color]}`}>
 				{iconLeft && iconLeft}
 				<input
+					name={name}
 					type='text'
 					className={`${classes.input} ${classes[variant]} ${classes[color]}`}
 					{...props}

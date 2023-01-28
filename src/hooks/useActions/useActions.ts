@@ -6,8 +6,9 @@ import {
 	cardActions,
 	columnsActions,
 	boardActions,
-	checklistActions
+	checklistActions,
 } from '@/store/board/asyncActions'
+import {usersActions} from '@/store/user/asyncActions'
 
 export const useActions = () => {
 	const dispatch = useDispatch()
@@ -20,7 +21,8 @@ export const useActions = () => {
 			...boardActions,
 			...columnsActions,
 			...cardActions,
-			...checklistActions
+			...checklistActions,
+			...usersActions
 		},
 		dispatch
 	)
