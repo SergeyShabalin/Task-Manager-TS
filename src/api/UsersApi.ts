@@ -4,8 +4,8 @@ import { Api } from '@/api/index'
 
 class UsersApi {
 
-	async registration(payload: User): Promise<AxiosResponse<User>> {
-		return Api.post(`/registration`, payload);
+	async registration(payload: Partial<User>): Promise<AxiosResponse<User>> {
+		return Api.post(`/user/registration/`, payload);
 	}
 }
 

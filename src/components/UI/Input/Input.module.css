@@ -19,7 +19,7 @@
   color: #cbc3c3;
 }
 .input.transparent {
-    color: #8a8383;
+    color: #f5f1f1;
 }
 
 .input_container {
@@ -36,7 +36,7 @@
 }
 .input_container.transparent {
     background-color: var(--input-container-background-color-transparent);
-    border: 1px solid #0b6fb4;
+    border: 1px solid #b6bcc0;
 }
 
 .text_area {
@@ -56,32 +56,14 @@
     font-size: var(--input-label-font-size);
 }
 
-/*.transparent, .large, .transparent_column_header {*/
-/*    border: none;*/
-/*    resize: none;*/
-/*    outline: none;*/
-/*    width: 100%;*/
-/*    font-size: 0.82rem;*/
-/*    padding: var(--input-padding);*/
-/*    margin: var(--input-margin);*/
-/*    background-color: transparent;*/
-/*    font-weight: 500;*/
-/*    color: #090957;*/
-/*    font-family: var(--prymary-font);*/
-/*    resize: none;*/
-/*}*/
 
 .large {
-    /*max-height: 20px;*/
     font-size: var(--main-font-size);
     font-weight: 500;
-    /*color: rgba(220, 204, 204, 0.67)*/
 }
 
 .normal {
-    /*max-height: 20px;*/
     font-size: 14px;
     font-weight: 500;
-    /*color: rgba(220, 204, 204, 0.67)*/
 }
 

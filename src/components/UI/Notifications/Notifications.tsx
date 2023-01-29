@@ -9,11 +9,15 @@ interface NotificationsTypes {
 }
 
 function Notifications({ message }: NotificationsTypes) {
-
 	return (
 		<div className={classes.wrapper}>
-			<IoWarningOutline />
-			<span className={classes.message}>{message}</span>
+			<div className={classes.header}>
+				<IoWarningOutline />
+				<span className={classes.title}>Произошла ошибка!</span>
+			</div>
+			<div className={classes.footer}>
+				<span className={classes.message}>{message}</span>
+			</div>
 		</div>
 	)
 }

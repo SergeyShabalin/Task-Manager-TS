@@ -9,6 +9,8 @@ interface inputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTe
 	variant?: 'normal' | 'large'
 	color?: 'black' | 'white' | 'transparent'
 	name?: string
+	autocomplete?: string
+	type?: string | boolean
 }
 
 export default function Input({
