@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import classes from './Board.module.css'
 import { Column } from '@Features'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'

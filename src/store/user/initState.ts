@@ -9,5 +9,5 @@ export const defaultState: UserState ={
 	firstName: '',
 	secondName: '',
 	lastName: '',
-	birthday: new Date()
+	isAuth: false
 }

@@ -1,0 +1,49 @@
+.wrapper {
+    background-image: url('https://images.wallpaperscraft.ru/image/single/volny_bryzgi_pena_193879_3840x2400.jpg');
+    background-size: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controller {
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    min-width: 20%;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 1px 1px 36px 1px rgba(18, 22, 23, 0.47);
+    width: 15%;
+    height: 50%;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+
+.password {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.control_pass {
+    transform: scale(2);
+}
+
+.link_wrapper {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.link{
+    padding: 0 5px;
+    color: #e4ec03;
+    text-decoration: none;
+}

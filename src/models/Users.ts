@@ -1,22 +1,24 @@
 import { Action } from 'redux'
 import { Card } from '@/models/Cards'
 import { Column } from '@/models/Columns'
-import { Board } from '@/models/Boards'
+import { Board, BOARD_TYPES, BoardAPI } from '@/models/Boards'
 
 export interface User {
 	_id: string
+	email: string
 	password: string
 	boardIds: string[]
 	firstName: string
 	secondName: string
 	lastName: string
-	birthday: Date
 }
 
 
 export interface UserState extends User{
 	isLoading: boolean
 	isError: boolean
+	isAuth: boolean
+	token?: string
 }
 
 export enum USER_TYPES {
@@ -27,3 +29,11 @@ export enum USER_TYPES {
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
+export type CheckLogin = Action<USER_TYPES.CHECK_LOGIN>
+
+export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
+	payload: Partial<User>
+}
+export interface LoginCheck extends CheckLogin {
+	isAuth: boolean
+}

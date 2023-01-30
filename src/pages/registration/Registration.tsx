@@ -6,6 +6,7 @@ import { Button, Input } from '@UI'
 import 'react-datepicker/dist/react-datepicker.css'
 import classes from './Registration.module.css'
 import { BiShowAlt } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
 
 export default function Registration() {
 	const { registration } = useActions()
@@ -15,12 +16,9 @@ export default function Registration() {
 		password: '',
 		firstName: '',
 		secondName: '',
-		lastName: '',
-		birthday: new Date()
+		lastName: ''
 	})
 	const [isPass, setIsPass] = useState(true)
-
-	const [birthday, setBirthday] = useState(new Date())
 
 	function changePassView(e: React.FormEvent) {
 		e.preventDefault()
@@ -29,12 +27,7 @@ export default function Registration() {
 
 	function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const payload = { ...form, birthday }
-		registration(payload)
-	}
-
-	function getBirthday(date: Date | null) {
-		setBirthday(date!)
+		registration(form)
 	}
 
 	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -96,17 +89,17 @@ export default function Registration() {
 						value={form.password}
 						onChange={onSubmit}
 					/>
-				<div className={classes.control_pass}><Button icon={<BiShowAlt />} onClick={changePassView} /></div>
+					<div className={classes.control_pass}>
+						<Button icon={<BiShowAlt />} onClick={changePassView} />
+					</div>
 				</div>
 
-				{/*<DatePicker*/}
-				{/*	selected={birthday}*/}
-				{/*	name='birthday'*/}
-				{/*	onChange={date => getBirthday(date)}*/}
-				{/*	placeholderText='Дата рождения'*/}
-				{/*/>*/}
 				<div className={classes.footer}>
 					<Button onClick={handleSubmit} title='Регистрация' variant='contained' color='primary' />
+				</div>
+				<div className={classes.link_wrapper}>
+					<span>Уже есть аккаунт?</span>
+					<Link to={'/login'} className={classes.link}>Войти</Link>{' '}
 				</div>
 			</div>
 		</form>
