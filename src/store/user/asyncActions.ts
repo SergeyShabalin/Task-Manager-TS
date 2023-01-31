@@ -33,7 +33,6 @@ export const usersActions = {
 	checkLogin: (userId: string) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.loginCheck(userId)
-			console.log(data)
 			dispatch(UserAC.checkLogin(true))
 		} catch (e) {
 			Notification.error('произошла ошибка проверки аккаунта')
@@ -53,4 +52,6 @@ export const usersActions = {
 			return false
 		}
 	}
+
+
 }

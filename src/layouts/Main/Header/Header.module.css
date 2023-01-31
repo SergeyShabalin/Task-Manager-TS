@@ -29,6 +29,11 @@
 .icon {
     display: flex;
     align-items: center;
-    padding-right: 5px;
+
     transform: scale(1.4);
+}
+
+.logout{
+    transform: scale(1.6);
+    margin-right: 10px;
 }
