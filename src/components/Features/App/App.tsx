@@ -1,5 +1,5 @@
 import '../../../App.css'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import '../../../GlobalStyles.css'
 
@@ -11,41 +11,49 @@ import Login from '@/pages/login/Login'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useEffect } from 'react'
 import { useActions } from '@/hooks/useActions/useActions'
-
-
+import { UserAC } from '@/store/user/action'
+import { useDispatch } from 'react-redux'
 
 function App() {
 	const location = useLocation()
 	const background = location.state && location.state.background
 	const isAuth = useTypedSelector(state => state.user.isAuth)
+	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
-	const { checkLogin } = useActions()
-	useEffect(()=>{
-		checkLogin()
+	useEffect(() => {
+		const token = localStorage.getItem('token')
+		if (token) {
+			dispatch(UserAC.checkLogin(true))
+		} else {
+			dispatch(UserAC.checkLogin(false))
+			navigate(`/login`)
+		}
 	}, [])
 
 	return (
 		<>
-			{!isAuth ?
+			{!isAuth ? (
 				<Routes location={background || location}>
-					<Route path="/registration" element={<Registration />} />
-					<Route path="/login" element={<Login />} />
+					<Route path='/registration' element={<Registration />} />
+					<Route path='/login' element={<Login />} />
 				</Routes>
-				:
+			) : (
 				<>
 					<Routes location={background || location}>
-						<Route path="/*" element={<Main />} />
-						<Route path="/board/:boardId" element={<Main />} />
-						<Route path="/ui" element={<UiKit />} />
-						<Route path="/board/:boardId/card/:cardId" element={<Card />} />
+						<Route path='/*' element={<Main />} />
+						<Route path='/user/:userId' element={<Main />} />
+						<Route path='/user/:userId/board/:boardId' element={<Main />} />
+						<Route path='/ui' element={<UiKit />} />
+						<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 					</Routes>
 					{background && (
 						<Routes>
-							<Route path="/board/:boardId/card/:cardId" element={<Card />} />
+							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 						</Routes>
 					)}
 				</>
-			}
+			)}
 		</>
 	)
 }

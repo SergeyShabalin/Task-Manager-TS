@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
-import classes from './Login.module.css'
 import { Button, Input } from '@UI'
 import { BiShowAlt } from 'react-icons/bi'
-import { Link } from 'react-router-dom'
+
+import { Link, useNavigate } from 'react-router-dom'
+import { useActions } from '@/hooks/useActions/useActions'
+
+import classes from './Login.module.css'
 
 export default function Login() {
 	const [isPass, setIsPass] = useState(true)
+
+	const navigate = useNavigate()
+	const { login } = useActions()
 	const [form, setForm] = useState({
 		email: '',
 		password: ''
@@ -25,8 +31,10 @@ export default function Login() {
 		}
 	}
 
-	function handleSubmit(e: React.FormEvent) {
+	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
+		const userId = await login(form)
+		if (userId!) navigate(`/user/${userId}`)
 	}
 
 	return (
@@ -34,7 +42,7 @@ export default function Login() {
 			<div className={classes.controller}>
 				<h2 className={classes.title}>Авторизация</h2>
 				<Input
-					autocomplete='off'
+					// autocomplete='off'
 					color='transparent'
 					placeholder='email'
 					name='email'
@@ -45,7 +53,7 @@ export default function Login() {
 				<div className={classes.password}>
 					<Input
 						type={isPass && 'password'}
-						autocomplete='off'
+						// autocomplete='off'
 						color='transparent'
 						placeholder='пароль'
 						name='password'
@@ -61,11 +69,11 @@ export default function Login() {
 				</div>
 				<div className={classes.link_wrapper}>
 					<span>Еще нет аккаунта? </span>
-					<Link to={'/registration'} className={classes.link}>Зарегистрироваться</Link>
+					<Link to={'/registration'} className={classes.link}>
+						Зарегистрироваться
+					</Link>
 				</div>
 			</div>
-
 		</form>
 	)
 }
-

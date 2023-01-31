@@ -9,8 +9,14 @@ class UsersApi {
 	}
 
 	async login(payload: Partial<User>): Promise<AxiosResponse<User>> {
-		return Api.post(`/user/registration/`, payload);
+		return Api.post(`/user/login/`, payload);
 	}
+
+	async loginCheck(payload: string): Promise<AxiosResponse<User>> {
+		console.log({ payload })
+		return Api.post(`/user/checklogin/${payload}`);
+	}
+
 }
 
 export default new UsersApi()

@@ -30,6 +30,7 @@ export enum USER_TYPES {
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
 export type CheckLogin = Action<USER_TYPES.CHECK_LOGIN>
+export type Authentication = Action<USER_TYPES.AUTHENTICATION>
 
 export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
 	payload: Partial<User>

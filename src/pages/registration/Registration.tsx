@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import DatePicker from 'react-datepicker'
+import { BiShowAlt } from 'react-icons/bi'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useActions } from '@/hooks/useActions/useActions'
 import { Button, Input } from '@UI'
 import 'react-datepicker/dist/react-datepicker.css'
 import classes from './Registration.module.css'
-import { BiShowAlt } from 'react-icons/bi'
-import { Link } from 'react-router-dom'
 
 export default function Registration() {
 	const { registration } = useActions()
+	const navigate = useNavigate()
 
 	const [form, setForm] = useState({
 		email: '',
@@ -25,9 +25,10 @@ export default function Registration() {
 		setIsPass(!isPass)
 	}
 
-	function handleSubmit(e: React.FormEvent) {
+	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		registration(form)
+		const userId = await registration(form)
+		if (userId) navigate(`/user/${userId}`)
 	}
 
 	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -48,7 +49,7 @@ export default function Registration() {
 			<div className={classes.controller}>
 				<h2 className={classes.title}>Регистрация</h2>
 				<Input
-					autocomplete='off'
+					// autocomplete='off'
 					color='transparent'
 					placeholder='фамилия'
 					name='secondName'
@@ -56,7 +57,7 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					autocomplete='off'
+					// autocomplete='off'
 					color='transparent'
 					placeholder='имя'
 					name='firstName'
@@ -64,7 +65,7 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					autocomplete='off'
+					// autocomplete='off'
 					color='transparent'
 					placeholder='отчество'
 					name='lastName'
@@ -72,7 +73,7 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					autocomplete='off'
+					// autocomplete='off'
 					color='transparent'
 					placeholder='email'
 					name='email'
@@ -82,7 +83,7 @@ export default function Registration() {
 				<div className={classes.password}>
 					<Input
 						type={isPass && 'password'}
-						autocomplete='off'
+						// autocomplete='new-password'
 						color='transparent'
 						placeholder='пароль'
 						name='password'
@@ -99,7 +100,9 @@ export default function Registration() {
 				</div>
 				<div className={classes.link_wrapper}>
 					<span>Уже есть аккаунт?</span>
-					<Link to={'/login'} className={classes.link}>Войти</Link>{' '}
+					<Link to={'/login'} className={classes.link}>
+						Войти
+					</Link>{' '}
 				</div>
 			</div>
 		</form>
