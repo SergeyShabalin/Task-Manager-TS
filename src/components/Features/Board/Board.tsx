@@ -5,18 +5,22 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-export default function Board() {
+export default function Board({currentBoardId, userId}) {
 	const { getCurrentBoard, addNewColumn } = useActions()
-	const { boardId } = useParams()
+	const navigate = useNavigate()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const {changeBoard} = useActions()
 
 	useEffect(() => {
-	if(boardId)	getCurrentBoard(boardId)
-	}, [boardId])
+	if(currentBoardId) {
+		getCurrentBoard(currentBoardId)
+		navigate(`/user/${userId}/board/${currentBoardId}`)
+	}
+
+	}, [currentBoardId])
 
 	async function addColumn(title: string) {
 		const isSuccess = await addNewColumn(title)

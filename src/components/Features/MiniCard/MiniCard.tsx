@@ -20,7 +20,7 @@ export default function MiniCard({
 																	 description
 																 }: Card) {
 	const { deleteCard, changeCard } = useActions()
-	const { boardId } = useParams()
+	const {userId, boardId } = useParams()
 	const location = useLocation()
 	const [isOpenContext, setIsOpenContext] = useState(false)
 
@@ -55,7 +55,7 @@ export default function MiniCard({
 				<Link
 					className={classes.link}
 					state={{ background: location }}
-					to={`/board/${boardId}/card/${_id}`}
+					to={`/user/${userId}/board/${boardId}/card/${_id}`}
 				>
 					<div className={classes.title}>{title}</div>
 				</Link>

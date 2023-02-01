@@ -156,9 +156,9 @@ export const boardActions = {
 			return false
 		}
 	},
-	addBoard: (title: string) => async () => {
+	addBoard: (payload) => async () => {
 		try {
-			const { data } = await BoardApi.addBoard(title)
+			const { data } = await BoardApi.addBoard(payload)
 			return data._id
 		} catch (error) {
 			return false

@@ -12,10 +12,9 @@ class BoardApi {
 		return Api.patch(`/boards/${payload._id}`, payload);
 	}
 
-	async addBoard(title: string) {
-		return Api.post(`/boards/`, {title: title});
+	async addBoard(payload) {
+		return Api.post(`/boards/`, {payload});
 	}
-
 
 }
 

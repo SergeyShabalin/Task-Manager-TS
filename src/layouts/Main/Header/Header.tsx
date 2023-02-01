@@ -11,13 +11,17 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { UserAC } from '@/store/user/action'
 
-export default function Header() {
+export default function Header({userId}: string) {
 	const { addBoard } = useActions()
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 
 	async function createBoard(title: string) {
-		const boardId = await addBoard(title)
+		const payload = {
+			userId,
+			title
+		}
+		const boardId = await addBoard(payload)
 		navigate(`/board/${boardId}`)
 		return boardId
 	}

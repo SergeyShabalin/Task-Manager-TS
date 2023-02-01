@@ -13,7 +13,7 @@ import Checklist from '@/components/Features/Card/components/Checklist'
 
 export default function Card() {
 	const navigate = useNavigate()
-	const { boardId, cardId } = useParams()
+	const {userId, boardId, cardId } = useParams()
 	const cardInfo = useTypedSelector(state => state.board.cardInfo)
 	const { getOneCard } = useActions()
 
@@ -22,7 +22,7 @@ export default function Card() {
 	}, [])
 
 	function closeModal() {
-		navigate(`/board/${boardId}`)
+		navigate(`/user/${userId}/board/${boardId}`)
 	}
 
 	return (
