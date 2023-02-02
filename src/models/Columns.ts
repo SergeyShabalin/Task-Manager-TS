@@ -4,7 +4,7 @@ export enum COLUMN_TYPES {
 	ADD_NEW_COLUMN = 'ADD_NEW_COLUMN',
 	DELETE_COLUMN = 'DELETE_COLUMN',
 	CHANGE_COLUMN = 'CHANGE_COLUMN',
-	DROP_CARD = 'DROP_CARD'
+	DROP_CARD = 'DROP_CARD',
 }
 export interface AddNewColumn extends Action<COLUMN_TYPES.ADD_NEW_COLUMN> {
 	payload: Column

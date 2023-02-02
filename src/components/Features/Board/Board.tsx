@@ -7,19 +7,25 @@ import { Button } from '@UI'
 import { Editor } from '@Features'
 import { useNavigate, useParams } from 'react-router-dom'
 
-export default function Board({currentBoardId, userId}) {
+export default function Board({}) {
 	const { getCurrentBoard, addNewColumn } = useActions()
 	const navigate = useNavigate()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
-	const board = useTypedSelector(state => state.board.currentBoard)
+	const board = useTypedSelector(state => state.board.currentBoard)//не та доска
 	const {changeBoard} = useActions()
+
+
+	const user = useTypedSelector(state => state.user)
+	console.log(user)
+	console.log({ board })
+	const currentBoardId = user.boardIds[0]
+
 
 	useEffect(() => {
 	if(currentBoardId) {
 		getCurrentBoard(currentBoardId)
-		navigate(`/user/${userId}/board/${currentBoardId}`)
+		navigate(`/user/${user._id}/board/${currentBoardId}`)
 	}
-
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {

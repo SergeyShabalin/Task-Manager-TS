@@ -19,23 +19,27 @@ export default function userReducer(state = defaultState, action: UserActions) {
 		case USER_TYPES.CHECK_LOGIN: {
 			return {
 				...state,
-				isAuth: action.payload
+				isAuth: action.payload.isAuth,
+				 boardIds: action.payload.user.boardIds,
+				 _id: action.payload.user._id
 			}
 		}
 
 		case USER_TYPES.AUTHENTICATION: {
-			const { boardIds, _id } = action.payload
+			const { boardIds, _id, email } = action.payload
 			return {
 				...state,
 				isAuth: true,
 				boardIds: boardIds,
-				_id: _id
+				_id: _id,
+				email: email
 			}
 		}
 
 		case USER_TYPES.LOGOUT: {
+
 			return{
-				...state, isAuth: false
+				...state, isAuth: false, email: '', _id: '', boardIds: []
 			}
 		}
 

@@ -156,7 +156,7 @@ export const boardActions = {
 			return false
 		}
 	},
-	addBoard: (payload) => async () => {
+	addBoard: (payload: Partial<Board>) => async () => {
 		try {
 			const { data } = await BoardApi.addBoard(payload)
 			return data._id

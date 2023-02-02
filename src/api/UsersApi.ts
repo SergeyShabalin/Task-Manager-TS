@@ -12,8 +12,8 @@ class UsersApi {
 		return Api.post(`/user/login/`, payload);
 	}
 
-	async loginCheck(payload: string): Promise<AxiosResponse<User>> {
-		return Api.post(`/user/checklogin/${payload}`);
+	async loginCheck(): Promise<AxiosResponse<User>> {
+		return Api.get(`/user/checkLogin/`);
 	}
 
 }

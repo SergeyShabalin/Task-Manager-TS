@@ -8,17 +8,16 @@ import { Button } from '@UI'
 import { Editor } from '@/components/Features'
 import { useActions } from '@/hooks/useActions/useActions'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { UserAC } from '@/store/user/action'
 
-export default function Header({userId}: string) {
-	const { addBoard } = useActions()
+import { User } from '@/models/Users'
+
+export default function Header({ _id }: Partial<User>) {
+	const { addBoard, logOut } = useActions()
 	const navigate = useNavigate()
-	const dispatch = useDispatch()
 
 	async function createBoard(title: string) {
 		const payload = {
-			userId,
+			userId: _id,
 			title
 		}
 		const boardId = await addBoard(payload)
@@ -28,7 +27,7 @@ export default function Header({userId}: string) {
 
 	function logout() {
 		localStorage.removeItem('token')
-		dispatch(UserAC.logout())
+		logOut()
 		navigate(`/login`)
 	}
 

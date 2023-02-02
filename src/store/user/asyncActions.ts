@@ -5,6 +5,8 @@ import UsersApi from '@/api/UsersApi'
 import { User } from '@/models/Users'
 import { Notification } from '@UI'
 import { UserAC } from '@/store/user/action'
+import { BoardActions } from '@/store/board/reducer'
+import { BoardAC } from '@/store/board/action'
 
 export const usersActions = {
 	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
@@ -30,10 +32,14 @@ export const usersActions = {
 		}
 	},
 
-	checkLogin: (userId: string) => async (dispatch: Dispatch<UserActions>) => {
+	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
 		try {
-			const { data } = await UsersApi.loginCheck(userId)
-			dispatch(UserAC.checkLogin(true))
+			const { data } = await UsersApi.loginCheck()
+			const payload = {
+				user: data.currentUser,
+				isAuth: true
+			}
+			dispatch(UserAC.checkLogin(payload))
 		} catch (e) {
 			Notification.error('произошла ошибка проверки аккаунта')
 		}
@@ -51,7 +57,16 @@ export const usersActions = {
 			Notification.error(error)
 			return false
 		}
-	}
+	},
 
+	logOut: ()=> async(dispatch: Dispatch<UserActions|BoardActions>) =>{
+		try{
+			dispatch(UserAC.logout())
+			dispatch(BoardAC.logout())
+		}catch (e){
+			const error = e.response.data.message
+			Notification.error(error)
+		}
+	}
 
 }

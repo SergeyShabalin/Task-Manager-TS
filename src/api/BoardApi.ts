@@ -12,7 +12,7 @@ class BoardApi {
 		return Api.patch(`/boards/${payload._id}`, payload);
 	}
 
-	async addBoard(payload) {
+	async addBoard(payload: Partial<Board>) {
 		return Api.post(`/boards/`, {payload});
 	}
 

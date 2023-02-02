@@ -1,5 +1,6 @@
 import '../../../App.css'
-import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import '../../../GlobalStyles.css'
 
@@ -10,23 +11,32 @@ import Registration from '@/pages/registration'
 import Login from '@/pages/login/Login'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useEffect } from 'react'
-import { useActions } from '@/hooks/useActions/useActions'
 import { UserAC } from '@/store/user/action'
-import { useDispatch } from 'react-redux'
+import { useActions } from '@/hooks/useActions/useActions'
+
 
 function App() {
 	const location = useLocation()
 	const background = location.state && location.state.background
 	const isAuth = useTypedSelector(state => state.user.isAuth)
+	const user = useTypedSelector(state => state.user)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	const { checkLogin } = useActions()
+
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
 		if (token) {
-			dispatch(UserAC.checkLogin(true))
+			 checkLogin()
+			console.log({ user })
 		} else {
-			dispatch(UserAC.checkLogin(false))
+
+			const payload = {
+				isAuth: false,
+				user:{}
+			}
+			dispatch(UserAC.checkLogin(payload))
 			navigate(`/login`)
 		}
 	}, [])
