@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Login.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 export default function Login() {
 	const [isPass, setIsPass] = useState(true)
@@ -34,8 +35,10 @@ export default function Login() {
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const userId = await login(form)
-		if (userId!) navigate(`/user/${userId}`)
+		const user = await login(form)
+		const currentBoardId = user.boardIds[0]
+		if (user._id! && user.boardIds[0]) navigate(`/user/${user._id}/board/${currentBoardId}`)
+	else	navigate(`/user/${user._id}`)
 	}
 
 	return (

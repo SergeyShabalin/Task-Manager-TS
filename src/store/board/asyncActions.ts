@@ -12,6 +12,8 @@ import { RootState } from '@/store'
 import CheckListApi from '@/api/CheckListApi'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
+import { UserActions } from '@/store/user/reducer'
+import { UserAC } from '@/store/user/action'
 
 export const columnsActions = {
 	addNewColumn:
@@ -156,9 +158,10 @@ export const boardActions = {
 			return false
 		}
 	},
-	addBoard: (payload: Partial<Board>) => async () => {
+	addBoard: (payload: Partial<Board>) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await BoardApi.addBoard(payload)
+			dispatch(UserAC.addBoard(data._id))
 			return data._id
 		} catch (error) {
 			return false

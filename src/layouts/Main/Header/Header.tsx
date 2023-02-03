@@ -10,6 +10,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { useNavigate } from 'react-router-dom'
 
 import { User } from '@/models/Users'
+import Workspaces from '@/layouts/Main/Header/Workspaces/Workspaces'
 
 export default function Header({ _id }: Partial<User>) {
 	const { addBoard, logOut } = useActions()
@@ -21,12 +22,11 @@ export default function Header({ _id }: Partial<User>) {
 			title
 		}
 		const boardId = await addBoard(payload)
-		navigate(`/board/${boardId}`)
+		navigate(`/user/${_id}/board/${boardId}`)
 		return boardId
 	}
 
 	function logout() {
-		localStorage.removeItem('token')
 		logOut()
 		navigate(`/login`)
 	}
@@ -39,6 +39,7 @@ export default function Header({ _id }: Partial<User>) {
 			<Editor buttonSubmitTitle='Добавить доску' onSubmit={createBoard}>
 				<Button variant='text' title='Новая доска' />
 			</Editor>
+			<Workspaces/>
 			<div className={classes.logo}>
 				<span className={classes.icon}>
 					<RiTrelloFill />

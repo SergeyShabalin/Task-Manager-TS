@@ -1,7 +1,7 @@
-import { Authentication, CheckLogin, Logout, StartRegistration, USER_TYPES } from '@/models/Users'
+import { AddBoard, Authentication, CheckLogin, Logout, StartRegistration, USER_TYPES } from '@/models/Users'
 import { defaultState } from '@/store/user/initState'
 
-export type UserActions = StartRegistration | CheckLogin | Authentication | Logout
+export type UserActions = StartRegistration | CheckLogin | Authentication | Logout | AddBoard
 
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
@@ -37,9 +37,14 @@ export default function userReducer(state = defaultState, action: UserActions) {
 		}
 
 		case USER_TYPES.LOGOUT: {
-
 			return{
 				...state, isAuth: false, email: '', _id: '', boardIds: []
+			}
+		}
+
+		case USER_TYPES.ADD_BOARD: {
+			return{
+				...state, boardIds: [...state.boardIds, action.payload]
 			}
 		}
 

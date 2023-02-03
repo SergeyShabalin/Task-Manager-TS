@@ -51,7 +51,7 @@ export const usersActions = {
 			const dataUser = data._doc
 			localStorage.setItem('token', data.token)
 			dispatch(UserAC.login(dataUser))
-			return data._doc._id
+			return data._doc
 		} catch (e) {
 			const error = e.response.data.message
 			Notification.error(error)
@@ -61,6 +61,7 @@ export const usersActions = {
 
 	logOut: ()=> async(dispatch: Dispatch<UserActions|BoardActions>) =>{
 		try{
+			localStorage.removeItem('token')
 			dispatch(UserAC.logout())
 			dispatch(BoardAC.logout())
 		}catch (e){

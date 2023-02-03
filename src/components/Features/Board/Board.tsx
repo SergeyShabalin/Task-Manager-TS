@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import classes from './Board.module.css'
 import { Column } from '@Features'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
@@ -11,21 +11,17 @@ export default function Board({}) {
 	const { getCurrentBoard, addNewColumn } = useActions()
 	const navigate = useNavigate()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
-	const board = useTypedSelector(state => state.board.currentBoard)//не та доска
-	const {changeBoard} = useActions()
-
+	const board = useTypedSelector(state => state.board.currentBoard)
+	const { changeBoard } = useActions()
 
 	const user = useTypedSelector(state => state.user)
-	console.log(user)
-	console.log({ board })
-	const currentBoardId = user.boardIds[0]
-
+	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 
 	useEffect(() => {
-	if(currentBoardId) {
-		getCurrentBoard(currentBoardId)
-		navigate(`/user/${user._id}/board/${currentBoardId}`)
-	}
+		if (currentBoardId) {
+			getCurrentBoard(currentBoardId)
+			navigate(`/user/${user._id}/board/${currentBoardId}`)
+		}
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {
@@ -39,8 +35,8 @@ export default function Board({}) {
 	})
 
 	function changeTitleBoard(title: string) {
-	const payload = {_id:board._id, title}
-	return	changeBoard(payload)
+		const payload = { _id: board._id, title }
+		return changeBoard(payload)
 	}
 
 	return (
