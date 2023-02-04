@@ -28,7 +28,7 @@ export default function Registration() {
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		const userId = await registration(form)
-		if (userId) navigate(`/user/${userId}`)
+		if (userId) navigate(`/user/${userId}/greeting`)
 	}
 
 	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -49,7 +49,7 @@ export default function Registration() {
 			<div className={classes.controller}>
 				<h2 className={classes.title}>Регистрация</h2>
 				<Input
-					// autocomplete='off'
+					autoComplete='off'
 					color='transparent'
 					placeholder='фамилия'
 					name='secondName'
@@ -57,7 +57,7 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					// autocomplete='off'
+					autoComplete='off'
 					color='transparent'
 					placeholder='имя'
 					name='firstName'
@@ -65,7 +65,7 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					// autocomplete='off'
+					autoComplete='off'
 					color='transparent'
 					placeholder='отчество'
 					name='lastName'
@@ -73,27 +73,23 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					// autocomplete='off'
+					autoComplete='off'
 					color='transparent'
 					placeholder='email'
 					name='email'
 					value={form.email}
 					onChange={onSubmit}
 				/>
-				<div className={classes.password}>
 					<Input
-						type={isPass && 'password'}
-						// autocomplete='new-password'
+						iconRight={<div className={classes.control_pass} onClick={changePassView}><BiShowAlt /></div>}
+						type={!isPass ? 'text' : 'password'}
+						autoComplete='off'
 						color='transparent'
 						placeholder='пароль'
 						name='password'
 						value={form.password}
 						onChange={onSubmit}
 					/>
-					<div className={classes.control_pass}>
-						<Button icon={<BiShowAlt />} onClick={changePassView} />
-					</div>
-				</div>
 
 				<div className={classes.footer}>
 					<Button onClick={handleSubmit} title='Регистрация' variant='contained' color='primary' />

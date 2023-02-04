@@ -6,7 +6,7 @@ export interface Card{
 	title: string
 	description: string
 	column_id: string
-	decisionDate: Date
+	decisionDate: Date | null
 	countTask: number
 	doneTask: number
 	order: number

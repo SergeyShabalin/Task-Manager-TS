@@ -11,6 +11,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
+import Greeting from '@/pages/greeting'
 
 
 function App() {
@@ -48,12 +49,14 @@ function App() {
 					<Routes location={background || location}>
 						<Route path='/*' element={<Main />} />
 						<Route path='/user/:userId' element={<Main />} />
+						<Route path='/user/:userId/greeting' element={<Greeting />} />
 						<Route path='/user/:userId/board/:boardId' element={<Main />} />
 						<Route path='/ui' element={<UiKit />} />
 						<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 					</Routes>
 					{background && (
 						<Routes>
+							<Route path='/user/:userId/greeting' element={<Greeting />} />
 							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 						</Routes>
 					)}

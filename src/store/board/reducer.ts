@@ -1,6 +1,15 @@
 import { defaultState } from './initState'
 
-import { BOARD_TYPES, BoardAction, ErrorFetching, Logout, StartFetching, SuccessFetching } from '@/models/Boards'
+import {
+	AllBoardAction,
+	BOARD_TYPES,
+	BoardAction,
+	ErrorFetching,
+	GetAllBoards,
+	Logout,
+	StartFetching,
+	SuccessFetching
+} from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
@@ -22,6 +31,7 @@ export type BoardActions =
 	| BoardAction
 	| DropCard
 	| Logout
+	| AllBoardAction
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -54,6 +64,10 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				...state,
 				currentBoard: action.payload
 			}
+		case BOARD_TYPES.GET_ALL_BOARDS:
+			return {
+			...state, allBoards: action.payload
+		}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
 				...state,

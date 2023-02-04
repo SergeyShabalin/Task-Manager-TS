@@ -35,7 +35,7 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 				onSubmit={addTask}
 				placeholder='Введите название задачи'
 			>
-				<Button variant='outlined' title='Добавить карточку' />
+				<Button variant='outlined' title='Добавить задачу' />
 			</Editor>
 		</>
 	)

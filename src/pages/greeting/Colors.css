@@ -1,0 +1,63 @@
+.iconRed, .WitchingHour, .KieMeh, .iconBlue, .iconGreen, .iconYellow, .iconMagenta, .iconDark, .iconGrBl, .iconOrange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 15%;
+    font-weight: 700;
+    color: #e5d8d8;
+    padding: 40px 55px;
+    margin: 5px;
+    background: #d58d08;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.iconRed:hover, .WitchingHour:hover, .KieMeh:hover, .iconBlue:hover, .iconGreen:hover, .iconYellow:hover, .iconMagenta:hover, .iconDark:hover, .iconGrBl:hover, .iconOrange:hover{
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.73);
+    opacity: 0.9;
+}
+
+.iconBlue, .iconYellow, .KieMeh, .iconGrBl{
+    color: #1e1d1d;
+}
+
+.iconBlue {
+    background: linear-gradient(45deg, #0747a6, #008da6);
+}
+
+.iconGreen {
+    background: linear-gradient(45deg, #006644, #03b67a);
+}
+
+.iconRed{
+    background: linear-gradient(45deg, #ff0000, #ad1051);
+}
+
+.iconYellow{
+    background: linear-gradient(45deg, #bbd705, #667200);
+}
+
+.iconMagenta{
+    background: linear-gradient(45deg, #570b2c, #de4486);
+}
+
+.iconDark{
+    background: linear-gradient(45deg, #055457, #150f13);
+}
+
+.iconGrBl{
+    background: linear-gradient(45deg, #1d109a, #0aafaf);
+}
+
+.iconOrange{
+    background: linear-gradient(45deg, #ef6605, #6b4600);
+}
+
+.WitchingHour{
+    background: linear-gradient(45deg, #c31432, #240b36);
+}
+
+.KieMeh{
+    background: linear-gradient(45deg, #8360c3, #2ebf91);
+}

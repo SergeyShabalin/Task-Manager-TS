@@ -1,4 +1,5 @@
 import {
+	AllBoardAction,
 	Board,
 	BOARD_TYPES,
 	BoardAction,
@@ -40,6 +41,7 @@ export const BoardAC = {
 	successFetching: (payload: BoardAPI): SuccessFetching => ({type: BOARD_TYPES.SUCCESS_FETCHING_BOARD, payload}),
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload}),
+	getAllBoard: (payload: Board[]) : AllBoardAction => ({type: BOARD_TYPES.GET_ALL_BOARDS, payload}),
 	logout: ()=>({type: BOARD_TYPES.LOGOUT})
 };
 

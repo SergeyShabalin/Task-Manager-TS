@@ -9,5 +9,5 @@ export const defaultState: UserState ={
 	firstName: '',
 	secondName: '',
 	lastName: '',
-	isAuth: false
+	isAuth: false,
 }

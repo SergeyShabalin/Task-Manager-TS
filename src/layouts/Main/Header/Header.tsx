@@ -10,9 +10,8 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { useNavigate } from 'react-router-dom'
 
 import { User } from '@/models/Users'
-import Workspaces from '@/layouts/Main/Header/Workspaces/Workspaces'
 
-export default function Header({ _id }: Partial<User>) {
+export default function Header({ _id }: Partial<User>, ) {
 	const { addBoard, logOut } = useActions()
 	const navigate = useNavigate()
 
@@ -31,15 +30,18 @@ export default function Header({ _id }: Partial<User>) {
 		navigate(`/login`)
 	}
 
+	function backToGreeting() {
+		if (_id)	navigate(`/user/${_id}/greeting`)
+	}
+
 	return (
 		<div className={classes.header}>
 			<div className={classes.menu}>
-				<Button variant='just_icon' icon={<CgMenuGridO />} />
+				<Button variant='just_icon' icon={<CgMenuGridO />} onClick={backToGreeting} />
 			</div>
-			<Editor buttonSubmitTitle='Добавить доску' onSubmit={createBoard}>
-				<Button variant='text' title='Новая доска' />
-			</Editor>
-			<Workspaces/>
+			{/*<Editor buttonSubmitTitle='Добавить доску' onSubmit={createBoard}>*/}
+			{/*	<Button variant='text' title='Новая доска' />*/}
+			{/*</Editor>*/}
 			<div className={classes.logo}>
 				<span className={classes.icon}>
 					<RiTrelloFill />

@@ -16,6 +16,10 @@ class BoardApi {
 		return Api.post(`/boards/`, {payload});
 	}
 
+	async getAllBoardAPI(user_id: string) {
+		return Api.get(`/boards/allBoards/${user_id}`);
+	}
+
 }
 
 export default new BoardApi();

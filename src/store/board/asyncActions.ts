@@ -166,6 +166,14 @@ export const boardActions = {
 		} catch (error) {
 			return false
 		}
+	},
+	getAllBoard: (payload: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const { data } = await BoardApi.getAllBoardAPI(payload)
+			dispatch(BoardAC.getAllBoard(data))
+		} catch (e) {
+			Notification.error('Произошла ошибка получения досок')
+		}
 	}
 }
 

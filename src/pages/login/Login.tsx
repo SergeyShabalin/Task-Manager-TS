@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Login.module.css'
-import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 export default function Login() {
 	const [isPass, setIsPass] = useState(true)
@@ -32,13 +31,13 @@ export default function Login() {
 		}
 	}
 
-
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		const user = await login(form)
-		const currentBoardId = user.boardIds[0]
-		if (user._id! && user.boardIds[0]) navigate(`/user/${user._id}/board/${currentBoardId}`)
-	else	navigate(`/user/${user._id}`)
+		// const currentBoardId = user.boardIds[0]
+		// if (user._id! && user.boardIds[0]) navigate(`/user/${user._id}/board/${currentBoardId}`)
+		if (user._id!) navigate(`/user/${user._id}/greeting`)
+		// else navigate(`/user/${user._id}`)
 	}
 
 	return (
@@ -46,7 +45,7 @@ export default function Login() {
 			<div className={classes.controller}>
 				<h2 className={classes.title}>Авторизация</h2>
 				<Input
-					// autocomplete='off'
+					autoComplete='off'
 					color='transparent'
 					placeholder='email'
 					name='email'
@@ -54,20 +53,21 @@ export default function Login() {
 					onChange={onSubmit}
 				/>
 
-				<div className={classes.password}>
-					<Input
-						type={isPass && 'password'}
-						// autocomplete='off'
-						color='transparent'
-						placeholder='пароль'
-						name='password'
-						value={form.password}
-						onChange={onSubmit}
-					/>
-					<div className={classes.control_pass}>
-						<Button icon={<BiShowAlt />} onClick={changePassView} />
-					</div>
-				</div>
+				<Input
+					iconRight={
+						<div className={classes.control_pass} onClick={changePassView}>
+							<BiShowAlt />
+						</div>
+					}
+					type={!isPass ? 'text' : 'password'}
+					autoComplete='off'
+					color='transparent'
+					placeholder='пароль'
+					name='password'
+					value={form.password}
+					onChange={onSubmit}
+				/>
+
 				<div className={classes.footer}>
 					<Button onClick={handleSubmit} title='Войти' variant='contained' color='primary' />
 				</div>

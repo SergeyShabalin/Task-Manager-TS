@@ -10,7 +10,6 @@ interface inputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTe
 	color?: 'black' | 'white' | 'transparent'
 	name?: string
 	autocomplete?: string
-	type?: string | boolean
 }
 
 export default function Input({
@@ -43,7 +42,6 @@ export default function Input({
 				{iconLeft && iconLeft}
 				<input
 					name={name}
-					type='text'
 					className={`${classes.input} ${classes[variant]} ${classes[color]}`}
 					{...props}
 				/>

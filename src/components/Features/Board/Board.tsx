@@ -16,11 +16,10 @@ export default function Board({}) {
 
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
-
+	const { boardId } = useParams()
 	useEffect(() => {
-		if (currentBoardId) {
-			getCurrentBoard(currentBoardId)
-			navigate(`/user/${user._id}/board/${currentBoardId}`)
+		if (boardId) {
+			getCurrentBoard(boardId)
 		}
 	}, [currentBoardId])
 
