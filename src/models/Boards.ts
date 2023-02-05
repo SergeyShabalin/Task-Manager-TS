@@ -5,6 +5,7 @@ import { Action } from 'redux'
 export interface Board {
 	_id: string
 	title: string
+	background: string
 	columns: string[]
 }
 

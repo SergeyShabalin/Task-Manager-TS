@@ -1,10 +1,23 @@
-.main {
+.main, .type1, .type2, .type3 {
     overflow-x: hidden;
     overflow-y: auto;
-    background-image: url("https://images.wallpaperscraft.ru/image/single/gory_skaly_vershiny_151531_1920x1080.jpg");
     background-size: auto;
     font-size: var(--main-font-size);
     min-height: 100vh;
+}
+
+.main{
+    background: #333131;
+}
+
+.type1{
+    background-image: url("https://images.wallpaperscraft.ru/image/single/gory_skaly_vershiny_151531_1920x1080.jpg");
+}
+.type2{
+    background-image: url("https://uhdwallpapers.org/uploads/converted/23/01/23/natural-view-over-the-lake-and-mountains-1920x1080_894798-mm-90.webp");
+}
+.type3{
+    background-image: url("https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1920x1080_47599-mm-90.webp");
 }
 
 .header_main {

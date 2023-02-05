@@ -4,13 +4,13 @@ import Header from '@/layouts/Main/Header'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import { useNavigate } from 'react-router-dom'
-import "./Colors.css";
+import './Colors.css'
 
 export default function Greeting() {
 	const user = useTypedSelector(state => state.user)
 	const allBoards = useTypedSelector(state => state.board.allBoards)
 	const navigate = useNavigate()
-
+	console.log(allBoards)
 	const { getAllBoard } = useActions()
 
 	useEffect(() => {
@@ -22,21 +22,21 @@ export default function Greeting() {
 	}
 
 	function getRandomInt(max: number) {
-		return Math.floor(Math.random() * max);
+		return Math.floor(Math.random() * max)
 	}
 
 	const colorsIcon = [
-		"iconRed",
-		"iconBlue",
-		"iconGreen",
-		"iconYellow",
-		"iconMagenta",
-		"iconDark",
-		"iconGrBl",
-		"iconOrange",
+		'iconRed',
+		'iconBlue',
+		'iconGreen',
+		'iconYellow',
+		'iconMagenta',
+		'iconDark',
+		'iconGrBl',
+		'iconOrange',
 		'WitchingHour',
 		'KieMeh'
-	];
+	]
 
 	return (
 		<div className={classes.wrapper}>
@@ -48,10 +48,14 @@ export default function Greeting() {
 					<span className={classes.title_workspaces}>ВАШИ РАБОЧИЕ ПРОСТРАНСТВА</span>
 					<div className={classes.workspaces}>
 						{allBoards.map(board => {
-							const color = getRandomInt(10);
+							const color = getRandomInt(10)
 							return (
-								<div key={board._id}  className={colorsIcon[color]}  onClick={() => openBoard(board._id)}>
-									{board.title}
+								<div
+									key={board._id}
+									className={board.background ? classes[board.background] : colorsIcon[color]}
+									onClick={() => openBoard(board._id)}
+								>
+									<span className={classes.title_board}>{board.title}</span>
 								</div>
 							)
 						})}

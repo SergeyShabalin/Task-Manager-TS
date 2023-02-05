@@ -18,7 +18,8 @@ export default function Header({ _id }: Partial<User>, ) {
 	async function createBoard(title: string) {
 		const payload = {
 			userId: _id,
-			title
+			title,
+			background
 		}
 		const boardId = await addBoard(payload)
 		navigate(`/user/${_id}/board/${boardId}`)

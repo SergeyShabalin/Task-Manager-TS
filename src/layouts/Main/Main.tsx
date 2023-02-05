@@ -7,9 +7,10 @@ import classes from './Main.module.css'
 
 export default function Main() {
 	const userId = useTypedSelector(state => state.user._id)
+	const background = useTypedSelector(state => state.board.currentBoard.background)
 
 	return (
-		<div className={classes.main}>
+		<div className={ background ?  classes[background] : classes.main}>
 			<div className={classes.header_main}>
 				<Header _id={userId} />
 				<Board />
