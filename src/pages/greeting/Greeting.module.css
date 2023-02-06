@@ -40,10 +40,10 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
-	width: 15%;
+	width: 20%;
+	height: 115px;
 	font-weight: 700;
 	color: #1f1f3a;
-	padding: 40px 55px;
 	margin: 5px;
 	background: #b7b5b0;
 	cursor: pointer;
@@ -87,7 +87,7 @@
 
 .type1,
 .type2,
-.type3 {
+.type3{
 	display: flex;
 	justify-content: left;
 	border-radius: 10px;

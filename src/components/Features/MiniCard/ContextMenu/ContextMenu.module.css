@@ -1,13 +1,12 @@
-.contextWrapper{
+.contextWrapper {
     position: absolute;
-    background-color: rgb(15, 15, 70);
+    margin-left: 290px;
     display: flex;
-    z-index: 9;
+    z-index: 19;
     padding: 5px 0;
-    margin: 0;
 }
 
-.test{
+.test {
     background-color: white;
     padding: 30px;
 }
@@ -29,14 +28,11 @@
     color: #ffffff;
     display: flex;
     align-items: center;
-
     padding: 7px;
     margin: 0 0 3px 10px;
     border-radius: 5px;
-
     list-style: none;
     cursor: pointer;
-
 }
 
 .li:hover {

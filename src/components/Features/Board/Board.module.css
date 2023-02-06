@@ -7,6 +7,12 @@
     cursor: pointer;
 }
 
+.board_title{
+    color: rgba(220, 204, 204, 0.67);
+    padding: 0 20px;
+    font-size: 20px;
+}
+
 .columns {
     display: flex;
 }
@@ -18,7 +24,6 @@
 }
 
 .add_list {
-    padding: 5px;
     transition: 0.55s ease-out all;
 }
 

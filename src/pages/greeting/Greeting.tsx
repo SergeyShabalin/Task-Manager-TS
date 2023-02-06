@@ -1,24 +1,25 @@
 import React, { useEffect } from 'react'
-import classes from './Greeting.module.css'
+import { useNavigate, useParams } from 'react-router-dom'
+
 import Header from '@/layouts/Main/Header'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
-import { useNavigate } from 'react-router-dom'
+import classes from './Greeting.module.css'
 import './Colors.css'
 
 export default function Greeting() {
-	const user = useTypedSelector(state => state.user)
+
 	const allBoards = useTypedSelector(state => state.board.allBoards)
 	const navigate = useNavigate()
-	console.log(allBoards)
+	const {userId} = useParams()
 	const { getAllBoard } = useActions()
 
 	useEffect(() => {
-		getAllBoard(user._id)
-	}, [user])
+	if(userId)	getAllBoard(userId)
+	}, [])
 
 	function openBoard(boardId: string) {
-		navigate(`/user/${user._id}/board/${boardId}`)
+		navigate(`/user/${userId}/board/${boardId}`)
 	}
 
 	function getRandomInt(max: number) {

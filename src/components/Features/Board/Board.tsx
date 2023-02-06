@@ -44,7 +44,7 @@ export default function Board({}) {
 				placeholder='введите значение'
 				onSubmit={changeTitleBoard}
 			>
-				<h4>{board.title}</h4>
+				<h4 className={classes.board_title}>{board.title}</h4>
 			</Editor>
 			<div className={classes.wrapper_list}>
 				<div className={classes.columns}>{columns}</div>
@@ -55,7 +55,7 @@ export default function Board({}) {
 						onSubmit={addColumn}
 					>
 						<div>
-							<Button variant='contained' title='Добавить колонку' />
+							<Button variant='contained' color='secondary' title='Добавить колонку' />
 						</div>
 					</Editor>
 				</div>

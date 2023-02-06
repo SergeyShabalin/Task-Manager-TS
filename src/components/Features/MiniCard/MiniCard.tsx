@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { GrClose } from 'react-icons/gr'
+
 import { Card } from '@/models/Cards'
-import { Button, Modal } from '@UI'
+import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
-import { Checkout, DecisionDate, Editor } from '@/components/Features'
-import { BsThreeDots, FiEdit3 } from 'react-icons/all'
+import { Checkout, DecisionDate } from '@/components/Features'
+import { BsThreeDots } from 'react-icons/all'
 import Description from '@/components/Features/MiniCard/Description'
 
 import classes from './MiniCard.module.css'
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
+
 
 export default function MiniCard({
 																	 title,
@@ -19,19 +20,15 @@ export default function MiniCard({
 																	 decisionDate,
 																	 description
 																 }: Card) {
-	const { deleteCard, changeCard } = useActions()
-	const {userId, boardId } = useParams()
+	const { deleteCard } = useActions()
+	const { userId, boardId } = useParams()
 	const location = useLocation()
 	const [isOpenContext, setIsOpenContext] = useState(false)
 
-	function cardDelete() {
-		deleteCard(_id)
-	}
 
-	function changeCardTitle(title: string) {
-		const payload = { _id, title }
-		const isSuccess = changeCard(payload)
-		return isSuccess
+	function cardDelete() {
+		const confirm = window.confirm('Удалить карточку?')
+		if (confirm) deleteCard(_id)
 	}
 
 	function contextClose() {
@@ -44,11 +41,14 @@ export default function MiniCard({
 
 	return (
 		<div className={classes.list_card}>
+
 			{isOpenContext &&
 				<ContextMenu
+					userId={userId}
+					boardId={boardId}
+					cardId={_id}
 					contextClose={contextClose}
-					changeCardTitle={changeCardTitle}
-					cardDelete = {cardDelete}
+					cardDelete={cardDelete}
 				/>}
 			<div className={classes.header}>
 
@@ -60,7 +60,7 @@ export default function MiniCard({
 					<div className={classes.title}>{title}</div>
 				</Link>
 				<div className={classes.edit}>
-						<Button variant='just_icon' icon={<BsThreeDots />} onClick={contextOpen} />
+					<Button variant='just_icon' icon={<BsThreeDots />} onClick={contextOpen} />
 				</div>
 			</div>
 
@@ -68,8 +68,6 @@ export default function MiniCard({
 				<DecisionDate decisionDate={decisionDate} />
 				<Checkout countTask={countTask} doneTask={doneTask} />
 				<Description isOpen={description} />
-
-				{/*<Button variant='just_icon' icon={<GrClose />} onClick={cardDelete} />*/}
 			</div>
 		</div>
 

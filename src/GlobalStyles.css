@@ -15,7 +15,7 @@
     --button-font-weight: 200;
     --button-font-size: 0.8rem;
     --button-padding: 8px 10px;
-    --button-margin: 5px;
+    --button-margin: 0px;
     --button-label-margin: 0 5px;
     --button-background-hover: #ffffff;
     --button-border-radius: 5px;
@@ -27,7 +27,7 @@
 
     --button-prymary-color-text: #3b3bd7;
     --button-prymary-color-text-hover: #0a0a85;
-    --button-secondary-color-text: #d7d7e1;
+    --button-secondary-color-text: #cbcbd5;
     --button-secondary-color-text-hover: #9b9ba2;
     --button-error-color-text: #d93434;
     --button-error-color-text-hover: #8d0519;
@@ -64,7 +64,7 @@
     --button-prymary-contained-color-hover: #babacc;
     --button-secondary-color-contained-background: transparent;
     --button-secondary-color-contained-background-hover: rgba(0, 0, 0, 0.49);
-    --button-secondary-contained-color: #b1b1b7;
+    --button-secondary-contained-color: #d4d4e1;
     --button-secondary-contained-color-hover: #cbcbd2;
     --button-error-color-contained-background: #d93434;
     --button-error-color-contained-background-hover: #8d0519;
@@ -178,7 +178,7 @@
     --card-modal-background-color: #ffeaea;
     --card-modal-text-color: #172b4d;
 
-    --list-wrapper: rgba(0, 0, 0, 0.38);
+    --list-wrapper: rgba(0, 0, 0, 0.6);
     --list-creator-background: rgba(0, 0, 0, 0.35);
     --list-context-menu-background: #ccd7cc;
     --list-context-color: #463b3b;

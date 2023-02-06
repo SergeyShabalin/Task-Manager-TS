@@ -1,181 +1,198 @@
 .button_container {
-	display: flex;
+    display: flex;
 }
 
 .button {
-	font-weight: var(--button-font-weight);
-	font-size: var(--button-font-size);
-	border-radius: var(--button-border-radius);
-	font-family: var(--prymary-font);
-	cursor: pointer;
-	padding: var(--button-padding);
-	margin: var(--button-margin);
-	white-space: nowrap;
+    font-weight: var(--button-font-weight);
+    font-size: var(--button-font-size);
+    border-radius: var(--button-border-radius);
+    font-family: var(--prymary-font);
+    cursor: pointer;
+    padding: var(--button-padding);
+    margin: var(--button-margin);
+    white-space: nowrap;
 
 }
+
 .button,
 .button:active,
 .button:focus {
-	outline: none;
+    outline: none;
 }
 
 .fullSize {
-	width: 100%;
+    width: 100%;
 }
 
 .text {
-	display: flex;
-	transition: all 0.2s ease;
-	border: none;
-	background-color: initial;
+    display: flex;
+    transition: all 0.2s ease;
+    border: none;
+    background-color: initial;
 }
 
 .text:disabled {
-	display: flex;
-	pointer-events: none;
-	border-radius: var(--button-border-radius);
+    display: flex;
+    pointer-events: none;
+    border-radius: var(--button-border-radius);
 }
 
 .text.primary {
-	color: var(--button-prymary-color-text);
+    color: var(--button-prymary-color-text);
 }
+
 .text.primary:hover {
-	color: var(--button-prymary-color-text-hover);
+    color: var(--button-prymary-color-text-hover);
 }
+
 .text.secondary {
-	color: var(--button-secondary-color-text);
+    color: var(--button-secondary-color-text);
 }
+
 .text.secondary:hover {
-	color: var(--button-secondary-color-text-hover);
+    color: var(--button-secondary-color-text-hover);
 }
+
 .text.error {
-	color: var(--button-error-color-text);
+    color: var(--button-error-color-text);
 }
+
 .text.error:hover {
-	color: var(--button-error-color-text-hover);
+    color: var(--button-error-color-text-hover);
 }
 
 .outlined {
-	display: flex;
-	font-family: var(--prymary-font);
-	border: var(--button-outlined-border);
-	background-color: transparent;
-	color: var(--button-outlined-color);
+    display: flex;
+    font-family: var(--prymary-font);
+    border: var(--button-outlined-border);
+    background-color: transparent;
+    color: var(--button-outlined-color);
 }
+
 .outlined:disabled {
-	display: flex;
-	cursor: auto;
-	pointer-events: none;
+    display: flex;
+    cursor: auto;
+    pointer-events: none;
 }
 
 .outlined.primary {
-	border: var(--button-prymary-color-outlined-border);
-	color: var(--button-prymary-outlined-color);
+    border: var(--button-prymary-color-outlined-border);
+    color: var(--button-prymary-outlined-color);
 }
+
 .outlined.primary:hover {
-	border: var(--button-prymary-color-outlined-border-hover);
-	color: var(--button-prymary-outlined-hover);
+    border: var(--button-prymary-color-outlined-border-hover);
+    color: var(--button-prymary-outlined-hover);
 }
+
 .outlined.secondary {
-	border: var(--button-secondary-color-outlined-border);
-	color: var(--button-secondary-outlined-color);
+    border: var(--button-secondary-color-outlined-border);
+    color: var(--button-secondary-outlined-color);
 }
+
 .outlined.secondary:hover {
-	border: var(--button-secondary-color-outlined-border-hover);
-	color: var(--button-secondary-outlined-hover);
+    border: var(--button-secondary-color-outlined-border-hover);
+    color: var(--button-secondary-outlined-hover);
 }
+
 .outlined.error {
-	border: var(--button-error-color-outlined-border);
-	color: var(--button-error-outlined-color);
+    border: var(--button-error-color-outlined-border);
+    color: var(--button-error-outlined-color);
 }
+
 .outlined.error:hover {
-	border: var(--button-error-color-outlined-border-hover);
-	color: var(--button-error-outlined-hover);
+    border: var(--button-error-color-outlined-border-hover);
+    color: var(--button-error-outlined-hover);
 }
 
 .contained {
-	display: flex;
-	font-family: var(--prymary-font);
-	border: none;
+    display: flex;
+    font-family: var(--prymary-font);
+    border: none;
 }
 
 .contained:disabled {
-	display: flex;
-	background-color: var(--button-contained-background-disabled);
-	color: var(--button-contained-color-disabled);
-	pointer-events: none;
-	border-radius: var(--button-contained-border-radius-disabled);
+    display: flex;
+    background-color: var(--button-contained-background-disabled);
+    color: var(--button-contained-color-disabled);
+    pointer-events: none;
+    border-radius: var(--button-contained-border-radius-disabled);
 }
 
 .contained.primary {
-	background-color: var(--button-prymary-color-contained-background);
-	color: var(--button-prymary-contained-color);
+    background-color: var(--button-prymary-color-contained-background);
+    color: var(--button-prymary-contained-color);
 }
+
 .contained.primary:hover {
-	background-color: var(--button-prymary-color-contained-background-hover);
-	color: var(--button-prymary-contained-color-hover);
+    background-color: var(--button-prymary-color-contained-background-hover);
+    color: var(--button-prymary-contained-color-hover);
 }
+
 .contained.secondary {
-	background-color: var(--button-secondary-color-contained-background);
-	color: var(--button-secondary-contained-color);
+    background-color: var(--button-secondary-color-contained-background);
+    color: var(--button-secondary-contained-color);
 }
+
 .contained.secondary:hover {
-	background-color: var(--button-secondary-color-contained-background-hover);
-	color: var(--button-secondary-contained-color-hover);
+    background-color: var(--button-secondary-color-contained-background-hover);
+    color: var(--button-secondary-contained-color-hover);
 }
+
 .contained.error {
-	background-color: var(--button-error-color-contained-background);
-	color: var(--button-error-contained-color);
+    background-color: var(--button-error-color-contained-background);
+    color: var(--button-error-contained-color);
 }
+
 .contained.error:hover {
-	background-color: var(--button-error-color-contained-background-hover);
-	color: var(--button-error-contained-color-hover);
+    background-color: var(--button-error-color-contained-background-hover);
+    color: var(--button-error-contained-color-hover);
 }
 
 .only_icon {
-	display: flex;
-	padding: initial;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    padding: initial;
+    align-items: center;
+    justify-content: center;
 }
 
 .just_icon {
-	padding: var(--button-just-icon-padding);
-	margin: var(--button-just-icon-margin);
-	font-size: var(--button-just-icon-font-sie);
-	background-color: var(--button-just-icon-background);
-	border: none;
-	cursor: pointer;
+    padding: var(--button-just-icon-padding);
+    margin: var(--button-just-icon-margin);
+    font-size: var(--button-just-icon-font-sie);
+    background-color: var(--button-just-icon-background);
+    border: none;
+    cursor: pointer;
 }
 
 .just_icon:hover {
-	background-color: var(--button-just-icon-background-hover);
+    background-color: var(--button-just-icon-background-hover);
 }
 
 .just_icon:disabled {
-	display: flex;
-	cursor: auto;
-	border: none;
-	pointer-events: none;
+    display: flex;
+    cursor: auto;
+    border: none;
+    pointer-events: none;
 }
 
 .label {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: var(--button-label-margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--button-label-margin);
 }
 
 .startIcon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .endIcon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 2px;
-	transform: var(--button-end-icon-transform);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    transform: var(--button-end-icon-transform);
 }

@@ -103,7 +103,7 @@ export default function Column({ title, cards, _id }: ColumnT) {
 					placeholder='Введите название карточки'
 					defaultValue={title}
 				>
-					<div>{title}</div>
+					<div className={classes.column_title}>{title}</div>
 				</Editor>
 				<Button variant={'just_icon'} icon={<AiOutlinePlus />} onClick={columnDelete} />
 				<div className={classes.cards_wrapper}>{miniCards}</div>

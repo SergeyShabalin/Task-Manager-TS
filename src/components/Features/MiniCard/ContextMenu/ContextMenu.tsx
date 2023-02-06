@@ -6,43 +6,42 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { BoardActions } from '@/store/board/reducer'
 import classes from './ContextMenu.module.css'
 import { RiDeleteBin5Line } from 'react-icons/all'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 
 interface ContextMenuProps {
-	title?: string
+	userId?: string
+	boardId?: string
+	cardId?: string
 	contextClose?: () => void
-	changeCardTitle: (title: string) => (dispatch: Dispatch<BoardActions>) => Promise<boolean>
 	cardDelete?: () => void
 }
 
-export default function ContextMenu({ title, contextClose, changeCardTitle, cardDelete }: ContextMenuProps) {
+export default function ContextMenu({ contextClose, cardDelete, userId, boardId, cardId }: ContextMenuProps) {
 
 	const cxtRef = useRef(null)
-	useOnClickOutside(cxtRef, closeModal)
-
-	function closeModal() {
-	}
+	useOnClickOutside(cxtRef, contextClose)
+	const location = useLocation()
 
 	return (
-		<form className={classes.contextWrapper}>
-			<div ref={cxtRef}>
-				<Editor
-					buttonSubmitTitle='Сохранить'
-					nonChildren
-					onSubmit={changeCardTitle}
-					placeholder='Введите название карточки'
-					defaultValue={title}
-				/>
-			</div>
-			<div>
+		<div className={classes.contextWrapper} ref={cxtRef}>
 				<ul className={classes.ul}>
 					<li className={classes.li}>
 						<RiDeleteBin5Line />
 						<div className={classes.li_title} onClick={cardDelete}>Удалить карточку</div>
 					</li>
+					<Link
+						className={classes.link}
+						state={{ background: location }}
+						to={`/user/${userId}/board/${boardId}/card/${cardId}`}
+					>
+					<li className={classes.li}>
+						<RiDeleteBin5Line />
+						<div className={classes.li_title} onClick={contextClose}>Открыть карточку</div>
+					</li>
+					</Link>
 				</ul>
-			</div>
-		</form>
+		</div>
 	)
 }
 
