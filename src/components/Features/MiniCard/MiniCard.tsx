@@ -5,12 +5,11 @@ import { Card } from '@/models/Cards'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Checkout, DecisionDate } from '@/components/Features'
-import { BsThreeDots } from 'react-icons/all'
+import { BsThreeDots } from 'react-icons/bs'
 import Description from '@/components/Features/MiniCard/Description'
 
-import classes from './MiniCard.module.css'
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
-
+import classes from './MiniCard.module.css'
 
 export default function MiniCard({
 																	 title,
@@ -65,12 +64,10 @@ export default function MiniCard({
 			</div>
 
 			<div className={classes.footer}>
-				<DecisionDate decisionDate={decisionDate} />
+				<DecisionDate decisionDate={decisionDate!} />
 				<Checkout countTask={countTask} doneTask={doneTask} />
 				<Description isOpen={description} />
 			</div>
 		</div>
-
-
 	)
 }

@@ -1,8 +1,7 @@
 .wrapper {
-    max-height: 85vh;
     background: rgba(0, 0, 0, 0);
     margin: 0 4px;
-    height: 80vh;
+    height: 84vh;
 }
 
 .list_wrapper {
@@ -12,6 +11,18 @@
     width: 33vh;
     background-color: var(--list-wrapper);
     border-radius: 5px;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.context_menu {
+
+    position: absolute;
+    right: 0;
 }
 
 .column_title {

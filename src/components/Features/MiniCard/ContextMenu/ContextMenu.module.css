@@ -2,7 +2,7 @@
     position: absolute;
     margin-left: 290px;
     display: flex;
-    z-index: 19;
+    z-index: 2;
     padding: 5px 0;
 }
 
@@ -23,8 +23,13 @@
     margin-left: 10px;
 }
 
+.link{
+    text-decoration: none;
+    color: #181818;
+}
+
 .li {
-    background-color: rgba(0, 0, 0, 0.78);
+    background-color: rgba(0, 0, 0, 0.87);
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -33,6 +38,7 @@
     border-radius: 5px;
     list-style: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .li:hover {

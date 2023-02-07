@@ -1,23 +1,19 @@
 import React from 'react'
-import classes from './Column.module.css'
-import { MiniCard } from '@Features'
 
+import { MiniCard } from '@Features'
 import { Column as ColumnT } from '@/models/Columns'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
-import { AiOutlinePlus } from 'react-icons/all'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Editor } from '@Features'
+import ContextMenu from '@/components/Features/Column/ContextMenu'
+import classes from './Column.module.css'
 
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
-	const { deleteColumn, addNewCard, changeColumn, dragAndDropCard } = useActions()
+	const { addNewCard, changeColumn, dragAndDropCard } = useActions()
 	const allCards = useTypedSelector(state => state.board.allCards)
-
-	function columnDelete() {
-		deleteColumn(_id)
-	}
 
 	function addCard(value: string) {
 		return addNewCard(_id, value)
@@ -97,15 +93,20 @@ export default function Column({ title, cards, _id }: ColumnT) {
 				onDragOver={e => onDragOverColumn(e)}
 				onDrop={e => onDropColumn(e, 'new', _id)}
 			>
-				<Editor
-					buttonSubmitTitle='изменить'
-					onSubmit={columnChange}
-					placeholder='Введите название карточки'
-					defaultValue={title}
-				>
-					<div className={classes.column_title}>{title}</div>
-				</Editor>
-				<Button variant={'just_icon'} icon={<AiOutlinePlus />} onClick={columnDelete} />
+				<div className={classes.header}>
+					<Editor
+						buttonSubmitTitle='изменить'
+						onSubmit={columnChange}
+						placeholder='Введите название карточки'
+						defaultValue={title}
+					>
+						<div className={classes.column_title}>{title}</div>
+					</Editor>
+					<div className={classes.context_menu}>
+						<ContextMenu columnId={_id} />
+					</div>
+				</div>
+
 				<div className={classes.cards_wrapper}>{miniCards}</div>
 				<div className={classes.card_creator}>
 					<Editor

@@ -34,10 +34,7 @@ export default function Login() {
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
 		const user = await login(form)
-		// const currentBoardId = user.boardIds[0]
-		// if (user._id! && user.boardIds[0]) navigate(`/user/${user._id}/board/${currentBoardId}`)
-		if (user._id!) navigate(`/user/${user._id}/greeting`)
-		// else navigate(`/user/${user._id}`)
+			if (user._id!) navigate(`/user/${user._id}/greeting`)
 	}
 
 	return (

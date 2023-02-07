@@ -11,21 +11,9 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { User } from '@/models/Users'
 
 export default function Header({ _id }: Partial<User>, ) {
-	const { addBoard, logOut } = useActions()
+	const { logOut } = useActions()
 	const navigate = useNavigate()
 	const {userId} = useParams()
-
-
-	async function createBoard(title: string) {
-		const payload = {
-			userId: _id,
-			title,
-			background
-		}
-		const boardId = await addBoard(payload)
-		navigate(`/user/${_id}/board/${boardId}`)
-		return boardId
-	}
 
 	function logout() {
 		logOut()

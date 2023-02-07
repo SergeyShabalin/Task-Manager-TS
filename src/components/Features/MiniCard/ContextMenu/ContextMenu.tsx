@@ -1,13 +1,10 @@
 import React, { useRef } from 'react'
-import { Dispatch } from 'redux'
+import { RiDeleteBin5Line } from 'react-icons/ri'
+import { AiFillFolderOpen } from 'react-icons/ai'
+import { Link, useLocation } from 'react-router-dom'
 
-import { Editor } from '@Features'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
-import { BoardActions } from '@/store/board/reducer'
 import classes from './ContextMenu.module.css'
-import { RiDeleteBin5Line } from 'react-icons/all'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-
 
 interface ContextMenuProps {
 	userId?: string
@@ -26,20 +23,20 @@ export default function ContextMenu({ contextClose, cardDelete, userId, boardId,
 	return (
 		<div className={classes.contextWrapper} ref={cxtRef}>
 				<ul className={classes.ul}>
-					<li className={classes.li}>
-						<RiDeleteBin5Line />
-						<div className={classes.li_title} onClick={cardDelete}>Удалить карточку</div>
-					</li>
 					<Link
 						className={classes.link}
 						state={{ background: location }}
 						to={`/user/${userId}/board/${boardId}/card/${cardId}`}
 					>
 					<li className={classes.li}>
-						<RiDeleteBin5Line />
-						<div className={classes.li_title} onClick={contextClose}>Открыть карточку</div>
+						<AiFillFolderOpen />
+						<div className={classes.li_title}>Открыть карточку</div>
 					</li>
 					</Link>
+						<li className={classes.li}>
+						<RiDeleteBin5Line />
+						<div className={classes.li_title} onClick={cardDelete}>Удалить карточку</div>
+					</li>
 				</ul>
 		</div>
 	)

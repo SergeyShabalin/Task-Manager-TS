@@ -6,12 +6,12 @@ import Main from '@/layouts/Main'
 import UiKit from '@/components/UIKit'
 import Registration from '@/pages/registration'
 import Login from '@/pages/login/Login'
+import Greeting from '@/pages/greeting'
 import { Card } from '@Features'
 import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
-import Greeting from '@/pages/greeting'
 
 
 function App() {

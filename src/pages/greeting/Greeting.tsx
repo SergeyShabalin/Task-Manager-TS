@@ -6,6 +6,8 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Greeting.module.css'
 import './Colors.css'
+import BoardCreator from '@/pages/greeting/BoardCreator'
+import useOpenClose from '@/hooks/UseOpenClose'
 
 export default function Greeting() {
 
@@ -13,6 +15,7 @@ export default function Greeting() {
 	const navigate = useNavigate()
 	const {userId} = useParams()
 	const { getAllBoard } = useActions()
+	const {onOpen, onClose, isOpen} = useOpenClose()
 
 	useEffect(() => {
 	if(userId)	getAllBoard(userId)
@@ -60,9 +63,10 @@ export default function Greeting() {
 								</div>
 							)
 						})}
-						<div className={classes.board_creator}>Создать доску</div>
+						<div className={classes.board_creator} onClick={onOpen}>Создать доску</div>
 					</div>
 				</div>
+				{isOpen && 	<BoardCreator userId={userId!}/>}
 			</div>
 		</div>
 	)

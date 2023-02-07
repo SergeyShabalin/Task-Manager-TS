@@ -1,19 +1,20 @@
 import { Dispatch } from 'redux'
 
 import { BoardAC, CardAC, ChecklistAC, ColumnAC } from './action'
+import { UserAC } from '@/store/user/action'
 import BoardApi from '@/api/BoardApi'
 import ColumnsApi from '@/api/ColumnsApi'
 import CardsApi from '@/api/CardsApi'
+import CheckListApi from '@/api/CheckListApi'
 import { BoardActions } from '@/store/board/reducer'
 import { PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
-import CheckListApi from '@/api/CheckListApi'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-import { UserAC } from '@/store/user/action'
+
 
 export const columnsActions = {
 	addNewColumn:
