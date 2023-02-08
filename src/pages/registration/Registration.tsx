@@ -80,19 +80,21 @@ export default function Registration() {
 					value={form.email}
 					onChange={onSubmit}
 				/>
-					<Input
-						iconRight={<div className={classes.control_pass} onClick={changePassView}><BiShowAlt /></div>}
-						type={!isPass ? 'text' : 'password'}
-						autoComplete='off'
-						color='transparent'
-						placeholder='пароль'
-						name='password'
-						value={form.password}
-						onChange={onSubmit}
-					/>
+				<Input
+					iconRight={<div className={classes.control_pass} onClick={changePassView}><BiShowAlt /></div>}
+					type={!isPass ? 'text' : 'password'}
+					autoComplete='off'
+					color='transparent'
+					placeholder='пароль'
+					name='password'
+					value={form.password}
+					onChange={onSubmit}
+				/>
 
 				<div className={classes.footer}>
-					<Button onClick={handleSubmit} title='Регистрация' variant='contained' color='primary' />
+					<div className={classes.btn_add}>
+						<Button onClick={handleSubmit} title='Регистрация' fullSize variant='contained' color='primary' />
+					</div>
 				</div>
 				<div className={classes.link_wrapper}>
 					<span>Уже есть аккаунт?</span>

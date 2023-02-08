@@ -1,4 +1,4 @@
-.main, .type1, .type2, .type3 {
+.main, .type1, .type2, .type3, .type4, .type5, .type6, .type7, .type8, .black, .gray, .orange, .blue, .red, .green {
     overflow-x: hidden;
     overflow-y: auto;
     background-size: auto;
@@ -6,18 +6,64 @@
     min-height: 100vh;
 }
 
-.main{
+.main {
     background: #333131;
 }
 
-.type1{
-    background-image: url("https://images.wallpaperscraft.ru/image/single/gory_skaly_vershiny_151531_1920x1080.jpg");
+.type1 {
+    background-image: var(--type1_background);
 }
-.type2{
-    background-image: url("https://uhdwallpapers.org/uploads/converted/23/01/23/natural-view-over-the-lake-and-mountains-1920x1080_894798-mm-90.webp");
+
+.type2 {
+    background-image: var(--type2_background);
 }
-.type3{
-    background-image: url("https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1920x1080_47599-mm-90.webp");
+
+.type3 {
+    background-image: var(--type3_background);
+}
+
+.type4 {
+    background-image: var(--type4_background);
+}
+
+.type5 {
+    background-image: var(--type5_background);
+}
+
+.type6 {
+    background-image: var(--type6_background);
+}
+
+.type7 {
+    background-image: var(--type7_background);
+}
+
+.type8 {
+    background-image: var(--type8_background);
+}
+
+.black {
+    background: #282727;
+}
+
+.gray {
+    background: #9b9393;
+}
+
+.orange {
+    background: #c9741f;
+}
+
+.blue {
+    background: #16aac4;
+}
+
+.red {
+    background: #9b2222;
+}
+
+.green {
+    background: rgba(87, 157, 39, 0.99);
 }
 
 .header_main {

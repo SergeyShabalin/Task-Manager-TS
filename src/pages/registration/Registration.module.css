@@ -19,6 +19,8 @@
 	transition: all 0.4s ease-in-out;
 }
 
+
+
 .one {
 	font-size: 8rem;
 	text-shadow: 1px 1px 13px #000000, 0 0 0.5em #545460, 0 0 0.5em #0e0f10;
@@ -64,6 +66,10 @@ h2 {
 	display: flex;
 	justify-content: center;
 	padding: 10px 0;
+}
+
+.btn_add {
+	width: 40%;
 }
 
 .link_wrapper {

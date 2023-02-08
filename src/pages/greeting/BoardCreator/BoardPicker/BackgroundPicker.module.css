@@ -1,43 +1,69 @@
-.check{
+.check {
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
-.type1, .type2, .type3, .type4 {
+
+.type1, .type2, .type3, .type4, .type5, .type6, .type7, .type8 {
     width: 65px;
     height: 50px;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
+
 }
 
-.picker_active{
+.picker_active {
     box-shadow: inset 1px 0 30px 3px black;
 }
 
 .type1 {
-    background-image: url("https://uhdwallpapers.org/uploads/converted/22/02/14/view-from-a-drone-above-the-ocean-shore-1920x1080_574865-mm-90.webp");
+    background-image: var(--type1_background_icons);
     background-size: cover;
     size: auto;
 }
 
 
 .type2 {
-    background-image: url("https://uhdwallpapers.org/uploads/converted/21/05/14/dreamy-sunset-on-the-lake-shore-1280x720_664788-mm-90.webp");
+    background-image: var(--type2_background_icons);
     background-size: cover;
     size: auto;
 }
 
 .type3 {
-    background-image: url("https://uhdwallpapers.org/uploads/converted/20/10/11/admiring-the-night-sky-on-the-lake-promenade-1280x720_579487-mm-90.webp");
+    background-image: var(--type3_background_icons);
     background-size: cover;
     size: auto;
 }
 
 .type4 {
-    background-image: url("https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1280x720_47599-mm-90.webp");
+    background-image:var(--type4_background_icons);
+    background-size: cover;
+    size: auto;
+}
+
+.type5 {
+    background-image: var(--type5_background_icons);
+    background-size: cover;
+    size: auto;
+}
+
+.type6 {
+    background-image: var(--type6_background_icons);
+    background-size: cover;
+    size: auto;
+}
+
+.type7 {
+    background-image: var(--type7_background_icons);
+    background-size: cover;
+    size: auto;
+}
+
+.type8 {
+    background-image: var(--type8_background_icons);
     background-size: cover;
     size: auto;
 }

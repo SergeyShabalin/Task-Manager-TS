@@ -1,119 +1,186 @@
 .header {
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .wrapper {
-	background: rgba(29, 29, 201, 0.87);
-	overflow-x: hidden;
-	overflow-y: auto;
-	width: 100vw;
+    background: rgba(29, 29, 201, 0.87);
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100vw;
 }
 
 .body {
-	background: #ffffff;
-	max-height: 90vh;
-	overflow-x: hidden;
+    background: #ffffff;
+    max-height: 90vh;
+    overflow-x: hidden;
 }
 
 .content {
-	margin: 0 20%;
-	padding: 30px;
+    margin: 0 20%;
+    padding: 30px;
 }
 
 .title_workspaces {
-	font-size: 16px;
-	font-weight: 700;
-	color: #5e6c84;
+    font-size: 16px;
+    font-weight: 700;
+    color: #5e6c84;
 }
 
 .workspaces {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 10px;
 }
 
 .board_creator {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 10px;
-	width: 20%;
-	height: 115px;
-	font-weight: 700;
-	color: #1f1f3a;
-	margin: 5px;
-	background: #b7b5b0;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
-	opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 20%;
+    height: 115px;
+    font-weight: 700;
+    color: #1f1f3a;
+    margin: 5px;
+    background: #b7b5b0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.8;
 }
 
 .board_creator:hover {
-	opacity: 1;
-	background: #8f8e89;
+    opacity: 1;
+    background: #8f8e89;
 }
 
 .content::-webkit-scrollbar {
-	width: 5px;
+    width: 5px;
 }
 
 .content::-webkit-scrollbar-track {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .content::-webkit-scrollbar-thumb {
-	background-color: #bdbaba;
-	border-radius: 10px;
-	margin: 2px;
+    background-color: #bdbaba;
+    border-radius: 10px;
+    margin: 2px;
 }
 
 .content::-webkit-scrollbar-thumb:hover {
-	background-color: rgb(238, 207, 207);
-	cursor: grab;
+    background-color: rgb(238, 207, 207);
+    cursor: grab;
 }
 
 .title_board {
-	padding: 5px;
-	text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.64);
-	color: #ffffff;
-	white-space: nowrap;
-	overflow-x: hidden;
-	text-overflow: ellipsis;
-	font-size: 16px;
+    padding: 5px;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.64);
+    color: #ffffff;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
 }
 
 .type1,
 .type2,
-.type3{
-	display: flex;
-	justify-content: left;
-	border-radius: 10px;
-	width: 20%;
-	height: 115px;
-	text-overflow: ellipsis;
-	font-weight: 500;
-	margin: 5px;
-	background-size: cover;
-	size: auto;
-	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+.type3,
+.type4,
+.type5,
+.type6,
+.type7,
+.type8,
+.black,
+.gray,
+.orange,
+.blue,
+.red,
+.green {
+    display: flex;
+    justify-content: left;
+    border-radius: 10px;
+    width: 20%;
+    height: 115px;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    margin: 5px;
+    background-size: cover;
+    size: auto;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .type1:hover,
 .type2:hover,
-.type3:hover {
-	box-shadow: inset 1px 1px 100px 20px rgba(0, 0, 0, 0.75);
+.type3:hover,
+.type4.hover,
+.type5:hover,
+.type6:hover,
+.type7:hover,
+.type8:hover,
+.black:hover,
+.gray:hover,
+.orange:hover,
+.blue:hover,
+.red:hover,
+.green:hover{
+    box-shadow: inset 1px 1px 100px 20px rgba(0, 0, 0, 0.75);
 }
+
 .type1 {
-	background-image: url('https://images.wallpaperscraft.ru/image/single/gory_skaly_vershiny_151531_1920x1080.jpg');
+    background-image: var(--type1_background_icons);
 }
 
 .type2 {
-	background-image: url('https://uhdwallpapers.org/uploads/converted/23/01/23/natural-view-over-the-lake-and-mountains-1920x1080_894798-mm-90.webp');
+    background-image: var(--type2_background_icons);
 }
+
 .type3 {
-	background-image: url('https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1920x1080_47599-mm-90.webp');
+    background-image: var(--type3_background_icons);
+}
+
+.type4 {
+    background-image: var(--type4_background_icons);
+}
+.type5 {
+    background-image: var(--type5_background_icons);
+}
+
+.type6 {
+    background-image: var(--type6_background_icons);
+}
+
+.type7 {
+    background-image: var(--type7_background_icons);
+}
+
+.type8 {
+    background-image: var(--type8_background_icons);
+}
+
+.black {
+    background: #282727;
+}
+
+.gray {
+    background: #9b9393;
+}
+
+.orange {
+    background: #c9741f;
+}
+
+.blue {
+    background: #16aac4;
+}
+
+.red {
+    background: #9b2222;
+}
+
+.green {
+    background: rgba(87, 157, 39, 0.99);
 }

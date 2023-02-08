@@ -21,8 +21,13 @@
 
 .footer {
     display: flex;
+    width: 100%;
     justify-content: center;
-    padding: 10px 0;
+    padding: 15px 0;
+}
+
+.btn_add {
+    width: 50%;
 }
 
 .control_pass {
@@ -40,7 +45,7 @@
     color: white;
 }
 
-.link{
+.link {
     padding: 0 5px;
     color: #e4ec03;
     text-decoration: none;

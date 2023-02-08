@@ -66,7 +66,10 @@ export default function Login() {
 				/>
 
 				<div className={classes.footer}>
-					<Button onClick={handleSubmit} title='Войти' variant='contained' color='primary' />
+					<div className={classes.btn_add}>
+						<Button onClick={handleSubmit} title='Войти' fullSize variant='contained' color='primary' />
+					</div>
+
 				</div>
 				<div className={classes.link_wrapper}>
 					<span>Еще нет аккаунта? </span>

@@ -12,10 +12,10 @@ export interface BoardCreatorProps {
 
 export default function BoardCreator({ userId }: BoardCreatorProps) {
 	const { addBoard } = useActions()
-	const [mainBackground, setMainBackground] = useState('type1')
+	const [mainBackground, setMainBackground] = useState('black')
 	const [titleBoard, setTitleBoard] = useState('')
 	const navigate = useNavigate()
-	const imagePicker = ['type1', 'type2', 'type3', 'type4']
+	const imagePicker = ['type1', 'type2', 'type3', 'type4', 'type5', 'type6', 'type7', 'type8']
 	const colorPicker = ['black', 'gray', 'orange', 'blue', 'red', 'green']
 
 
@@ -23,10 +23,12 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 		setMainBackground(type)
 	}
 
-	async function createBoard(title: string) {
+	async function createBoard(e) {
+		e.preventDefault()
 		const payload = {
 			userId,
-			title
+			title: titleBoard,
+			background: mainBackground
 		}
 		const boardId = await addBoard(payload)
 		navigate(`/user/${userId}/board/${boardId}`)
@@ -38,7 +40,7 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 	}
 
 	return (
-		<section className={classes.wrapper}>
+		<form className={classes.wrapper} >
 			<div className={classes.header}>Создать доску</div>
 			<hr />
 			<div className={classes[mainBackground]}>
@@ -53,7 +55,8 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 							return (
 								<div key={picker} onClick={() => changeBackground(picker)}>
 									<BackgroundPicker picker={picker} />
-								</div>)
+								 </div>
+							)
 						})
 						}
 					</div>
@@ -76,18 +79,31 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 					color='outlined'
 					placeholder='Введите название'
 					value={titleBoard}
-					onChange={changeBoardTitle} />
+					onChange={changeBoardTitle}
+				/>
 				<span>👋 Укажите название доски.</span>
 			</div>
 
 			<div className={classes.add_controller}>
 				<div className={classes.add_btn}>
-					<Button title='Создать' variant='outlined'  color={titleBoard ?'primary' : 'error'} disabled={!titleBoard}/>
+					<Button
+						title='Создать'
+						variant='outlined'
+						fullSize={true}
+						onClick={createBoard}
+						color={titleBoard ? 'primary' : 'error'}
+						disabled={!titleBoard}
+					/>
 				</div>
 				<div className={classes.add_btn}>
-					<Button title='Создать по шаблону' variant='outlined' color='primary'/>
+					<Button
+						title='Создать по шаблону'
+						fullSize={true}
+						variant='outlined'
+						color='primary'
+					/>
 				</div>
 			</div>
-		</section>
+		</form>
 	)
 }

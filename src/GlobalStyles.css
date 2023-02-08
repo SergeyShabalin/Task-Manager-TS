@@ -151,7 +151,7 @@
     --dropdown-list-item-first-border-radius: 5px 5px 0 0;
     --dropdown-list-item-last-border-radius: 0 0 5px 5px;
 
-    --context-menu-background-color:#eee4e4;
+    --context-menu-background-color: #eee4e4;
     --context-menu-border: solid 1px #bb9999;
     --context-menu-border-radius: 5px;
     --context-menu-color: #383131;
@@ -173,7 +173,7 @@
     --card-decision-date-background-color-hover: #d39191;
     --card-decision-date-border-radius: 5px;
     --card-decision-date-padding: 3px 5px;
-    --card-decision-date-margin:   0px;
+    --card-decision-date-margin: 0px;
 
 
     --card-modal-background-color: #ffeaea;
@@ -187,4 +187,22 @@
     --content_edit_opacity: 100%;
     --list-header-color: #9595a6;
     --menu-color: rgba(0, 0, 0, 0.28);
+
+    --type1_background_icons: url('https://uhdwallpapers.org/uploads/converted/22/02/14/view-from-a-drone-above-the-ocean-shore-1280x720_574865-mm-90.webp');
+    --type2_background_icons: url("https://uhdwallpapers.org/uploads/converted/21/05/14/dreamy-sunset-on-the-lake-shore-1280x720_664788-mm-90.webp");
+    --type3_background_icons: url("https://uhdwallpapers.org/uploads/converted/20/10/11/admiring-the-night-sky-on-the-lake-promenade-1280x720_579487-mm-90.webp");
+    --type4_background_icons: url("https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1280x720_47599-mm-90.webp");
+    --type5_background_icons: url("https://uhdwallpapers.org/uploads/converted/18/03/05/icebergs-ocean-in-iceland-1280x720_7494-mm-90.webp");
+    --type6_background_icons: url("https://uhdwallpapers.org/uploads/converted/18/03/14/green-leaves-1280x720_78966-mm-90.webp");
+    --type7_background_icons: url("https://uhdwallpapers.org/uploads/converted/20/10/11/mountain-landscape-photography-gesause-park-1280x720_947788-mm-90.webp");
+    --type8_background_icons: url("https://uhdwallpapers.org/uploads/converted/18/05/22/super-sunset-from-princes-pier-1280x720_54544-mm-90.webp");
+
+    --type1_background: url("https://uhdwallpapers.org/uploads/converted/22/02/14/view-from-a-drone-above-the-ocean-shore-1920x1080_574865-mm-90.webp");
+    --type2_background: url("https://uhdwallpapers.org/uploads/converted/21/05/14/dreamy-sunset-on-the-lake-shore-1920x1080_664788-mm-90.webp");
+    --type3_background: url("https://uhdwallpapers.org/uploads/converted/20/10/11/admiring-the-night-sky-on-the-lake-promenade-1920x1080_579487-mm-90.webp");
+    --type4_background: url("https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1920x1080_47599-mm-90.webp");
+    --type5_background: url('https://uhdwallpapers.org/uploads/converted/18/03/05/icebergs-ocean-in-iceland-1920x1080_7494-mm-90.webp');
+    --type6_background: url('https://uhdwallpapers.org/uploads/converted/18/03/14/green-leaves-1920x1080_78966-mm-90.webp');
+    --type7_background: url('https://uhdwallpapers.org/uploads/converted/20/10/11/mountain-landscape-photography-gesause-park-1920x1080_947788-mm-90.webp');
+    --type8_background: url('https://uhdwallpapers.org/uploads/converted/18/05/22/super-sunset-from-princes-pier-1920x1080_54544-mm-90.webp');
 }
