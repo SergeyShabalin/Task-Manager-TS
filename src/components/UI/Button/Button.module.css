@@ -73,6 +73,7 @@
     display: flex;
     cursor: auto;
     pointer-events: none;
+    color:var(--button-outlined-color-disabled);
 }
 
 .outlined.primary {

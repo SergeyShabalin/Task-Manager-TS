@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import Header from '@/layouts/Main/Header'
@@ -8,17 +8,20 @@ import classes from './Greeting.module.css'
 import './Colors.css'
 import BoardCreator from '@/pages/greeting/BoardCreator'
 import useOpenClose from '@/hooks/UseOpenClose'
+import useOnClickOutside from '@/hooks/UseOnClickOutside'
 
 export default function Greeting() {
 
 	const allBoards = useTypedSelector(state => state.board.allBoards)
 	const navigate = useNavigate()
-	const {userId} = useParams()
+	const { userId } = useParams()
+	const addBoardRef = useRef(null)
 	const { getAllBoard } = useActions()
-	const {onOpen, onClose, isOpen} = useOpenClose()
+	const { onOpen, onClose, isOpen } = useOpenClose()
+	useOnClickOutside(addBoardRef, onClose)
 
 	useEffect(() => {
-	if(userId)	getAllBoard(userId)
+		if (userId) getAllBoard(userId)
 	}, [])
 
 	function openBoard(boardId: string) {
@@ -66,8 +69,12 @@ export default function Greeting() {
 						<div className={classes.board_creator} onClick={onOpen}>Создать доску</div>
 					</div>
 				</div>
-				{isOpen && 	<BoardCreator userId={userId!}/>}
+
 			</div>
+			<div ref={addBoardRef}>
+				{isOpen && <BoardCreator userId={userId!} />}
+			</div>
+
 		</div>
 	)
 }

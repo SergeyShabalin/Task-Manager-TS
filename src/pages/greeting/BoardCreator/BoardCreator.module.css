@@ -1,3 +1,101 @@
-.wrapper{
+.wrapper {
+    background: #f1f5f5;
+    position: absolute;
+    width: 304px;
+    top: 200px;
+    left: 40%;
+    padding: 5px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.23);
+    color: #5e6c84;
+}
+
+.header {
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_picker{
+    padding-left: 5px;
+}
+.pickers{
+    margin-bottom: 10px;
+}
+
+.type1, .type2, .type3, .type4, .black, .gray, .orange, .blue, .red, .green{
+    display: flex;
+    height: 130px;
+    justify-content: center;
+    background-size: cover;
+    size: auto;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.type1{
+    background-image: url("https://uhdwallpapers.org/uploads/converted/22/02/14/view-from-a-drone-above-the-ocean-shore-1920x1080_574865-mm-90.webp");
+}
+.type2{
+    background-image: url("https://uhdwallpapers.org/uploads/converted/21/05/14/dreamy-sunset-on-the-lake-shore-1280x720_664788-mm-90.webp");
+}
+.type3{
+    background-image: url("https://uhdwallpapers.org/uploads/converted/20/10/11/admiring-the-night-sky-on-the-lake-promenade-1280x720_579487-mm-90.webp");
+}
+.type4{
+    background-image: url("https://uhdwallpapers.org/uploads/converted/18/03/13/the-natural-green-of-plants-1280x720_47599-mm-90.webp");
+}
+
+
+.black{
+    background: #282727;
+}
+.gray{
+    background: #9b9393;
+}
+.orange{
+    background: #c9741f;
+}
+.blue{
+    background: #16aac4;
+}
+.red{
+    background: #9b2222;
+}
+.green{
+    background: rgba(87, 157, 39, 0.99);
+}
+
+.column_background_img {
+    background-image: url("https://a.trellocdn.com/prgb/assets/14cda5dc635d1f13bc48.svg");
+    width: 100%;
+    margin: 10px 25px;
+    background-size: cover;
+}
+
+
+.picker {
+    display: flex;
+}
+
+ .background_color_picker {
+    display: flex;
+    align-items: center;
+}
+
+.background_picker{
 
 }
+
+.add_controller{
+margin: 0 10px;
+}
+
+.add_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
