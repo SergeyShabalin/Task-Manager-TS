@@ -153,7 +153,6 @@ export const boardActions = {
 		try {
 			const { data } = await BoardApi.change(payload)
 			dispatch(BoardAC.changeBoardAC(data))
-			console.log({ data })
 			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка изменения доски')

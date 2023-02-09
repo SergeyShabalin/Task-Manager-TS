@@ -13,15 +13,12 @@ export default function Board({}) {
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const { changeBoard } = useActions()
-
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
 
 	useEffect(() => {
-		if (boardId) {
-			getCurrentBoard(boardId)
-		}
+		if (boardId) getCurrentBoard(boardId)
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {

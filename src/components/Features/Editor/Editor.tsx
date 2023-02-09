@@ -20,28 +20,31 @@ interface EditorProps {
 	variant?: 'normal' | 'large'
 }
 
+
 export default function Editor({
-	buttonSubmitTitle,
-	onSubmit,
-	defaultValue = '',
-	rows = 3,
-	placeholder,
-	cols = 32,
-	children,
-	nonChildren = false,
-	color = 'white',
-	variant = 'normal'
-}: EditorProps) {
+																 buttonSubmitTitle,
+																 onSubmit,
+																 defaultValue = '',
+																 rows = 3,
+																 placeholder,
+																 cols = 32,
+																 children,
+																 nonChildren = false,
+																 color = 'white',
+																 variant = 'normal'
+															 }: EditorProps) {
+
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
 	const [isLoad, setIsLoad] = useState(false)
-	const editorRef = useRef(null);
-  useOnClickOutside(editorRef, onClose)
+	const editorRef = useRef(null)
 
-	useEffect(()=>{
-		if(nonChildren) onOpen()
+	useOnClickOutside(editorRef, onClose)
 
-	}, [])
+	useEffect(() => {
+		if (nonChildren) onOpen()
+		setInputValue(defaultValue)
+	}, [defaultValue])
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setInputValue(target.value)
@@ -56,42 +59,42 @@ export default function Editor({
 		const isSuccess = await onSubmit(inputValue)
 		setIsLoad(() => false)
 		if (isSuccess) {
-			 onClose()
-			setInputValue(defaultValue)
+			setInputValue(inputValue)
+			onClose()
 		}
 	}
 
 	if (!isOpen) return <div onClick={onOpen}>{children}</div>
 
 	return (
-			<div className={classes.wrapper} ref={editorRef} >
-				<Input
-					autoFocus
-					autoComplete='off'
-					rows={rows}
-					value={inputValue}
-					color={color}
-					placeholder={placeholder}
-					cols={cols}
-					variant={variant}
-					onKeyDown={saveChanged}
-					onChange={changeInput}
-					disabled={isLoad}
-				/>
-				<div className={rows !== 1 ? classes.control : classes.control_one_row}>
-					{buttonSubmitTitle && (
-						<div className={classes.add_btn}>
-							<Button
-								disabled={isLoad}
-								variant={isLoad ? 'outlined' : 'contained'}
-								color='primary'
-								title={buttonSubmitTitle}
-								onClick={sendValue}
-							/>
-							<Button variant='just_icon' icon={<GrClose />} onClick={onClose} />
-						</div>
-					)}
-				</div>
+		<div className={classes.wrapper} ref={editorRef}>
+			<Input
+				autoFocus
+				autoComplete='off'
+				rows={rows}
+				value={inputValue}
+				color={color}
+				placeholder={placeholder}
+				cols={cols}
+				variant={variant}
+				onKeyDown={saveChanged}
+				onChange={changeInput}
+				disabled={isLoad}
+			/>
+			<div className={rows !== 1 ? classes.control : classes.control_one_row}>
+				{buttonSubmitTitle && (
+					<div className={classes.add_btn}>
+						<Button
+							disabled={isLoad}
+							variant={isLoad ? 'outlined' : 'contained'}
+							color='primary'
+							title={buttonSubmitTitle}
+							onClick={sendValue}
+						/>
+						<Button variant='just_icon' icon={<GrClose />} onClick={onClose} />
+					</div>
+				)}
 			</div>
+		</div>
 	)
 }
