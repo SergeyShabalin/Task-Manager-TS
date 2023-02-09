@@ -25,15 +25,20 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 				<h4>Чек-лист</h4>
 			</div>
 
+			<div className={classes.slider}>
 				<Slider doneTask={doneTask} countTask={countTask} />
-
+			</div>
+			<div className={classes.checklist}>
 			{checkList.map(checkItem => (
 				<Task key={checkItem._id} {...checkItem} />
 			))}
+			</div>
 			<Editor
 				buttonSubmitTitle='Добавить задачу'
 				onSubmit={addTask}
 				placeholder='Введите название задачи'
+				rows={1}
+				color='outlined'
 			>
 				<Button variant='outlined' title='Добавить задачу' />
 			</Editor>

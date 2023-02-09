@@ -33,6 +33,9 @@ export default function Header({ closeModal, title, _id }: HeaderProps) {
 					onSubmit={changeCardTitle}
 					placeholder='Введите название карточки'
 					defaultValue={title}
+					rows={1}
+					variant='large'
+					color='outlined'
 				>
 					<h3 className={classes.title}>{title}</h3>
 				</Editor>

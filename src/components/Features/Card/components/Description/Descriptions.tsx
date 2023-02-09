@@ -23,7 +23,13 @@ export default function Description({ description, _id }: DescriptionProps) {
 				<AiOutlineMenuUnfold className={classes.icons} />
 				<h4 className={classes.description_title}>Описание</h4>
 			</div>
-			<Editor buttonSubmitTitle='Сохранить' onSubmit={changeDescription} defaultValue={description}>
+			<Editor
+				buttonSubmitTitle='Сохранить'
+				onSubmit={changeDescription}
+				defaultValue={description}
+				rows={1}
+				color='outlined'
+			>
 				<div className={classes.description_card}>
 					{description ? <span>{description}</span> : <span>Нет описания</span>}
 				</div>

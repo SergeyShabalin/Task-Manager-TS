@@ -39,6 +39,8 @@ export default function Task({ done, _id, cardId, task }: CheckList) {
 					onSubmit={changeTaskTitle}
 					placeholder='Введите название задачи'
 					defaultValue={task}
+					rows={1}
+					color='outlined'
 				>
 					<span className={classNameForTask}>
 						{task}

@@ -20,7 +20,6 @@
 }
 
 .context_menu {
-
     position: absolute;
     right: 0;
 }
@@ -51,4 +50,7 @@
     background-color: #bdbaba;
     border-radius: 10px;
     margin: 2px;
+}
+.card_creator{
+
 }

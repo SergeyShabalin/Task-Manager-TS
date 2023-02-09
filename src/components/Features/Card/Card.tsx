@@ -8,8 +8,8 @@ import Description from '@/components/Features/Card/components/Description'
 import { Modal } from '@UI'
 import Deadline from '@/components/Features/Card/components/Deadline'
 import Header from '@/components/Features/Card/components/Header'
-import classes from './Card.module.css'
 import Checklist from '@/components/Features/Card/components/Checklist'
+import classes from './Card.module.css'
 
 export default function Card() {
 	const navigate = useNavigate()

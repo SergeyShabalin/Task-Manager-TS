@@ -6,11 +6,15 @@
     color: rgba(220, 204, 204, 0.67);
     cursor: pointer;
 }
+.title_wrapper{
+    width: 40%;
+}
 
 .board_title{
     color: rgba(220, 204, 204, 0.67);
     padding: 0 20px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .columns {

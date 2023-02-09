@@ -16,7 +16,8 @@ interface EditorProps {
 	onSubmit: (title: string) => any
 	children?: React.ReactElement,
 	nonChildren?: boolean
-
+	color?: 'black' | 'white' | 'transparent' | 'outlined'
+	variant?: 'normal' | 'large'
 }
 
 export default function Editor({
@@ -28,6 +29,8 @@ export default function Editor({
 	cols = 32,
 	children,
 	nonChildren = false,
+	color = 'white',
+	variant = 'normal'
 }: EditorProps) {
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
@@ -37,6 +40,7 @@ export default function Editor({
 
 	useEffect(()=>{
 		if(nonChildren) onOpen()
+
 	}, [])
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -63,15 +67,18 @@ export default function Editor({
 			<div className={classes.wrapper} ref={editorRef} >
 				<Input
 					autoFocus
+					autoComplete='off'
 					rows={rows}
 					value={inputValue}
+					color={color}
 					placeholder={placeholder}
 					cols={cols}
+					variant={variant}
 					onKeyDown={saveChanged}
 					onChange={changeInput}
 					disabled={isLoad}
 				/>
-				<div className={classes.control}>
+				<div className={rows !== 1 ? classes.control : classes.control_one_row}>
 					{buttonSubmitTitle && (
 						<div className={classes.add_btn}>
 							<Button

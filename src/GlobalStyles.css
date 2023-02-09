@@ -167,7 +167,7 @@
     --card-checkout-margin: 5px;
     --card-checkout-border-radius: 5px;
     --card-checkout-background-color: #71e1c2;
-    --card-box-shadow: 0 1px 0 rgba(16, 44, 66, 0.34);
+    --card-box-shadow: 0 0px 3px 1px rgba(37, 37, 35, 0.82);
     --card-background-color: #ffffff;
     --card-decision-date-background-color: rgba(245, 53, 10, 0.37);
     --card-decision-date-background-color-hover: #d39191;

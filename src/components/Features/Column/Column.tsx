@@ -99,6 +99,8 @@ export default function Column({ title, cards, _id }: ColumnT) {
 						onSubmit={columnChange}
 						placeholder='Введите название карточки'
 						defaultValue={title}
+						rows={1}
+						color='transparent'
 					>
 						<div className={classes.column_title}>{title}</div>
 					</Editor>

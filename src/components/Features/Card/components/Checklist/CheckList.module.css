@@ -13,6 +13,14 @@
     color: #030a36;
 }
 
+.slider{
+    padding-right:  10px;
+}
+
+.checklist{
+    padding: 5px 0;
+}
+
 .checkbox {
     display: flex;
     align-items: center;
