@@ -1,12 +1,13 @@
 .wrapper {
-	background: #e6ecec;
+	background: #f1f5f5;
 	position: absolute;
 	width: 400px;
 	top: 45px;
 	left: 5%;
-	padding: 5px;
+	padding: 15px 5px;
 	box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.37);
 	color: #5e6c84;
+	border-radius: 5px;
 	z-index: 10;
 }
 
@@ -20,6 +21,7 @@
 	display: flex;
 	width: 100%;
 	align-items: center;
+	margin: 10px 0;
 }
 
 .input {
@@ -30,12 +32,17 @@
 	padding: 0 5px;
 }
 
-.user_span, .user_list  {
+.user_list  {
 	margin: 5px;
 }
+.user_span{
+	color: #17175b;
+	margin: 0 5px;
+}
+
 
 .users {
-	margin: 5px;
+	margin: 15px 5px;
 }
 
 .user {

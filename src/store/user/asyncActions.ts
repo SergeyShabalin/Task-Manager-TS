@@ -21,7 +21,6 @@ export const usersActions = {
 			} else {
 				const { data } = await UsersApi.registration(payload)
 				const dataUser = data._doc
-				console.log({ data })
 				localStorage.setItem('token', data.token)
 				dispatch(UserAC.registration(dataUser))
 				return data._doc._id
@@ -36,6 +35,7 @@ export const usersActions = {
 	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.loginCheck()
+			console.log(data)
 			const payload = {
 				user: data.currentUser,
 				isAuth: true

@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import { CgMenuGridO } from 'react-icons/cg'
 import { RiTrelloFill } from 'react-icons/ri'
 import { MdLogout } from 'react-icons/md'
@@ -34,23 +34,25 @@ export default function Header({ _id }: Partial<User>) {
 	return (
 		<div className={classes.header}>
 			<div className={classes.menu}>
-				<Button variant='just_icon' icon={<CgMenuGridO />} onClick={backToGreeting} />
+				<Button icon={<CgMenuGridO />} onClick={backToGreeting} />
 			</div>
 
 			<div className={classes.share}>
 				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
 				{isOpen && <Share onClose={onClose} />}
 			</div>
+
+			<div className={classes.control}>
+				<Messages />
+				<div className={classes.logout}>
+					<Button icon={<MdLogout />} onClick={logout} />
+				</div>
+			</div>
 			<div className={classes.logo}>
 				<span className={classes.icon}>
 					<RiTrelloFill />
 				</span>
 				<span>TASK MANAGER</span>
-			</div>
-
-			 <Messages/>
-			<div className={classes.logout}>
-				<Button icon={<MdLogout />} onClick={logout} />
 			</div>
 		</div>
 	)

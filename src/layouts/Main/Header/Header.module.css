@@ -11,22 +11,29 @@
 
 }
 .menu {
-	transform: scale(1.5);
+	color: white;
+	transform: scale(2);
 }
 
-.logo {
+.control {
+	display: flex;
+	justify-content: right;
+	width: 100%;
+
+}
+
+.logo{
+	color: rgba(255, 255, 255, 0.63);
 	display: flex;
 	justify-content: center;
-	padding: 5px 50px 5px 0px;
-	width: 100%;
+	white-space: nowrap;
+	padding: 5px 50px 5px 0;
 	font-weight: 600;
-	color: rgba(0, 0, 0, 0.39);
 	transition: 0.3s ease-in-out;
 }
 
 .logo:hover {
-	color: rgba(255, 255, 255, 0.63);
-	transform: rotateX(0deg);
+	transform: rotateX(180deg);
 }
 
 .icon {
@@ -38,6 +45,6 @@
 
 
 .logout {
-	transform: scale(1.6);
-	margin-right: 10px;
+	transform: scale(1.7);
+	margin: 0 15px;
 }

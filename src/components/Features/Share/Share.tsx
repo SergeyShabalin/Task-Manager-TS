@@ -42,12 +42,12 @@ export default function Share({ onClose }: ShareProps) {
 					/>
 				</div>
 				<div className={classes.control}>
-					<Button title='Поделиться' variant='contained' color='primary' onClick={sendShare} />
+					<Button title='Поделиться' variant='outlined' color='primary' onClick={sendShare} />
 				</div>
 			</div>
-
+			<span className={classes.user_span}>Текущие пользователи</span>
 			<div className={classes.users}>
-				<span className={classes.user_span}>Пользователи доски</span>
+
 				<div className={classes.user_list}>
 					<div className={classes.user}>
 						<div className={classes.avatar}>S</div>
