@@ -1,0 +1,32 @@
+.messages{
+    color: rgba(255, 255, 255, 0.99);
+    transform: scale(1.6);
+    position: relative;
+}
+
+.count_messages{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    top: 0;
+    right: 2px;
+    padding: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 30px;
+    color: white;
+    background: #e32626;
+
+}
+
+.messages_wrapper{
+    position: absolute;
+    background: white;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.37);
+    top: 55px;
+    right: 35px;
+    width: 300px;
+    padding: 5px;
+}

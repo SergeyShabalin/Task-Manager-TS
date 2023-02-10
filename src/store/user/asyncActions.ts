@@ -21,6 +21,7 @@ export const usersActions = {
 			} else {
 				const { data } = await UsersApi.registration(payload)
 				const dataUser = data._doc
+				console.log({ data })
 				localStorage.setItem('token', data.token)
 				dispatch(UserAC.registration(dataUser))
 				return data._doc._id

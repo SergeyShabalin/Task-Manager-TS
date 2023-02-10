@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import classes from './Board.module.css'
+
 import { Column } from '@Features'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
-
+import classes from './Board.module.css'
 
 export default function Board({}) {
 	const { getCurrentBoard, addNewColumn } = useActions()

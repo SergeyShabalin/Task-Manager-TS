@@ -23,7 +23,7 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 		setMainBackground(type)
 	}
 
-	async function createBoard(e) {
+	async function createBoard(e: React.FormEvent) {
 		e.preventDefault()
 		const payload = {
 			userId,

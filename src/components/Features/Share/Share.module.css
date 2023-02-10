@@ -1,0 +1,61 @@
+.wrapper {
+	background: #e6ecec;
+	position: absolute;
+	width: 400px;
+	top: 45px;
+	left: 5%;
+	padding: 5px;
+	box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.37);
+	color: #5e6c84;
+	z-index: 10;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.email_input {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.input {
+	width: 100%;
+}
+
+.control {
+	padding: 0 5px;
+}
+
+.user_span, .user_list  {
+	margin: 5px;
+}
+
+.users {
+	margin: 5px;
+}
+
+.user {
+	display: flex;
+	transition: 0.3s ease-in-out;
+	border-radius: 50px 15px 15px 50px;
+	margin: 10px 0;
+}
+
+
+.avatar {
+	background: #0a0a85;
+	border-radius: 50px;
+	color: white;
+	font-size: 20px;
+	margin-right: 15px;
+	padding: 3px;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
