@@ -43,7 +43,7 @@ export interface PayloadForCheckLogin extends User{
 export interface PayloadForShareBoard extends User{
 	email: string,
 	_id: string,
-	boardId: Partial<Board>
+	boardId: string
 }
 
 export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {

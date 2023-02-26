@@ -17,29 +17,18 @@
 	align-items: center;
 }
 
-.email_input {
-	display: flex;
-	width: 100%;
-	align-items: center;
-	margin: 10px 0;
-}
 
-.input {
-	width: 100%;
-}
 
-.control {
-	padding: 0 5px;
-}
-
-.user_list  {
+.user_list {
 	margin: 5px;
 }
-.user_span{
+
+
+
+.user_span {
 	color: #17175b;
 	margin: 0 5px;
 }
-
 
 .users {
 	margin: 15px 5px;
@@ -51,7 +40,6 @@
 	border-radius: 50px 15px 15px 50px;
 	margin: 10px 0;
 }
-
 
 .avatar {
 	background: #0a0a85;

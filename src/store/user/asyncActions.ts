@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import { UserActions } from '@/store/user/reducer'
 
 import UsersApi from '@/api/UsersApi'
-import {PayloadForShareBoard, User} from '@/models/Users'
+import { PayloadForShareBoard, User } from '@/models/Users'
 import { Notification } from '@UI'
 import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
@@ -35,7 +35,6 @@ export const usersActions = {
 	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.loginCheck()
-			console.log(data)
 			const payload = {
 				user: data.currentUser,
 				isAuth: true
@@ -60,26 +59,24 @@ export const usersActions = {
 		}
 	},
 
-	logOut: ()=> async(dispatch: Dispatch<UserActions|BoardActions>) =>{
-		try{
+	logOut: () => async (dispatch: Dispatch<UserActions | BoardActions>) => {
+		try {
 			localStorage.removeItem('token')
 			dispatch(UserAC.logout())
 			dispatch(BoardAC.logout())
-		}catch (e){
+		} catch (e) {
 			const error = e.response.data.message
 			Notification.error(error)
 		}
 	},
 
-
-	shareBoard: (payload: PayloadForShareBoard )=> async(dispatch: Dispatch<UserActions|BoardActions>) =>{
+	shareBoard: (payload: PayloadForShareBoard) => async () => {
 		try {
-			await UsersApi.shareBoard(payload)
-		} catch (e){
+		const {data} =	await UsersApi.shareBoard(payload)
+			return data
+		} catch (e) {
 			const error = e.response.data.message
 			Notification.error(error)
 		}
 	}
-
-
 }

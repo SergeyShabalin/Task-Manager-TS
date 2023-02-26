@@ -12,7 +12,7 @@ export default function Messages() {
 	const { isOpen, onClose, onOpen } = useOpenClose()
 
 	function showHint() {
-	 setIsHint(true)
+		setIsHint(true)
 	}
 	function closeHint() {
 		setIsHint(false)
@@ -25,17 +25,18 @@ export default function Messages() {
 		if (messagesCount) setIsMessage(messagesCount)
 	}, [])
 
-
-
 	return (
 		<div>
 			<div className={classes.messages} onMouseOver={showHint} onMouseOut={closeHint}>
 				<Button icon={<BsBell />} onClick={onOpen} />
-				{isMessage && <span className={classes.count_messages} onClick={onOpen}>{messagesCount}</span>}
-				<Hint visible = {isHint} label='Показать уведомления'/>
+				{isMessage && (
+					<span className={classes.count_messages} onClick={onOpen}>
+						{messagesCount}
+					</span>
+				)}
+				<Hint visible={isHint} label='Показать уведомления' />
 			</div>
-			{isOpen && <MessageList onClose={onClose}/>}
-
+			{isOpen && <MessageList onClose={onClose} />}
 		</div>
 	)
 }

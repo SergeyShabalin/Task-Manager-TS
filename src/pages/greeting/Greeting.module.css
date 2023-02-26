@@ -48,7 +48,6 @@
     background: #b7b5b0;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    opacity: 0.8;
 }
 
 .board_creator:hover {

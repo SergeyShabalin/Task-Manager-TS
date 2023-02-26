@@ -1,0 +1,24 @@
+.share_done {
+	color: #4999d3;
+	background: #e1d7d7;
+	border-radius: 5px;
+	margin: 5px;
+	font-size: 16px;
+	transition: ease-in-out all 0.5s;
+}
+.done {
+	font-weight: 600;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hint {
+	font-size: 14px;
+	padding: 5px 0;
+	color: #76767c;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
