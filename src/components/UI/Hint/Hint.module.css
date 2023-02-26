@@ -1,0 +1,16 @@
+.hint, .hide{
+    position: absolute;
+    right: 0;
+    top: 40px;
+    color: #ded4d4;
+    background: rgba(0, 0, 0, 0.48);
+    border-radius: 5px;
+    padding: 5px;
+    opacity: 100%;
+    transition: 0.1s ease-in-out;
+    font-size: 8px;
+    white-space: nowrap;
+}
+.hide{
+    opacity: 0;
+}

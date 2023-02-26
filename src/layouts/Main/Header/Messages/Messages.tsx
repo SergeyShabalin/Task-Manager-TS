@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import classes from './Messages.module.css'
-import { Button } from '@UI'
+import { Button, Hint } from '@UI'
 import { BsBell } from 'react-icons/bs'
 import useOpenClose from '@/hooks/UseOpenClose'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
@@ -8,8 +8,15 @@ import MessageList from '@/layouts/Main/Header/Messages/MessageList'
 
 export default function Messages() {
 	const [isMessage, setIsMessage] = useState(false)
+	const [isHint, setIsHint] = useState(false)
 	const { isOpen, onClose, onOpen } = useOpenClose()
 
+	function showHint() {
+	 setIsHint(true)
+	}
+	function closeHint() {
+		setIsHint(false)
+	}
 
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
 	const messagesCount2 = useTypedSelector(state => state.user)
@@ -18,18 +25,16 @@ export default function Messages() {
 		if (messagesCount) setIsMessage(messagesCount)
 	}, [])
 
+
+
 	return (
 		<div>
-			<div className={classes.messages}>
+			<div className={classes.messages} onMouseOver={showHint} onMouseOut={closeHint}>
 				<Button icon={<BsBell />} onClick={onOpen} />
 				{isMessage && <span className={classes.count_messages} onClick={onOpen}>{messagesCount}</span>}
-				<span className={classes.hint}>Посмотреть сообщения</span>
+				<Hint visible = {isHint} label='Показать уведомления'/>
 			</div>
-
-			{isOpen && <MessageList onClose={onClose}/>
-
-			 }
-			{/*//TODO в отдельный компонент сообщения и подгружать их отдельно*/}
+			{isOpen && <MessageList onClose={onClose}/>}
 
 		</div>
 	)

@@ -36,7 +36,6 @@ function App() {
 			navigate(`/login`)
 		}
 	}, [])
-
 	return (
 		<>
 			{!isAuth ? (

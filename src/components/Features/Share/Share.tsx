@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react'
-import classes from './Share.module.css'
+
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { Button, Input } from '@UI'
+import {useActions} from "@/hooks/useActions/useActions";
+import classes from './Share.module.css'
+import {useParams} from "react-router-dom";
 
 interface ShareProps {
 	onClose: () => void
@@ -10,6 +13,8 @@ interface ShareProps {
 export default function Share({ onClose }: ShareProps) {
 	const shareRef = useRef(null)
 	const [email, setEmail] = useState('')
+	const { shareBoard } = useActions()
+	const { userId, boardId } = useParams()
 	useOnClickOutside(shareRef, () => onClose())
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -21,7 +26,12 @@ export default function Share({ onClose }: ShareProps) {
 	}
 
 	function sendShare() {
-		console.log(email)
+		const payload = {
+			email,
+			_id: userId,
+			boardId
+		}
+		 shareBoard(payload)
 	}
 
 	return (

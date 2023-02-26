@@ -22,14 +22,12 @@ export default function MessageList({ onClose }: MessageListProps) {
 				<hr />
 				{messages?.map(message => {
 					return (
-						<div className={classes.message}>
+						<div key={Math.random()} className={classes.message}>
 							<div className={classes.title_message}>{message}</div>
 							<div><Button variant='just_icon' icon={<BsThreeDots />} /></div>
 						</div>)
 				})}
 			</div>
-
-
 		</div>
 	)
 }

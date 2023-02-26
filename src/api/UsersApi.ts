@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios/index'
-import { User } from '@/models/Users'
+import {PayloadForShareBoard, User} from '@/models/Users'
 import { Api } from '@/api/index'
 
 class UsersApi {
@@ -14,6 +14,10 @@ class UsersApi {
 
 	async loginCheck(): Promise<AxiosResponse<User>> {
 		return Api.get(`/user/checkLogin/`);
+	}
+
+	async shareBoard(payload: PayloadForShareBoard): Promise<AxiosResponse<User>>{
+		return Api.post('/user/shareBoard/', payload)
 	}
 
 }

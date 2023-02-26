@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CgMenuGridO } from 'react-icons/cg'
 import { RiTrelloFill } from 'react-icons/ri'
 import { MdLogout } from 'react-icons/md'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import classes from './Header.module.css'
-import { Button } from '@UI'
+import { Button, Hint } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import { User } from '@/models/Users'
@@ -20,7 +20,14 @@ export default function Header({ _id }: Partial<User>) {
 	const navigate = useNavigate()
 	const { userId } = useParams()
 	const { isOpen, onClose, onOpen } = useOpenClose()
+	const [isHint, setIsHint] = useState(false)
 
+	function showHint() {
+		setIsHint(true)
+	}
+	function closeHint() {
+		setIsHint(false)
+	}
 
 	function logout() {
 		logOut()
@@ -44,8 +51,10 @@ export default function Header({ _id }: Partial<User>) {
 
 			<div className={classes.control}>
 				<Messages />
-				<div className={classes.logout}>
+				<div className={classes.logout} onMouseOver={showHint} onMouseOut={closeHint}>
 					<Button icon={<MdLogout />} onClick={logout} />
+					{/*TODO вынести в отдельный компонент*/}
+					<Hint visible = {isHint} label='Выйти из учетной записи'/>
 				</div>
 			</div>
 			<div className={classes.logo}>

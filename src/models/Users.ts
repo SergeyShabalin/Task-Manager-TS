@@ -40,6 +40,11 @@ export interface PayloadForCheckLogin extends User{
 	User?: User | {},
 	isAuth: boolean
 }
+export interface PayloadForShareBoard extends User{
+	email: string,
+	_id: string,
+	boardId: Partial<Board>
+}
 
 export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
 	payload: Partial<User>

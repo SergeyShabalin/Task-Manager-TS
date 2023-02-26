@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import { UserActions } from '@/store/user/reducer'
 
 import UsersApi from '@/api/UsersApi'
-import { User } from '@/models/Users'
+import {PayloadForShareBoard, User} from '@/models/Users'
 import { Notification } from '@UI'
 import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
@@ -69,8 +69,17 @@ export const usersActions = {
 			const error = e.response.data.message
 			Notification.error(error)
 		}
-	}
+	},
 
+
+	shareBoard: (payload: PayloadForShareBoard )=> async(dispatch: Dispatch<UserActions|BoardActions>) =>{
+		try {
+			await UsersApi.shareBoard(payload)
+		} catch (e){
+			const error = e.response.data.message
+			Notification.error(error)
+		}
+	}
 
 
 }
