@@ -1,5 +1,5 @@
 import {
-	AddBoard,
+	AddBoard, ApplyInvite,
 	Authentication,
 	CheckLogin,
 	Logout,
@@ -8,6 +8,7 @@ import {
 	User,
 	USER_TYPES
 } from '@/models/Users'
+import { Board } from '@/models/Boards'
 
 export const UserAC = {
 	registration: (payload: Partial<User>) : StartRegistration => ({type: USER_TYPES.REGISTRATION, payload}),

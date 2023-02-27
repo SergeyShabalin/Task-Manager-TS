@@ -34,6 +34,7 @@ import {
 	DeleteTask,
 	PayloadForChangedTask
 } from '@/models/CheckList'
+import { ApplyInvite, USER_TYPES } from '@/models/Users'
 
 
 export const BoardAC = {
@@ -42,7 +43,8 @@ export const BoardAC = {
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload}),
 	getAllBoard: (payload: Board[]) : AllBoardAction => ({type: BOARD_TYPES.GET_ALL_BOARDS, payload}),
-	logout: ()=>({type: BOARD_TYPES.LOGOUT})
+	logout: ()=>({type: BOARD_TYPES.LOGOUT}),
+	applyInvite: (payload: Partial<Board>) : ApplyInvite => ({type: BOARD_TYPES.APPLY_INVITE, payload})
 };
 
 export const ColumnAC = {

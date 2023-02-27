@@ -1,7 +1,7 @@
 import { defaultState } from './initState'
 
 import {
-	AllBoardAction,
+	AllBoardAction, ApplyInvite,
 	BOARD_TYPES,
 	BoardAction,
 	ErrorFetching,
@@ -13,6 +13,7 @@ import {
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
+import { USER_TYPES } from '@/models/Users'
 
 export type BoardActions =
 	| StartFetching
@@ -32,6 +33,7 @@ export type BoardActions =
 	| DropCard
 	| Logout
 	| AllBoardAction
+	| ApplyInvite
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -67,6 +69,11 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case BOARD_TYPES.GET_ALL_BOARDS:
 			return {
 			...state, allBoards: action.payload
+		}
+		case BOARD_TYPES.APPLY_INVITE: {
+		return {
+				...state, allBoards:[...state.allBoards,  action.payload]
+			}
 		}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
@@ -194,7 +201,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				}
 			}
 		}
-
 		case BOARD_TYPES.LOGOUT: {
 			return {
 				...state,

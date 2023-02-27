@@ -80,9 +80,10 @@ export const usersActions = {
 		}
 	},
 
-	applyInvite: (payload: PayloadForApplyInvite)=> async ()=>{
+	applyInvite: (payload: PayloadForApplyInvite)=> async (dispatch: Dispatch<UserActions | BoardActions>)=>{
 		try {
 			 const {data} = await UsersApi.applyInvite(payload)
+			 dispatch(BoardAC.applyInvite(data))
 			 return data
 		} catch (e){
 			const error = e.response.data.message

@@ -31,7 +31,7 @@ export enum USER_TYPES {
 	AUTHENTICATION = 'AUTHENTICATION',
 	LOGOUT = 'LOGOUT',
 	CHECK_LOGIN = 'CHECK_LOGIN',
-	ADD_BOARD = 'ADD_BOARD'
+	ADD_BOARD = 'ADD_BOARD',
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -39,6 +39,7 @@ export type CheckLogin = Action<USER_TYPES.CHECK_LOGIN>
 export type Authentication = Action<USER_TYPES.AUTHENTICATION>
 export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
+
 
 export interface PayloadForCheckLogin extends User{
 	User?: User | {},

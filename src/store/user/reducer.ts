@@ -1,4 +1,12 @@
-import { AddBoard, Authentication, CheckLogin, Logout, StartRegistration, USER_TYPES } from '@/models/Users'
+import {
+	AddBoard,
+	ApplyInvite,
+	Authentication,
+	CheckLogin,
+	Logout,
+	StartRegistration,
+	USER_TYPES
+} from '@/models/Users'
 import { defaultState } from '@/store/user/initState'
 
 export type UserActions = StartRegistration | CheckLogin | Authentication | Logout | AddBoard
@@ -53,6 +61,7 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				...state, boardIds: [...state.boardIds, action.payload]
 			}
 		}
+
 
 		default:
 			return state

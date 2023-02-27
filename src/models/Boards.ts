@@ -1,6 +1,7 @@
 import { Column } from '@/models/Columns'
 import { Card } from '@/models/Cards'
 import { Action } from 'redux'
+import { USER_TYPES } from '@/models/Users'
 
 export interface Board {
 	_id: string
@@ -21,12 +22,14 @@ export enum BOARD_TYPES {
 	ERROR_FETCHING_BOARD = 'ERROR_FETCHING_BOARD',
 	CHANGE_BOARD = 'CHANGE_BOARD',
 	LOGOUT = 'LOGOUT',
-	GET_ALL_BOARDS = 'GET_ALL_BOARDS'
+	GET_ALL_BOARDS = 'GET_ALL_BOARDS',
+	APPLY_INVITE ='APPLY_INVITE'
 }
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
 export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
 export type BoardChange = Action<BOARD_TYPES.CHANGE_BOARD>
 export type GetAllBoards = Action<BOARD_TYPES.GET_ALL_BOARDS>
+export type ApplyInvite = Action<BOARD_TYPES.APPLY_INVITE>
 
 export interface SuccessFetching extends Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD> {
 	payload: BoardAPI
