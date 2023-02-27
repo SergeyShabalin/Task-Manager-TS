@@ -20,7 +20,7 @@ export default function Messages() {
 
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
 	const messagesCount2 = useTypedSelector(state => state.user)
-	// console.log({ messagesCount2 })
+
 	useEffect(() => {
 		if (messagesCount) setIsMessage(messagesCount)
 	}, [])

@@ -37,7 +37,6 @@ export default function Greeting() {
 					<span className={classes.title_workspaces}>ВАШИ РАБОЧИЕ ПРОСТРАНСТВА</span>
 					<div className={classes.workspaces}>
 						{allBoards.map(board => {
-
 							return (
 								<div
 									key={board._id}

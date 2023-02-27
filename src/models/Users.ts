@@ -11,9 +11,13 @@ export interface User {
 	firstName: string
 	secondName: string
 	lastName: string
-	messages: []
+	messages: message[]
 }
 
+export interface message{
+	message: string
+	currentBoardId: string
+}
 
 export interface UserState extends User{
 	isLoading: boolean
@@ -43,6 +47,11 @@ export interface PayloadForCheckLogin extends User{
 export interface PayloadForShareBoard extends User{
 	email: string,
 	_id: string,
+	boardId: string
+}
+
+export interface PayloadForApplyInvite{
+	userId?: string,
 	boardId: string
 }
 

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios/index'
-import {PayloadForShareBoard, User} from '@/models/Users'
+import { PayloadForApplyInvite, PayloadForShareBoard, User } from '@/models/Users'
 import { Api } from '@/api/index'
 
 class UsersApi {
@@ -18,6 +18,10 @@ class UsersApi {
 
 	async shareBoard(payload: PayloadForShareBoard): Promise<AxiosResponse<User>>{
 		return Api.post('/user/shareBoard/', payload)
+	}
+
+	async applyInvite(payload: PayloadForApplyInvite): Promise<AxiosResponse<User>>{
+		return Api.post('/user/applyInvite/', payload)
 	}
 
 }
