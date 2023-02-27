@@ -13,4 +13,7 @@
 - drag and drop карточек
 - возможность смены доски у пользователя
 
-Демонстрацию разрабатываемого проекта можно посмотреть по ссылке https://drive.google.com/file/d/1wdHSWl2KDbtQfj8NG1XDV0DyDl_3VxA4/view?usp=sharing
+Демонстрацию разрабатываемого проекта можно посмотреть в видео ниже
+
+https://user-images.githubusercontent.com/95097311/221605994-b0e11703-5143-460f-957a-1d1e0b09f52d.mp4
+
