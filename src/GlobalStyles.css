@@ -21,14 +21,14 @@
     --button-border-radius: 5px;
 
     --button-text-color: #7a6f74;
-    --button-text-color-hover: #6b6464;
-    --button-text-background-color-hover: white;
+    --button-text-color-hover: #ffffff;
+    --button-text-background-color-hover: #8d8484;
 
 
     --button-prymary-color-text: #3b3bd7;
     --button-prymary-color-text-hover: #0a0a85;
-    --button-secondary-color-text: #cbcbd5;
-    --button-secondary-color-text-hover: #9b9ba2;
+    --button-secondary-color-text:  rgba(255, 255, 255, 0.63);
+    --button-secondary-color-text-hover: #e4e4ee;
     --button-error-color-text: #d93434;
     --button-error-color-text-hover: #8d0519;
     --button-text-disabled-color: #090909;

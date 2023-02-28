@@ -14,8 +14,10 @@ import useOpenClose from '@/hooks/UseOpenClose'
 import Share from '@/components/Features/Share'
 import Messages from '@/layouts/Main/Header/Messages'
 
+import { BiUser } from 'react-icons/bi'
 
-export default function Header({ _id }: Partial<User>) {
+
+export default function Header({ _id, email }: Partial<User>) {
 	const { logOut } = useActions()
 	const navigate = useNavigate()
 	const { userId } = useParams()
@@ -43,11 +45,12 @@ export default function Header({ _id }: Partial<User>) {
 			<div className={classes.menu}>
 				<Button icon={<CgMenuGridO />} onClick={backToGreeting} />
 			</div>
-
 			<div className={classes.share}>
 				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
 				{isOpen && <Share onClose={onClose} />}
 			</div>
+
+			<div className={classes.user}><BiUser/> <span className={classes.email}>{email}</span></div>
 
 			<div className={classes.control}>
 				<Messages />
@@ -57,10 +60,12 @@ export default function Header({ _id }: Partial<User>) {
 					<Hint visible = {isHint} label='Выйти из учетной записи'/>
 				</div>
 			</div>
+
 			<div className={classes.logo}>
 				<span className={classes.icon}>
 					<RiTrelloFill />
 				</span>
+
 				<span>TASK MANAGER</span>
 			</div>
 		</div>

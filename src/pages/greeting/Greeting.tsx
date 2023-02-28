@@ -14,6 +14,8 @@ import { BsThreeDots } from 'react-icons/bs'
 export default function Greeting() {
 
 	const allBoards = useTypedSelector(state => state.board.allBoards)
+	const user = useTypedSelector(state => state.user)
+
 	const navigate = useNavigate()
 	const { userId } = useParams()
 	const addBoardRef = useRef(null)
@@ -32,7 +34,7 @@ export default function Greeting() {
 	return (
 		<div className={classes.wrapper}>
 			<div className={classes.header}>
-				<Header />
+				<Header email={user.email}  />
 			</div>
 			<div className={classes.body}>
 				<div className={classes.content}>

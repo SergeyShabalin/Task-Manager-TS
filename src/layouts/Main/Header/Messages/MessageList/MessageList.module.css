@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
     position: absolute;
     background: white;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.37);
@@ -8,21 +8,54 @@
     padding: 5px;
     border-radius: 5px;
     z-index: 7;
-    height: 85vh;
+    max-height: 85vh;
     overflow-y: auto;
 }
 
-.title{
+.title {
     display: flex;
     justify-content: center;
     color: #7171a6;
 }
 
-.message{
+.message {
     display: flex;
+    padding: 10px;
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.28);
+    margin: 8px 5px;
+    border-radius: 5px;
+}
+
+.title_message {
+    width: 100%;
+}
+
+.title_empty{
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.empty {
+    color: #16163a;
+    font-weight: 600;
+    font-size: 20px;
     padding: 10px;
 }
 
-.title_message{
-    width: 100%;
+.control {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img{
+    width: 470px;
+    display: flex;
+    justify-content: right;
+    background-color: #8a8282;
+    height: 200px;
+    background-image: url("https://st.depositphotos.com/1024768/1422/v/600/depositphotos_14221501-stock-illustration-sleeping-tabby-cat-cartoon.jpg");
 }
