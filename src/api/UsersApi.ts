@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios/index'
-import { PayloadForApplyInvite, PayloadForShareBoard, User } from '@/models/Users'
+import { PayloadForApplyInvite, PayloadForDeleteMessage, PayloadForShareBoard, User } from '@/models/Users'
 import { Api } from '@/api/index'
 
 class UsersApi {
@@ -22,6 +22,10 @@ class UsersApi {
 
 	async applyInvite(payload: PayloadForApplyInvite): Promise<AxiosResponse<User>>{
 		return Api.post('/user/applyInvite/', payload)
+	}
+
+	async deleteMessage(payload: PayloadForDeleteMessage): Promise<AxiosResponse<User>>{
+		return Api.patch('/user/deleteMessage/', payload)
 	}
 
 }

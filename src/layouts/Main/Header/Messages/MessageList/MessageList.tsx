@@ -16,10 +16,14 @@ export default function MessageList({ onClose }: MessageListProps) {
 	useOnClickOutside(messageRef, () => onClose())
 	const { userId } = useParams()
 	const messages = useTypedSelector(state => state.user.messages)
-	const {applyInvite} = useActions()
+	const {applyInvite, deleteMessage} = useActions()
 
-	function deleteMessage(){
-
+	function messageDelete(boardId: string){
+		const payload = {
+			userId,
+			boardId
+		}
+		deleteMessage(payload)
 	}
 
 	function inviteApply(boardId: string){
@@ -41,7 +45,7 @@ export default function MessageList({ onClose }: MessageListProps) {
 							<div className={classes.title_message}>{message.message}</div>
 							<div>
 								<Button title='Да' variant='contained' color='primary' onClick={()=>inviteApply(message.currentBoardId)}/>
-								<Button title='Нет' variant='contained' color='error' />
+								<Button title='Нет' variant='contained' color='error' onClick={()=>messageDelete(message.currentBoardId)}/>
 							</div>
 						</div>
 					)

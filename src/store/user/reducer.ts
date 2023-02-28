@@ -2,14 +2,14 @@ import {
 	AddBoard,
 	ApplyInvite,
 	Authentication,
-	CheckLogin,
+	CheckLogin, DeleteMessage,
 	Logout,
 	StartRegistration,
 	USER_TYPES
 } from '@/models/Users'
 import { defaultState } from '@/store/user/initState'
 
-export type UserActions = StartRegistration | CheckLogin | Authentication | Logout | AddBoard
+export type UserActions = StartRegistration | CheckLogin | Authentication | Logout | AddBoard | DeleteMessage
 
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
@@ -62,6 +62,11 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			}
 		}
 
+		case USER_TYPES.DELETE_MESSAGE: {
+			return{
+				  ...state, messages: action.payload
+			}
+		}
 
 		default:
 			return state

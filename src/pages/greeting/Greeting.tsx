@@ -8,6 +8,8 @@ import BoardCreator from '@/pages/greeting/BoardCreator'
 import useOpenClose from '@/hooks/UseOpenClose'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import classes from './Greeting.module.css'
+import { Button } from '@UI'
+import { BsThreeDots } from 'react-icons/bs'
 
 export default function Greeting() {
 
@@ -44,6 +46,7 @@ export default function Greeting() {
 									onClick={() => openBoard(board._id)}
 								>
 									<span className={classes.title_board}>{board.title}</span>
+								<div className={board.background && classes.board_edit }><Button icon={<BsThreeDots/>} /></div>
 								</div>
 							)
 						})}
