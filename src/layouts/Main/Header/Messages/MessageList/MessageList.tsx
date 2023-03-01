@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import classes from './MessageList.module.css'
+
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
 
 import { useActions } from '@/hooks/useActions/useActions'
 import { useParams } from 'react-router-dom'
-import { GiNightSleep, TbMessageCircle, TbMessages } from 'react-icons/all'
+import classes from './MessageList.module.css'
 
 interface MessageListProps {
 	onClose: () => void
@@ -22,7 +22,7 @@ export default function MessageList({ onClose }: MessageListProps) {
 
 	useEffect(() => {
 		if (messages.length < 1) setIsMessage(true)
-	}, [])
+	}, [messages])
 
 	function messageDelete(boardId: string) {
 		const payload = {

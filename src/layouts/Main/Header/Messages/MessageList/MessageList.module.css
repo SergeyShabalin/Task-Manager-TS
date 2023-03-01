@@ -54,8 +54,8 @@
 .img{
     width: 470px;
     display: flex;
-    justify-content: right;
+    justify-content: center;
     background-color: #8a8282;
-    height: 200px;
+    height: 180px;
     background-image: url("https://st.depositphotos.com/1024768/1422/v/600/depositphotos_14221501-stock-illustration-sleeping-tabby-cat-cartoon.jpg");
 }
