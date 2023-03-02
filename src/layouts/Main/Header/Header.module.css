@@ -20,6 +20,8 @@
 	display: flex;
 	justify-content: right;
 	width: 100%;
+	padding: 0 10px;
+	position: relative;
 }
 
 .logo{
@@ -27,34 +29,23 @@
 	display: flex;
 	justify-content: center;
 	white-space: nowrap;
-	padding: 5px 50px 5px 0;
+	padding: 5px 30px 5px 5px;
+	font-size: 20px;
 	font-weight: 600;
 	transition: 0.3s ease-in-out;
+	cursor: pointer;
 }
 
 .logo:hover {
-	transform: rotateX(180deg);
+	color: white;
 }
 
 .icon {
 	display: flex;
 	align-items: center;
-	padding: 0 5px;
-	transform: scale(1.4);
-}
-
-.logout {
-	transform: scale(1.7);
-	margin: 0 15px;
-}
-
-.user{
-	color: rgba(255, 255, 255, 0.63);
-	transform: scale(1.1);
-	display: flex;
 	justify-content: center;
-	align-items: center;
-	margin-left: 10px;
+	margin: 0 15px 0 0;
+	transform: scale(1.4);
 }
 
 .email{

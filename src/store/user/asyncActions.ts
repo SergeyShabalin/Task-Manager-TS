@@ -94,7 +94,6 @@ export const usersActions = {
 	deleteMessage: (payload: PayloadForDeleteMessage) => async (dispatch: Dispatch<UserActions>)=>{
 		try{
 			const {data} = await UsersApi.deleteMessage(payload)
-			console.log(data)
 			dispatch(UserAC.deleteMessage(data))
 		} catch (e){
 			const error = e.response.data.message
