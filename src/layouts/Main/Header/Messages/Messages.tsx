@@ -1,13 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react'
-import classes from './Messages.module.css'
-import { Button, Hint } from '@UI'
+import React, { useState } from 'react'
 import { BsBell } from 'react-icons/bs'
-import useOpenClose from '@/hooks/UseOpenClose'
-import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import MessageList from '@/layouts/Main/Header/Messages/MessageList'
 
-export default function Messages() {
-	const [isMessage, setIsMessage] = useState(0)
+import { Button, Hint } from '@UI'
+import useOpenClose from '@/hooks/UseOpenClose'
+import MessageList from '@/layouts/Main/Header/Messages/MessageList'
+import classes from './Messages.module.css'
+
+interface MessagesProps{
+	messagesCount: number
+}
+
+export default function Messages({  messagesCount}: MessagesProps) {
+
 	const [isHint, setIsHint] = useState(false)
 	const { isOpen, onClose, onOpen } = useOpenClose()
 
@@ -18,17 +22,11 @@ export default function Messages() {
 		setIsHint(false)
 	}
 
-	const messagesCount = useTypedSelector(state => state.user.messages.length)
-
-	useEffect(() => {
-		if (messagesCount) setIsMessage(messagesCount)
-	}, [messagesCount])
-
 	return (
 		<div>
 			<div className={classes.messages} onMouseOver={showHint} onMouseOut={closeHint}>
 				<Button icon={<BsBell />} onClick={onOpen} />
-				{isMessage !== 0 && (
+				{messagesCount !== 0 && (
 					<span className={classes.count_messages} onClick={onOpen}>
 						{messagesCount}
 					</span>

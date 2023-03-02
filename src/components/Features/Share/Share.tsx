@@ -23,7 +23,7 @@ export default function Share({ onClose }: ShareProps) {
 			<div className={classes.header}>Поделиться доской</div>
 			<hr />
 
-			{!isShare ?<div> <Control changeShare={changeShare} />
+			{!isShare ? <div> <Control changeShare={changeShare} />
 			<span className={classes.user_span}>Текущие пользователи</span>
 			<div className={classes.users}>
 				<div className={classes.user_list}>
