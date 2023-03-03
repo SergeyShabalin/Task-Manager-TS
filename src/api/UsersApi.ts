@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios/index'
 import { PayloadForApplyInvite, PayloadForDeleteMessage, PayloadForShareBoard, User } from '@/models/Users'
 import { Api } from '@/api/index'
+import { payloadForUsersOneBoard } from '@/models/Boards'
 
 class UsersApi {
 
@@ -28,6 +29,9 @@ class UsersApi {
 		return Api.patch('/user/deleteMessage/', payload)
 	}
 
+	async getUsersOneBoard(boardId: string): Promise<AxiosResponse<User>> {
+		return Api.post('/user/oneBoard/', { boardId })
+	}
 }
 
 export default new UsersApi()

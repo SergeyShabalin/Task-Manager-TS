@@ -16,7 +16,7 @@ export default function Info({closeInfo}:InfoProps) {
 	const user = useTypedSelector(state => state.user)
 	const accountRef = useRef(null)
 	useOnClickOutside(accountRef, () => closeInfo())
-	console.log(user)
+
 
 	function backToGreeting(){
 		if (user._id) navigate(`/user/${user._id}/greeting`)
@@ -33,7 +33,7 @@ export default function Info({closeInfo}:InfoProps) {
 			<h1>Учетная запись</h1>
 			<div className={classes.info}>
  				<span className={classes.icon}>
-				   {user.email[0]}
+				   {user.email[0].toUpperCase()}
 				 </span>
 					<div className={classes.names}>
 						<div className={classes.firstName}>{user.firstName}</div>

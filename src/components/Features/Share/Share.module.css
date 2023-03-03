@@ -38,9 +38,9 @@
 }
 
 .avatar {
-	background: #0a0a85;
+	box-shadow: inset 0 0 10px 1px #075ea4;
 	border-radius: 50px;
-	color: white;
+	color: #15074b;
 	font-size: 20px;
 	margin-right: 15px;
 	padding: 3px;

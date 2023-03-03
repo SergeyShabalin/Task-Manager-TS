@@ -72,7 +72,7 @@ export const usersActions = {
 
 	shareBoard: (payload: PayloadForShareBoard) => async () => {
 		try {
-		const {data} =	await UsersApi.shareBoard(payload)
+			const { data } = await UsersApi.shareBoard(payload)
 			return data
 		} catch (e) {
 			const error = e.response.data.message
@@ -80,22 +80,32 @@ export const usersActions = {
 		}
 	},
 
-	applyInvite: (payload: PayloadForApplyInvite)=> async (dispatch: Dispatch<UserActions | BoardActions>)=>{
+	getUsersOneBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			 const {data} = await UsersApi.applyInvite(payload)
-			 dispatch(BoardAC.applyInvite(data))
-			 return data
-		} catch (e){
+			const { data } = await UsersApi.getUsersOneBoard(boardId)
+			dispatch(BoardAC.getUsersOneBoard(data))
+		} catch (e) {
 			const error = e.response.data.message
 			Notification.error(error)
 		}
 	},
 
-	deleteMessage: (payload: PayloadForDeleteMessage) => async (dispatch: Dispatch<UserActions>)=>{
-		try{
-			const {data} = await UsersApi.deleteMessage(payload)
+	applyInvite: (payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
+		try {
+			const { data } = await UsersApi.applyInvite(payload)
+			dispatch(BoardAC.applyInvite(data))
+			return data
+		} catch (e) {
+			const error = e.response.data.message
+			Notification.error(error)
+		}
+	},
+
+	deleteMessage: (payload: PayloadForDeleteMessage) => async (dispatch: Dispatch<UserActions>) => {
+		try {
+			const { data } = await UsersApi.deleteMessage(payload)
 			dispatch(UserAC.deleteMessage(data))
-		} catch (e){
+		} catch (e) {
 			const error = e.response.data.message
 			Notification.error(error)
 		}

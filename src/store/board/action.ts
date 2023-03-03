@@ -4,9 +4,10 @@ import {
 	BOARD_TYPES,
 	BoardAction,
 	BoardAPI,
-	ErrorFetching,
+	ErrorFetching, payloadForUsersOneBoard,
 	StartFetching,
-	SuccessFetching
+	SuccessFetching,
+	ApplyInvite, GetUsersOneBoard, payloadForApplyInvite
 } from '@/models/Boards'
 import {
 	AddNewColumn,
@@ -34,7 +35,8 @@ import {
 	DeleteTask,
 	PayloadForChangedTask
 } from '@/models/CheckList'
-import { ApplyInvite, USER_TYPES } from '@/models/Users'
+import { User } from '@/models/Users'
+
 
 
 export const BoardAC = {
@@ -44,7 +46,8 @@ export const BoardAC = {
 	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload}),
 	getAllBoard: (payload: Board[]) : AllBoardAction => ({type: BOARD_TYPES.GET_ALL_BOARDS, payload}),
 	logout: ()=>({type: BOARD_TYPES.LOGOUT}),
-	applyInvite: (payload: Partial<Board>) : ApplyInvite => ({type: BOARD_TYPES.APPLY_INVITE, payload})
+	applyInvite: (payload: Partial<Board>) : payloadForApplyInvite => ({type: BOARD_TYPES.APPLY_INVITE, payload}),
+	getUsersOneBoard: (payload: Partial<User>[]) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload})
 };
 
 export const ColumnAC = {

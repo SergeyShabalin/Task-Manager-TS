@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { CgMenuGridO } from 'react-icons/cg'
-import { RiTrelloFill } from 'react-icons/ri'
-import { MdLogout } from 'react-icons/md'
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-
-import classes from './Header.module.css'
-import { Button, Hint } from '@UI'
-import { useActions } from '@/hooks/useActions/useActions'
-
+import { RiTrelloFill } from 'react-icons/ri'
+import { Button } from '@UI'
 import { User } from '@/models/Users'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import useOpenClose from '@/hooks/UseOpenClose'
 import Share from '@/components/Features/Share'
 import Messages from '@/layouts/Main/Header/Messages'
-
-import { BiUser } from 'react-icons/bi'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import Logout from '@/layouts/Main/Header/Logout'
 import Account from '@/layouts/Main/Header/Account'
 
+import classes from './Header.module.css'
+import { useActions } from '@/hooks/useActions/useActions'
 
 export default function Header({ _id, email }: Partial<User>) {
 
 	const navigate = useNavigate()
-	const { userId } = useParams()
+	const { userId, boardId } = useParams()
+	const { getUsersOneBoard } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
 
 	function backToGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
+	}
+
+	function openShare(){
+		if(boardId)	getUsersOneBoard(boardId)
+		onOpen()
 	}
 
 	return (
@@ -41,11 +41,9 @@ export default function Header({ _id, email }: Partial<User>) {
 			<span>TASK MANAGER</span>
 		</div>
 			<div className={classes.share}>
-				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
+				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={openShare} />
 				{isOpen && <Share onClose={onClose} />}
 			</div>
-
-
 
 			<div className={classes.control}>
 				<Account/>

@@ -3,14 +3,18 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import Done from '@/components/Features/Share/Done'
 import classes from './Share.module.css'
 import Control from '@/components/Features/Share/Control'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
+
 
 interface ShareProps {
 	onClose: () => void
 }
 
 export default function Share({ onClose }: ShareProps) {
+
 	const shareRef = useRef(null)
 	const [isShare, setIsShare] = useState(false)
+	const users = useTypedSelector(state => state.board.allUsers)
 	useOnClickOutside(shareRef, () => onClose())
 
 	function changeShare(value: boolean){
@@ -23,17 +27,22 @@ export default function Share({ onClose }: ShareProps) {
 			<div className={classes.header}>Поделиться доской</div>
 			<hr />
 
-			{!isShare ? <div> <Control changeShare={changeShare} />
+			{!isShare ? <div> <Control   changeShare={changeShare} />
 			<span className={classes.user_span}>Текущие пользователи</span>
 			<div className={classes.users}>
 				<div className={classes.user_list}>
-					<div className={classes.user}>
-						<div className={classes.avatar}>S</div>
-						<div className={classes.user_info}>
-							<div className={classes.email}>Serg@mail.ru</div>
-							<div className={classes.name}>Шабалин Сергей Валерьевич</div>
-						</div>
-					</div>
+					{users?.map(user =>{
+						return(
+							<div className={classes.user} key = {user.id}>
+								<div className={classes.avatar}>{user.email[0].toUpperCase()}</div>
+								<div className={classes.user_info}>
+									<div className={classes.email}>{user.email}</div>
+									<div className={classes.name}>{user.secondName}{' '}{user.firstName}</div>
+								</div>
+							</div>
+						)
+					})}
+
 				</div>
 			</div>
 		</div>
