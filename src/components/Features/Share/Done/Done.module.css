@@ -1,8 +1,7 @@
 .share_done {
 	color: #4999d3;
-	background: #e1d7d7;
 	border-radius: 5px;
-	margin: 5px;
+	padding: 5px;
 	font-size: 16px;
 	transition: ease-in-out all 0.5s;
 }

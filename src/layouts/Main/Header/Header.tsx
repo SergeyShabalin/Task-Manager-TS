@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { MdKeyboardArrowDown } from 'react-icons/md'
+
 import { RiTrelloFill } from 'react-icons/ri'
 import { Button } from '@UI'
 import { User } from '@/models/Users'
-import { MdKeyboardArrowDown } from 'react-icons/md'
 import useOpenClose from '@/hooks/UseOpenClose'
 import Share from '@/components/Features/Share'
 import Messages from '@/layouts/Main/Header/Messages'
@@ -44,14 +45,11 @@ export default function Header({ _id, email }: Partial<User>) {
 				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={openShare} />
 				{isOpen && <Share onClose={onClose} />}
 			</div>
-
 			<div className={classes.control}>
 				<Account/>
 				<Messages messagesCount={messagesCount}/>
 				<Logout/>
 			</div>
-
-
 		</div>
 	)
 }

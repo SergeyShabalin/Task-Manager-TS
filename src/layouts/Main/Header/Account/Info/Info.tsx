@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
-import classes from './Info.module.css'
+import { useNavigate } from 'react-router-dom'
+
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { useNavigate } from 'react-router-dom'
-import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
+import classes from './Info.module.css'
 
 interface InfoProps{
 	closeInfo: ()=>void
@@ -21,7 +21,6 @@ export default function Info({closeInfo}:InfoProps) {
 	function backToGreeting(){
 		if (user._id) navigate(`/user/${user._id}/greeting`)
 	}
-
 
 	function logout() {
 		logOut()
@@ -42,7 +41,7 @@ export default function Info({closeInfo}:InfoProps) {
 			</div>
 			<hr/>
 			<ul>
-				<li onClick={backToGreeting}>Просмотр досок</li>
+				<li onClick={backToGreeting}>Рабочие пространства</li>
 				<li onClick={logout}>Выход</li>
 			</ul>
 		</div>

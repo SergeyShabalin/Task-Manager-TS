@@ -1,7 +1,4 @@
 import { Action } from 'redux'
-import { Card } from '@/models/Cards'
-import { Column } from '@/models/Columns'
-import { Board, BOARD_TYPES, BoardAPI } from '@/models/Boards'
 
 export interface User {
 	_id: string
@@ -43,8 +40,6 @@ export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
 export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 
-
-
 export interface PayloadForCheckLogin extends User{
 	User?: User | {},
 	isAuth: boolean
@@ -60,12 +55,10 @@ export interface PayloadForApplyInvite{
 	boardId: string
 }
 
-
 export interface PayloadForDeleteMessage extends PayloadForApplyInvite{
 	userId?: string,
 	boardId: string
 }
-
 
 export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
 	payload: Partial<User>

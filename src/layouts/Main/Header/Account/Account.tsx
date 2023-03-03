@@ -1,14 +1,9 @@
-import React, { useRef, useState } from 'react'
-import classes from './Account.module.css'
+import React, { useState } from 'react'
+
 import { SlUser } from 'react-icons/sl'
-
 import { Button, Hint } from '@UI'
-
 import Info from '@/layouts/Main/Header/Account/Info'
-
-interface AccountProps{
-
-}
+import classes from './Account.module.css'
 
 export default function Account() {
 
@@ -30,12 +25,11 @@ export default function Account() {
 	}
 
 	return (
-		< >
+		<>
 			<div className={classes.user} onMouseOver={showHint} onMouseOut={closeHint} >
 				<Button icon={<SlUser/> } onClick={openInfo}/>
 				<Hint visible = {isHint} label='Аккаунт'/>
 			</div>
-
 			{isAccount && <Info closeInfo={closeInfo} /> }
 		 </>
 	)

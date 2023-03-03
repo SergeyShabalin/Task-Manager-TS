@@ -6,7 +6,7 @@ import { RiLogoutCircleRLine } from 'react-icons/ri'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Logout.module.css'
 
-export default function Logout(){
+export default function Logout() {
 	const { logOut } = useActions()
 	const navigate = useNavigate()
 	const [isHint, setIsHint] = useState(false)
@@ -14,19 +14,23 @@ export default function Logout(){
 	function showHint() {
 		setIsHint(true)
 	}
+
 	function closeHint() {
 		setIsHint(false)
 	}
 
 	function logout() {
-		logOut()
-		navigate(`/login`)
+		const confirm = window.confirm('Выйти из учетной записи?')
+		if (confirm) {
+			logOut()
+			navigate(`/login`)
+		}
 	}
 
 	return (
 		<div className={classes.logout} onMouseOver={showHint} onMouseOut={closeHint}>
 			<Button icon={<RiLogoutCircleRLine />} onClick={logout} />
-			<Hint visible = {isHint} label='Выйти из учетной записи'/>
+			<Hint visible={isHint} label='Выйти из учетной записи' />
 		</div>
 	)
 }

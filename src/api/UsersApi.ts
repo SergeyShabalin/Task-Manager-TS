@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios/index'
+import { AxiosResponse } from 'axios'
 import { PayloadForApplyInvite, PayloadForDeleteMessage, PayloadForShareBoard, User } from '@/models/Users'
 import { Api } from '@/api/index'
-import { payloadForUsersOneBoard } from '@/models/Boards'
+
 
 class UsersApi {
 
