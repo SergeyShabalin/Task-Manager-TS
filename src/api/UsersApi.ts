@@ -28,6 +28,10 @@ class UsersApi {
 		return Api.patch('/user/deleteMessage/', payload)
 	}
 
+	async getUsersOneBoard(boardId: string): Promise<AxiosResponse<User>> {
+		return Api.post(`/user/oneBoard/`, {boardId});
+	}
+
 }
 
 export default new UsersApi()

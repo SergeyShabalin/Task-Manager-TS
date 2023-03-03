@@ -5,10 +5,10 @@ import {
 	BOARD_TYPES,
 	BoardAction,
 	ErrorFetching,
-	GetAllBoards,
+	GetAllBoards, GetUsersOneBoard,
 	Logout,
 	StartFetching,
-	SuccessFetching
+	SuccessFetching, usersOneBoard
 } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
@@ -34,6 +34,7 @@ export type BoardActions =
 	| Logout
 	| AllBoardAction
 	| ApplyInvite
+	| usersOneBoard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -116,7 +117,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CARD_TYPES.DELETE_CARD: {
 			const newCardIds = action.payload.newCardIds
 			const cardId = action.payload.cardId
-
 			const columnId = state.allCards[cardId].column_id
 			const currentColumn = state.allColumns[columnId]
 			const newCurrentColumn = { ...currentColumn, cards: newCardIds }
@@ -205,6 +205,11 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			return {
 				...state,
 				currentBoard: {}
+			}
+		}
+		case BOARD_TYPES.GET_USERS_ONE_BOARD:  {
+			return {
+				...state, allUsers: action.payload
 			}
 		}
 

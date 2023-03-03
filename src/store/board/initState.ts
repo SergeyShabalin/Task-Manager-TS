@@ -21,5 +21,6 @@ export const defaultState: BoardState = {
 		column_id: '',
 		countTask: 0,
 		doneTask: 0
-	}
+	},
+	allUsers: []
 }

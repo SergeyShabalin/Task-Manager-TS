@@ -27,7 +27,7 @@ h1 {
 
 .info {
     display: flex;
-    padding: 10px 0;
+    padding: 10px 5px;
 }
 
 .names {

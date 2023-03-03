@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './Control.module.css'
 import { Button, Input } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
@@ -12,6 +12,8 @@ export default function Control({ changeShare }: ControlProps) {
 	const { shareBoard } = useActions()
 	const { userId, boardId } = useParams()
 	const [email, setEmail] = useState('')
+
+
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setEmail(target.value)
 	}

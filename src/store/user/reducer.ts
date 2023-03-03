@@ -14,17 +14,19 @@ export type UserActions = StartRegistration | CheckLogin | Authentication | Logo
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
 		case USER_TYPES.REGISTRATION: {
-			const { boardIds, email, _id, messages } = action.payload
+			const { boardIds, email, _id, messages, firstName, secondName, lastName } = action.payload
 			return {
 				...state,
 				isAuth: true,
 				boardIds: boardIds,
 				email: email,
 				_id: _id,
-				messages
+				messages,
+				firstName,
+				secondName,
+				lastName
 			}
 		}
-
 		case USER_TYPES.CHECK_LOGIN: {
 			const { boardIds, _id, messages, email, firstName, secondName, lastName } = action.payload.user
 			return {
@@ -39,9 +41,8 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				lastName
 			}
 		}
-
 		case USER_TYPES.AUTHENTICATION: {
-			const { boardIds, _id, email, firstName, lastName, messages } = action.payload
+			const { boardIds, _id, email, firstName, lastName, messages,secondName, } = action.payload
 			return {
 				...state,
 				isAuth: true,
@@ -50,22 +51,20 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				email,
 				firstName,
 				lastName,
-				messages
+				messages,
+				secondName,
 			}
 		}
-
 		case USER_TYPES.LOGOUT: {
 			return {
 				...state, isAuth: false, email: '', _id: '', boardIds: []
 			}
 		}
-
 		case USER_TYPES.ADD_BOARD: {
 			return {
 				...state, boardIds: [...state.boardIds, action.payload]
 			}
 		}
-
 		case USER_TYPES.DELETE_MESSAGE: {
 			return {
 				...state, messages: action.payload

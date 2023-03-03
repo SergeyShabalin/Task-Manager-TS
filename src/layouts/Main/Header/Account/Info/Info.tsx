@@ -16,7 +16,7 @@ export default function Info({closeInfo}:InfoProps) {
 	const user = useTypedSelector(state => state.user)
 	const accountRef = useRef(null)
 	useOnClickOutside(accountRef, () => closeInfo())
-	console.log(user)
+
 
 	function backToGreeting(){
 		if (user._id) navigate(`/user/${user._id}/greeting`)
@@ -36,13 +36,14 @@ export default function Info({closeInfo}:InfoProps) {
 				   {user.email[0]}
 				 </span>
 					<div className={classes.names}>
-						<div className={classes.firstName}>{user.firstName}</div>
+						<div className={classes.firstName}>{user.firstName}{' '}{user.secondName}</div>
 						<div className={classes.email}>{user.email}</div>
 					</div>
 			</div>
 			<hr/>
+			<h1>Task Manager</h1>
 			<ul>
-				<li onClick={backToGreeting}>Просмотр досок</li>
+				<li onClick={backToGreeting}>Рабочие пространства</li>
 				<li onClick={logout}>Выход</li>
 			</ul>
 		</div>

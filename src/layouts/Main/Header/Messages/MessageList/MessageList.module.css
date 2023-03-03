@@ -10,6 +10,7 @@
     max-height: 85vh;
     overflow-y: auto;
     color: black;
+    width: 500px;
 }
 
 .title {
