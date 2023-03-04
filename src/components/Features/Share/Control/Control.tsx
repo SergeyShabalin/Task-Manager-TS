@@ -4,7 +4,7 @@ import { Button, Input } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import { useParams } from 'react-router-dom'
 
-interface ControlProps{
+interface ControlProps {
 	changeShare: (value: boolean) => boolean
 }
 

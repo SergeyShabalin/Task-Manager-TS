@@ -6,14 +6,13 @@ import Info from '@/layouts/Main/Header/Account/Info'
 import classes from './Account.module.css'
 
 export default function Account() {
-
 	const [isHint, setIsHint] = useState(false)
 	const [isAccount, setIsAccount] = useState(false)
 
-	function closeInfo(){
+	function closeInfo() {
 		setIsAccount(false)
 	}
-	function openInfo(){
+	function openInfo() {
 		setIsAccount(true)
 	}
 
@@ -26,12 +25,11 @@ export default function Account() {
 
 	return (
 		<>
-			<div className={classes.user} onMouseOver={showHint} onMouseOut={closeHint} >
-				<Button icon={<SlUser/> } onClick={openInfo}/>
-				<Hint visible = {isHint} label='Аккаунт'/>
+			<div className={classes.user} onMouseOver={showHint} onMouseOut={closeHint}>
+				<Button icon={<SlUser />} onClick={openInfo} />
+				<Hint visible={isHint} label='Аккаунт' />
 			</div>
-			{isAccount && <Info closeInfo={closeInfo} /> }
-		 </>
+			{isAccount && <Info closeInfo={closeInfo} />}
+		</>
 	)
 }
-

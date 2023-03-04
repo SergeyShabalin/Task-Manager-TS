@@ -16,7 +16,6 @@ import classes from './Header.module.css'
 import { useActions } from '@/hooks/useActions/useActions'
 
 export default function Header({ _id, email }: Partial<User>) {
-
 	const navigate = useNavigate()
 	const { userId, boardId } = useParams()
 	const { getUsersOneBoard } = useActions()
@@ -27,28 +26,29 @@ export default function Header({ _id, email }: Partial<User>) {
 		if (_id) navigate(`/user/${userId}/greeting`)
 	}
 
-	function openShare(){
-		if(boardId)	getUsersOneBoard(boardId)
+	function openShare() {
+		if (boardId) getUsersOneBoard(boardId)
 		onOpen()
 	}
 
 	return (
 		<div className={classes.header}>
-
 			<div className={classes.logo} onClick={backToGreeting}>
 				<span className={classes.icon}>
 					<RiTrelloFill />
 				</span>
-			<span>TASK MANAGER</span>
-		</div>
+				<span>TASK MANAGER</span>
+			</div>
+			{boardId &&
 			<div className={classes.share}>
 				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={openShare} />
 				{isOpen && <Share onClose={onClose} />}
-			</div>
+			</div>}
+
 			<div className={classes.control}>
-				<Account/>
-				<Messages messagesCount={messagesCount}/>
-				<Logout/>
+				<Account />
+				<Messages messagesCount={messagesCount} />
+				<Logout />
 			</div>
 		</div>
 	)

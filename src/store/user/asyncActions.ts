@@ -2,7 +2,12 @@ import { Dispatch } from 'redux'
 import { UserActions } from '@/store/user/reducer'
 
 import UsersApi from '@/api/UsersApi'
-import { PayloadForApplyInvite, PayloadForDeleteMessage, PayloadForShareBoard, User } from '@/models/Users'
+import {
+	PayloadForApplyInvite,
+	PayloadForDeleteMessage,
+	PayloadForShareBoard,
+	User
+} from '@/models/Users'
 import { Notification } from '@UI'
 import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
@@ -90,16 +95,17 @@ export const usersActions = {
 		}
 	},
 
-	applyInvite: (payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
-		try {
-			const { data } = await UsersApi.applyInvite(payload)
-			dispatch(BoardAC.applyInvite(data))
-			return data
-		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
-		}
-	},
+	applyInvite:
+		(payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
+			try {
+				const { data } = await UsersApi.applyInvite(payload)
+				dispatch(BoardAC.applyInvite(data))
+				return data
+			} catch (e) {
+				const error = e.response.data.message
+				Notification.error(error)
+			}
+		},
 
 	deleteMessage: (payload: PayloadForDeleteMessage) => async (dispatch: Dispatch<UserActions>) => {
 		try {

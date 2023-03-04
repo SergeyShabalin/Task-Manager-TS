@@ -14,7 +14,7 @@ import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-
+import UsersApi from '@/api/UsersApi'
 
 export const columnsActions = {
 	addNewColumn:
@@ -223,5 +223,15 @@ export const checklistActions = {
 				Notification.error('Произошла ошибка удаления задачи')
 				return false
 			}
+		},
+
+	deleteBoard: (boardId: string, userId: string) =>
+		async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			const { data } = await  UsersApi.boardDelete(boardId, userId)
+
+		} catch (error){
+			Notification.error('Произошла ошибка удаления задачи')
+		}
 		}
 }

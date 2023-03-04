@@ -11,12 +11,12 @@ export interface User {
 	messages: message[]
 }
 
-export interface message{
+export interface message {
 	message: string
 	currentBoardId: string
 }
 
-export interface UserState extends User{
+export interface UserState extends User {
 	isLoading: boolean
 	isError: boolean
 	isAuth: boolean
@@ -29,8 +29,7 @@ export enum USER_TYPES {
 	LOGOUT = 'LOGOUT',
 	CHECK_LOGIN = 'CHECK_LOGIN',
 	ADD_BOARD = 'ADD_BOARD',
-	DELETE_MESSAGE = 'DELETE_MESSAGE',
-
+	DELETE_MESSAGE = 'DELETE_MESSAGE'
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -40,23 +39,23 @@ export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
 export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 
-export interface PayloadForCheckLogin extends User{
-	User?: User | {},
+export interface PayloadForCheckLogin extends User {
+	User?: User | {}
 	isAuth: boolean
 }
-export interface PayloadForShareBoard extends User{
-	email: string,
-	_id: string,
+export interface PayloadForShareBoard extends User {
+	email: string
+	_id: string
 	boardId: string
 }
 
-export interface PayloadForApplyInvite{
-	userId?: string,
+export interface PayloadForApplyInvite {
+	userId?: string
 	boardId: string
 }
 
-export interface PayloadForDeleteMessage extends PayloadForApplyInvite{
-	userId?: string,
+export interface PayloadForDeleteMessage extends PayloadForApplyInvite {
+	userId?: string
 	boardId: string
 }
 

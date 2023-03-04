@@ -32,6 +32,10 @@ class UsersApi {
 	async getUsersOneBoard(boardId: string): Promise<AxiosResponse<User>> {
 		return Api.post('/user/oneBoard/', { boardId })
 	}
+
+	async boardDelete(boardId: string, userId: string): Promise<AxiosResponse<User>> {
+		return Api.patch('/user/deleteBoard/', { boardId, userId })
+	}
 }
 
 export default new UsersApi()

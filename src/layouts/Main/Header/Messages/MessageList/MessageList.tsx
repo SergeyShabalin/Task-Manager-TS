@@ -44,8 +44,8 @@ export default function MessageList({ onClose }: MessageListProps) {
 	return (
 		<div>
 			<div className={classes.wrapper} ref={messageRef}>
-				<span className={classes.title}>Cообщения</span>
-				<hr />
+				<h1>Cообщения</h1>
+
 				{isMessage && <div className={classes.empty}>
 				<span className={classes.title_empty}>У вас нет непрочитанных сообщений</span>
 					 <div className={classes.img}></div>

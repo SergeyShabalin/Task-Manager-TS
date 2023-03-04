@@ -10,6 +10,7 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import classes from './Greeting.module.css'
 import { Button } from '@UI'
 import { BsThreeDots } from 'react-icons/bs'
+import MiniBoard from '@/pages/greeting/MiniBoard'
 
 export default function Greeting() {
 
@@ -42,16 +43,8 @@ export default function Greeting() {
 					<div className={classes.workspaces}>
 						{allBoards.map(board => {
 							return (
-								<div
-									key={board._id}
-									className={board.background && classes[board.background]}
-									onClick={() => openBoard(board._id)}
-								>
-									<span className={classes.title_board}>{board.title}</span>
-								<div className={board.background && classes.board_edit }><Button icon={<BsThreeDots/>} /></div>
-								</div>
-							)
-						})}
+								<MiniBoard key={board._id} board={board} openBoard={openBoard} userId={userId!}/>
+							)})}
 						<div className={classes.board_creator} onClick={onOpen}>Создать доску</div>
 					</div>
 				</div>
