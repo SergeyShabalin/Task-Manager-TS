@@ -7,7 +7,8 @@ import {
 	ErrorFetching, payloadForUsersOneBoard,
 	StartFetching,
 	SuccessFetching,
-	ApplyInvite, GetUsersOneBoard, payloadForApplyInvite
+	payloadForApplyInvite,
+	DeleteBoard
 } from '@/models/Boards'
 import {
 	AddNewColumn,
@@ -16,7 +17,8 @@ import {
 	COLUMN_TYPES,
 	DeleteColumn, DropCard,
 	PayloadForChangeColumn,
-	PayloadForDeleteColumn, PayloadForDropCard
+	PayloadForDeleteColumn,
+	PayloadForDropCard
 } from '@/models/Columns'
 import {
 	AddNewCard,
@@ -37,8 +39,6 @@ import {
 } from '@/models/CheckList'
 import { User } from '@/models/Users'
 
-
-
 export const BoardAC = {
 	startFetching: (): StartFetching => ({type: BOARD_TYPES.START_FETCHING_BOARD}),
 	successFetching: (payload: BoardAPI): SuccessFetching => ({type: BOARD_TYPES.SUCCESS_FETCHING_BOARD, payload}),
@@ -47,7 +47,8 @@ export const BoardAC = {
 	getAllBoard: (payload: Board[]) : AllBoardAction => ({type: BOARD_TYPES.GET_ALL_BOARDS, payload}),
 	logout: ()=>({type: BOARD_TYPES.LOGOUT}),
 	applyInvite: (payload: Partial<Board>) : payloadForApplyInvite => ({type: BOARD_TYPES.APPLY_INVITE, payload}),
-	getUsersOneBoard: (payload: Partial<User>[]) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload})
+	getUsersOneBoard: (payload: Partial<User>[]) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload}),
+	deleteBoard: (payload: Partial<Board>[]) : DeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload})
 };
 
 export const ColumnAC = {

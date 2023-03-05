@@ -26,18 +26,15 @@
 }
 
 .title_empty{
-
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
-}
-
-.empty {
-    color: #16163a;
+    color: #6a6a8a;
     font-weight: 600;
     font-size: 20px;
-    padding: 10px;
+    padding: 40px 10px;
 }
+
+
 
 .control {
     width: 35%;

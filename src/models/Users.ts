@@ -1,4 +1,5 @@
 import { Action } from 'redux'
+import { Board } from '@/models/Boards'
 
 export interface User {
 	_id: string
@@ -29,7 +30,7 @@ export enum USER_TYPES {
 	LOGOUT = 'LOGOUT',
 	CHECK_LOGIN = 'CHECK_LOGIN',
 	ADD_BOARD = 'ADD_BOARD',
-	DELETE_MESSAGE = 'DELETE_MESSAGE'
+	DELETE_MESSAGE = 'DELETE_MESSAGE',
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -58,6 +59,7 @@ export interface PayloadForDeleteMessage extends PayloadForApplyInvite {
 	userId?: string
 	boardId: string
 }
+
 
 export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
 	payload: Partial<User>

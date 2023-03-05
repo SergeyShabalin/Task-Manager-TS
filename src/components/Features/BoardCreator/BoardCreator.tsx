@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './BoardCreator.module.css'
 import { useNavigate } from 'react-router-dom'
-import BackgroundPicker from '@/pages/greeting/BoardCreator/BoardPicker'
-import BoardColorPicker from '@/pages/greeting/BoardCreator/BoardColorPicker'
+import BackgroundPicker from '@/components/Features/BoardCreator/BoardPicker'
+import BoardColorPicker from '@/components/Features/BoardCreator/BoardColorPicker'
 import { Button, Input } from '@UI'
 
 export interface BoardCreatorProps {

@@ -40,8 +40,8 @@ export default function MiniBoard({ board, openBoard, userId }: MiniBoardProps) 
 				<h1>Действия с доской</h1>
 					<hr/>
 					<ul>
-						<li>Открыть</li>
-						<li onClick={()=>boardDelete(board._id)}>Удалить</li>
+						<li onClick={() => openBoard(board._id)}>Открыть</li>
+						<li onClick={() => boardDelete(board._id)}>Удалить</li>
 					</ul>
 				</div>
 			)}

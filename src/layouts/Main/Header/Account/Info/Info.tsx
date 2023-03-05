@@ -5,6 +5,7 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Info.module.css'
+import BoardCreator from '@/components/Features/BoardCreator'
 
 interface InfoProps {
 	closeInfo: () => void

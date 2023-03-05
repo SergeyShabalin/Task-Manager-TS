@@ -46,10 +46,9 @@ export default function MessageList({ onClose }: MessageListProps) {
 			<div className={classes.wrapper} ref={messageRef}>
 				<h1>Cообщения</h1>
 
-				{isMessage && <div className={classes.empty}>
-				<span className={classes.title_empty}>У вас нет непрочитанных сообщений</span>
-					 <div className={classes.img}></div>
-				</div>}
+				{isMessage && (
+					<span className={classes.title_empty}>У вас нет непрочитанных сообщений</span>
+				)}
 				{messages?.map(message => {
 					return (
 						<div key={Math.random()} className={classes.message}>

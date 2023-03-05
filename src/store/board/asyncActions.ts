@@ -226,12 +226,14 @@ export const checklistActions = {
 		},
 
 	deleteBoard: (boardId: string, userId: string) =>
-		async (dispatch: Dispatch<BoardActions>) => {
+		async (dispatch: Dispatch<BoardActions>,  getState: () => RootState) => {
 		try {
 			const { data } = await  UsersApi.boardDelete(boardId, userId)
-
+			const { board } = getState()
+			const newBoards = board.allBoards.filter(board=> board._id !== boardId)
+			dispatch(BoardAC.deleteBoard(newBoards))
 		} catch (error){
-			Notification.error('Произошла ошибка удаления задачи')
+			Notification.error('Произошла ошибка удаления доски')
 		}
 		}
 }

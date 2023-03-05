@@ -1,19 +1,20 @@
 import { defaultState } from './initState'
 
 import {
-	AllBoardAction, ApplyInvite,
+	AllBoardAction,
+	ApplyInvite,
 	BOARD_TYPES,
 	BoardAction,
+	DeleteBoard,
 	ErrorFetching,
-	GetAllBoards, GetUsersOneBoard,
 	Logout,
 	StartFetching,
-	SuccessFetching, usersOneBoard
+	SuccessFetching,
+	usersOneBoard
 } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
-import { USER_TYPES } from '@/models/Users'
 
 export type BoardActions =
 	| StartFetching
@@ -35,6 +36,7 @@ export type BoardActions =
 	| AllBoardAction
 	| ApplyInvite
 	| usersOneBoard
+	| DeleteBoard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -69,11 +71,19 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		case BOARD_TYPES.GET_ALL_BOARDS:
 			return {
-			...state, allBoards: action.payload
-		}
+				...state,
+				allBoards: action.payload
+			}
 		case BOARD_TYPES.APPLY_INVITE: {
-		return {
-				...state, allBoards:[...state.allBoards,  action.payload]
+			return {
+				...state,
+				allBoards: [...state.allBoards, action.payload]
+			}
+		}
+		case BOARD_TYPES.DELETE_BOARD: {
+			return {
+				...state,
+				allBoards: action.payload
 			}
 		}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
@@ -207,9 +217,10 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				currentBoard: {}
 			}
 		}
-		case BOARD_TYPES.GET_USERS_ONE_BOARD:  {
+		case BOARD_TYPES.GET_USERS_ONE_BOARD: {
 			return {
-				...state, allUsers: action.payload
+				...state,
+				allUsers: action.payload
 			}
 		}
 

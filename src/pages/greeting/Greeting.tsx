@@ -4,13 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Header from '@/layouts/Main/Header'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
-import BoardCreator from '@/pages/greeting/BoardCreator'
+import BoardCreator from '@/components/Features/BoardCreator'
 import useOpenClose from '@/hooks/UseOpenClose'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
-import classes from './Greeting.module.css'
-import { Button } from '@UI'
-import { BsThreeDots } from 'react-icons/bs'
 import MiniBoard from '@/pages/greeting/MiniBoard'
+import classes from './Greeting.module.css'
 
 export default function Greeting() {
 
