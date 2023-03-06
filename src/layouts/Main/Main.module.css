@@ -3,7 +3,7 @@
     overflow-y: auto;
     background-size: auto;
     font-size: var(--main-font-size);
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .main {
@@ -99,3 +99,4 @@
     background-color: rgb(238, 207, 207);
     cursor: grab
 }
+

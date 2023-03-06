@@ -19,6 +19,8 @@
 
 .checklist{
     padding: 5px 0;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
 .checkbox {

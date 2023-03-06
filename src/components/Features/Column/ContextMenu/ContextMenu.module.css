@@ -1,44 +1,13 @@
 .context_menu {
-    background-color: var(--context-menu-background-color);
     position: absolute;
     border:var(--context-menu-border) ;
     border-radius: var(--context-menu-border-radius);
     color: var(--context-menu-color);
     box-shadow: var(--context-menu-box-shadow);
     z-index: 10;
+    width: 230px;
+    background: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
 }
-
-.context_header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:  var(--context-menu-header-padding);
-    white-space: nowrap;
-}
-
-.ul {
-    white-space: nowrap;
-    list-style-type: none;
-    padding-inline-start: var(--context-menu-ul-padding-inline-start);
-    margin-top: var(--context-menu-ul-margin-top);
-    margin-bottom: var(--context-menu-ul-margin-bottom);
-}
-
-.li {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    font-family: var(--prymary-font);
-    padding: var(--context-menu-li-padding);
-}
-.li_header{
-    margin-left: 10px;
-}
-
-.li:hover {
-    background-color: var(--context-menu-li-background-color-hover);
-    transition: all 0.3s ease-in-out;
-}
-

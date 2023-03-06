@@ -61,6 +61,7 @@ export default function Editor({
 		if (isSuccess) {
 			setInputValue(inputValue)
 			onClose()
+			setInputValue('')
 		}
 	}
 

@@ -7,7 +7,7 @@ import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './ContextMenu.module.css'
 
-export interface ContextMenuProps{
+export interface ContextMenuProps {
 	columnId: string
 }
 
@@ -38,13 +38,10 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 			{isModalOpen &&
 				<form ref={refContextMenu}>
 					<div className={classes.context_menu}>
-						<span className={classes.context_header}>Действия с колонкой</span>
+						<h1>Действия с колонкой</h1>
 						<hr />
-						<ul className={classes.ul}>
-							<li className={classes.li}
-									onClick={columnDelete}>
-								<RiDeleteBin5Line /> <span className={classes.li_header}>Удалить колонку</span>
-							</li>
+						<ul>
+							<li onClick={columnDelete}>Удалить колонку</li>
 						</ul>
 					</div>
 				</form>}
