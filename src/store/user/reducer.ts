@@ -34,11 +34,11 @@ export default function userReducer(state = defaultState, action: UserActions) {
 		}
 
 		case USER_TYPES.CHECK_LOGIN: {
-			const { boardIds, _id, messages, email, firstName, secondName, lastName } =
-				action.payload.user
+			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth } =
+				action.payload
 			return {
 				...state,
-				isAuth: action.payload.isAuth,
+				isAuth: isAuth,
 				boardIds,
 				_id,
 				messages,
@@ -50,10 +50,10 @@ export default function userReducer(state = defaultState, action: UserActions) {
 		}
 
 		case USER_TYPES.AUTHENTICATION: {
-			const { boardIds, _id, email, firstName, lastName, messages } = action.payload
+			const { boardIds, _id, email, firstName, lastName, messages, isAuth } = action.payload
 			return {
 				...state,
-				isAuth: true,
+				isAuth: isAuth,
 				boardIds,
 				_id,
 				email,

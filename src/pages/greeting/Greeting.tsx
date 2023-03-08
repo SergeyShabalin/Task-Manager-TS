@@ -51,7 +51,6 @@ export default function Greeting() {
 			<div ref={addBoardRef}>
 				{isOpen && <BoardCreator userId={userId!} />}
 			</div>
-
 		</div>
 	)
 }

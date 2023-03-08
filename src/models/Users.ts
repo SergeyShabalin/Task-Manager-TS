@@ -1,5 +1,4 @@
 import { Action } from 'redux'
-import { Board } from '@/models/Boards'
 
 export interface User {
 	_id: string
@@ -10,6 +9,8 @@ export interface User {
 	secondName: string
 	lastName: string
 	messages: message[]
+	token: string
+	isAuth: boolean
 }
 
 export interface message {
@@ -21,7 +22,7 @@ export interface UserState extends User {
 	isLoading: boolean
 	isError: boolean
 	isAuth: boolean
-	token?: string
+	token: string
 }
 
 export enum USER_TYPES {
@@ -40,14 +41,11 @@ export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
 export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 
-export interface PayloadForCheckLogin extends User {
-	User?: User | {}
-	isAuth: boolean
-}
-export interface PayloadForShareBoard extends User {
+
+export interface PayloadForShareBoard extends Partial<User> {
 	email: string
-	_id: string
-	boardId: string
+	_id?: string
+	boardId?: string
 }
 
 export interface PayloadForApplyInvite {
@@ -64,6 +62,7 @@ export interface PayloadForDeleteMessage extends PayloadForApplyInvite {
 export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
 	payload: Partial<User>
 }
+
 export interface LoginCheck extends CheckLogin {
 	isAuth: boolean
 }

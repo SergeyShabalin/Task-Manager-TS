@@ -4,6 +4,7 @@ import Done from '@/components/Features/Share/Done'
 import classes from './Share.module.css'
 import Control from '@/components/Features/Share/Control'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
+import { useParams } from 'react-router-dom'
 
 interface ShareProps {
 	onClose: () => void
@@ -12,6 +13,7 @@ interface ShareProps {
 export default function Share({ onClose }: ShareProps) {
 	const shareRef = useRef(null)
 	const [isShare, setIsShare] = useState(false)
+	const { userId, boardId } = useParams()
 	const users = useTypedSelector(state => state.board.allUsers)
 	useOnClickOutside(shareRef, () => onClose())
 
@@ -26,7 +28,7 @@ export default function Share({ onClose }: ShareProps) {
 			<hr />
 			{!isShare ? (
 				<div>
-					<Control changeShare={changeShare} />
+					<Control userId={userId}  boardId={boardId}  changeShare={changeShare} />
 					<span className={classes.user_span}>Текущие пользователи</span>
 					<div className={classes.users}>
 						<div className={classes.user_list}>

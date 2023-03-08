@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import { GoKebabHorizontal } from 'react-icons/go'
-import { RiDeleteBin5Line } from 'react-icons/ri'
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { Button } from '@UI'
@@ -44,7 +43,8 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 							<li onClick={columnDelete}>Удалить колонку</li>
 						</ul>
 					</div>
-				</form>}
+				</form>
+			}
 		</>
 	)
 }

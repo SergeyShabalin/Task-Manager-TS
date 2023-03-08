@@ -27,6 +27,7 @@ export enum BOARD_TYPES {
 	GET_USERS_ONE_BOARD = 'GET_USERS_ONE_BOARD',
 	DELETE_BOARD = 'DELETE_BOARD'
 }
+
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
 export type ErrorFetching = Action<BOARD_TYPES.ERROR_FETCHING_BOARD>
 export type BoardChange = Action<BOARD_TYPES.CHANGE_BOARD>
@@ -54,8 +55,16 @@ export interface payloadForUsersOneBoard extends GetUsersOneBoard {
 export interface BoardAction extends BoardChange {
 	payload: Board
 }
+
 export interface AllBoardAction extends GetAllBoards {
 	payload: Board[]
+}
+
+export interface UsersInShare {
+	id: string
+	email:string
+	firstName:string
+	secondName:string
 }
 
 export interface BoardState extends BoardAPI {
@@ -63,9 +72,9 @@ export interface BoardState extends BoardAPI {
 	isError: boolean
 	cardInfo: Card
 	allBoards: Board[]
-	allUsers: Partial<User>[]
+	allUsers: UsersInShare[]
 }
 
-export interface payloadForDeleteBoard extends DeleteBoard{
+export interface payloadForDeleteBoard extends DeleteBoard {
 	payload: Partial<Board>[]
 }

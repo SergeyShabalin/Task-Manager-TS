@@ -39,35 +39,38 @@ export default function MiniCard({
 	}
 
 	return (
-		<div className={classes.list_card}>
+		<>
+			<div className={classes.list_card}>
+				{isOpenContext &&
+					<ContextMenu
+						userId={userId}
+						boardId={boardId}
+						cardId={_id}
+						contextClose={contextClose}
+						cardDelete={cardDelete}
+					/>}
+				<div className={classes.header}>
 
-			{isOpenContext &&
-				<ContextMenu
-					userId={userId}
-					boardId={boardId}
-					cardId={_id}
-					contextClose={contextClose}
-					cardDelete={cardDelete}
-				/>}
-			<div className={classes.header}>
+					<Link
+						className={classes.link}
+						state={{ background: location }}
+						to={`/user/${userId}/board/${boardId}/card/${_id}`}
+					>
+						<div className={classes.title}>{title}</div>
+					</Link>
+					<div className={classes.edit}>
+						<Button variant='just_icon' icon={<BsThreeDots />} onClick={contextOpen} />
+					</div>
+				</div>
 
-				<Link
-					className={classes.link}
-					state={{ background: location }}
-					to={`/user/${userId}/board/${boardId}/card/${_id}`}
-				>
-					<div className={classes.title}>{title}</div>
-				</Link>
-				<div className={classes.edit}>
-					<Button variant='just_icon' icon={<BsThreeDots />} onClick={contextOpen} />
+				<div className={classes.footer}>
+					<DecisionDate decisionDate={decisionDate!} />
+					<Checkout countTask={countTask} doneTask={doneTask} />
+					<Description isOpen={description} />
 				</div>
 			</div>
 
-			<div className={classes.footer}>
-				<DecisionDate decisionDate={decisionDate!} />
-				<Checkout countTask={countTask} doneTask={doneTask} />
-				<Description isOpen={description} />
-			</div>
-		</div>
+		</>
+
 	)
 }

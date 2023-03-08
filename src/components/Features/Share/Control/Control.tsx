@@ -5,13 +5,16 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { useParams } from 'react-router-dom'
 
 interface ControlProps {
-	changeShare: (value: boolean) => boolean
+	changeShare: (value: boolean) => void
+	userId?: string
+	boardId?: string
 }
 
-export default function Control({ changeShare }: ControlProps) {
+export default function Control({ changeShare, userId, boardId }: ControlProps) {
 	const { shareBoard } = useActions()
-	const { userId, boardId } = useParams()
 	const [email, setEmail] = useState('')
+
+
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setEmail(target.value)
 	}

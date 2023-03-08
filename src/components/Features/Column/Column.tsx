@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { MiniCard } from '@Features'
 import { Column as ColumnT } from '@/models/Columns'
@@ -70,14 +70,13 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	const miniCards = cards?.map(id => {
 		const card = allCards[id]
 		return (
-			<div
+				<div
 				key={id}
 				id={id}
 				draggable
 				onDragStart={e => onDragStartCard(e, card.column_id, id)}
 				onDragLeave={e => onDragLeaveCard(e)}
 				onDrop={e => onDropCard(e, id)}
-				className={classes.list_card}
 			>
 				<MiniCard {...card} />
 			</div>

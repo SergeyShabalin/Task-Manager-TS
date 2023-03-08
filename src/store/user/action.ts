@@ -13,7 +13,7 @@ import {
 
 export const UserAC = {
 	registration: (payload: Partial<User>) : StartRegistration => ({type: USER_TYPES.REGISTRATION, payload}),
-	checkLogin: (payload: PayloadForCheckLogin): CheckLogin => ({type: USER_TYPES.CHECK_LOGIN, payload}),
+	checkLogin: (payload: Partial<User>): CheckLogin => ({type: USER_TYPES.CHECK_LOGIN, payload}),
 	login: (payload: Partial<User>) : Authentication => ({type: USER_TYPES.AUTHENTICATION, payload}),
 	logout: (): Logout=> ({type: USER_TYPES.LOGOUT}),
 	addBoard: (payload: string) : AddBoard=> ({type: USER_TYPES.ADD_BOARD, payload}),

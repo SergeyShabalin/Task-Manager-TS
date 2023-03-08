@@ -12,6 +12,9 @@ import { Notification } from '@UI'
 import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
 import { BoardAC } from '@/store/board/action'
+import { AxiosError } from 'axios'
+
+
 
 export const usersActions = {
 	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
@@ -25,14 +28,14 @@ export const usersActions = {
 				Notification.error('заполните все поля')
 			} else {
 				const { data } = await UsersApi.registration(payload)
-				const dataUser = data._doc
+				const dataUser = data
 				localStorage.setItem('token', data.token)
 				dispatch(UserAC.registration(dataUser))
-				return data._doc._id
+				return data._id
 			}
 		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
 			return false
 		}
 	},
@@ -40,11 +43,7 @@ export const usersActions = {
 	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.loginCheck()
-			const payload = {
-				user: data.currentUser,
-				isAuth: true
-			}
-			dispatch(UserAC.checkLogin(payload))
+			dispatch(UserAC.checkLogin(data))
 		} catch (e) {
 			Notification.error('произошла ошибка проверки аккаунта')
 		}
@@ -53,13 +52,12 @@ export const usersActions = {
 	login: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.login(payload)
-			const dataUser = data._doc
 			localStorage.setItem('token', data.token)
-			dispatch(UserAC.login(dataUser))
-			return data._doc
+			dispatch(UserAC.login(data))
+			return data
 		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
 			return false
 		}
 	},
@@ -70,8 +68,8 @@ export const usersActions = {
 			dispatch(UserAC.logout())
 			dispatch(BoardAC.logout())
 		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
 		}
 	},
 
@@ -80,8 +78,8 @@ export const usersActions = {
 			const { data } = await UsersApi.shareBoard(payload)
 			return data
 		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
 		}
 	},
 
@@ -90,8 +88,8 @@ export const usersActions = {
 			const { data } = await UsersApi.getUsersOneBoard(boardId)
 			dispatch(BoardAC.getUsersOneBoard(data))
 		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
 		}
 	},
 
@@ -102,8 +100,8 @@ export const usersActions = {
 				dispatch(BoardAC.applyInvite(data))
 				return data
 			} catch (e) {
-				const error = e.response.data.message
-				Notification.error(error)
+				const error = e as AxiosError<any>
+				Notification.error(error.response?.data?.message)
 			}
 		},
 
@@ -112,8 +110,8 @@ export const usersActions = {
 			const { data } = await UsersApi.deleteMessage(payload)
 			dispatch(UserAC.deleteMessage(data))
 		} catch (e) {
-			const error = e.response.data.message
-			Notification.error(error)
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
 		}
 	}
 }
