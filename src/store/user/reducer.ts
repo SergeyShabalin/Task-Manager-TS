@@ -1,23 +1,23 @@
 import {
-	AddBoard,
-	Authentication,
-	CheckLogin,
-	DeleteBoard,
-	DeleteMessage,
 	Logout,
-	StartRegistration,
+	PayloadForAddBoard,
+	PayloadForAuthentication,
+	PayloadForCheckLogin,
+	PayloadForDeleteMessage,
+	PayloadForStartRegistration,
 	USER_TYPES
 } from '@/models/Users'
 import { defaultState } from '@/store/user/initState'
+import { payloadForDeleteBoard } from '@/models/Boards'
 
 export type UserActions =
-	| StartRegistration
-	| CheckLogin
-	| Authentication
+	| PayloadForStartRegistration
+	| PayloadForCheckLogin
+	| PayloadForAuthentication
 	| Logout
-	| AddBoard
-	| DeleteMessage
-	|DeleteBoard
+	| PayloadForAddBoard
+	| PayloadForDeleteMessage
+	| payloadForDeleteBoard
 
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
@@ -32,7 +32,6 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				messages
 			}
 		}
-
 		case USER_TYPES.CHECK_LOGIN: {
 			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth } =
 				action.payload
@@ -48,7 +47,6 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				lastName
 			}
 		}
-
 		case USER_TYPES.AUTHENTICATION: {
 			const { boardIds, _id, email, firstName, lastName, messages, isAuth } = action.payload
 			return {
@@ -62,7 +60,6 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				messages
 			}
 		}
-
 		case USER_TYPES.LOGOUT: {
 			return {
 				...state,
@@ -72,14 +69,12 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				boardIds: []
 			}
 		}
-
 		case USER_TYPES.ADD_BOARD: {
 			return {
 				...state,
 				boardIds: [...state.boardIds, action.payload]
 			}
 		}
-
 		case USER_TYPES.DELETE_MESSAGE: {
 			return {
 				...state,

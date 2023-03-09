@@ -13,6 +13,13 @@ export interface User {
 	isAuth: boolean
 }
 
+export interface UserForBoard {
+	_id: string
+	email: string
+	firstName: string
+	secondName: string
+}
+
 export interface message {
 	message: string
 	currentBoardId: string
@@ -21,8 +28,6 @@ export interface message {
 export interface UserState extends User {
 	isLoading: boolean
 	isError: boolean
-	isAuth: boolean
-	token: string
 }
 
 export enum USER_TYPES {
@@ -59,10 +64,22 @@ export interface PayloadForDeleteMessage extends PayloadForApplyInvite {
 }
 
 
-export interface SuccessFetching extends Action<USER_TYPES.REGISTRATION> {
+export interface PayloadForStartRegistration extends StartRegistration {
 	payload: Partial<User>
 }
 
-export interface LoginCheck extends CheckLogin {
-	isAuth: boolean
+export interface PayloadForAuthentication extends Authentication {
+	payload: Partial<User>
+}
+
+export interface PayloadForCheckLogin extends CheckLogin {
+	payload: Partial<User>
+}
+
+export interface PayloadForAddBoard extends AddBoard {
+	payload: string
+}
+
+export interface PayloadForDeleteMessage extends DeleteMessage {
+	payload: Partial<User> 
 }

@@ -1,7 +1,7 @@
 import { Column } from '@/models/Columns'
 import { Card } from '@/models/Cards'
 import { Action } from 'redux'
-import { User, USER_TYPES } from '@/models/Users'
+import { User, USER_TYPES, UserForBoard } from '@/models/Users'
 
 export interface Board {
 	_id: string
@@ -35,12 +35,10 @@ export type GetAllBoards = Action<BOARD_TYPES.GET_ALL_BOARDS>
 export type ApplyInvite = Action<BOARD_TYPES.APPLY_INVITE>
 export type GetUsersOneBoard = Action<BOARD_TYPES.GET_USERS_ONE_BOARD>
 export type DeleteBoard = Action<BOARD_TYPES.DELETE_BOARD>
+export type SuccessFetching = Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD>
+export type Logout = Action<BOARD_TYPES.LOGOUT>
 
-export interface SuccessFetching extends Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD> {
-	payload: BoardAPI
-}
-
-export interface Logout extends Action<BOARD_TYPES.LOGOUT> {
+export interface PayloadForSuccessFetching extends  SuccessFetching {
 	payload: BoardAPI
 }
 
@@ -49,7 +47,7 @@ export interface payloadForApplyInvite extends ApplyInvite {
 }
 
 export interface payloadForUsersOneBoard extends GetUsersOneBoard {
-	payload: Partial<User>[]
+	payload: Partial<User>
 }
 
 export interface BoardAction extends BoardChange {
@@ -61,7 +59,7 @@ export interface AllBoardAction extends GetAllBoards {
 }
 
 export interface UsersInShare {
-	id: string
+	_id: string
 	email:string
 	firstName:string
 	secondName:string

@@ -2,15 +2,15 @@ import { defaultState } from './initState'
 
 import {
 	AllBoardAction,
-	ApplyInvite,
+	payloadForApplyInvite,
 	BOARD_TYPES,
 	BoardAction,
-	DeleteBoard,
+	payloadForDeleteBoard,
 	ErrorFetching,
 	Logout,
 	StartFetching,
-	SuccessFetching,
-	usersOneBoard
+	payloadForUsersOneBoard,
+	PayloadForSuccessFetching
 } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
@@ -18,7 +18,7 @@ import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/Ch
 
 export type BoardActions =
 	| StartFetching
-	| SuccessFetching
+	| PayloadForSuccessFetching
 	| ErrorFetching
 	| AddNewColumn
 	| DeleteColumn
@@ -34,9 +34,9 @@ export type BoardActions =
 	| DropCard
 	| Logout
 	| AllBoardAction
-	| ApplyInvite
-	| usersOneBoard
-	| DeleteBoard
+	| payloadForApplyInvite
+	| payloadForUsersOneBoard
+	| payloadForDeleteBoard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -181,9 +181,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 					: JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
 
 			let newArr = []
-			const newDragCardIds = currentColumn.cards.filter((id: string) => id !== currentCardId)
-			currentColumn.cards = newDragCardIds
-
+			currentColumn.cards =  currentColumn.cards.filter((id: string) => id !== currentCardId)
 			if (targetColumn.cards.length === 0) {
 				targetColumn.cards.push(currentCardId)
 			} else {

@@ -4,6 +4,7 @@ export const defaultState: BoardState = {
 	currentBoard: {
 		_id: '',
 		title: '',
+		background: '',
 		columns: []
 	},
 	isLoading: false,

@@ -34,7 +34,7 @@ export default function Share({ onClose }: ShareProps) {
 						<div className={classes.user_list}>
 							{users?.map(user => {
 								return (
-									<div className={classes.user} key={user.id}>
+									<div className={classes.user} key={user._id}>
 										<div className={classes.avatar}>{user.email[0].toUpperCase()}</div>
 										<div className={classes.user_info}>
 											<div className={classes.email}>{user.email}</div>

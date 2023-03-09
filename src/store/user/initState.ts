@@ -9,5 +9,8 @@ export const defaultState: UserState ={
 	firstName: '',
 	secondName: '',
 	lastName: '',
+	token: '',
+	email: '',
+	messages: [],
 	isAuth: false,
 }
