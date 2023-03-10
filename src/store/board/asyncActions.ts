@@ -6,6 +6,7 @@ import BoardApi from '@/api/BoardApi'
 import ColumnsApi from '@/api/ColumnsApi'
 import CardsApi from '@/api/CardsApi'
 import CheckListApi from '@/api/CheckListApi'
+import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
 import { PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
@@ -14,11 +15,10 @@ import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-import UsersApi from '@/api/UsersApi'
+
 
 export const columnsActions = {
-	addNewColumn:
-		(title: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	addNewColumn:	(title: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { board } = getState()
 				const { data } = await ColumnsApi.addColumn(title, board.currentBoard._id)
@@ -36,9 +36,7 @@ export const columnsActions = {
 				return false
 			}
 		},
-
-	deleteColumn:
-		(columnId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	deleteColumn:	(columnId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				await ColumnsApi.delete(columnId)
 				const { board } = getState()
@@ -53,7 +51,6 @@ export const columnsActions = {
 				Notification.error('Произошла ошибка удаления колонки')
 			}
 		},
-
 	changeColumn: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await ColumnsApi.change(columnId, title)
@@ -64,10 +61,7 @@ export const columnsActions = {
 			return false
 		}
 	},
-
-	dragAndDropCard:
-		(payload: PayloadForDropCard) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	dragAndDropCard: (payload: PayloadForDropCard) =>	async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { targetColumnId, currentCardId, targetCardId } = payload
 				const { board } = getState()
@@ -170,7 +164,9 @@ export const boardActions = {
 	},
 	getAllBoard: (payload: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
+			dispatch(BoardAC.startLoadingBoard())
 			const { data } = await BoardApi.getAllBoardAPI(payload)
+			dispatch(BoardAC.finishLoadingBoard())
 			dispatch(BoardAC.getAllBoard(data))
 		} catch (e) {
 			Notification.error('Произошла ошибка получения досок')
@@ -190,10 +186,7 @@ export const checklistActions = {
 			return false
 		}
 	},
-
-	changeTask:
-		(payload: PayloadForChangedTask) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	changeTask:	(payload: PayloadForChangedTask) =>	async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { data } = await CheckListApi.change(payload)
 				const { board } = getState()
@@ -209,10 +202,7 @@ export const checklistActions = {
 				return false
 			}
 		},
-
-	deleteTask:
-		(cardId: string, taskId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	deleteTask:	(cardId: string, taskId: string) =>	async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { data } = await CheckListApi.delete(cardId, taskId)
 				const { board } = getState()
@@ -224,9 +214,7 @@ export const checklistActions = {
 				return false
 			}
 		},
-
-	deleteBoard: (boardId: string, userId: string) =>
-		async (dispatch: Dispatch<BoardActions>,  getState: () => RootState) => {
+	deleteBoard: (boardId: string, userId: string) =>	async (dispatch: Dispatch<BoardActions>,  getState: () => RootState) => {
 		try {
 			const { data } = await  UsersApi.boardDelete(boardId, userId)
 			const { board } = getState()

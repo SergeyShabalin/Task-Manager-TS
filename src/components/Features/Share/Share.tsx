@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import Done from '@/components/Features/Share/Done'
-import classes from './Share.module.css'
 import Control from '@/components/Features/Share/Control'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { useParams } from 'react-router-dom'
+import classes from './Share.module.css'
 
 interface ShareProps {
 	onClose: () => void

@@ -10,7 +10,9 @@ import {
 	Logout,
 	StartFetching,
 	payloadForUsersOneBoard,
-	PayloadForSuccessFetching
+	PayloadForSuccessFetching,
+	StartLoadingBoard,
+	FinishLoadingBoard
 } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
 import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
@@ -37,6 +39,8 @@ export type BoardActions =
 	| payloadForApplyInvite
 	| payloadForUsersOneBoard
 	| payloadForDeleteBoard
+	| StartLoadingBoard
+	| FinishLoadingBoard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -84,6 +88,33 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			return {
 				...state,
 				allBoards: action.payload
+			}
+		}
+		case BOARD_TYPES.START_LOADING_BOARD:{
+			return{
+				...state,
+				isLoading: true
+			}
+		}
+		case BOARD_TYPES.FINISH_LOADING_BOARD:{
+			return{
+				...state,
+				isLoading: false
+			}
+		}
+		case BOARD_TYPES.LOGOUT: {
+			return {
+				...state,
+				currentBoard: {},
+				allBoards: [],
+				allUsers: [],
+				allCards: {}
+			}
+		}
+		case BOARD_TYPES.GET_USERS_ONE_BOARD: {
+			return {
+				...state,
+				allUsers: action.payload
 			}
 		}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
@@ -207,18 +238,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 						column_id: targetColumnId
 					}
 				}
-			}
-		}
-		case BOARD_TYPES.LOGOUT: {
-			return {
-				...state,
-				currentBoard: {}
-			}
-		}
-		case BOARD_TYPES.GET_USERS_ONE_BOARD: {
-			return {
-				...state,
-				allUsers: action.payload
 			}
 		}
 

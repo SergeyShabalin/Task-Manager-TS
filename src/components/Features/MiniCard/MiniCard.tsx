@@ -24,7 +24,6 @@ export default function MiniCard({
 	const location = useLocation()
 	const [isOpenContext, setIsOpenContext] = useState(false)
 
-
 	function cardDelete() {
 		const confirm = window.confirm('Удалить карточку?')
 		if (confirm) deleteCard(_id)

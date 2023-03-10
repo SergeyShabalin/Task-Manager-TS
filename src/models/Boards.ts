@@ -25,7 +25,9 @@ export enum BOARD_TYPES {
 	GET_ALL_BOARDS = 'GET_ALL_BOARDS',
 	APPLY_INVITE = 'APPLY_INVITE',
 	GET_USERS_ONE_BOARD = 'GET_USERS_ONE_BOARD',
-	DELETE_BOARD = 'DELETE_BOARD'
+	DELETE_BOARD = 'DELETE_BOARD',
+	START_LOADING_BOARD = 'START_LOADING_BOARD',
+	FINISH_LOADING_BOARD = 'FINISH_LOADING_BOARD'
 }
 
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
@@ -37,6 +39,8 @@ export type GetUsersOneBoard = Action<BOARD_TYPES.GET_USERS_ONE_BOARD>
 export type DeleteBoard = Action<BOARD_TYPES.DELETE_BOARD>
 export type SuccessFetching = Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD>
 export type Logout = Action<BOARD_TYPES.LOGOUT>
+export type StartLoadingBoard = Action<BOARD_TYPES.START_LOADING_BOARD>
+export type FinishLoadingBoard = Action<BOARD_TYPES.FINISH_LOADING_BOARD>
 
 export interface PayloadForSuccessFetching extends  SuccessFetching {
 	payload: BoardAPI

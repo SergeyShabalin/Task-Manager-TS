@@ -4,7 +4,7 @@ import { UserActions } from '@/store/user/reducer'
 import UsersApi from '@/api/UsersApi'
 import {
 	PayloadForApplyInvite,
-	PayloadForDeleteMessage,
+	PayloadForDeleteMessage, PayloadForMessageDelete,
 	PayloadForShareBoard,
 	User
 } from '@/models/Users'
@@ -13,7 +13,6 @@ import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
 import { BoardAC } from '@/store/board/action'
 import { AxiosError } from 'axios'
-
 
 
 export const usersActions = {
@@ -39,7 +38,6 @@ export const usersActions = {
 			return false
 		}
 	},
-
 	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.loginCheck()
@@ -48,7 +46,6 @@ export const usersActions = {
 			Notification.error('произошла ошибка проверки аккаунта')
 		}
 	},
-
 	login: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.login(payload)
@@ -61,7 +58,6 @@ export const usersActions = {
 			return false
 		}
 	},
-
 	logOut: () => async (dispatch: Dispatch<UserActions | BoardActions>) => {
 		try {
 			localStorage.removeItem('token')
@@ -72,7 +68,6 @@ export const usersActions = {
 			Notification.error(error.response?.data?.message)
 		}
 	},
-
 	shareBoard: (payload: PayloadForShareBoard) => async () => {
 		try {
 			const { data } = await UsersApi.shareBoard(payload)
@@ -82,7 +77,6 @@ export const usersActions = {
 			Notification.error(error.response?.data?.message)
 		}
 	},
-
 	getUsersOneBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await UsersApi.getUsersOneBoard(boardId)
@@ -92,9 +86,7 @@ export const usersActions = {
 			Notification.error(error.response?.data?.message)
 		}
 	},
-
-	applyInvite:
-		(payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
+	applyInvite: (payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
 			try {
 				const { data } = await UsersApi.applyInvite(payload)
 				dispatch(BoardAC.applyInvite(data))
@@ -104,8 +96,7 @@ export const usersActions = {
 				Notification.error(error.response?.data?.message)
 			}
 		},
-
-	deleteMessage: (payload: PayloadForDeleteMessage) => async (dispatch: Dispatch<UserActions>) => {
+	deleteMessage: (payload: PayloadForMessageDelete) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.deleteMessage(payload)
 			dispatch(UserAC.deleteMessage(data))

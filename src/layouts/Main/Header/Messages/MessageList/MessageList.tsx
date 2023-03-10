@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
-
 import { useActions } from '@/hooks/useActions/useActions'
-import { useParams } from 'react-router-dom'
 import classes from './MessageList.module.css'
 
 interface MessageListProps {
@@ -29,7 +28,7 @@ export default function MessageList({ onClose }: MessageListProps) {
 			userId,
 			boardId
 		}
-		deleteMessage(payload)
+	 	deleteMessage(payload)
 	}
 
 	function inviteApply(boardId: string) {

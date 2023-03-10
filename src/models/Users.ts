@@ -58,7 +58,7 @@ export interface PayloadForApplyInvite {
 	boardId: string
 }
 
-export interface PayloadForDeleteMessage extends PayloadForApplyInvite {
+export interface PayloadForMessageDelete {
 	userId?: string
 	boardId: string
 }

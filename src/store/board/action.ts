@@ -4,31 +4,28 @@ import {
 	BOARD_TYPES,
 	BoardAction,
 	BoardAPI,
-	ErrorFetching, payloadForUsersOneBoard,
-	StartFetching,
-	SuccessFetching,
+	ErrorFetching,
+	FinishLoadingBoard,
+	Logout,
 	payloadForApplyInvite,
-	DeleteBoard, payloadForDeleteBoard, PayloadForSuccessFetching
+	payloadForDeleteBoard,
+	PayloadForSuccessFetching,
+	payloadForUsersOneBoard,
+	StartFetching,
+	StartLoadingBoard
 } from '@/models/Boards'
 import {
 	AddNewColumn,
 	ChangeColumn,
 	Column,
 	COLUMN_TYPES,
-	DeleteColumn, DropCard,
+	DeleteColumn,
+	DropCard,
 	PayloadForChangeColumn,
 	PayloadForDeleteColumn,
 	PayloadForDropCard
 } from '@/models/Columns'
-import {
-	AddNewCard,
-	Card,
-	CARD_TYPES,
-	ChangeCard,
-	DeleteCard,
-	GetCardInfo,
-	PayloadForDeleteCard
-} from '@/models/Cards'
+import { AddNewCard, Card, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo, PayloadForDeleteCard } from '@/models/Cards'
 import {
 	AddNewTask,
 	ChangeTask,
@@ -37,7 +34,7 @@ import {
 	DeleteTask,
 	PayloadForChangedTask
 } from '@/models/CheckList'
-import { User, UserForBoard } from '@/models/Users'
+import { User } from '@/models/Users'
 
 export const BoardAC = {
 	startFetching: (): StartFetching => ({type: BOARD_TYPES.START_FETCHING_BOARD}),
@@ -45,10 +42,12 @@ export const BoardAC = {
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload}),
 	getAllBoard: (payload: Board[]) : AllBoardAction => ({type: BOARD_TYPES.GET_ALL_BOARDS, payload}),
-	logout: () => ({type: BOARD_TYPES.LOGOUT}),
+	logout: (): Logout => ({type: BOARD_TYPES.LOGOUT}),
 	applyInvite: (payload: Partial<Board>) : payloadForApplyInvite => ({type: BOARD_TYPES.APPLY_INVITE, payload}),
 	getUsersOneBoard: (payload: User) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload}),
-	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload})
+	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload}),
+	startLoadingBoard: () : StartLoadingBoard => ({type: BOARD_TYPES.START_LOADING_BOARD}),
+	finishLoadingBoard: () : FinishLoadingBoard => ({type: BOARD_TYPES.FINISH_LOADING_BOARD})
 };
 
 export const ColumnAC = {

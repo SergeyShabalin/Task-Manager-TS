@@ -9,11 +9,13 @@ import useOpenClose from '@/hooks/UseOpenClose'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import MiniBoard from '@/pages/greeting/MiniBoard'
 import classes from './Greeting.module.css'
+import { Loader } from '@UI'
 
 export default function Greeting() {
 
 	const allBoards = useTypedSelector(state => state.board.allBoards)
 	const user = useTypedSelector(state => state.user)
+	const isLoading = useTypedSelector(state => state.board.isLoading)
 
 	const navigate = useNavigate()
 	const { userId } = useParams()
@@ -51,6 +53,7 @@ export default function Greeting() {
 			<div ref={addBoardRef}>
 				{isOpen && <BoardCreator userId={userId!} />}
 			</div>
+			{isLoading &&	<Loader size={'large'}/> }
 		</div>
 	)
 }
