@@ -1,5 +1,6 @@
 import {
 	AllBoardAction,
+	BackToGreeting,
 	Board,
 	BOARD_TYPES,
 	BoardAction,
@@ -25,7 +26,16 @@ import {
 	PayloadForDeleteColumn,
 	PayloadForDropCard
 } from '@/models/Columns'
-import { AddNewCard, Card, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo, PayloadForDeleteCard } from '@/models/Cards'
+import {
+	AddNewCard,
+	Card,
+	CARD_TYPES,
+	ChangeCard,
+	CloseCard,
+	DeleteCard,
+	GetCardInfo,
+	PayloadForDeleteCard
+} from '@/models/Cards'
 import {
 	AddNewTask,
 	ChangeTask,
@@ -47,7 +57,8 @@ export const BoardAC = {
 	getUsersOneBoard: (payload: User) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload}),
 	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload}),
 	startLoadingBoard: () : StartLoadingBoard => ({type: BOARD_TYPES.START_LOADING_BOARD}),
-	finishLoadingBoard: () : FinishLoadingBoard => ({type: BOARD_TYPES.FINISH_LOADING_BOARD})
+	finishLoadingBoard: () : FinishLoadingBoard => ({type: BOARD_TYPES.FINISH_LOADING_BOARD}),
+	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING})
 };
 
 export const ColumnAC = {
@@ -61,7 +72,8 @@ export const CardAC = {
 	newCardAC: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload}),
 	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
-	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload})
+	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
+	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD})
 }
 
 export const ChecklistAC = {

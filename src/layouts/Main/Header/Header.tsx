@@ -18,12 +18,13 @@ import { useActions } from '@/hooks/useActions/useActions'
 export default function Header({ _id, email }: Partial<User>) {
 	const navigate = useNavigate()
 	const { userId, boardId } = useParams()
-	const { getUsersOneBoard } = useActions()
+	const { getUsersOneBoard, backToGreeting } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
 
-	function backToGreeting() {
+	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
+		backToGreeting()
 	}
 
 	function openShare() {
@@ -33,7 +34,7 @@ export default function Header({ _id, email }: Partial<User>) {
 
 	return (
 		<div className={classes.header}>
-			<div className={classes.logo} onClick={backToGreeting}>
+			<div className={classes.logo} onClick={backInGreeting}>
 				<span className={classes.icon}>
 					<RiTrelloFill />
 				</span>

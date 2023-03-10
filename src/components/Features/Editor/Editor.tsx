@@ -20,7 +20,6 @@ interface EditorProps {
 	variant?: 'normal' | 'large'
 }
 
-
 export default function Editor({
 																 buttonSubmitTitle,
 																 onSubmit,

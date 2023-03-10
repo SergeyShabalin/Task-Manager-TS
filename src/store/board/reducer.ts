@@ -2,20 +2,21 @@ import { defaultState } from './initState'
 
 import {
 	AllBoardAction,
-	payloadForApplyInvite,
+	BackToGreeting,
 	BOARD_TYPES,
 	BoardAction,
-	payloadForDeleteBoard,
 	ErrorFetching,
+	FinishLoadingBoard,
 	Logout,
-	StartFetching,
-	payloadForUsersOneBoard,
+	payloadForApplyInvite,
+	payloadForDeleteBoard,
 	PayloadForSuccessFetching,
-	StartLoadingBoard,
-	FinishLoadingBoard
+	payloadForUsersOneBoard,
+	StartFetching,
+	StartLoadingBoard
 } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
-import { AddNewCard, CARD_TYPES, ChangeCard, DeleteCard, GetCardInfo } from '@/models/Cards'
+import { AddNewCard, CARD_TYPES, ChangeCard, CloseCard, DeleteCard, GetCardInfo } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
 
 export type BoardActions =
@@ -41,6 +42,8 @@ export type BoardActions =
 	| payloadForDeleteBoard
 	| StartLoadingBoard
 	| FinishLoadingBoard
+	| BackToGreeting
+  | CloseCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -111,6 +114,13 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allCards: {}
 			}
 		}
+		case BOARD_TYPES.BACK_TO_GREETING: {
+			return {
+				...state,
+				currentBoard: {},
+				allUsers: []
+			}
+		}
 		case BOARD_TYPES.GET_USERS_ONE_BOARD: {
 			return {
 				...state,
@@ -178,6 +188,22 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
 			}
 		}
+		case CARD_TYPES.CLOSE_CARD: {
+			return{
+				...state,
+				cardInfo: {
+					_id: '',
+					checkList: [],
+					title: '',
+					description: '',
+					decisionDate: new Date(),
+					order: 0,
+					column_id: '',
+					countTask: 0,
+					doneTask: 0
+				}
+			}
+		}
 		case CARD_TYPES.GET_CARD_INFO: {
 			return {
 				...state,
@@ -240,6 +266,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				}
 			}
 		}
+
 
 		default:
 			return state

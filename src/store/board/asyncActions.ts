@@ -171,7 +171,22 @@ export const boardActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка получения досок')
 		}
-	}
+	},
+	backToGreeting: () => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			dispatch(BoardAC.backToGreeting())
+		} catch (e) {
+			Notification.error('Произошла ошибка получения досок')
+		}
+	},
+	closeCard: () => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			dispatch(CardAC.closeCard())
+		} catch (e) {
+			Notification.error('Произошла ошибка закрытия карточки')
+		}
+	},
+
 }
 
 export const checklistActions = {

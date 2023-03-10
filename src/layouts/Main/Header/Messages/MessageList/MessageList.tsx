@@ -28,7 +28,7 @@ export default function MessageList({ onClose }: MessageListProps) {
 			userId,
 			boardId
 		}
-	 	deleteMessage(payload)
+		deleteMessage(payload)
 	}
 
 	function inviteApply(boardId: string) {

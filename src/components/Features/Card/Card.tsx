@@ -15,7 +15,7 @@ export default function Card() {
 	const navigate = useNavigate()
 	const {userId, boardId, cardId } = useParams()
 	const cardInfo = useTypedSelector(state => state.board.cardInfo)
-	const { getOneCard } = useActions()
+	const { getOneCard, closeCard } = useActions()
 
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
@@ -23,6 +23,7 @@ export default function Card() {
 
 	function closeModal() {
 		navigate(`/user/${userId}/board/${boardId}`)
+		closeCard()
 	}
 
 	return (

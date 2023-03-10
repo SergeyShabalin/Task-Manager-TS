@@ -4,7 +4,7 @@ import { UserActions } from '@/store/user/reducer'
 import UsersApi from '@/api/UsersApi'
 import {
 	PayloadForApplyInvite,
-	PayloadForDeleteMessage, PayloadForMessageDelete,
+	PayloadForMessageDelete,
 	PayloadForShareBoard,
 	User
 } from '@/models/Users'
@@ -104,5 +104,5 @@ export const usersActions = {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
 		}
-	}
+	},
 }

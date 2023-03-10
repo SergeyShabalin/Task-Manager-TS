@@ -1,5 +1,6 @@
 import { CheckList } from '@/models/CheckList'
 import { Action } from 'redux'
+import { BOARD_TYPES } from '@/models/Boards'
 
 export interface Card{
 	_id: string
@@ -17,8 +18,11 @@ export enum CARD_TYPES {
 	ADD_NEW_CARD = 'ADD_NEW_CARD',
 	DELETE_CARD = 'DELETE_CARD',
 	CHANGE_CARD = 'CHANGE_CARD',
-	GET_CARD_INFO = 'GET_CARD_INFO'
+	GET_CARD_INFO = 'GET_CARD_INFO',
+	CLOSE_CARD = 'CLOSE_CARD'
 }
+
+export type CloseCard = Action<CARD_TYPES.CLOSE_CARD>
 
 export interface PayloadForDeleteCard {
 	newCardIds: string[]

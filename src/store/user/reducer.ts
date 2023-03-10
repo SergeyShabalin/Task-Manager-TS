@@ -1,4 +1,5 @@
 import {
+	BackToGreeting,
 	Logout,
 	PayloadForAddBoard,
 	PayloadForAuthentication,
@@ -8,7 +9,7 @@ import {
 	USER_TYPES
 } from '@/models/Users'
 import { defaultState } from '@/store/user/initState'
-import { payloadForDeleteBoard } from '@/models/Boards'
+import { BOARD_TYPES, payloadForDeleteBoard } from '@/models/Boards'
 
 export type UserActions =
 	| PayloadForStartRegistration
@@ -18,6 +19,7 @@ export type UserActions =
 	| PayloadForAddBoard
 	| PayloadForDeleteMessage
 	| payloadForDeleteBoard
+
 
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
