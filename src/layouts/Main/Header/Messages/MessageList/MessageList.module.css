@@ -1,51 +1,49 @@
 .wrapper {
-    position: absolute;
-    background: white;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.37);
-    top: 55px;
-    right: 35px;
-    padding: 5px;
-    border-radius: 5px;
-    z-index: 7;
-    max-height: 85vh;
-    overflow-y: auto;
-    color: black;
-    width: 500px;
+	position: absolute;
+	background: white;
+	box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.37);
+	top: 55px;
+	right: 35px;
+	padding: 5px;
+	border-radius: 5px;
+	z-index: 7;
+	max-height: 85vh;
+	overflow-y: auto;
+	color: black;
+	width: 500px;
 }
 
 .message {
-    display: flex;
-    padding: 10px;
-    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.28);
-    margin: 8px 5px;
-    border-radius: 5px;
+	display: flex;
+	padding: 10px;
+	box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.28);
+	margin: 8px 5px;
+	border-radius: 5px;
 }
 
 .title_message {
-    width: 100%;
+	width: 100%;
 }
 
-.title_empty{
-    display: flex;
-    justify-content: center;
-    color: #6a6a8a;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 40px 10px;
+.title_empty {
+	display: flex;
+	justify-content: center;
+	color: #6a6a8a;
+	font-weight: 600;
+	font-size: 20px;
+	padding: 40px 10px;
 }
-
-
 
 .control {
-    width: 35%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	width: 35%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.img{
-    width: 470px;
-    display: flex;
-    justify-content: center;
-    height: 180px;
+.img {
+	width: 470px;
+	display: flex;
+	justify-content: center;
+	height: 180px;
 }

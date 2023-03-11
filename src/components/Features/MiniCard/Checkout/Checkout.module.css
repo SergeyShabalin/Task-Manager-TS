@@ -1,25 +1,26 @@
-.checkout_done, .checkout{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    border-radius: var(--card-checkout-border-radius);
-    padding: var(--card-checkout-padding);
-    margin: var(--card-checkout-margin);
+.checkout_done,
+.checkout {
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border-radius: var(--card-checkout-border-radius);
+	padding: var(--card-checkout-padding);
+	margin: var(--card-checkout-margin);
 }
 
-.checkout{
-    opacity: 0.8;
+.checkout {
+	opacity: 0.8;
 }
 
-.checkout_done{
-    background-color: var(--card-checkout-background-color);
+.checkout_done {
+	background-color: var(--card-checkout-background-color);
 }
 
 .icon {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .tasks {
-    font-size: var(--checkout-font-size)
+	font-size: var(--checkout-font-size);
 }

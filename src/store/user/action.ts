@@ -9,7 +9,6 @@ import {
 	USER_TYPES
 } from '@/models/Users'
 
-
 export const UserAC = {
 	registration: (payload: Partial<User>) : PayloadForStartRegistration => ({type: USER_TYPES.REGISTRATION, payload}),
 	checkLogin: (payload: Partial<User>): PayloadForCheckLogin => ({type: USER_TYPES.CHECK_LOGIN, payload}),

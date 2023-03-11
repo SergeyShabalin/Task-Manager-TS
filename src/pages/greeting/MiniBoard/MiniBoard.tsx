@@ -1,29 +1,30 @@
 import React, { useRef } from 'react'
-import classes from '../Greeting.module.css'
-import { Button } from '@UI'
 import { BsThreeDots } from 'react-icons/bs'
+
+import { Button } from '@UI'
 import useOpenClose from '@/hooks/UseOpenClose'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { Board } from '@/models/Boards'
 import { useActions } from '@/hooks/useActions/useActions'
+import classes from '../Greeting.module.css'
 
-interface MiniBoardProps{
+interface MiniBoardProps {
 	board: Board
-	openBoard: (boardId: string)=>  void
+	openBoard: (boardId: string) => void
 	userId: string
 }
 
 export default function MiniBoard({ board, openBoard, userId }: MiniBoardProps) {
 	const { onClose, onOpen, isOpen } = useOpenClose()
 	const editorRef = useRef(null)
-	const {deleteBoard} = useActions()
+	const { deleteBoard } = useActions()
 	useOnClickOutside(editorRef, onClose)
 
 	function openEditor() {
 		onOpen()
 	}
 
-	function boardDelete(boardId: string){
+	function boardDelete(boardId: string) {
 		deleteBoard(boardId, userId)
 	}
 
@@ -37,8 +38,8 @@ export default function MiniBoard({ board, openBoard, userId }: MiniBoardProps) 
 			</div>
 			{isOpen && (
 				<div className={classes.editor} ref={editorRef}>
-				<h1>Действия с доской</h1>
-					<hr/>
+					<h1>Действия с доской</h1>
+					<hr />
 					<ul>
 						<li onClick={() => openBoard(board._id)}>Открыть</li>
 						<li onClick={() => boardDelete(board._id)}>Удалить</li>

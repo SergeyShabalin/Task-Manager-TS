@@ -7,7 +7,7 @@
 	padding: 8px 10px;
 }
 
-.share{
+.share {
 	position: relative;
 }
 
@@ -24,7 +24,7 @@
 	position: relative;
 }
 
-.logo{
+.logo {
 	color: rgba(255, 255, 255, 0.63);
 	display: flex;
 	justify-content: center;
@@ -48,7 +48,7 @@
 	transform: scale(1.4);
 }
 
-.email{
+.email {
 	display: flex;
 	font-size: 0.9rem;
 	justify-content: center;

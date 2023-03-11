@@ -11,7 +11,6 @@ export interface ContextMenuProps {
 }
 
 export default function ContextMenu({ columnId }: ContextMenuProps) {
-
 	const refContextMenu = useRef(null)
 	const [isModalOpen, setModalOpen] = useState(false)
 	const { deleteColumn } = useActions()
@@ -28,13 +27,9 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 
 	return (
 		<>
-			<Button
-				onClick={modalOpen}
-				variant={'just_icon'}
-				icon={<GoKebabHorizontal />}>
-			</Button>
+			<Button onClick={modalOpen} variant={'just_icon'} icon={<GoKebabHorizontal />}></Button>
 
-			{isModalOpen &&
+			{isModalOpen && (
 				<form ref={refContextMenu}>
 					<div className={classes.context_menu}>
 						<h1>Действия с колонкой</h1>
@@ -44,7 +39,7 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 						</ul>
 					</div>
 				</form>
-			}
+			)}
 		</>
 	)
 }

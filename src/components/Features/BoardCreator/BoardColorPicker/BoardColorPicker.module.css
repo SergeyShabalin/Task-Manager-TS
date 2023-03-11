@@ -1,47 +1,52 @@
-.black, .gray, .orange, .blue, .red, .green {
-    width: 40px;
-    height: 35px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+.black,
+.gray,
+.orange,
+.blue,
+.red,
+.green {
+	width: 40px;
+	height: 35px;
+	margin: 5px;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
-.check{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color: white;
+.check {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: white;
 }
 
-.picker_active{
-    box-shadow: inset 1px 0 30px 3px black;
+.picker_active {
+	box-shadow: inset 1px 0 30px 3px black;
 }
 
 .black {
-    background: #282727;
-    size: auto;
+	background: #282727;
+	size: auto;
 }
 
 .gray {
-    background: #9b9393;
-    size: auto;
+	background: #9b9393;
+	size: auto;
 }
 
 .orange {
-    background: #c9741f;
-    size: auto;
+	background: #c9741f;
+	size: auto;
 }
 
 .blue {
-    background: #16aac4;
-    size: auto;
+	background: #16aac4;
+	size: auto;
 }
 .red {
-    background: #9b2222;
-    size: auto;
+	background: #9b2222;
+	size: auto;
 }
 .green {
-    background: rgba(87, 157, 39, 0.99);
-    size: auto;
+	background: rgba(87, 157, 39, 0.99);
+	size: auto;
 }

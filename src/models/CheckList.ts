@@ -1,26 +1,25 @@
 import { Action } from 'redux'
 import { Card } from '@/models/Cards'
 
-
 export enum CHECKLIST_TYPES {
 	ADD_NEW_TASK = 'ADD_NEW_TASK',
 	CHANGE_TASK = 'CHANGE_TASK',
 	DELETE_TASK = 'DELETE_TASK'
 }
 
-export interface CheckList{
+export interface CheckList {
 	_id: string
 	task: string
 	done: boolean
 	cardId: string
 }
 
-export interface PromiseChecklist{
+export interface PromiseChecklist {
 	card: Card
 	task: CheckList
 }
 
-export interface PayloadForChangedTask{
+export interface PayloadForChangedTask {
 	_id: string
 	task?: string
 	done?: boolean

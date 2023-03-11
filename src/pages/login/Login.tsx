@@ -33,8 +33,8 @@ export default function Login() {
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		const user = await login(form)
-			if (user._id!) navigate(`/user/${user._id}/greeting`)
+		const userId = await login(form)
+		if (userId) navigate(`/user/${userId}/greeting`)
 	}
 
 	return (
@@ -67,9 +67,14 @@ export default function Login() {
 
 				<div className={classes.footer}>
 					<div className={classes.btn_add}>
-						<Button onClick={handleSubmit} title='Войти' fullSize variant='contained' color='primary' />
+						<Button
+							onClick={handleSubmit}
+							title='Войти'
+							fullSize
+							variant='contained'
+							color='primary'
+						/>
 					</div>
-
 				</div>
 				<div className={classes.link_wrapper}>
 					<span>Еще нет аккаунта? </span>

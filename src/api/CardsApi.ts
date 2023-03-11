@@ -17,7 +17,6 @@ class CardsApi {
 	async getCardInfo(cardId: string): Promise<AxiosResponse<Card>> {
 		return Api.get(`/cards/${cardId}`)
 	}
-
 }
 
 export default new CardsApi()

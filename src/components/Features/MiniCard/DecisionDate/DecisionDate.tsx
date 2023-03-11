@@ -10,7 +10,6 @@ interface DecisionDateTypes {
 }
 
 export default function DecisionDate({ decisionDate }: DecisionDateTypes) {
-
 	const [isYear, setIsYear] = useState(false)
 	const changedDate = new Date(decisionDate).getTime()
 	const now = new Date().getTime()
@@ -28,19 +27,18 @@ export default function DecisionDate({ decisionDate }: DecisionDateTypes) {
 
 	return (
 		<>
-			{decisionDate &&
-				<div className={changedDate < now
-					? `${classes.over_decision_date}`
-					: `${classes.decision_date}`}>
+			{decisionDate && (
+				<div
+					className={
+						changedDate < now ? `${classes.over_decision_date}` : `${classes.decision_date}`
+					}
+				>
 					<div className={classes.icon}>
 						<AiOutlineFieldTime />
 					</div>
-					<div className={classes.date}>
-						{!isYear
-							? cardDate
-							: cardDateWithYear}
-					</div>
-				</div>}
+					<div className={classes.date}>{!isYear ? cardDate : cardDateWithYear}</div>
+				</div>
+			)}
 		</>
 	)
-};
+}

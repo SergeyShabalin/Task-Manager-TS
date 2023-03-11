@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { useActions } from '@/hooks/useActions/useActions'
-import classes from './BoardCreator.module.css'
 import { useNavigate } from 'react-router-dom'
+
+import { useActions } from '@/hooks/useActions/useActions'
 import BackgroundPicker from '@/components/Features/BoardCreator/BoardPicker'
 import BoardColorPicker from '@/components/Features/BoardCreator/BoardColorPicker'
 import { Button, Input } from '@UI'
+
+import classes from './BoardCreator.module.css'
 
 export interface BoardCreatorProps {
 	userId: string
@@ -17,7 +19,6 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 	const navigate = useNavigate()
 	const imagePicker = ['type1', 'type2', 'type3', 'type4', 'type5', 'type6', 'type7', 'type8']
 	const colorPicker = ['black', 'gray', 'orange', 'blue', 'red', 'green']
-
 
 	function changeBackground(type: string) {
 		setMainBackground(type)
@@ -40,7 +41,7 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 	}
 
 	return (
-		<form className={classes.wrapper} >
+		<form className={classes.wrapper}>
 			<div className={classes.header}>Создать доску</div>
 			<hr />
 			<div className={classes[mainBackground]}>
@@ -55,10 +56,9 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 							return (
 								<div key={picker} onClick={() => changeBackground(picker)}>
 									<BackgroundPicker picker={picker} />
-								 </div>
+								</div>
 							)
-						})
-						}
+						})}
 					</div>
 					<div className={classes.background_color_picker}>
 						{colorPicker.map(picker => {
@@ -67,8 +67,7 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 									<BoardColorPicker picker={picker} />
 								</div>
 							)
-						})
-						}
+						})}
 					</div>
 				</div>
 			</div>
@@ -96,12 +95,7 @@ export default function BoardCreator({ userId }: BoardCreatorProps) {
 					/>
 				</div>
 				<div className={classes.add_btn}>
-					<Button
-						title='Создать по шаблону'
-						fullSize={true}
-						variant='outlined'
-						color='primary'
-					/>
+					<Button title='Создать по шаблону' fullSize={true} variant='outlined' color='primary' />
 				</div>
 			</div>
 		</form>

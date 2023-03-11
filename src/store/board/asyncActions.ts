@@ -16,9 +16,9 @@ import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
-
 export const columnsActions = {
-	addNewColumn:	(title: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	addNewColumn:
+		(title: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { board } = getState()
 				const { data } = await ColumnsApi.addColumn(title, board.currentBoard._id)
@@ -36,7 +36,8 @@ export const columnsActions = {
 				return false
 			}
 		},
-	deleteColumn:	(columnId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	deleteColumn:
+		(columnId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				await ColumnsApi.delete(columnId)
 				const { board } = getState()
@@ -61,7 +62,9 @@ export const columnsActions = {
 			return false
 		}
 	},
-	dragAndDropCard: (payload: PayloadForDropCard) =>	async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	dragAndDropCard:
+		(payload: PayloadForDropCard) =>
+		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { targetColumnId, currentCardId, targetCardId } = payload
 				const { board } = getState()
@@ -92,7 +95,6 @@ export const cardActions = {
 			return false
 		}
 	},
-
 	deleteCard:
 		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
@@ -110,7 +112,6 @@ export const cardActions = {
 				Notification.error('Произошла ошибка удаления карточки')
 			}
 		},
-
 	changeCard: (payload: Partial<Card>) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await CardsApi.change(payload)
@@ -121,10 +122,11 @@ export const cardActions = {
 			return false
 		}
 	},
-
 	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
+			dispatch(BoardAC.startLoadingCard())
 			const { data } = await CardsApi.getCardInfo(cardId)
+			dispatch(BoardAC.finishLoadingCard())
 			dispatch(CardAC.getCardInfoCardAC(data))
 		} catch (e) {
 			Notification.error('Произошла ошибка получения данных о карточке')
@@ -185,8 +187,7 @@ export const boardActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка закрытия карточки')
 		}
-	},
-
+	}
 }
 
 export const checklistActions = {
@@ -201,7 +202,9 @@ export const checklistActions = {
 			return false
 		}
 	},
-	changeTask:	(payload: PayloadForChangedTask) =>	async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	changeTask:
+		(payload: PayloadForChangedTask) =>
+		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { data } = await CheckListApi.change(payload)
 				const { board } = getState()
@@ -217,7 +220,9 @@ export const checklistActions = {
 				return false
 			}
 		},
-	deleteTask:	(cardId: string, taskId: string) =>	async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	deleteTask:
+		(cardId: string, taskId: string) =>
+		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
 				const { data } = await CheckListApi.delete(cardId, taskId)
 				const { board } = getState()
@@ -229,14 +234,16 @@ export const checklistActions = {
 				return false
 			}
 		},
-	deleteBoard: (boardId: string, userId: string) =>	async (dispatch: Dispatch<BoardActions>,  getState: () => RootState) => {
-		try {
-			const { data } = await  UsersApi.boardDelete(boardId, userId)
-			const { board } = getState()
-			const newBoards = board.allBoards.filter(board=> board._id !== boardId)
-			dispatch(BoardAC.deleteBoard(newBoards))
-		} catch (error){
-			Notification.error('Произошла ошибка удаления доски')
-		}
+	deleteBoard:
+		(boardId: string, userId: string) =>
+		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+			try {
+				await UsersApi.boardDelete(boardId, userId)
+				const { board } = getState()
+				const newBoards = board.allBoards.filter(board => board._id !== boardId)
+				dispatch(BoardAC.deleteBoard(newBoards))
+			} catch (error) {
+				Notification.error('Произошла ошибка удаления доски')
+			}
 		}
 }

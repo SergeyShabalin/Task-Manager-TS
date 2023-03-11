@@ -6,12 +6,11 @@ import useOpenClose from '@/hooks/UseOpenClose'
 import MessageList from '@/layouts/Main/Header/Messages/MessageList'
 import classes from './Messages.module.css'
 
-interface MessagesProps{
+interface MessagesProps {
 	messagesCount: number
 }
 
-export default function Messages({  messagesCount}: MessagesProps) {
-
+export default function Messages({ messagesCount }: MessagesProps) {
 	const [isHint, setIsHint] = useState(false)
 	const { isOpen, onClose, onOpen } = useOpenClose()
 
