@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-
 import { RiTrelloFill } from 'react-icons/ri'
+
 import { Button } from '@UI'
 import { User } from '@/models/Users'
 import useOpenClose from '@/hooks/UseOpenClose'
@@ -11,9 +11,10 @@ import Messages from '@/layouts/Main/Header/Messages'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import Logout from '@/layouts/Main/Header/Logout'
 import Account from '@/layouts/Main/Header/Account'
+import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Header.module.css'
-import { useActions } from '@/hooks/useActions/useActions'
+
 
 export default function Header({ _id, email }: Partial<User>) {
 	const navigate = useNavigate()
@@ -40,11 +41,12 @@ export default function Header({ _id, email }: Partial<User>) {
 				</span>
 				<span>TASK MANAGER</span>
 			</div>
-			{boardId &&
-			<div className={classes.share}>
-				<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={openShare} />
-				{isOpen && <Share onClose={onClose} />}
-			</div>}
+			{boardId && (
+				<div className={classes.share}>
+					<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={openShare} />
+					{isOpen && <Share onClose={onClose} />}
+				</div>
+			)}
 
 			<div className={classes.control}>
 				<Account />

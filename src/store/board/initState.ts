@@ -7,7 +7,8 @@ export const defaultState: BoardState = {
 		background: '',
 		columns: []
 	},
-	isLoading: false,
+	isLoadingBoard: false,
+	isLoadingCard: false,
 	isError: true,
 	allCards: {},
 	allColumns: {},

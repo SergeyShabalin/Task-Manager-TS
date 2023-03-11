@@ -2,16 +2,22 @@
 	background-color: var(--card-modal-background-color);
 	padding: 10px 10px 20px 20px;
 	border-radius: 5px;
+	min-height: 30vh;
 	width: 30vw;
 	color: var(--card-modal-text-color);
 	font: var(--prymary-font);
-
+	position: relative;
 }
 
 .date_wrapper {
 	margin-top: 10px;
 }
 
+.loader {
+	position: absolute;
+	left: 11vw;
+	top: 35%;
+}
 
 .checklists_wrapper {
 	overflow-y: auto;

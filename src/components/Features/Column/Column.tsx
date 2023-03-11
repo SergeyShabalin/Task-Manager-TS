@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { MiniCard } from '@Features'
 import { Column as ColumnT } from '@/models/Columns'
@@ -70,7 +70,7 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	const miniCards = cards?.map(id => {
 		const card = allCards[id]
 		return (
-				<div
+			<div
 				key={id}
 				id={id}
 				draggable

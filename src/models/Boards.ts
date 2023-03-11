@@ -1,7 +1,7 @@
 import { Column } from '@/models/Columns'
 import { Card } from '@/models/Cards'
 import { Action } from 'redux'
-import { User, USER_TYPES, UserForBoard } from '@/models/Users'
+import { User } from '@/models/Users'
 
 export interface Board {
 	_id: string
@@ -28,7 +28,9 @@ export enum BOARD_TYPES {
 	DELETE_BOARD = 'DELETE_BOARD',
 	START_LOADING_BOARD = 'START_LOADING_BOARD',
 	FINISH_LOADING_BOARD = 'FINISH_LOADING_BOARD',
-	BACK_TO_GREETING = 'BACK_TO_GREETING'
+	BACK_TO_GREETING = 'BACK_TO_GREETING',
+	START_LOADING_CARD = 'START_LOADING_CARD',
+	FINISH_LOADING_CARD = 'FINISH_LOADING_CARD'
 }
 
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
@@ -42,9 +44,11 @@ export type SuccessFetching = Action<BOARD_TYPES.SUCCESS_FETCHING_BOARD>
 export type Logout = Action<BOARD_TYPES.LOGOUT>
 export type StartLoadingBoard = Action<BOARD_TYPES.START_LOADING_BOARD>
 export type FinishLoadingBoard = Action<BOARD_TYPES.FINISH_LOADING_BOARD>
+export type StartLoadingCard = Action<BOARD_TYPES.START_LOADING_CARD>
+export type FinishLoadingCard = Action<BOARD_TYPES.FINISH_LOADING_CARD>
 export type BackToGreeting = Action<BOARD_TYPES.BACK_TO_GREETING>
 
-export interface PayloadForSuccessFetching extends  SuccessFetching {
+export interface PayloadForSuccessFetching extends SuccessFetching {
 	payload: BoardAPI
 }
 
@@ -66,13 +70,14 @@ export interface AllBoardAction extends GetAllBoards {
 
 export interface UsersInShare {
 	_id: string
-	email:string
-	firstName:string
-	secondName:string
+	email: string
+	firstName: string
+	secondName: string
 }
 
 export interface BoardState extends BoardAPI {
-	isLoading: boolean
+	isLoadingBoard: boolean
+	isLoadingCard: boolean
 	isError: boolean
 	cardInfo: Card
 	allBoards: Board[]

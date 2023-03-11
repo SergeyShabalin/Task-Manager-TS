@@ -1,103 +1,115 @@
-.main, .type1, .type2, .type3, .type4, .type5, .type6, .type7, .type8, .black, .gray, .orange, .blue, .red, .green {
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-size: auto;
-    font-size: var(--main-font-size);
-    height: 100vh;
+.main,
+.type1,
+.type2,
+.type3,
+.type4,
+.type5,
+.type6,
+.type7,
+.type8,
+.black,
+.gray,
+.orange,
+.blue,
+.red,
+.green {
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-size: auto;
+	font-size: var(--main-font-size);
+	height: 100vh;
 }
 
 .main {
-    background: #333131;
+	background: #333131;
 }
 
 .type1 {
-    background-image: var(--type1_background);
+	background-image: var(--type1_background);
 }
 
 .type2 {
-    background-image: var(--type2_background);
+	background-image: var(--type2_background);
 }
 
 .type3 {
-    background-image: var(--type3_background);
+	background-image: var(--type3_background);
 }
 
 .type4 {
-    background-image: var(--type4_background);
+	background-image: var(--type4_background);
 }
 
 .type5 {
-    background-image: var(--type5_background);
+	background-image: var(--type5_background);
 }
 
 .type6 {
-    background-image: var(--type6_background);
+	background-image: var(--type6_background);
 }
 
 .type7 {
-    background-image: var(--type7_background);
+	background-image: var(--type7_background);
 }
 
 .type8 {
-    background-image: var(--type8_background);
+	background-image: var(--type8_background);
 }
 
 .black {
-    background: #282727;
+	background: #282727;
 }
 
 .gray {
-    background: #9b9393;
+	background: #9b9393;
 }
 
 .orange {
-    background: #c9741f;
+	background: #c9741f;
 }
 
 .blue {
-    background: #16aac4;
+	background: #16aac4;
 }
 
 .red {
-    background: #9b2222;
+	background: #9b2222;
 }
 
 .green {
-    background: rgba(87, 157, 39, 0.99);
+	background: rgba(87, 157, 39, 0.99);
 }
 
 .header_main {
-    font-family: var(--prymary-font);
+	font-family: var(--prymary-font);
 }
 
 .work_space {
-    display: flex;
-    padding: 5px;
-    overflow-x: auto;
-    max-width: 100%;
-    min-height: 93vh;
+	display: flex;
+	padding: 5px;
+	overflow-x: auto;
+	max-width: 100%;
+	min-height: 93vh;
 }
 
 .work_space::-webkit-scrollbar {
-    width: 5px;
-    height: 10px;
-    background-color: rgba(23, 7, 7, 0.63);
-    margin-bottom: 2px;
+	width: 5px;
+	height: 10px;
+	background-color: rgba(23, 7, 7, 0.63);
+	margin-bottom: 2px;
 }
 
 .work_space::-webkit-scrollbar-track {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 .work_space::-webkit-scrollbar-thumb {
-    background-color: rgba(192, 166, 166, 0.81);
-    border-radius: 10px;
-    height: 2px;
+	background-color: rgba(192, 166, 166, 0.81);
+	border-radius: 10px;
+	height: 2px;
 }
 
 .work_space::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(238, 207, 207);
-    cursor: grab
+	background-color: rgb(238, 207, 207);
+	cursor: grab;
 }
-
-

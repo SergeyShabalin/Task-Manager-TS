@@ -5,7 +5,6 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Info.module.css'
-import BoardCreator from '@/components/Features/BoardCreator'
 
 interface InfoProps {
 	closeInfo: () => void
@@ -13,13 +12,14 @@ interface InfoProps {
 
 export default function Info({ closeInfo }: InfoProps) {
 	const navigate = useNavigate()
-	const { logOut } = useActions()
+	const { logOut, backToGreeting } = useActions()
 	const user = useTypedSelector(state => state.user)
 	const accountRef = useRef(null)
 	useOnClickOutside(accountRef, () => closeInfo())
 
-	function backToGreeting() {
+	function backInGreeting() {
 		if (user._id) navigate(`/user/${user._id}/greeting`)
+		backToGreeting()
 	}
 
 	function logout() {
@@ -39,7 +39,7 @@ export default function Info({ closeInfo }: InfoProps) {
 			</div>
 			<hr />
 			<ul>
-				<li onClick={backToGreeting}>Рабочие пространства</li>
+				<li onClick={backInGreeting}>Рабочие пространства</li>
 				<li onClick={logout}>Выход</li>
 			</ul>
 		</div>

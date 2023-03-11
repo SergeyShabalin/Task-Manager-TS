@@ -1,14 +1,14 @@
 .email_input {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    margin: 10px 0;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	margin: 10px 0;
 }
 
 .input {
-    width: 100%;
+	width: 100%;
 }
 
 .control {
-    padding: 0 5px;
+	padding: 0 5px;
 }

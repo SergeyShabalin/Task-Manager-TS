@@ -23,8 +23,8 @@
 .control {
 	display: flex;
 }
-.control_one_row{
+
+.control_one_row {
 	display: flex;
 	padding: 0 5px;
 }
-

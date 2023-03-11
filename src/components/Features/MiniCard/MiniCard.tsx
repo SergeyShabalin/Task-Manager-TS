@@ -7,18 +7,17 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Checkout, DecisionDate } from '@/components/Features'
 import { BsThreeDots } from 'react-icons/bs'
 import Description from '@/components/Features/MiniCard/Description'
-
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
 import classes from './MiniCard.module.css'
 
 export default function MiniCard({
-																	 title,
-																	 _id,
-																	 countTask,
-																	 doneTask,
-																	 decisionDate,
-																	 description
-																 }: Card) {
+	title,
+	_id,
+	countTask,
+	doneTask,
+	decisionDate,
+	description
+}: Card) {
 	const { deleteCard } = useActions()
 	const { userId, boardId } = useParams()
 	const location = useLocation()
@@ -40,16 +39,16 @@ export default function MiniCard({
 	return (
 		<>
 			<div className={classes.list_card}>
-				{isOpenContext &&
+				{isOpenContext && (
 					<ContextMenu
 						userId={userId}
 						boardId={boardId}
 						cardId={_id}
 						contextClose={contextClose}
 						cardDelete={cardDelete}
-					/>}
+					/>
+				)}
 				<div className={classes.header}>
-
 					<Link
 						className={classes.link}
 						state={{ background: location }}
@@ -68,8 +67,6 @@ export default function MiniCard({
 					<Description isOpen={description} />
 				</div>
 			</div>
-
 		</>
-
 	)
 }

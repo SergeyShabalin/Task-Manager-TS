@@ -81,7 +81,11 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					iconRight={<div className={classes.control_pass} onClick={changePassView}><BiShowAlt /></div>}
+					iconRight={
+						<div className={classes.control_pass} onClick={changePassView}>
+							<BiShowAlt />
+						</div>
+					}
 					type={!isPass ? 'text' : 'password'}
 					autoComplete='off'
 					color='transparent'
@@ -93,7 +97,13 @@ export default function Registration() {
 
 				<div className={classes.footer}>
 					<div className={classes.btn_add}>
-						<Button onClick={handleSubmit} title='Регистрация' fullSize variant='contained' color='primary' />
+						<Button
+							onClick={handleSubmit}
+							title='Регистрация'
+							fullSize
+							variant='contained'
+							color='primary'
+						/>
 					</div>
 				</div>
 				<div className={classes.link_wrapper}>

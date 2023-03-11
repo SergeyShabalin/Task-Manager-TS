@@ -14,25 +14,24 @@ interface EditorProps {
 	placeholder?: string
 	defaultValue?: string
 	onSubmit: (title: string) => any
-	children?: React.ReactElement,
+	children?: React.ReactElement
 	nonChildren?: boolean
 	color?: 'black' | 'white' | 'transparent' | 'outlined'
 	variant?: 'normal' | 'large'
 }
 
 export default function Editor({
-																 buttonSubmitTitle,
-																 onSubmit,
-																 defaultValue = '',
-																 rows = 3,
-																 placeholder,
-																 cols = 32,
-																 children,
-																 nonChildren = false,
-																 color = 'white',
-																 variant = 'normal'
-															 }: EditorProps) {
-
+	buttonSubmitTitle,
+	onSubmit,
+	defaultValue = '',
+	rows = 3,
+	placeholder,
+	cols = 32,
+	children,
+	nonChildren = false,
+	color = 'white',
+	variant = 'normal'
+}: EditorProps) {
 	const [inputValue, setInputValue] = useState(defaultValue)
 	const { onClose, onOpen, isOpen } = useOpenClose()
 	const [isLoad, setIsLoad] = useState(false)

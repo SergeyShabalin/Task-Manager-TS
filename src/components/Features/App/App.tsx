@@ -13,7 +13,6 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
 
-
 function App() {
 	const location = useLocation()
 	const background = location.state && location.state.background
@@ -22,14 +21,13 @@ function App() {
 	const dispatch = useDispatch()
 	const { checkLogin } = useActions()
 
-
 	useEffect(() => {
 		const token = localStorage.getItem('token')
 		if (token) {
-			 checkLogin()
+			checkLogin()
 		} else {
 			const payload = {
-				user:{},
+				user: {},
 				isAuth: false
 			}
 			dispatch(UserAC.checkLogin(payload))

@@ -8,14 +8,13 @@ import BoardCreator from '@/components/Features/BoardCreator'
 import useOpenClose from '@/hooks/UseOpenClose'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import MiniBoard from '@/pages/greeting/MiniBoard'
-import classes from './Greeting.module.css'
 import { Loader } from '@UI'
+import classes from './Greeting.module.css'
 
 export default function Greeting() {
-
 	const allBoards = useTypedSelector(state => state.board.allBoards)
 	const user = useTypedSelector(state => state.user)
-	const isLoading = useTypedSelector(state => state.board.isLoading)
+	const isLoading = useTypedSelector(state => state.board.isLoadingBoard)
 
 	const navigate = useNavigate()
 	const { userId } = useParams()
@@ -35,7 +34,7 @@ export default function Greeting() {
 	return (
 		<div className={classes.wrapper}>
 			<div className={classes.header}>
-				<Header email={user.email}  />
+				<Header email={user.email} />
 			</div>
 			<div className={classes.body}>
 				<div className={classes.content}>
@@ -43,17 +42,17 @@ export default function Greeting() {
 					<div className={classes.workspaces}>
 						{allBoards.map(board => {
 							return (
-								<MiniBoard key={board._id} board={board} openBoard={openBoard} userId={userId!}/>
-							)})}
-						<div className={classes.board_creator} onClick={onOpen}>Создать доску</div>
+								<MiniBoard key={board._id} board={board} openBoard={openBoard} userId={userId!} />
+							)
+						})}
+						<div className={classes.board_creator} onClick={onOpen}>
+							Создать доску
+						</div>
 					</div>
 				</div>
-
 			</div>
-			<div ref={addBoardRef}>
-				{isOpen && <BoardCreator userId={userId!} />}
-			</div>
-			{isLoading &&	<Loader size={'large'}/> }
+			<div ref={addBoardRef}>{isOpen && <BoardCreator userId={userId!} />}</div>
+			{isLoading && <Loader size={'large'} />}
 		</div>
 	)
 }

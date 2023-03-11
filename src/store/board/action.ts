@@ -6,14 +6,15 @@ import {
 	BoardAction,
 	BoardAPI,
 	ErrorFetching,
-	FinishLoadingBoard,
+	FinishLoadingBoard, FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
-	StartLoadingBoard
+	StartLoadingBoard,
+	StartLoadingCard
 } from '@/models/Boards'
 import {
 	AddNewColumn,
@@ -58,7 +59,9 @@ export const BoardAC = {
 	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload}),
 	startLoadingBoard: () : StartLoadingBoard => ({type: BOARD_TYPES.START_LOADING_BOARD}),
 	finishLoadingBoard: () : FinishLoadingBoard => ({type: BOARD_TYPES.FINISH_LOADING_BOARD}),
-	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING})
+	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
+	startLoadingCard : () : StartLoadingCard => ({type: BOARD_TYPES.START_LOADING_CARD}),
+	finishLoadingCard : () : FinishLoadingCard => ({type: BOARD_TYPES.FINISH_LOADING_CARD}),
 };
 
 export const ColumnAC = {

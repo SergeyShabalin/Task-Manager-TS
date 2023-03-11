@@ -14,7 +14,6 @@ import { BoardActions } from '@/store/board/reducer'
 import { BoardAC } from '@/store/board/action'
 import { AxiosError } from 'axios'
 
-
 export const usersActions = {
 	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
 		try {
@@ -51,7 +50,7 @@ export const usersActions = {
 			const { data } = await UsersApi.login(payload)
 			localStorage.setItem('token', data.token)
 			dispatch(UserAC.login(data))
-			return data
+			return data._id
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
@@ -86,7 +85,8 @@ export const usersActions = {
 			Notification.error(error.response?.data?.message)
 		}
 	},
-	applyInvite: (payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
+	applyInvite:
+		(payload: PayloadForApplyInvite) => async (dispatch: Dispatch<UserActions | BoardActions>) => {
 			try {
 				const { data } = await UsersApi.applyInvite(payload)
 				dispatch(BoardAC.applyInvite(data))
@@ -104,5 +104,5 @@ export const usersActions = {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
 		}
-	},
+	}
 }

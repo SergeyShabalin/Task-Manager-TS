@@ -1,8 +1,7 @@
 import { CheckList } from '@/models/CheckList'
 import { Action } from 'redux'
-import { BOARD_TYPES } from '@/models/Boards'
 
-export interface Card{
+export interface Card {
 	_id: string
 	title: string
 	description: string
@@ -33,14 +32,14 @@ export interface AddNewCard extends Action<CARD_TYPES.ADD_NEW_CARD> {
 	payload: Card
 }
 
-export interface DeleteCard extends Action<CARD_TYPES.DELETE_CARD>{
-	payload:  PayloadForDeleteCard
+export interface DeleteCard extends Action<CARD_TYPES.DELETE_CARD> {
+	payload: PayloadForDeleteCard
 }
 
 export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 	payload: Partial<Card>
 }
 
-export interface GetCardInfo extends  Action<CARD_TYPES.GET_CARD_INFO> {
+export interface GetCardInfo extends Action<CARD_TYPES.GET_CARD_INFO> {
 	payload: Card
 }

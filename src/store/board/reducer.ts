@@ -7,16 +7,25 @@ import {
 	BoardAction,
 	ErrorFetching,
 	FinishLoadingBoard,
+	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
-	StartLoadingBoard
+	StartLoadingBoard,
+	StartLoadingCard
 } from '@/models/Boards'
 import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
-import { AddNewCard, CARD_TYPES, ChangeCard, CloseCard, DeleteCard, GetCardInfo } from '@/models/Cards'
+import {
+	AddNewCard,
+	CARD_TYPES,
+	ChangeCard,
+	CloseCard,
+	DeleteCard,
+	GetCardInfo
+} from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
 
 export type BoardActions =
@@ -43,27 +52,29 @@ export type BoardActions =
 	| StartLoadingBoard
 	| FinishLoadingBoard
 	| BackToGreeting
-  | CloseCard
+	| CloseCard
+	| StartLoadingCard
+	| FinishLoadingCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
 		case BOARD_TYPES.START_FETCHING_BOARD:
 			return {
 				...state,
-				isLoading: true,
+				isLoadingBoard: true,
 				isError: false
 			}
 		case BOARD_TYPES.SUCCESS_FETCHING_BOARD:
 			return {
 				...state,
-				isLoading: false,
+				isLoadingBoard: false,
 				isError: false,
 				...action.payload
 			}
 		case BOARD_TYPES.ERROR_FETCHING_BOARD:
 			return {
 				...state,
-				isLoading: false,
+				isLoadingBoard: false,
 				isError: true,
 				currentBoard: {
 					title: '',
@@ -93,16 +104,28 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allBoards: action.payload
 			}
 		}
-		case BOARD_TYPES.START_LOADING_BOARD:{
-			return{
+		case BOARD_TYPES.START_LOADING_BOARD: {
+			return {
 				...state,
-				isLoading: true
+				isLoadingBoard: true
 			}
 		}
-		case BOARD_TYPES.FINISH_LOADING_BOARD:{
-			return{
+		case BOARD_TYPES.FINISH_LOADING_BOARD: {
+			return {
 				...state,
-				isLoading: false
+				isLoadingBoard: false
+			}
+		}
+		case BOARD_TYPES.START_LOADING_CARD: {
+			return {
+				...state,
+				isLoadingCard: true
+			}
+		}
+		case BOARD_TYPES.FINISH_LOADING_CARD: {
+			return {
+				...state,
+				isLoadingCard: false
 			}
 		}
 		case BOARD_TYPES.LOGOUT: {
@@ -158,7 +181,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			const columnId = action.payload.column_id
 			const currentColumn = { ...state.allColumns[columnId] }
 			const currentCards = [...currentColumn.cards, id]
-
 			return {
 				...state,
 				allCards: { ...state.allCards, [id]: card },
@@ -189,7 +211,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CARD_TYPES.CLOSE_CARD: {
-			return{
+			return {
 				...state,
 				cardInfo: {
 					_id: '',
@@ -238,7 +260,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 					: JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
 
 			let newArr = []
-			currentColumn.cards =  currentColumn.cards.filter((id: string) => id !== currentCardId)
+			currentColumn.cards = currentColumn.cards.filter((id: string) => id !== currentCardId)
 			if (targetColumn.cards.length === 0) {
 				targetColumn.cards.push(currentCardId)
 			} else {
@@ -266,7 +288,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				}
 			}
 		}
-
 
 		default:
 			return state

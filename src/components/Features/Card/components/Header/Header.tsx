@@ -2,14 +2,14 @@ import React from 'react'
 import { AiOutlineClose, AiOutlineCreditCard } from 'react-icons/ai'
 
 import { Button } from '@UI'
-import classes from './Header.module.css'
 import { Editor } from '@Features'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Card } from '@/models/Cards'
+import classes from './Header.module.css'
 
-type CardProps = Pick <Card, 'title'|'_id'>
+type CardProps = Pick<Card, 'title' | '_id'>
 
-interface HeaderProps extends CardProps{
+interface HeaderProps extends CardProps {
 	closeModal: () => void
 }
 

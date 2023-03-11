@@ -29,9 +29,9 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 				<Slider doneTask={doneTask} countTask={countTask} />
 			</div>
 			<div className={classes.checklist}>
-			{checkList.map(checkItem => (
-				<Task key={checkItem._id} {...checkItem} />
-			))}
+				{checkList.map(checkItem => (
+					<Task key={checkItem._id} {...checkItem} />
+				))}
 			</div>
 			<Editor
 				buttonSubmitTitle='Добавить задачу'

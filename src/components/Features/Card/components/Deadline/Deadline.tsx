@@ -2,16 +2,16 @@ import React, { useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import { ru } from 'date-fns/locale'
 import { format } from 'date-fns'
-
 import { AiOutlineClose } from 'react-icons/ai'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import 'react-datepicker/dist/react-datepicker.css'
+
 import Button from '@/components/UI/Button'
 import useOnClickOutside from '../../../../../hooks/UseOnClickOutside'
-import classes from './Deadline.module.css'
 import useOpenClose from '@/hooks/UseOpenClose'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Card } from '@/models/Cards'
+import classes from './Deadline.module.css'
 
 type DeadlineProps = Pick<Card, 'decisionDate' | '_id'>
 
