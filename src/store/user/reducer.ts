@@ -22,14 +22,17 @@ export type UserActions =
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
 		case USER_TYPES.REGISTRATION: {
-			const { boardIds, email, _id, messages } = action.payload
+			const { boardIds, email, _id, firstName, secondName, lastName, messages } = action.payload
 			return {
 				...state,
 				isAuth: true,
 				boardIds: boardIds,
 				email: email,
 				_id: _id,
-				messages
+				messages,
+				firstName,
+				secondName,
+				lastName
 			}
 		}
 		case USER_TYPES.CHECK_LOGIN: {
@@ -48,7 +51,7 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			}
 		}
 		case USER_TYPES.AUTHENTICATION: {
-			const { boardIds, _id, email, firstName, lastName, messages, isAuth } = action.payload
+			const { boardIds, _id, email, firstName, secondName, lastName, messages, isAuth } = action.payload
 			return {
 				...state,
 				isAuth: isAuth,
@@ -57,7 +60,8 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				email,
 				firstName,
 				lastName,
-				messages
+				messages,
+				secondName
 			}
 		}
 		case USER_TYPES.LOGOUT: {

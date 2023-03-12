@@ -33,7 +33,7 @@ export default function Info({ closeInfo }: InfoProps) {
 			<div className={classes.info}>
 				<span className={classes.icon}>{user.email[0].toUpperCase()}</span>
 				<div className={classes.names}>
-					<div className={classes.firstName}>{user.firstName}</div>
+					<div className={classes.firstName}>{user.secondName}{' '}{user.firstName}</div>
 					<div className={classes.email}>{user.email}</div>
 				</div>
 			</div>
