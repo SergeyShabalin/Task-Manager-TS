@@ -17,6 +17,7 @@ export default function Board({}) {
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
 
+
 	useEffect(() => {
 		if (boardId) getCurrentBoard(boardId)
 	}, [currentBoardId])

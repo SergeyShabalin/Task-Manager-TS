@@ -33,17 +33,17 @@ export default function ContextMenu({
 					state={{ background: location }}
 					to={`/user/${userId}/board/${boardId}/card/${cardId}`}
 				>
-					<li className={classes.li}>
+					<div className={classes.li}>
 						<AiFillFolderOpen />
 						<div className={classes.li_title}>Открыть карточку</div>
-					</li>
+					</div>
 				</Link>
-				<li className={classes.li}>
+				<div className={classes.li}>
 					<RiDeleteBin5Line />
 					<div className={classes.li_title} onClick={cardDelete}>
 						Удалить карточку
 					</div>
-				</li>
+				</div>
 			</ul>
 		</div>
 	)

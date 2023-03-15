@@ -15,6 +15,7 @@ import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
+import { socket } from '@/api'
 
 export const columnsActions = {
 	addNewColumn:
@@ -64,31 +65,30 @@ export const columnsActions = {
 	},
 	dragAndDropCard:
 		(payload: PayloadForDropCard) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-			try {
-				const { targetColumnId, currentCardId, targetCardId } = payload
-				const { board } = getState()
-				const targetColumn = board.allColumns[targetColumnId]
+			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+				try {
+					const { targetColumnId, currentCardId, targetCardId } = payload
+					const { board } = getState()
+					const targetColumn = board.allColumns[targetColumnId]
 
-				if (
-					(currentCardId === targetCardId && targetColumn.cards.length !== 0) ||
-					(targetCardId === '' && targetColumn.cards.length !== 0)
-				) {
-				} else {
-					await ColumnsApi.dragDropCard(payload)
-					dispatch(ColumnAC.dropCard(payload))
+					if (
+						(currentCardId === targetCardId && targetColumn.cards.length !== 0) ||
+						(targetCardId === '' && targetColumn.cards.length !== 0)
+					) {
+					} else {
+						await ColumnsApi.dragDropCard(payload)
+						dispatch(ColumnAC.dropCard(payload))
+					}
+				} catch (error) {
+					Notification.error('Произошла ошибка переноса карточки')
 				}
-			} catch (error) {
-				Notification.error('Произошла ошибка переноса карточки')
 			}
-		}
 }
 
 export const cardActions = {
 	addNewCard: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			const { data } = await CardsApi.addCard(columnId, title)
-			dispatch(CardAC.newCardAC(data))
+			socket.emit('card_add', { title, column_id: columnId, description: '' })
 			return true
 		} catch (e) {
 			Notification.error('Произошла ошибка добавления карточки')
@@ -202,48 +202,46 @@ export const checklistActions = {
 			return false
 		}
 	},
-	changeTask:
-		(payload: PayloadForChangedTask) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-			try {
-				const { data } = await CheckListApi.change(payload)
-				const { board } = getState()
-				const newCheckList = board.cardInfo.checkList.map(task => {
-					if (task._id === payload._id) return data.task
-					else return task
-				})
-				dispatch(ChecklistAC.changeTaskAC(newCheckList))
-				dispatch(CardAC.changeCardAC(data.card))
-				return true
-			} catch (error) {
-				Notification.error('Произошла ошибка изменения задачи')
-				return false
-			}
-		},
+	changeTask: (payload: PayloadForChangedTask) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		try {
+			const { data } = await CheckListApi.change(payload)
+			const { board } = getState()
+			const newCheckList = board.cardInfo.checkList.map(task => {
+				if (task._id === payload._id) return data.task
+				else return task
+			})
+			dispatch(ChecklistAC.changeTaskAC(newCheckList))
+			dispatch(CardAC.changeCardAC(data.card))
+			return true
+		} catch (error) {
+			Notification.error('Произошла ошибка изменения задачи')
+			return false
+		}
+	},
 	deleteTask:
 		(cardId: string, taskId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-			try {
-				const { data } = await CheckListApi.delete(cardId, taskId)
-				const { board } = getState()
-				const newChecklist = board.cardInfo.checkList.filter(task => task._id !== taskId)
-				dispatch(ChecklistAC.deleteTaskAC(newChecklist))
-				dispatch(CardAC.changeCardAC(data))
-			} catch (error) {
-				Notification.error('Произошла ошибка удаления задачи')
-				return false
-			}
-		},
+			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+				try {
+					const { data } = await CheckListApi.delete(cardId, taskId)
+					const { board } = getState()
+					const newChecklist = board.cardInfo.checkList.filter(task => task._id !== taskId)
+					dispatch(ChecklistAC.deleteTaskAC(newChecklist))
+					dispatch(CardAC.changeCardAC(data))
+				} catch (error) {
+					Notification.error('Произошла ошибка удаления задачи')
+					return false
+				}
+			},
 	deleteBoard:
 		(boardId: string, userId: string) =>
-		async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-			try {
-				await UsersApi.boardDelete(boardId, userId)
-				const { board } = getState()
-				const newBoards = board.allBoards.filter(board => board._id !== boardId)
-				dispatch(BoardAC.deleteBoard(newBoards))
-			} catch (error) {
-				Notification.error('Произошла ошибка удаления доски')
+			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+				try {
+					await UsersApi.boardDelete(boardId, userId)
+					const { board } = getState()
+					const newBoards = board.allBoards.filter(board => board._id !== boardId)
+					dispatch(BoardAC.deleteBoard(newBoards))
+				} catch (error) {
+					Notification.error('Произошла ошибка удаления доски')
+				}
 			}
-		}
 }

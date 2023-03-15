@@ -7,6 +7,7 @@ import { store } from './store/index'
 import { App } from '@Features'
 import './index.css'
 
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<Provider store={store}>
 		<BrowserRouter>

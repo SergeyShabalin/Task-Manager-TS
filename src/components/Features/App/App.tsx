@@ -12,7 +12,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
-import io from 'socket.io-client'
+
 
 function App() {
 	const location = useLocation()
@@ -21,10 +21,6 @@ function App() {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { checkLogin } = useActions()
-
-
-
-	const socket = io('http://localhost:4000')
 
 
 	useEffect(() => {
@@ -37,6 +33,7 @@ function App() {
 				isAuth: false
 			}
 			dispatch(UserAC.checkLogin(payload))
+
 			navigate(`/login`)
 		}
 	}, [])
