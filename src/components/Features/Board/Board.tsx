@@ -7,6 +7,8 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
+import { socket } from '@/api'
+import { CardAC } from '@/store/board/action'
 
 export default function Board({}) {
 	const { getCurrentBoard, addNewColumn } = useActions()
@@ -17,14 +19,18 @@ export default function Board({}) {
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
 
+	useEffect(()=>{
+		socket.on('COLUMN_ADDED', newColumn=>{
+			addNewColumn(newColumn)
+		})
+	},[])
 
 	useEffect(() => {
 		if (boardId) getCurrentBoard(boardId)
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {
-		const isSuccess = await addNewColumn(title)
-		return isSuccess
+		if(	socket.emit('COLUMN_ADD', { title,  boardId })) return true
 	}
 
 	const columns = board.columns?.map(id => {

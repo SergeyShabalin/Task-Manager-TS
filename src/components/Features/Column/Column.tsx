@@ -9,25 +9,23 @@ import { Editor } from '@Features'
 import ContextMenu from '@/components/Features/Column/ContextMenu'
 import classes from './Column.module.css'
 import { socket } from '@/api'
-import { CardAC } from '@/store/board/action'
-import { useDispatch } from 'react-redux'
-
 
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
 	const { addNewCard, changeColumn, dragAndDropCard } = useActions()
 	const allCards = useTypedSelector(state => state.board.allCards)
-	const dispatch = useDispatch()
+
 
 	useEffect(()=>{
 		socket.on('CARD_ADDED', newCard=>{
-			dispatch(CardAC.newCardAC(newCard))
+		addNewCard(newCard)
 		})
 	},[])
 
 	function addCard(value: string) {
-		return addNewCard(_id, value)
+	if(socket.emit('CARD_ADD', { title: value, column_id: _id, description: '' }))
+		return true
 	}
 
 	function columnChange(value: string) {

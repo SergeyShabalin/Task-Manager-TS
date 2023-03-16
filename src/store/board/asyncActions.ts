@@ -8,30 +8,29 @@ import CardsApi from '@/api/CardsApi'
 import CheckListApi from '@/api/CheckListApi'
 import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
-import { PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
+import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-import { socket } from '@/api'
+
 
 export const columnsActions = {
 	addNewColumn:
-		(title: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		(data: Column) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
-				const { board } = getState()
-				const { data } = await ColumnsApi.addColumn(title, board.currentBoard._id)
+				// const { board } = getState()
+				// // const { data } = await ColumnsApi.addColumn(title, board.currentBoard._id)
 				const newColumn = {
-					title: title,
+					title: data.title,
 					_id: data._id,
 					cards: [],
 					sortArr: [],
 					boardId: data.boardId
 				}
 				dispatch(ColumnAC.addColumnAC(newColumn))
-				return true
 			} catch (e) {
 				Notification.error('Произошла ошибка добавления колонки')
 				return false
@@ -86,10 +85,9 @@ export const columnsActions = {
 }
 
 export const cardActions = {
-	addNewCard: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
+	addNewCard: (newCard: Card) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			socket.emit('card_add', { title, column_id: columnId, description: '' })
-			return true
+			dispatch(CardAC.newCardAC(newCard))
 		} catch (e) {
 			Notification.error('Произошла ошибка добавления карточки')
 			return false
