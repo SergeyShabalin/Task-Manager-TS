@@ -6,6 +6,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Loader } from '@UI'
 import classes from './Main.module.css'
 
+
 export default function Main() {
 	const userId = useTypedSelector(state => state.user._id)
 	const email = useTypedSelector(state => state.user.email)

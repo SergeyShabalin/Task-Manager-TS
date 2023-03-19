@@ -17,7 +17,7 @@ export default function Board({}) {
 	const { changeBoard } = useActions()
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
-	const { boardId } = useParams()
+	 const { boardId } = useParams()
 
 	useEffect(()=>{
 		socket.on('COLUMN_ADDED', newColumn=>{
