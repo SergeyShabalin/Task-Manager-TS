@@ -20,17 +20,27 @@ export default function Board({}) {
 	 const { boardId } = useParams()
 
 	useEffect(()=>{
+		socket.emit('JOIN_BOARD',  boardId )
+	}, [])
+
+	useEffect(()=>{
 		socket.on('COLUMN_ADDED', newColumn=>{
-			addNewColumn(newColumn)
+			 console.log( newColumn )
+			// addNewColumn(newColumn)
 		})
-	},[])
+	},[socket])
 
 	useEffect(() => {
+
 		if (boardId) getCurrentBoard(boardId)
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {
-		if(	socket.emit('COLUMN_ADD', { title,  boardId })) return true
+		if(socket.emit('COLUMN_ADD', { title,  boardId })){
+			console.log('COLUMN_ADD')
+			// addNewColumn(newColumn)
+			return true
+		}
 	}
 
 	const columns = board.columns?.map(id => {

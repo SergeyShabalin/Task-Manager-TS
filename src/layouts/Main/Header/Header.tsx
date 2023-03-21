@@ -25,7 +25,7 @@ export default function Header({ _id, email }: Partial<User>) {
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
-		backToGreeting()
+		if (boardId) backToGreeting(boardId)
 	}
 
 	function openShare() {

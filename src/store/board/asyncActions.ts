@@ -15,6 +15,7 @@ import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
+import { socket } from '@/api'
 
 
 export const columnsActions = {
@@ -23,9 +24,10 @@ export const columnsActions = {
 			try {
 				// const { board } = getState()
 				// // const { data } = await ColumnsApi.addColumn(title, board.currentBoard._id)
+
 				const newColumn = {
 					title: data.title,
-					_id: data._id,
+					// _id: data._id,
 					cards: [],
 					sortArr: [],
 					boardId: data.boardId
@@ -172,8 +174,9 @@ export const boardActions = {
 			Notification.error('Произошла ошибка получения досок')
 		}
 	},
-	backToGreeting: () => async (dispatch: Dispatch<BoardActions>) => {
+	backToGreeting: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
+			socket.emit('LEAVE_BOARD',  boardId )
 			dispatch(BoardAC.backToGreeting())
 		} catch (e) {
 			Notification.error('Произошла ошибка получения досок')

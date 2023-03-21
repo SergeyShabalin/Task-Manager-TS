@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
@@ -13,13 +13,14 @@ interface InfoProps {
 export default function Info({ closeInfo }: InfoProps) {
 	const navigate = useNavigate()
 	const { logOut, backToGreeting } = useActions()
+	const { boardId } = useParams()
 	const user = useTypedSelector(state => state.user)
 	const accountRef = useRef(null)
 	useOnClickOutside(accountRef, () => closeInfo())
 
 	function backInGreeting() {
 		if (user._id) navigate(`/user/${user._id}/greeting`)
-		backToGreeting()
+		if (boardId) backToGreeting(boardId)
 	}
 
 	function logout() {

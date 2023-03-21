@@ -18,14 +18,14 @@ export default function Column({ title, cards, _id }: ColumnT) {
 
 
 	useEffect(()=>{
-		socket.on('CARD_ADDED', newCard=>{
-		addNewCard(newCard)
-		})
+		// socket.on('CARD_ADDED', newCard=>{
+		// addNewCard(newCard)
+		// })
 	},[])
 
 	function addCard(value: string) {
-	if(socket.emit('CARD_ADD', { title: value, column_id: _id, description: '' }))
-		return true
+	// if(socket.emit('CARD_ADD', { title: value, column_id: _id, description: '' }))
+	// 	return true
 	}
 
 	function columnChange(value: string) {
