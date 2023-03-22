@@ -1,7 +1,10 @@
 import axios from 'axios'
 import io from 'socket.io-client'
-
-export const socket = io('http://localhost:4000')
+let userId = null;
+export const socketCon = () => {
+	userId = io('http://localhost:4000')
+	return userId
+}
 
 export const Api = axios.create({
 	baseURL: 'http://localhost:4000',

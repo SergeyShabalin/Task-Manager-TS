@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Column } from '@Features'
@@ -7,7 +7,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
-import { socket } from '@/api'
+import { socketCon } from '@/api'
 import { CardAC } from '@/store/board/action'
 
 export default function Board({}) {
@@ -17,26 +17,26 @@ export default function Board({}) {
 	const { changeBoard } = useActions()
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
-	 const { boardId } = useParams()
-
-	useEffect(()=>{
-		socket.emit('JOIN_BOARD',  boardId )
-	}, [])
-
-	useEffect(()=>{
-		socket.on('COLUMN_ADDED', newColumn=>{
-			 console.log( newColumn )
-			// addNewColumn(newColumn)
-		})
-	},[socket])
+	const { boardId } = useParams()
+	let [socket, setSocket] = useState(socketCon())
 
 	useEffect(() => {
+		socket.emit('JOIN_BOARD', boardId)
+	}, [])
 
+	useEffect(() => {
+		socket.on('COLUMN_ADDED', newColumn => {
+			console.log(newColumn)
+			// addNewColumn(newColumn)
+		})
+	}, [socket])
+
+	useEffect(() => {
 		if (boardId) getCurrentBoard(boardId)
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {
-		if(socket.emit('COLUMN_ADD', { title,  boardId })){
+		if (socket.emit('COLUMN_ADD', { title, boardId })) {
 			console.log('COLUMN_ADD')
 			// addNewColumn(newColumn)
 			return true
@@ -49,7 +49,9 @@ export default function Board({}) {
 	})
 
 	function changeTitleBoard(title: string) {
-		const payload = { _id: board._id, title }
+		socket.emit('LEAVE_BOARD', boardId)
+
+		const payload = { _id: board._id, title, emit: socket.emit }
 		return changeBoard(payload)
 	}
 
