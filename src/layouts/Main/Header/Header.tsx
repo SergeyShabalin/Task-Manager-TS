@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { RiTrelloFill } from 'react-icons/ri'
@@ -14,6 +14,8 @@ import Account from '@/layouts/Main/Header/Account'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Header.module.css'
+import UseSocket from '@/hooks/useSocket/useSocket'
+
 
 
 export default function Header({ _id, email }: Partial<User>) {
@@ -22,10 +24,15 @@ export default function Header({ _id, email }: Partial<User>) {
 	const { getUsersOneBoard, backToGreeting } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
+	const {socketCon} = UseSocket()
+	const [socket] = useState(socketCon())
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
-		if (boardId) backToGreeting(boardId)
+		if (boardId){
+			backToGreeting(boardId)
+			socket.emit('LEAVE_BOARD', boardId)
+		}
 	}
 
 	function openShare() {

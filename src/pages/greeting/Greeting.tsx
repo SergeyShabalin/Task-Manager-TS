@@ -23,6 +23,7 @@ export default function Greeting() {
 	const { onOpen, onClose, isOpen } = useOpenClose()
 	useOnClickOutside(addBoardRef, onClose)
 
+
 	useEffect(() => {
 		if (userId) getAllBoard(userId)
 	}, [])

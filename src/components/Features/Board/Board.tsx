@@ -7,8 +7,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
-import { socketCon } from '@/api'
-import { CardAC } from '@/store/board/action'
+import UseSocket from '@/hooks/useSocket/useSocket'
 
 export default function Board({}) {
 	const { getCurrentBoard, addNewColumn } = useActions()
@@ -18,7 +17,7 @@ export default function Board({}) {
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
-	let [socket, setSocket] = useState(socketCon())
+	const {socket} = UseSocket()
 
 	useEffect(() => {
 		socket.emit('JOIN_BOARD', boardId)
@@ -50,8 +49,7 @@ export default function Board({}) {
 
 	function changeTitleBoard(title: string) {
 		socket.emit('LEAVE_BOARD', boardId)
-
-		const payload = { _id: board._id, title, emit: socket.emit }
+		const payload = { _id: board._id, title }
 		return changeBoard(payload)
 	}
 

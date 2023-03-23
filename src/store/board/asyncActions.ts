@@ -15,10 +15,12 @@ import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
+import { socketCon } from '@/api'
 // import { socket } from '@/api'
 
 
 export const columnsActions = {
+
 	addNewColumn:
 		(data: Column) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
@@ -176,7 +178,7 @@ export const boardActions = {
 	},
 	backToGreeting: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			// socket.emit('LEAVE_BOARD',  boardId )
+			console.log('leave')
 			dispatch(BoardAC.backToGreeting())
 		} catch (e) {
 			Notification.error('Произошла ошибка получения досок')
