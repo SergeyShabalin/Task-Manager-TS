@@ -4,7 +4,7 @@ import {
 	PayloadForAuthentication,
 	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
-	PayloadForStartRegistration,
+	PayloadForStartRegistration, SocketInit,
 	USER_TYPES
 } from '@/models/Users'
 import { defaultState } from '@/store/user/initState'
@@ -18,6 +18,7 @@ export type UserActions =
 	| PayloadForAddBoard
 	| PayloadForDeleteMessage
 	| payloadForDeleteBoard
+	| SocketInit
 
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
@@ -85,6 +86,14 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				messages: action.payload
 			}
 		}
+		case USER_TYPES.SOCKET_INIT: {
+			return {
+				...state,
+				socket: action.payload
+			}
+		}
+
+
 
 		default:
 			return state

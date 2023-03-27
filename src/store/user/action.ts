@@ -16,4 +16,5 @@ export const UserAC = {
 	logout: (): Logout=> ({type: USER_TYPES.LOGOUT}),
 	addBoard: (payload: string) : PayloadForAddBoard=> ({type: USER_TYPES.ADD_BOARD, payload}),
 	deleteMessage: (payload: Partial<User>): PayloadForDeleteMessage => ({type: USER_TYPES.DELETE_MESSAGE,	payload}),
+	socketInit: (payload): PayloadForDeleteMessage => ({type: USER_TYPES.SOCKET_INIT,	payload}),
 }

@@ -13,8 +13,6 @@ import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
 import { BoardAC } from '@/store/board/action'
 import { AxiosError } from 'axios'
-import { socket } from '@/api'
-import { RootState } from '@/store'
 
 export const usersActions = {
 	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {

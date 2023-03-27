@@ -14,9 +14,6 @@ import Account from '@/layouts/Main/Header/Account'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Header.module.css'
-import UseSocket from '@/hooks/useSocket/useSocket'
-
-
 
 export default function Header({ _id, email }: Partial<User>) {
 	const navigate = useNavigate()
@@ -24,12 +21,11 @@ export default function Header({ _id, email }: Partial<User>) {
 	const { getUsersOneBoard, backToGreeting } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
-	const {socketCon} = UseSocket()
-	const [socket] = useState(socketCon())
+	const socket = useTypedSelector(state => state.user.socket)
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
-		if (boardId){
+		if (boardId) {
 			backToGreeting(boardId)
 			socket.emit('LEAVE_BOARD', boardId)
 		}

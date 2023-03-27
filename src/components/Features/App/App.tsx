@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -13,7 +13,6 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
 
-
 function App() {
 	const location = useLocation()
 	const background = location.state && location.state.background
@@ -24,6 +23,7 @@ function App() {
 
 
 	useEffect(() => {
+
 		const token = localStorage.getItem('token')
 		if (token) {
 			checkLogin()
@@ -33,10 +33,11 @@ function App() {
 				isAuth: false
 			}
 			dispatch(UserAC.checkLogin(payload))
-
 			navigate(`/login`)
 		}
 	}, [])
+
+
 	return (
 		<>
 			{!isAuth ? (

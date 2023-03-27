@@ -178,7 +178,6 @@ export const boardActions = {
 	},
 	backToGreeting: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			console.log('leave')
 			dispatch(BoardAC.backToGreeting())
 		} catch (e) {
 			Notification.error('Произошла ошибка получения досок')

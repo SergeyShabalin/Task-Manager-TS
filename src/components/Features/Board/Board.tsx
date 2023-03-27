@@ -8,8 +8,9 @@ import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
 import UseSocket from '@/hooks/useSocket/useSocket'
+import io from 'socket.io-client'
 
-export default function Board({}) {
+export default function Board() {
 	const { getCurrentBoard, addNewColumn } = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
@@ -17,16 +18,16 @@ export default function Board({}) {
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
-	const {socket} = UseSocket()
+	const socket = useTypedSelector(state => state.user.socket)
 
 	useEffect(() => {
+		socket.connect()
 		socket.emit('JOIN_BOARD', boardId)
 	}, [])
 
 	useEffect(() => {
 		socket.on('COLUMN_ADDED', newColumn => {
 			console.log(newColumn)
-			// addNewColumn(newColumn)
 		})
 	}, [socket])
 
@@ -37,7 +38,6 @@ export default function Board({}) {
 	async function addColumn(title: string) {
 		if (socket.emit('COLUMN_ADD', { title, boardId })) {
 			console.log('COLUMN_ADD')
-			// addNewColumn(newColumn)
 			return true
 		}
 	}
@@ -48,8 +48,8 @@ export default function Board({}) {
 	})
 
 	function changeTitleBoard(title: string) {
-		socket.emit('LEAVE_BOARD', boardId)
 		const payload = { _id: board._id, title }
+
 		return changeBoard(payload)
 	}
 

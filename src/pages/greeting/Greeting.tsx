@@ -10,6 +10,8 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import MiniBoard from '@/pages/greeting/MiniBoard'
 import { Loader } from '@UI'
 import classes from './Greeting.module.css'
+import io from 'socket.io-client'
+import UseSocket from '@/hooks/useSocket/useSocket'
 
 export default function Greeting() {
 	const allBoards = useTypedSelector(state => state.board.allBoards)
@@ -22,7 +24,6 @@ export default function Greeting() {
 	const { getAllBoard } = useActions()
 	const { onOpen, onClose, isOpen } = useOpenClose()
 	useOnClickOutside(addBoardRef, onClose)
-
 
 	useEffect(() => {
 		if (userId) getAllBoard(userId)
