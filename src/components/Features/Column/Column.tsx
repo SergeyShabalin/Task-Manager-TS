@@ -8,7 +8,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Editor } from '@Features'
 import ContextMenu from '@/components/Features/Column/ContextMenu'
 import classes from './Column.module.css'
-import { socket } from '@/api'
+
 
 let targetCardId = ''
 

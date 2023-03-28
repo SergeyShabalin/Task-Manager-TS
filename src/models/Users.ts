@@ -1,4 +1,5 @@
 import { Action } from 'redux'
+import { Socket } from 'socket.io-client'
 
 export interface User {
 	_id: string
@@ -11,6 +12,7 @@ export interface User {
 	messages: message[]
 	token: string
 	isAuth: boolean
+	socket:  Socket | null
 }
 
 export interface UserForBoard {
@@ -28,7 +30,7 @@ export interface message {
 export interface UserState extends User {
 	isLoading: boolean
 	isError: boolean
-	socket: () => void
+
 }
 
 export enum USER_TYPES {
@@ -48,7 +50,6 @@ export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
 export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 export type SocketInit = Action<USER_TYPES.SOCKET_INIT>
-
 
 
 export interface PayloadForShareBoard extends Partial<User> {
@@ -85,5 +86,9 @@ export interface PayloadForAddBoard extends AddBoard {
 }
 
 export interface PayloadForDeleteMessage extends DeleteMessage {
-	payload: Partial<User> 
+	payload: Partial<User>
+}
+
+export interface PayloadForSocketInit extends SocketInit {
+	payload: Socket | null
 }

@@ -18,15 +18,15 @@ export default function Board() {
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
-	const socket = useTypedSelector(state => state.user.socket)
+	const socket = useTypedSelector(({ user }) => user.socket)
 
 	useEffect(() => {
-		socket.connect()
-		socket.emit('JOIN_BOARD', boardId)
+		socket?.connect()
+		socket?.emit('JOIN_BOARD', boardId)
 	}, [])
 
 	useEffect(() => {
-		socket.on('COLUMN_ADDED', newColumn => {
+		socket?.on('COLUMN_ADDED', newColumn => {
 			console.log(newColumn)
 		})
 	}, [socket])
@@ -36,8 +36,7 @@ export default function Board() {
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {
-		if (socket.emit('COLUMN_ADD', { title, boardId })) {
-			console.log('COLUMN_ADD')
+		if (socket?.emit('COLUMN_ADD', { title, boardId })) {
 			return true
 		}
 	}

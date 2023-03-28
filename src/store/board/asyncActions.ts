@@ -15,8 +15,6 @@ import { RootState } from '@/store'
 import { PayloadForChangedTask } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-import { socketCon } from '@/api'
-// import { socket } from '@/api'
 
 
 export const columnsActions = {
@@ -29,7 +27,7 @@ export const columnsActions = {
 
 				const newColumn = {
 					title: data.title,
-					// _id: data._id,
+					 _id: data._id,
 					cards: [],
 					sortArr: [],
 					boardId: data.boardId

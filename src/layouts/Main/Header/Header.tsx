@@ -15,19 +15,19 @@ import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Header.module.css'
 
-export default function Header({ _id, email }: Partial<User>) {
+export default function Header({ _id }: Partial<User>) {
 	const navigate = useNavigate()
 	const { userId, boardId } = useParams()
 	const { getUsersOneBoard, backToGreeting } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
-	const socket = useTypedSelector(state => state.user.socket)
+	const socket = useTypedSelector(({ user }) => user.socket)
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
 		if (boardId) {
 			backToGreeting(boardId)
-			socket.emit('LEAVE_BOARD', boardId)
+			if(socket) socket.emit('LEAVE_BOARD', boardId)
 		}
 	}
 
@@ -54,7 +54,7 @@ export default function Header({ _id, email }: Partial<User>) {
 			<div className={classes.control}>
 				<Account />
 				<Messages messagesCount={messagesCount} />
-				<Logout />
+				<Logout boardId = {boardId} />
 			</div>
 		</div>
 	)
