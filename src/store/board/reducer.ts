@@ -165,7 +165,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			delete newAllColumns[action.payload.columnId]
 			return {
 				...state,
-				currentBoard: { ...state.currentBoard, columns: action.payload.newColumns },
+				currentBoard: { ...state.currentBoard, columns: action.payload.columnIds },
 				allColumns: newAllColumns
 			}
 		}

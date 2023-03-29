@@ -11,7 +11,7 @@ export interface AddNewColumn extends Action<COLUMN_TYPES.ADD_NEW_COLUMN> {
 }
 
 export interface PayloadForDeleteColumn {
-	newColumns: string[]
+	columnIds: string[]
 	columnId: string
 }
 

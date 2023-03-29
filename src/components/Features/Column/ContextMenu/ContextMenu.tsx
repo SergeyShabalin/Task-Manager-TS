@@ -5,6 +5,7 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './ContextMenu.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 export interface ContextMenuProps {
 	columnId: string
@@ -13,12 +14,12 @@ export interface ContextMenuProps {
 export default function ContextMenu({ columnId }: ContextMenuProps) {
 	const refContextMenu = useRef(null)
 	const [isModalOpen, setModalOpen] = useState(false)
-	const { deleteColumn } = useActions()
 	useOnClickOutside(refContextMenu, () => setModalOpen(false))
+	const socket = useTypedSelector(({ user }) => user.socket)
 
 	function columnDelete() {
 		const confirm = window.confirm('Удалить колонку?')
-		if (confirm) deleteColumn(columnId)
+		if (confirm) socket?.emit('COLUMN_DELETE',  columnId )
 	}
 
 	function modalOpen() {
@@ -28,7 +29,6 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 	return (
 		<>
 			<Button onClick={modalOpen} variant={'just_icon'} icon={<GoKebabHorizontal />}></Button>
-
 			{isModalOpen && (
 				<form ref={refContextMenu}>
 					<div className={classes.context_menu}>

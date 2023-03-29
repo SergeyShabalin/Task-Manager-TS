@@ -7,11 +7,10 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
-import UseSocket from '@/hooks/useSocket/useSocket'
-import io from 'socket.io-client'
+
 
 export default function Board() {
-	const { getCurrentBoard, addNewColumn } = useActions()
+	const { getCurrentBoard, addNewColumn, deleteColumn} = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const { changeBoard } = useActions()
@@ -27,7 +26,10 @@ export default function Board() {
 
 	useEffect(() => {
 		socket?.on('COLUMN_ADDED', newColumn => {
-			console.log(newColumn)
+			addNewColumn(newColumn)
+		})
+		socket?.on('COLUMN_DELETED', data => {
+			 deleteColumn(data)
 		})
 	}, [socket])
 
@@ -48,7 +50,6 @@ export default function Board() {
 
 	function changeTitleBoard(title: string) {
 		const payload = { _id: board._id, title }
-
 		return changeBoard(payload)
 	}
 

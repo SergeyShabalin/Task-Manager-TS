@@ -22,12 +22,9 @@ export const columnsActions = {
 	addNewColumn:
 		(data: Column) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
-				// const { board } = getState()
-				// // const { data } = await ColumnsApi.addColumn(title, board.currentBoard._id)
-
 				const newColumn = {
 					title: data.title,
-					 _id: data._id,
+					_id: data._id,
 					cards: [],
 					sortArr: [],
 					boardId: data.boardId
@@ -39,21 +36,18 @@ export const columnsActions = {
 			}
 		},
 	deleteColumn:
-		(columnId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		(data: PayloadForDeleteColumn) => async (dispatch: Dispatch<BoardActions>) => {
 			try {
-				await ColumnsApi.delete(columnId)
-				const { board } = getState()
-				const allColumnIds = board?.currentBoard?.columns
-				const newColumns: string[] = allColumnIds?.filter((id: string) => id !== columnId)
 				const payload: PayloadForDeleteColumn = {
-					newColumns,
-					columnId
+					columnIds: data.columnIds,
+					columnId:	data.columnId
 				}
-				dispatch(ColumnAC.deleteColumnAC(payload))
+				 dispatch(ColumnAC.deleteColumnAC(payload))
 			} catch (e) {
 				Notification.error('Произошла ошибка удаления колонки')
 			}
 		},
+
 	changeColumn: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			const { data } = await ColumnsApi.change(columnId, title)

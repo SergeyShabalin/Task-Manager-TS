@@ -15,10 +15,11 @@ export default function Info({ closeInfo }: InfoProps) {
 	const { logOut, backToGreeting } = useActions()
 	const { boardId } = useParams()
 	const user = useTypedSelector(state => state.user)
+	const socket = user.socket
 	const accountRef = useRef(null)
 	useOnClickOutside(accountRef, () => closeInfo())
-	const socket = useTypedSelector(({ user }) => user.socket)
-	console.log(socket)
+
+
 	function backInGreeting() {
 		if (user._id) navigate(`/user/${user._id}/greeting`)
 		if (boardId) backToGreeting(boardId)
@@ -27,8 +28,7 @@ export default function Info({ closeInfo }: InfoProps) {
 	function logout() {
 		logOut()
 		navigate(`/login`)
-	if(socket)	socket.emit('LEAVE_BOARD', boardId)
-
+		if (socket) socket.emit('LEAVE_BOARD', boardId)
 	}
 
 	return (
