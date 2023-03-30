@@ -34,6 +34,9 @@ export default function Board() {
 		socket?.on('COLUMN_CHANGED', data => {
 			changeColumn(data)
 		})
+		socket?.on('BOARD_CHANGED', newBoard => {
+			return	changeBoard(newBoard)
+		})
 
 	}, [socket])
 
@@ -53,8 +56,10 @@ export default function Board() {
 	})
 
 	function changeTitleBoard(title: string) {
-		const payload = { _id: board._id, title }
-		return changeBoard(payload)
+		if (socket?.emit('BOARD_CHANGE', { title, _id: board._id })) {
+			return true
+		}
+		//TODO лоадер
 	}
 
 	return (

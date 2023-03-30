@@ -138,9 +138,8 @@ export const boardActions = {
 			dispatch(BoardAC.errorFetching())
 		}
 	},
-	changeBoard: (payload: Partial<Board>) => async (dispatch: Dispatch<BoardActions>) => {
+	changeBoard: (data: Board) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			const { data } = await BoardApi.change(payload)
 			dispatch(BoardAC.changeBoardAC(data))
 			return true
 		} catch (error) {
