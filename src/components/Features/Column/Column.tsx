@@ -14,22 +14,19 @@ let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
 	const { addNewCard, changeColumn, dragAndDropCard } = useActions()
-	const allCards = useTypedSelector(state => state.board.allCards)
+	const allCards = useTypedSelector(({ board }) => board.allCards)
+	const socket = useTypedSelector(({ user }) => user.socket)
 
-
-	useEffect(()=>{
-		// socket.on('CARD_ADDED', newCard=>{
-		// addNewCard(newCard)
-		// })
-	},[])
 
 	function addCard(value: string) {
-	// if(socket.emit('CARD_ADD', { title: value, column_id: _id, description: '' }))
-	// 	return true
+		console.log('addCard')
+		return true
 	}
 
 	function columnChange(value: string) {
-		return changeColumn(_id, value)
+		if (socket?.emit('COLUMN_CHANGE', { title: value, column_id: _id }))
+			// changeColumn(_id, value)
+			return true
 	}
 
 	function onDragStartCard(e: React.DragEvent<HTMLDivElement>, columnId: string, cardId: string) {

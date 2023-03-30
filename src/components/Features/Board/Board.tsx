@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Column } from '@Features'
@@ -10,14 +10,14 @@ import classes from './Board.module.css'
 
 
 export default function Board() {
-	const { getCurrentBoard, addNewColumn, deleteColumn} = useActions()
+	const { getCurrentBoard, addNewColumn, deleteColumn, changeColumn} = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const { changeBoard } = useActions()
 	const user = useTypedSelector(state => state.user)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
-	const socket = useTypedSelector(({ user }) => user.socket)
+	const socket = user.socket
 
 	useEffect(() => {
 		socket?.connect()
@@ -31,6 +31,10 @@ export default function Board() {
 		socket?.on('COLUMN_DELETED', data => {
 			 deleteColumn(data)
 		})
+		socket?.on('COLUMN_CHANGED', data => {
+			changeColumn(data)
+		})
+
 	}, [socket])
 
 	useEffect(() => {

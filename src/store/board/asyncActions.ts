@@ -20,7 +20,7 @@ import { UserActions } from '@/store/user/reducer'
 export const columnsActions = {
 
 	addNewColumn:
-		(data: Column) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		(data: Column) => async (dispatch: Dispatch<BoardActions>) => {
 			try {
 				const newColumn = {
 					title: data.title,
@@ -48,9 +48,8 @@ export const columnsActions = {
 			}
 		},
 
-	changeColumn: (columnId: string, title: string) => async (dispatch: Dispatch<BoardActions>) => {
+	changeColumn: (data: Column) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			const { data } = await ColumnsApi.change(columnId, title)
 			dispatch(ColumnAC.changeColumnAC(data))
 			return true
 		} catch (e) {
