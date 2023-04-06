@@ -13,14 +13,16 @@ import classes from './Column.module.css'
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
-	const { addNewCard, changeColumn, dragAndDropCard } = useActions()
+	const { changeColumn, dragAndDropCard } = useActions()
 	const allCards = useTypedSelector(({ board }) => board.allCards)
 	const socket = useTypedSelector(({ user }) => user.socket)
 
 
 	function addCard(value: string) {
+		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })){
 		console.log('addCard')
 		return true
+		}
 	}
 
 	function columnChange(value: string) {
