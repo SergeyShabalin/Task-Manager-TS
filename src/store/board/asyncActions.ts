@@ -61,16 +61,19 @@ export const columnsActions = {
 		(payload: PayloadForDropCard) =>
 			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 				try {
+					// console.log({ payload })
+
 					const { targetColumnId, currentCardId, targetCardId } = payload
 					const { board } = getState()
 					const targetColumn = board.allColumns[targetColumnId]
-
+					// удалить из currentColumnId перетаскиваемую карточку
 					if (
-						(currentCardId === targetCardId && targetColumn.cards.length !== 0) ||
-						(targetCardId === '' && targetColumn.cards.length !== 0)
+						(currentCardId === targetCardId && targetColumn.cards.length !== 0 ) || //перенос в пределах одной колонки
+						(targetCardId === '' && targetColumn.cards.length !== 0) //перенос в пустую колонку
 					) {
 					} else {
-						await ColumnsApi.dragDropCard(payload)
+
+						// await ColumnsApi.dragDropCard(payload)
 						dispatch(ColumnAC.dropCard(payload))
 					}
 				} catch (error) {

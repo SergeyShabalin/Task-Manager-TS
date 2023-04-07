@@ -13,21 +13,19 @@ import classes from './Column.module.css'
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
-	const { changeColumn, dragAndDropCard } = useActions()
+	const { dragAndDropCard } = useActions()
 	const allCards = useTypedSelector(({ board }) => board.allCards)
 	const socket = useTypedSelector(({ user }) => user.socket)
 
 
 	function addCard(value: string) {
 		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })){
-		console.log('addCard')
 		return true
 		}
 	}
 
 	function columnChange(value: string) {
 		if (socket?.emit('COLUMN_CHANGE', { title: value, column_id: _id }))
-			// changeColumn(_id, value)
 			return true
 	}
 
@@ -57,13 +55,14 @@ export default function Column({ title, cards, _id }: ColumnT) {
 		let currentCardId = e.dataTransfer.getData('cardId')
 		let currentColumnId = e.dataTransfer.getData('columnId')
 
-		const payload = {
+		const dataForDropCard = {
 			currentColumnId,
 			currentCardId,
 			targetColumnId,
 			targetCardId
 		}
-		dragAndDropCard(payload)
+		socket?.emit('CARD_DROP', dataForDropCard)
+		// dragAndDropCard(payload)
 	}
 
 	function onDragLeaveCard(e: React.DragEvent<HTMLDivElement>) {
