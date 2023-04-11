@@ -40,9 +40,9 @@ export const columnsActions = {
 			try {
 				const payload: PayloadForDeleteColumn = {
 					columnIds: data.columnIds,
-					columnId:	data.columnId
+					columnId: data.columnId
 				}
-				 dispatch(ColumnAC.deleteColumnAC(payload))
+				dispatch(ColumnAC.deleteColumnAC(payload))
 			} catch (e) {
 				Notification.error('Произошла ошибка удаления колонки')
 			}
@@ -61,19 +61,14 @@ export const columnsActions = {
 		(payload: PayloadForDropCard) =>
 			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 				try {
-					// console.log({ payload })
-
 					const { targetColumnId, currentCardId, targetCardId } = payload
 					const { board } = getState()
 					const targetColumn = board.allColumns[targetColumnId]
-					// удалить из currentColumnId перетаскиваемую карточку
 					if (
-						(currentCardId === targetCardId && targetColumn.cards.length !== 0 ) || //перенос в пределах одной колонки
-						(targetCardId === '' && targetColumn.cards.length !== 0) //перенос в пустую колонку
+						(currentCardId === targetCardId && targetColumn.cards.length !== 0) ||
+						(targetCardId === '' && targetColumn.cards.length !== 0)
 					) {
 					} else {
-
-						// await ColumnsApi.dragDropCard(payload)
 						dispatch(ColumnAC.dropCard(payload))
 					}
 				} catch (error) {

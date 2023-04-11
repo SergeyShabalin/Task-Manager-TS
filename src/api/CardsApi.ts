@@ -3,9 +3,6 @@ import { Card } from '@/models/Cards'
 import { AxiosResponse } from 'axios'
 
 class CardsApi {
-	async addCard(columnId: string, title: string): Promise<AxiosResponse<Card>> {
-		return Api.post(`/cards/`, { title, column_id: columnId, description: '' })
-	}
 	async delete(cardId: string) {
 		return Api.delete(`/cards/${cardId}`)
 	}
