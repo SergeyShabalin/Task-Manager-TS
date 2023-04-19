@@ -65,10 +65,12 @@ export const columnsActions = {
 					const { board } = getState()
 					const targetColumn = board.allColumns[targetColumnId]
 					if (
-						(currentCardId === targetCardId && targetColumn.cards.length !== 0) ||
-						(targetCardId === '' && targetColumn.cards.length !== 0)
+						(currentCardId === targetCardId && targetColumn.cards.length !== 0) || //перенос в пределах одной колонки
+						(targetCardId === '' && targetColumn.cards.length !== 0) //перенос в пустую колонку
 					) {
 					} else {
+
+						// await ColumnsApi.dragDropCard(payload)
 						dispatch(ColumnAC.dropCard(payload))
 					}
 				} catch (error) {
@@ -89,7 +91,6 @@ export const cardActions = {
 	deleteCard:
 		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
-				await CardsApi.delete(cardId)
 				const { board } = getState()
 				const columnId = board.allCards[cardId].column_id
 				const currentColumn = board.allColumns[columnId]

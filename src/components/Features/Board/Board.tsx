@@ -10,7 +10,7 @@ import classes from './Board.module.css'
 
 
 export default function Board() {
-	const { getCurrentBoard, addNewColumn, deleteColumn, changeColumn, addNewCard, dragAndDropCard} = useActions()
+	const { getCurrentBoard, addNewColumn, deleteColumn, changeColumn, addNewCard, dragAndDropCard, deleteCard} = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const { changeBoard } = useActions()
@@ -42,6 +42,9 @@ export default function Board() {
 		})
 		socket?.on('CARD_DROPPED', dataForDropCard => {
 			dragAndDropCard(dataForDropCard)
+		})
+		socket?.on('CARD_DELETED', cardId => {
+			deleteCard(cardId)
 		})
 	}, [socket])
 

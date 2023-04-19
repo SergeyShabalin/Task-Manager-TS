@@ -9,6 +9,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import Description from '@/components/Features/MiniCard/Description'
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
 import classes from './MiniCard.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 export default function MiniCard({
 	title,
@@ -18,14 +19,18 @@ export default function MiniCard({
 	decisionDate,
 	description
 }: Card) {
-	const { deleteCard } = useActions()
 	const { userId, boardId } = useParams()
 	const location = useLocation()
 	const [isOpenContext, setIsOpenContext] = useState(false)
+	const socket = useTypedSelector(({ user }) => user.socket)
 
 	function cardDelete() {
 		const confirm = window.confirm('Удалить карточку?')
-		if (confirm) deleteCard(_id)
+		if (confirm) {
+			socket?.emit('CARD_DELETE', _id)
+			console.log(_id)
+			// deleteCard(_id)
+		}
 	}
 
 	function contextClose() {
