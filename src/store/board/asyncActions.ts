@@ -106,8 +106,8 @@ export const cardActions = {
 		},
 	changeCard: (payload: Partial<Card>) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			const { data } = await CardsApi.change(payload)
-			dispatch(CardAC.changeCardAC(data))
+			// const { data } = await CardsApi.change(payload)
+			dispatch(CardAC.changeCardAC(payload))
 			return true
 		} catch (e) {
 			Notification.error('Произошла ошибка изменения карточки')

@@ -6,6 +6,7 @@ import { Editor } from '@Features'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Card } from '@/models/Cards'
 import classes from './Header.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 type CardProps = Pick<Card, 'title' | '_id'>
 
@@ -14,12 +15,13 @@ interface HeaderProps extends CardProps {
 }
 
 export default function Header({ closeModal, title, _id }: HeaderProps) {
-	const { changeCard } = useActions()
+	const socket = useTypedSelector(state => state.user.socket)
 
 	function changeCardTitle(title: string) {
 		const payload = { _id, title }
-		const isSuccess = changeCard(payload)
-		return isSuccess
+		if(socket?.emit('CARD_TITLE_CHANGE', payload)){
+			return true
+		}
 	}
 
 	return (

@@ -17,6 +17,7 @@ export default function Card() {
 	const isLoading = useTypedSelector(state => state.board.isLoadingCard)
 	const { getOneCard, closeCard } = useActions()
 
+
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
 	}, [])

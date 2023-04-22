@@ -13,7 +13,6 @@ import classes from './Column.module.css'
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
-	const { dragAndDropCard } = useActions()
 	const allCards = useTypedSelector(({ board }) => board.allCards)
 	const socket = useTypedSelector(({ user }) => user.socket)
 
@@ -62,7 +61,6 @@ export default function Column({ title, cards, _id }: ColumnT) {
 			targetCardId
 		}
 		socket?.emit('CARD_DROP', dataForDropCard)
-		// dragAndDropCard(payload)
 	}
 
 	function onDragLeaveCard(e: React.DragEvent<HTMLDivElement>) {

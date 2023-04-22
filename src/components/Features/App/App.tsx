@@ -17,6 +17,7 @@ function App() {
 	const location = useLocation()
 	const background = location.state && location.state.background
 	const isAuth = useTypedSelector(state => state.user.isAuth)
+	const user = useTypedSelector(state => state.user)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { checkLogin } = useActions()
@@ -25,7 +26,9 @@ function App() {
 	useEffect(() => {
 		const token = localStorage.getItem('token')
 		if (token) {
+			// const userId = localStorage.getItem('userId')
 			checkLogin()
+			// navigate(`/user/${userId}`)
 		} else {
 			const payload = {
 				user: {},

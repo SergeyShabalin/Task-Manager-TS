@@ -28,6 +28,7 @@ export const usersActions = {
 				const { data } = await UsersApi.registration(payload)
 				const dataUser = data
 				localStorage.setItem('token', data.token)
+				localStorage.setItem('userId', data._id)
 				dispatch(UserAC.registration(dataUser))
 				return data._id
 			}
@@ -41,6 +42,7 @@ export const usersActions = {
 		try {
 			const { data } = await UsersApi.loginCheck()
 			dispatch(UserAC.checkLogin(data))
+			return data._id
 		} catch (e) {
 			Notification.error('произошла ошибка проверки аккаунта')
 		}
@@ -49,6 +51,7 @@ export const usersActions = {
 		try {
 			const { data } = await UsersApi.login(payload)
 			localStorage.setItem('token', data.token)
+			localStorage.setItem('userId', data._id)
 			dispatch(UserAC.login(data))
 			return data._id
 		} catch (e) {
