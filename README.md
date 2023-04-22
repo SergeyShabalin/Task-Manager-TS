@@ -1,4 +1,6 @@
 ﻿# Task-Manager-TS
+https://user-images.githubusercontent.com/95097311/224496297-45df0a72-7d94-40a7-96f8-80301f221d94.mp4
+
 Данный проект является аналогом Trello.
 Стек  - React(hooks), typescript, redux(thunk), css module.
 На данный момент реализовано:
@@ -24,5 +26,5 @@
 - Добавлены лоадеры на загрузку досок, текущей доски и подробной информации карточки
 - Изменён дизайн контекстного меню колонки
 
-https://user-images.githubusercontent.com/95097311/224496297-45df0a72-7d94-40a7-96f8-80301f221d94.mp4
+
 
