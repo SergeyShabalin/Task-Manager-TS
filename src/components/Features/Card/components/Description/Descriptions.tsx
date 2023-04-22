@@ -5,16 +5,18 @@ import classes from './Description.module.css'
 import { Editor } from '@Features'
 import { Card } from '@/models/Cards'
 import { useActions } from '@/hooks/useActions/useActions'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 type DescriptionProps = Pick<Card, 'description' | '_id'>
 
 export default function Description({ description, _id }: DescriptionProps) {
-	const { changeCard } = useActions()
+	const socket = useTypedSelector(state => state.user.socket)
 
 	function changeDescription(description: string) {
 		const payload = { _id, description }
-		const isSuccess = changeCard(payload)
-		return isSuccess
+		if (socket?.emit('CARD_CHANGE', payload)) {
+			return true
+		}
 	}
 
 	return (

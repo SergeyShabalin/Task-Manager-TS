@@ -12,6 +12,7 @@ import useOpenClose from '@/hooks/UseOpenClose'
 import { useActions } from '@/hooks/useActions/useActions'
 import { Card } from '@/models/Cards'
 import classes from './Deadline.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 type DeadlineProps = Pick<Card, 'decisionDate' | '_id'>
 
@@ -20,19 +21,20 @@ const emptyDateText = 'Установить срок'
 export default function Deadline({ decisionDate, _id }: DeadlineProps) {
 	const datePickerRef = useRef(null)
 	const { onOpen, onClose, isOpen } = useOpenClose()
-	const { changeCard } = useActions()
+	const socket = useTypedSelector(state => state.user.socket)
 
 	useOnClickOutside(datePickerRef, onClose)
 
 	function handleChange(decisionDate: Date) {
 		const payload = { _id, decisionDate }
-		changeCard(payload)
-		onClose()
+		if (socket?.emit('CARD_CHANGE', payload)) {
+			onClose()
+		}
 	}
 
 	function deleteDate() {
 		const payload = { _id, decisionDate: null }
-		changeCard(payload)
+		socket?.emit('CARD_CHANGE', payload)
 	}
 
 	const convertDateTime = decisionDate

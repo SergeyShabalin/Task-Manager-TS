@@ -46,7 +46,7 @@ export default function Board() {
 		socket?.on('CARD_DELETED', cardId => {
 			deleteCard(cardId)
 		})
-		socket?.on('CARD_TITLE_CHANGED', card => {
+		socket?.on('CARD_CHANGED', card => {
 			return changeCard(card)
 		})
 	}, [socket])

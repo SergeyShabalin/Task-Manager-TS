@@ -19,7 +19,7 @@ export default function Header({ closeModal, title, _id }: HeaderProps) {
 
 	function changeCardTitle(title: string) {
 		const payload = { _id, title }
-		if(socket?.emit('CARD_TITLE_CHANGE', payload)){
+		if(socket?.emit('CARD_CHANGE', payload)){
 			return true
 		}
 	}
