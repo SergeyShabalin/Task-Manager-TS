@@ -12,7 +12,7 @@ import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Col
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
-import { PayloadForChangedTask } from '@/models/CheckList'
+import { PayloadForChangedTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
@@ -106,7 +106,6 @@ export const cardActions = {
 		},
 	changeCard: (payload: Partial<Card>) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			// const { data } = await CardsApi.change(payload)
 			dispatch(CardAC.changeCardAC(payload))
 			return true
 		} catch (e) {
@@ -182,9 +181,10 @@ export const boardActions = {
 }
 
 export const checklistActions = {
-	addNewTask: (cardId: string, taskTitle: string) => async (dispatch: Dispatch<BoardActions>) => {
+	addNewTask: (data: PromiseChecklist) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			const { data } = await CheckListApi.addTask(cardId, taskTitle)
+			console.log(data)
+			// const { data } = await CheckListApi.addTask(cardId, taskTitle)
 			dispatch(ChecklistAC.addNewTaskAC(data.task))
 			dispatch(CardAC.changeCardAC(data.card))
 			return true

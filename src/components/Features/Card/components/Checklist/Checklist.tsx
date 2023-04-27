@@ -8,14 +8,24 @@ import { useActions } from '@/hooks/useActions/useActions'
 import Task from '@/components/Features/Card/components/Checklist/Task'
 
 import classes from './CheckList.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 type ChecklistProps = Pick<Card, 'doneTask' | 'countTask' | 'checkList' | '_id'>
 
 export default function Checklist({ doneTask, countTask, _id, checkList }: ChecklistProps) {
 	const { addNewTask } = useActions()
+	const socket = useTypedSelector(state => state.user.socket)
 
 	function addTask(value: string) {
-		if (_id) return addNewTask(_id, value)
+
+		if (_id){
+			const payload = {
+				cardId: _id,
+				task: value
+			}
+			socket?.emit('TASK_ADD', payload)
+		}
+		 // return addNewTask(_id, value)
 	}
 
 	return (

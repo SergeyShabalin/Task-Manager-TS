@@ -10,7 +10,7 @@ import classes from './Board.module.css'
 
 
 export default function Board() {
-	const { getCurrentBoard, addNewColumn, deleteColumn, changeColumn, addNewCard, dragAndDropCard, deleteCard, changeCard} = useActions()
+	const { getCurrentBoard, addNewColumn, deleteColumn, changeColumn, addNewCard, dragAndDropCard, deleteCard, changeCard, addNewTask} = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
 	const { changeBoard } = useActions()
@@ -48,6 +48,9 @@ export default function Board() {
 		})
 		socket?.on('CARD_CHANGED', card => {
 			return changeCard(card)
+		})
+		socket?.on('TASK_ADDED', dataForAddTask => {
+			return addNewTask(dataForAddTask)
 		})
 	}, [socket])
 

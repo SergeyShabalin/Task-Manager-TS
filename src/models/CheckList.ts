@@ -26,6 +26,8 @@ export interface PayloadForChangedTask {
 	cardId: string
 }
 
+
+
 export interface AddNewTask extends Action<CHECKLIST_TYPES.ADD_NEW_TASK> {
 	payload: CheckList
 }
