@@ -26,7 +26,12 @@ export interface PayloadForChangedTask {
 	cardId: string
 }
 
-
+export interface ChangeTaskData{
+	_id: string
+	card: Card
+	task: CheckList
+	boardId: string
+}
 
 export interface AddNewTask extends Action<CHECKLIST_TYPES.ADD_NEW_TASK> {
 	payload: CheckList

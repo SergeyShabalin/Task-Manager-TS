@@ -7,13 +7,13 @@ class CheckListApi {
 		return Api.post(`/checklist/`, { task: task, cardId: cardId })
 	}
 
-	async change(payload: PayloadForChangedTask): Promise<AxiosResponse<PromiseChecklist>> {
-		return Api.patch(`/checklist/${payload._id}`, {
-			task: payload.task,
-			done: payload.done,
-			cardId: payload.cardId
-		})
-	}
+	// async change(payload: PayloadForChangedTask): Promise<AxiosResponse<PromiseChecklist>> {
+	// 	// return Api.patch(`/checklist/${payload._id}`, {
+	// 	// 	task: payload.task,
+	// 	// 	done: payload.done,
+	// 	// 	cardId: payload.cardId
+	// 	// })
+	// }
 
 	async delete(cardId: string, taskId: string): Promise<AxiosResponse<CheckList>> {
 		return Api.delete(`/checklist/${cardId}/${taskId}`)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { RiTrelloFill } from 'react-icons/ri'

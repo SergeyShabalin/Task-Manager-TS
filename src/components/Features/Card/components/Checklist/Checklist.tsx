@@ -13,19 +13,17 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 type ChecklistProps = Pick<Card, 'doneTask' | 'countTask' | 'checkList' | '_id'>
 
 export default function Checklist({ doneTask, countTask, _id, checkList }: ChecklistProps) {
-	const { addNewTask } = useActions()
 	const socket = useTypedSelector(state => state.user.socket)
 
 	function addTask(value: string) {
 
-		if (_id){
+		if (_id) {
 			const payload = {
 				cardId: _id,
 				task: value
 			}
-			socket?.emit('TASK_ADD', payload)
+			if (socket?.emit('TASK_ADD', payload)) return true
 		}
-		 // return addNewTask(_id, value)
 	}
 
 	return (

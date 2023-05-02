@@ -7,10 +7,12 @@ import { Editor } from '@Features'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './CheckList.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 
 
 export default function Task({ done, _id, cardId, task }: CheckList) {
+	const socket = useTypedSelector(state => state.user.socket)
 
 	const classNameForTask = done ? classes.checkbox_title_none : classes.checkbox_title_done
 	const { changeTask, deleteTask } = useActions()
@@ -18,7 +20,8 @@ export default function Task({ done, _id, cardId, task }: CheckList) {
 	function changeTaskDone({ target }: React.ChangeEvent<HTMLInputElement>) {
 		const done = target.checked
 		const payload = { _id, done, cardId }
-		changeTask(payload)
+		socket?.emit('TASK_CHANGE', payload)
+		 // changeTask(payload)
 	}
 
 	function taskDelete() {

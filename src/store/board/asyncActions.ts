@@ -12,7 +12,7 @@ import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Col
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
-import { PayloadForChangedTask, PromiseChecklist } from '@/models/CheckList'
+import { ChangeTaskData, PayloadForChangedTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
@@ -193,16 +193,17 @@ export const checklistActions = {
 			return false
 		}
 	},
-	changeTask: (payload: PayloadForChangedTask) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	changeTask: (payload: ChangeTaskData) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
-			const { data } = await CheckListApi.change(payload)
+			// const { data } = await CheckListApi.change(payload)
+			console.log('asd')
 			const { board } = getState()
 			const newCheckList = board.cardInfo.checkList.map(task => {
-				if (task._id === payload._id) return data.task
+				if (task._id === payload._id) return payload.task
 				else return task
 			})
 			dispatch(ChecklistAC.changeTaskAC(newCheckList))
-			dispatch(CardAC.changeCardAC(data.card))
+			dispatch(CardAC.changeCardAC(payload.card))
 			return true
 		} catch (error) {
 			Notification.error('Произошла ошибка изменения задачи')
