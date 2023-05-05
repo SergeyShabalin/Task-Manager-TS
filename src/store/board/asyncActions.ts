@@ -12,7 +12,7 @@ import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Col
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
-import { ChangeTaskData, PayloadForChangedTask, PromiseChecklist } from '@/models/CheckList'
+import { ChangeTaskData, PayloadForChangedTask, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
@@ -183,8 +183,6 @@ export const boardActions = {
 export const checklistActions = {
 	addNewTask: (data: PromiseChecklist) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
-			console.log(data)
-			// const { data } = await CheckListApi.addTask(cardId, taskTitle)
 			dispatch(ChecklistAC.addNewTaskAC(data.task))
 			dispatch(CardAC.changeCardAC(data.card))
 			return true
@@ -195,11 +193,9 @@ export const checklistActions = {
 	},
 	changeTask: (payload: ChangeTaskData) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
-			// const { data } = await CheckListApi.change(payload)
-			console.log('asd')
 			const { board } = getState()
 			const newCheckList = board.cardInfo.checkList.map(task => {
-				if (task._id === payload._id) return payload.task
+				if (task._id === payload.task._id) return payload.task
 				else return task
 			})
 			dispatch(ChecklistAC.changeTaskAC(newCheckList))
@@ -211,14 +207,13 @@ export const checklistActions = {
 		}
 	},
 	deleteTask:
-		(cardId: string, taskId: string) =>
+		(payload: payloadForDeleteTask) =>
 			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 				try {
-					const { data } = await CheckListApi.delete(cardId, taskId)
 					const { board } = getState()
-					const newChecklist = board.cardInfo.checkList.filter(task => task._id !== taskId)
+					const newChecklist = board.cardInfo.checkList.filter(task => task._id !== payload.taskId)
 					dispatch(ChecklistAC.deleteTaskAC(newChecklist))
-					dispatch(CardAC.changeCardAC(data))
+					dispatch(CardAC.changeCardAC(payload.card))
 				} catch (error) {
 					Notification.error('Произошла ошибка удаления задачи')
 					return false

@@ -28,8 +28,6 @@ export default function MiniCard({
 		const confirm = window.confirm('Удалить карточку?')
 		if (confirm) {
 			socket?.emit('CARD_DELETE', _id)
-			console.log(_id)
-			// deleteCard(_id)
 		}
 	}
 

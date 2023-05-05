@@ -26,9 +26,7 @@ function App() {
 	useEffect(() => {
 		const token = localStorage.getItem('token')
 		if (token) {
-			// const userId = localStorage.getItem('userId')
 			checkLogin()
-			// navigate(`/user/${userId}`)
 		} else {
 			const payload = {
 				user: {},

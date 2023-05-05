@@ -16,7 +16,6 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 	const socket = useTypedSelector(state => state.user.socket)
 
 	function addTask(value: string) {
-
 		if (_id) {
 			const payload = {
 				cardId: _id,
