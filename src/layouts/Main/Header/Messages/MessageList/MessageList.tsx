@@ -13,9 +13,9 @@ interface MessageListProps {
 
 export default function MessageList({ onClose }: MessageListProps) {
 	const messageRef = useRef(null)
+	const messages = useTypedSelector(state => state.user.messages)
 	useOnClickOutside(messageRef, () => onClose())
 	const { userId } = useParams()
-	const messages = useTypedSelector(state => state.user.messages)
 	const { applyInvite, deleteMessage } = useActions()
 	const [isMessage, setIsMessage] = useState(false)
 

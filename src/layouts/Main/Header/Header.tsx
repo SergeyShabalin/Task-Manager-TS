@@ -54,7 +54,7 @@ export default function Header({ _id }: Partial<User>) {
 			<div className={classes.control}>
 				<Account />
 				<Messages messagesCount={messagesCount} />
-				<Logout boardId = {boardId} />
+				<Logout boardId = {boardId} userId = {_id} />
 			</div>
 		</div>
 	)

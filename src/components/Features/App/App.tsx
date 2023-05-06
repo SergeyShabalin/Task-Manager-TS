@@ -18,12 +18,15 @@ function App() {
 	const background = location.state && location.state.background
 	const isAuth = useTypedSelector(state => state.user.isAuth)
 	const user = useTypedSelector(state => state.user)
+	const socket = user.socket
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const { checkLogin } = useActions()
+	const { checkLogin, shareBoard } = useActions()
 
 
 	useEffect(() => {
+		socket?.connect()
+
 		const token = localStorage.getItem('token')
 		if (token) {
 			checkLogin()
@@ -37,6 +40,12 @@ function App() {
 		}
 	}, [])
 
+	useEffect(() => {
+		socket?.emit('JOIN_USER', user._id)
+		socket?.on('BOARD_SHARED', data => {
+			shareBoard(data)
+		})
+	}, [socket])
 
 	return (
 		<>

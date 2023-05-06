@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Button, Input } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Control.module.css'
+import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 interface ControlProps {
 	changeShare: (value: boolean) => void
@@ -13,6 +14,7 @@ interface ControlProps {
 export default function Control({ changeShare, userId, boardId }: ControlProps) {
 	const { shareBoard } = useActions()
 	const [email, setEmail] = useState('')
+	const socket = useTypedSelector(state => state.user.socket)
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setEmail(target.value)
@@ -28,9 +30,10 @@ export default function Control({ changeShare, userId, boardId }: ControlProps) 
 			_id: userId,
 			boardId
 		}
-		const targetUser = await shareBoard(payload)
-		if (!targetUser) changeShare(false)
-		else changeShare(true)
+		socket?.emit('SHARE_BOARD', payload)
+		 // const targetUser = await shareBoard(payload)
+		// if (!targetUser) changeShare(false)
+		// else changeShare(true)
 	}
 
 	return (

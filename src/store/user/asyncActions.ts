@@ -3,9 +3,10 @@ import { UserActions } from '@/store/user/reducer'
 
 import UsersApi from '@/api/UsersApi'
 import {
+	message,
 	PayloadForApplyInvite,
 	PayloadForMessageDelete,
-	PayloadForShareBoard,
+	PayloadForShareBoard, ShareBoardMessages,
 	User
 } from '@/models/Users'
 import { Notification } from '@UI'
@@ -70,10 +71,9 @@ export const usersActions = {
 			Notification.error(error.response?.data?.message)
 		}
 	},
-	shareBoard: (payload: PayloadForShareBoard) => async () => {
+	shareBoard: (payload: message[]) => async (dispatch: Dispatch<UserActions>) => {
 		try {
-			const { data } = await UsersApi.shareBoard(payload)
-			return data
+			dispatch(UserAC.shareBoard(payload))
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)

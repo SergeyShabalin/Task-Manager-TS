@@ -7,7 +7,6 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
-import { Card } from '@/models/Cards'
 
 
 export default function Board() {
@@ -33,7 +32,6 @@ export default function Board() {
 	const socket = user.socket
 
 	useEffect(() => {
-		socket?.connect()
 		socket?.emit('JOIN_BOARD', boardId)
 	}, [])
 

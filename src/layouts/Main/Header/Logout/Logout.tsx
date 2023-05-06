@@ -9,9 +9,10 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 interface LogoutProps{
 	boardId?: string
+	userId?: string
 }
 
-export default function Logout({boardId}: LogoutProps ) {
+export default function Logout({boardId, userId}: LogoutProps ) {
 	const { logOut } = useActions()
 	const navigate = useNavigate()
 	const [isHint, setIsHint] = useState(false)
@@ -28,8 +29,9 @@ export default function Logout({boardId}: LogoutProps ) {
 	function logout() {
 		const confirm = window.confirm('Выйти из учетной записи?')
 		if (confirm) {
-			logOut()
+			socket?.emit('LEAVE_USER', userId)
 			socket?.emit('LEAVE_BOARD', boardId)
+			logOut()
 			navigate(`/login`)
 		}
 	}

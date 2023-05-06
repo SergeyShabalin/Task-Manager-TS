@@ -40,7 +40,8 @@ export enum USER_TYPES {
 	CHECK_LOGIN = 'CHECK_LOGIN',
 	ADD_BOARD = 'ADD_BOARD',
 	DELETE_MESSAGE = 'DELETE_MESSAGE',
-	SOCKET_INIT = 'SOCKET_INIT'
+	SOCKET_INIT = 'SOCKET_INIT',
+	SHARE_BOARD = 'SHARE_BOARD'
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -50,13 +51,8 @@ export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
 export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 export type SocketInit = Action<USER_TYPES.SOCKET_INIT>
+export type ShareBoard = Action<USER_TYPES.SHARE_BOARD>
 
-
-export interface PayloadForShareBoard extends Partial<User> {
-	email: string
-	_id?: string
-	boardId?: string
-}
 
 export interface PayloadForApplyInvite {
 	userId?: string
@@ -91,4 +87,8 @@ export interface PayloadForDeleteMessage extends DeleteMessage {
 
 export interface PayloadForSocketInit extends SocketInit {
 	payload: Socket | null
+}
+
+export interface PayloadForShareBoard extends ShareBoard {
+	payload: message[]
 }
