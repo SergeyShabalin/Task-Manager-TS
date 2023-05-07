@@ -4,7 +4,7 @@ import {
 	AllBoardAction,
 	BackToGreeting,
 	BOARD_TYPES,
-	BoardAction,
+	BoardAction, DragDropColumn,
 	ErrorFetching,
 	FinishLoadingBoard,
 	FinishLoadingCard,
@@ -55,6 +55,7 @@ export type BoardActions =
 	| CloseCard
 	| StartLoadingCard
 	| FinishLoadingCard
+	| DragDropColumn
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -86,6 +87,11 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			return {
 				...state,
 				currentBoard: action.payload
+			}
+		case BOARD_TYPES.DRAG_DROP_COLUMN:
+			return {
+				...state,
+				currentBoard: {...state.currentBoard, columns: action.payload}
 			}
 		case BOARD_TYPES.GET_ALL_BOARDS:
 			return {

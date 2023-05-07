@@ -22,7 +22,8 @@ export default function Board() {
 		changeCard,
 		addNewTask,
 		changeTask,
-		deleteTask
+		deleteTask,
+		dragDropColumn
 	} = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
@@ -69,6 +70,9 @@ export default function Board() {
 		socket?.on('TASK_DELETED',  dataForDeleteTask => {
 			 deleteTask(dataForDeleteTask)
 		})
+		socket?.on('COLUMN_DROPPED',  allColumns => {
+			dragDropColumn(allColumns)
+		})
 	}, [socket])
 
 	useEffect(() => {
@@ -110,7 +114,7 @@ export default function Board() {
 			</div>
 
 			<div className={classes.wrapper_list}>
-				<div className={classes.columns}>{columns}</div>
+				<div className={classes.columns} >{columns}</div>
 				<div className={classes.add_list}>
 					<Editor
 						buttonSubmitTitle='добавление колонки'

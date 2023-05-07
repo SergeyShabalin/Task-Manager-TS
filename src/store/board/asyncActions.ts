@@ -230,5 +230,14 @@ export const checklistActions = {
 				} catch (error) {
 					Notification.error('Произошла ошибка удаления доски')
 				}
-			}
+			},
+
+	dragDropColumn:
+		(allColumns: string[] ) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			dispatch(BoardAC.dragDropColumn(allColumns))
+		} catch (error){
+			Notification.error('Произошла ошибка перемещения колонки')
+		}
+	}
 }

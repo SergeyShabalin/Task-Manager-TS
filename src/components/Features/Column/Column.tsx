@@ -18,8 +18,8 @@ export default function Column({ title, cards, _id }: ColumnT) {
 
 
 	function addCard(value: string) {
-		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })){
-		return true
+		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })) {
+			return true
 		}
 	}
 
@@ -60,7 +60,10 @@ export default function Column({ title, cards, _id }: ColumnT) {
 			targetColumnId,
 			targetCardId
 		}
-		socket?.emit('CARD_DROP', dataForDropCard)
+
+		if (currentCardId && currentCardId && targetColumnId) {
+			socket?.emit('CARD_DROP', dataForDropCard)
+		}
 	}
 
 	function onDragLeaveCard(e: React.DragEvent<HTMLDivElement>) {
@@ -71,6 +74,24 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	function onDropCard(e: React.DragEvent<HTMLDivElement>, cardId: string) {
 		targetCardId = cardId
 	}
+
+	function onDragStartColumn(e: React.DragEvent<HTMLDivElement>, columnId: string) {
+		e.dataTransfer.setData('currentColumnId', columnId)
+	}
+
+	function onDragDropColumn(e: React.DragEvent<HTMLDivElement>, columnId: string) {
+		let currentColumnId = e.dataTransfer.getData('currentColumnId')
+		let currentCardId = e.dataTransfer.getData('cardId')
+		let targetColumnId = columnId
+		const dataForDropColumn = {
+			currentColumnId,
+			targetColumnId
+		}
+		if (!currentCardId) {
+			socket?.emit('COLUMN_DROP', dataForDropColumn)
+		}
+	}
+
 
 	const miniCards = cards?.map(id => {
 		const card = allCards[id]
@@ -89,7 +110,12 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	})
 
 	return (
-		<div className={classes.wrapper}>
+		<div
+			className={classes.wrapper}
+			draggable
+			onDragStart={e => onDragStartColumn(e, _id)}
+			onDrop={e => onDragDropColumn(e, _id)}
+		>
 			<div
 				id={_id}
 				className={classes.list_wrapper}

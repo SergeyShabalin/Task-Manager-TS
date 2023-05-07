@@ -6,7 +6,6 @@ import {
 	message,
 	PayloadForApplyInvite,
 	PayloadForMessageDelete,
-	PayloadForShareBoard, ShareBoardMessages,
 	User
 } from '@/models/Users'
 import { Notification } from '@UI'

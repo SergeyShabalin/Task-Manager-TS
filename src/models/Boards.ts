@@ -30,7 +30,8 @@ export enum BOARD_TYPES {
 	FINISH_LOADING_BOARD = 'FINISH_LOADING_BOARD',
 	BACK_TO_GREETING = 'BACK_TO_GREETING',
 	START_LOADING_CARD = 'START_LOADING_CARD',
-	FINISH_LOADING_CARD = 'FINISH_LOADING_CARD'
+	FINISH_LOADING_CARD = 'FINISH_LOADING_CARD',
+	DRAG_DROP_COLUMN = 'DRAG_DROP_COLUMN'
 }
 
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
@@ -47,6 +48,11 @@ export type FinishLoadingBoard = Action<BOARD_TYPES.FINISH_LOADING_BOARD>
 export type StartLoadingCard = Action<BOARD_TYPES.START_LOADING_CARD>
 export type FinishLoadingCard = Action<BOARD_TYPES.FINISH_LOADING_CARD>
 export type BackToGreeting = Action<BOARD_TYPES.BACK_TO_GREETING>
+export type DragDropColumn = Action<BOARD_TYPES.DRAG_DROP_COLUMN>
+
+export interface PayloadForDragDropColumn extends DragDropColumn {
+	payload: string[]
+}
 
 export interface PayloadForSuccessFetching extends SuccessFetching {
 	payload: BoardAPI

@@ -5,11 +5,13 @@ import {
 	BOARD_TYPES,
 	BoardAction,
 	BoardAPI,
+	DragDropColumn,
 	ErrorFetching,
-	FinishLoadingBoard, FinishLoadingCard,
+	FinishLoadingBoard,
+	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
-	payloadForDeleteBoard,
+	payloadForDeleteBoard, PayloadForDragDropColumn,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -62,6 +64,7 @@ export const BoardAC = {
 	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
 	startLoadingCard : () : StartLoadingCard => ({type: BOARD_TYPES.START_LOADING_CARD}),
 	finishLoadingCard : () : FinishLoadingCard => ({type: BOARD_TYPES.FINISH_LOADING_CARD}),
+	dragDropColumn : (payload : string[]) : PayloadForDragDropColumn => ({type: BOARD_TYPES.DRAG_DROP_COLUMN, payload})
 };
 
 export const ColumnAC = {
