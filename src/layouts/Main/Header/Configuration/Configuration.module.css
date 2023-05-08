@@ -1,0 +1,18 @@
+.btn_config_area{
+    position: relative;
+    display: flex;
+}
+
+.btn_config{
+    position: relative;
+    margin: 0 5px;
+}
+
+.btn_config_selected{
+    position: absolute;
+    top: 40px;
+    left: 5%;
+    background-color: #2000f5;
+    width: 90%;
+    height: 3px;
+}

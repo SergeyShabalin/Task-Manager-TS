@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { RiTrelloFill } from 'react-icons/ri'
 
@@ -14,20 +14,24 @@ import Account from '@/layouts/Main/Header/Account'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Header.module.css'
+import Configuration from '@/layouts/Main/Header/Configuration'
 
 export default function Header({ _id }: Partial<User>) {
 	const navigate = useNavigate()
 	const { userId, boardId } = useParams()
+	const url = useLocation()
 	const { getUsersOneBoard, backToGreeting } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
 	const socket = useTypedSelector(({ user }) => user.socket)
+	let configuration = url.pathname.includes('configuration')
+
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
 		if (boardId) {
 			backToGreeting(boardId)
-			if(socket) socket.emit('LEAVE_BOARD', boardId)
+			if (socket) socket.emit('LEAVE_BOARD', boardId)
 		}
 	}
 
@@ -51,10 +55,12 @@ export default function Header({ _id }: Partial<User>) {
 				</div>
 			)}
 
+			{configuration && <Configuration />}
+
 			<div className={classes.control}>
 				<Account />
 				<Messages messagesCount={messagesCount} />
-				<Logout boardId = {boardId} userId = {_id} />
+				<Logout boardId={boardId} userId={_id} />
 			</div>
 		</div>
 	)

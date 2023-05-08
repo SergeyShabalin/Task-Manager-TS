@@ -31,6 +31,10 @@ export default function Info({ closeInfo }: InfoProps) {
 		if (socket) socket.emit('LEAVE_BOARD', boardId)
 	}
 
+	function goToConfiguration(){
+		if (user._id) navigate(`/user/${user._id}/configuration/profile`)
+	}
+
 	return (
 		<div className={classes.wrapper} ref={accountRef}>
 			<h1>Учетная запись</h1>
@@ -44,6 +48,7 @@ export default function Info({ closeInfo }: InfoProps) {
 			<hr />
 			<ul>
 				<li onClick={backInGreeting}>Рабочие пространства</li>
+				<li onClick={goToConfiguration}>Настройки</li>
 				<li onClick={logout}>Выход</li>
 			</ul>
 		</div>

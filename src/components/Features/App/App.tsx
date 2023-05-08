@@ -12,6 +12,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
+import Configuration from '@/pages/configuration'
 
 function App() {
 	const location = useLocation()
@@ -60,6 +61,7 @@ function App() {
 						<Route path='/*' element={<Main />} />
 						<Route path='/user/:userId' element={<Main />} />
 						<Route path='/user/:userId/greeting' element={<Greeting />} />
+						<Route path='/user/:userId/configuration/*' element={<Configuration />} />
 						<Route path='/user/:userId/board/:boardId' element={<Main />} />
 						<Route path='/ui' element={<UiKit />} />
 						<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />

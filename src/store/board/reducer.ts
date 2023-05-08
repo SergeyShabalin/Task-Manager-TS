@@ -10,7 +10,7 @@ import {
 	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
-	payloadForDeleteBoard,
+	payloadForDeleteBoard, PayloadForDragDropColumn,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -55,7 +55,7 @@ export type BoardActions =
 	| CloseCard
 	| StartLoadingCard
 	| FinishLoadingCard
-	| DragDropColumn
+	| PayloadForDragDropColumn
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
