@@ -1,12 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classes from './Profile.module.css'
 import { AiOutlinePicture, MdAddAPhoto } from 'react-icons/all'
+import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 
 export default function Profile() {
 
 	const inputRef = useRef<HTMLInputElement>(null)
 	const inputAvatarRef = useRef<HTMLInputElement>(null)
-	const [image, setImage] = useState('')
+	const [image, setImage] = useState()
+	const [avatar, setAvatar] = useState(null)
+
 
 	function handleImageClick(){
 		inputRef.current?.click()
@@ -17,10 +20,15 @@ export default function Profile() {
 	function handleImageChange(e){
 		const file = e.target.files[0]
 		console.log(file)
+		setImage(file)
 	}
 	function handleImageAvatarChange(e){
 		const file = e.target.files[0]
 		console.log(file)
+	}
+
+	function showw(preview){
+		console.log(typeof (preview))
 	}
 
 	return (
@@ -30,6 +38,7 @@ export default function Profile() {
 				<div className={classes.title_photo}>Фото профиля и изображение обложки</div>
 				<div className={classes.wrapper_photo}>
 					<div className={classes.background} onClick={handleImageClick}>
+						{image && <img src={URL.createObjectURL(image)}/>}
 						<div className={classes.background_shadow} >
 							<div className={classes.download_title}>Загрузить новое фото </div>
 							<span className={classes.download_logo}><AiOutlinePicture/></span>
@@ -39,6 +48,7 @@ export default function Profile() {
 					<input hidden type={'file'} ref={inputRef} onChange={handleImageChange}/>
 					<input hidden type={'file'} ref={inputAvatarRef} onChange={handleImageAvatarChange}/>
 					<div className={classes.avatar} onClick={handleImageAvatarClick}>
+						{avatar && <img src={avatar}/>}
 						<div className={classes.avatar_shadow}>
 						<span className={classes.logo_avatar}><MdAddAPhoto/></span>
 						</div>
@@ -47,6 +57,8 @@ export default function Profile() {
 				</div>
 
 				<div className={classes.title_photo}>Информация о пользователе</div>
+
+				<AvatarEdit showw={showw}/>
 			</div>
 
 		</div>
