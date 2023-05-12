@@ -7,13 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import { useActions } from '@/hooks/useActions/useActions'
 
 export default function AvatarEdit() {
-
 	const user = useTypedSelector(state => state.user)
 	const navigate = useNavigate()
 	const [preview, setPreview] = useState('')
 	const { changeUser } = useActions()
-
-
 
 	function closePhoto() {
 		setPreview('')
@@ -27,34 +24,29 @@ export default function AvatarEdit() {
 		navigate(`/user/${user._id}/configuration/profile`)
 	}
 
-	function downloadPhoto(){
+	function downloadPhoto() {
 		const payload = {
 			_id: user._id,
 			avatar: preview
 		}
-	   changeUser(payload)
-		 closeModal()
-
+		changeUser(payload)
+		closeModal()
 	}
 
 	return (
 		<Modal onClose={closeModal} open>
 			<div className={classes.wrapper}>
-
 				<h1 className={classes.title}>Редактирование фото</h1>
-				<span className={classes.title_info}>Загрузите свое изображение в формате "jpg" или "jpeg"</span>
+				<span className={classes.title_info}>
+					Загрузите свое изображение в формате "jpg" или "jpeg"
+				</span>
 
 				<div className={classes.select_avatar}>
-					<Avatar
-						width={300}
-						height={300}
-						onClose={closePhoto}
-						onCrop={cropPhoto}
-					/>
+					<Avatar width={300} height={300} onClose={closePhoto} onCrop={cropPhoto} />
 				</div>
 
 				<div className={classes.preview_wrapper}>
-					{preview ?
+					{preview ? (
 						<>
 							<div className={classes.preview}>
 								<img src={preview} />
@@ -64,14 +56,23 @@ export default function AvatarEdit() {
 								<span className={classes.email}>{user.email}</span>
 							</div>
 						</>
-						: <div className={classes.appearance}>Изображение в миниатюре</div>
-					}
+					) : (
+						<div className={classes.appearance}>Изображение в миниатюре</div>
+					)}
 				</div>
 				<div className={classes.control}>
 					<div className={classes.control_btn}>
-					<div className={classes.cancel_btn}><Button title='Отменить' variant='outlined' onClick={closeModal} /></div>
-						{preview &&	<Button title='Загрузить' color='primary' variant='contained'  onClick={downloadPhoto} />}
-
+						<div className={classes.cancel_btn}>
+							<Button title='Отменить' variant='outlined' onClick={closeModal} />
+						</div>
+						{preview && (
+							<Button
+								title='Загрузить'
+								color='primary'
+								variant='contained'
+								onClick={downloadPhoto}
+							/>
+						)}
 					</div>
 				</div>
 			</div>
