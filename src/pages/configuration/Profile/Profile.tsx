@@ -60,6 +60,7 @@ export default function Profile({ userId }: ProfileProps) {
 									 src={'https://avatars.mds.yandex.net/i?id=24affb1a8027ca093f1eed6f1bd35ef10e6760b1-8340947-images-thumbs&n=13'} />
 							: <img className={classes.img} src={avatar} />
 						}
+						<div className={classes.frame_avatar}></div>
 						<div className={classes.avatar_shadow}>
 							<Link
 								state={{ background: location }}

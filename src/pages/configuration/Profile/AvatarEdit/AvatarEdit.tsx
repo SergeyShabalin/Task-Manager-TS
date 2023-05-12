@@ -69,8 +69,9 @@ export default function AvatarEdit() {
 				</div>
 				<div className={classes.control}>
 					<div className={classes.control_btn}>
-						{preview &&	<Button title='Загрузить' color='primary' variant='contained' onClick={downloadPhoto} />}
-						<Button title='Отменить' variant='outlined' onClick={closeModal} />
+					<div className={classes.cancel_btn}><Button title='Отменить' variant='outlined' onClick={closeModal} /></div>
+						{preview &&	<Button title='Загрузить' color='primary' variant='contained'  onClick={downloadPhoto} />}
+
 					</div>
 				</div>
 			</div>

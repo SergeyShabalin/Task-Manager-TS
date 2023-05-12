@@ -38,7 +38,7 @@
 }
 
 .preview_wrapper {
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 0 22px 6px rgba(0, 0, 0, 0.46);
     border-radius: 65px 10px 10px 65px;
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@
     height: 100px;
     margin: 10px 0;
     border-radius: 100%;
-    box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.31);
+    box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.45);
 }
 
 .person_info {
@@ -78,9 +78,11 @@
 
 .control_btn {
     display: flex;
-    justify-content: space-around;
-    width: 40%;
+    justify-content: right;
+}
 
+.cancel_btn{
+    margin-right: 10px;
 }
 
 .appearance {

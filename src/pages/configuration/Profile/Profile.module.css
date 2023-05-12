@@ -6,7 +6,7 @@
 .content {
     position: relative;
     margin: 0 30%;
-    max-width: 624px;
+    width: 624px;
 }
 
 .title_profile {
@@ -93,7 +93,7 @@
     width: 140px;
     height: 140px;
     border-radius: 90px;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.63);
+    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.88);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,9 +105,10 @@
 }
 
 .img{
-    width: 90%;
-    height: 90%;
+    width: 96%;
+    height: 96%;
     border-radius: 100%;
+
 }
 
 .avatar_shadow{
@@ -125,6 +126,14 @@
     transition: 0.3s ease-in-out;
     cursor: pointer;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.43);
+}
+
+.frame_avatar{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 90px;
+    box-shadow: inset 0 0 1px 6px white;
 }
 
 .logo_avatar{
