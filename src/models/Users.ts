@@ -28,6 +28,11 @@ export interface message {
 	currentBoardId: string
 }
 
+export interface payloadForShareBoard {
+	message?: message[],
+	error?: string
+}
+
 export interface error {
 error: object
 }

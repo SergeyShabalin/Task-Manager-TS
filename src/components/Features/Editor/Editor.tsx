@@ -69,7 +69,6 @@ export default function Editor({
 		<div className={classes.wrapper} ref={editorRef}>
 			<Input
 				autoFocus
-				autoComplete='off'
 				rows={rows}
 				value={inputValue}
 				color={color}

@@ -42,7 +42,6 @@ export default function Login() {
 			<div className={classes.controller}>
 				<h2 className={classes.title}>Авторизация</h2>
 				<Input
-					autoComplete='off'
 					color='transparent'
 					placeholder='email'
 					name='email'
@@ -57,7 +56,6 @@ export default function Login() {
 						</div>
 					}
 					type={!isPass ? 'text' : 'password'}
-					autoComplete='off'
 					color='transparent'
 					placeholder='пароль'
 					name='password'

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Main from '@/layouts/Main'
 import UiKit from '@/components/UIKit'
@@ -10,12 +9,8 @@ import Greeting from '@/pages/greeting'
 import { Card } from '@Features'
 import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
 import Configuration from '@/pages/configuration'
-import Profile from '@/pages/configuration/Profile'
-import Email from '@/pages/configuration/Email'
-import Safety from '@/pages/configuration/Safety'
 import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 
 function App() {
@@ -24,33 +19,16 @@ function App() {
 	const isAuth = useTypedSelector(state => state.user.isAuth)
 	const user = useTypedSelector(state => state.user)
 	const socket = user.socket
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
-	const { checkLogin, shareBoard } = useActions()
+	const { checkLogin } = useActions()
 
 
 	useEffect(() => {
 		socket?.connect()
-
-		const token = localStorage.getItem('token')
-		if (token) {
-			checkLogin()
-		} else {
-			const payload = {
-				user: {},
-				isAuth: false
-			}
-			dispatch(UserAC.checkLogin(payload))
-			navigate(`/login`)
-		}
+		checkLogin()
 	}, [])
 
 	useEffect(() => {
 		socket?.emit('JOIN_USER', user._id)
-		socket?.on('BOARD_SHARED', data => {
-			shareBoard(data)
-
-		})
 	}, [socket])
 
 	return (

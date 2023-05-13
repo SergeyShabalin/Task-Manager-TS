@@ -10,7 +10,7 @@ export default function Photo() {
 	const { _id, avatar, firstName, secondName } = useTypedSelector(state => state.user)
 	const inputRef = useRef<HTMLInputElement>(null)
 	const inputAvatarRef = useRef<HTMLInputElement>(null)
-
+	const urlAvatar = 'https://live.staticflickr.com/65535/52895494468_38474d353c_m.jpg'
 	function handleImageClick() {
 		inputRef.current?.click()
 	}
@@ -19,11 +19,9 @@ export default function Photo() {
 		inputAvatarRef.current?.click()
 	}
 
-	//TOdo поправить any
-	function handleImageChange(e:  React.ChangeEvent<HTMLDivElement>) {
-		const file = e.target.files[0]
-		console.log(file)
-		setImage(file)
+	function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+		const file = e.target.files?.[0]
+		setImage(file);
 	}
 
 	function handleImageAvatarChange(e: any) {
@@ -52,9 +50,7 @@ export default function Photo() {
 					{!avatar ? (
 						<img
 							className={classes.img}
-							src={
-								'https://avatars.mds.yandex.net/i?id=24affb1a8027ca093f1eed6f1bd35ef10e6760b1-8340947-images-thumbs&n=13'
-							}
+							src={urlAvatar}
 						/>
 					) : (
 						<img className={classes.img} src={avatar} />

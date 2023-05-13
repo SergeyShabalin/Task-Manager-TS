@@ -25,7 +25,7 @@ export default function Messages({ messagesCount }: MessagesProps) {
 		<div>
 			<div className={classes.messages} onMouseOver={showHint} onMouseOut={closeHint}>
 				<Button icon={<BsBell />} onClick={onOpen} />
-				{messagesCount !== 0 && (
+				{!!messagesCount && (
 					<span className={classes.count_messages} onClick={onOpen}>
 						{messagesCount}
 					</span>

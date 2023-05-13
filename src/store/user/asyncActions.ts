@@ -6,7 +6,7 @@ import {
 	error,
 	message,
 	PayloadForApplyInvite,
-	PayloadForMessageDelete,
+	PayloadForMessageDelete, payloadForShareBoard,
 	User
 } from '@/models/Users'
 import { Notification } from '@UI'
@@ -40,10 +40,17 @@ export const usersActions = {
 		}
 	},
 	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
+		let payload: Partial<{ user: User | null; isAuth: boolean }> = {
+			user: null,
+			isAuth: false
+		}
 		try {
-			const { data } = await UsersApi.loginCheck()
-			dispatch(UserAC.checkLogin(data))
-			return data._id
+			const token = localStorage.getItem('token')
+			if (token) {
+				const { data } = await UsersApi.loginCheck()
+				payload = data
+			}
+			dispatch(UserAC.checkLogin(payload))
 		} catch (e) {
 			Notification.error('произошла ошибка проверки аккаунта')
 		}
@@ -71,7 +78,8 @@ export const usersActions = {
 			Notification.error(error.response?.data?.message)
 		}
 	},
-	shareBoard: (payload: message[]) => async (dispatch: Dispatch<UserActions>) => {
+
+	shareBoard: (payload:payloadForShareBoard) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			if (payload.error) {
 				const message = payload.error
@@ -80,7 +88,6 @@ export const usersActions = {
 				dispatch(UserAC.shareBoard(payload))
 				return true
 			}
-			
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
@@ -117,11 +124,11 @@ export const usersActions = {
 	},
 
 	changeUser: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
-		try{
-			const {data} = await UsersApi.changeUser(payload)
+		try {
+			const { data } = await UsersApi.changeUser(payload)
 			dispatch(UserAC.updateUser(data))
 			return true
-		} catch (e){
+		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
 		}

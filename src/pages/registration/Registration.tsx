@@ -49,7 +49,6 @@ export default function Registration() {
 			<div className={classes.controller}>
 				<h2 className={classes.title}>Регистрация</h2>
 				<Input
-					autoComplete='off'
 					color='transparent'
 					placeholder='фамилия'
 					name='secondName'
@@ -57,7 +56,6 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					autoComplete='off'
 					color='transparent'
 					placeholder='имя'
 					name='firstName'
@@ -65,7 +63,6 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					autoComplete='off'
 					color='transparent'
 					placeholder='отчество'
 					name='lastName'
@@ -73,7 +70,6 @@ export default function Registration() {
 					onChange={onSubmit}
 				/>
 				<Input
-					autoComplete='off'
 					color='transparent'
 					placeholder='email'
 					name='email'
@@ -87,7 +83,6 @@ export default function Registration() {
 						</div>
 					}
 					type={!isPass ? 'text' : 'password'}
-					autoComplete='off'
 					color='transparent'
 					placeholder='пароль'
 					name='password'

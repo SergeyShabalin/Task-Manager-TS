@@ -1,96 +1,94 @@
 .wrapper {
-    background: #ffffff;
-    padding: 10px;
-    border-radius: 20px;
-    min-height: 65vh;
-    min-width: 540px;
-
+	background: #ffffff;
+	padding: 10px;
+	border-radius: 20px;
+	min-height: 65vh;
+	min-width: 540px;
 }
 
 .title {
-    font-size: 20px;
-    padding: 5px 15px;
+	font-size: 20px;
+	padding: 5px 15px;
 }
 
 .title_info {
-    padding: 0 15px;
-    color: #6c6767;
+	padding: 0 15px;
+	color: #6c6767;
 }
 
 .frame {
-    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.34);
+	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.34);
 }
 
 .select_avatar {
-    display: flex;
-    width: 500px;
-    height: 305px;
-    margin: 20px;
-    padding: 20px 5px;
-    justify-content: center;
-    position: relative;
-
+	display: flex;
+	width: 500px;
+	height: 305px;
+	margin: 20px;
+	padding: 20px 5px;
+	justify-content: center;
+	position: relative;
 }
 
 .select_avatar:hover .shadow {
-    visibility: initial;
-    opacity: 100%;
+	visibility: initial;
+	opacity: 100%;
 }
 
 .preview_wrapper {
-    box-shadow: 0 0 22px 6px rgba(0, 0, 0, 0.46);
-    border-radius: 65px 10px 10px 65px;
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    margin: 15px;
-    height: 110px;
+	box-shadow: 0 0 22px 6px rgba(0, 0, 0, 0.46);
+	border-radius: 65px 10px 10px 65px;
+	display: flex;
+	align-items: center;
+	padding: 5px 10px;
+	margin: 15px;
+	height: 110px;
 }
 
 .preview {
-    display: flex;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-    margin: 10px 0;
-    border-radius: 100%;
-    box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.45);
+	display: flex;
+	justify-content: center;
+	width: 100px;
+	height: 100px;
+	margin: 10px 0;
+	border-radius: 100%;
+	box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.45);
 }
 
 .person_info {
-    padding-left: 20px;
+	padding-left: 20px;
 }
 
 .name {
-    color: #060641;
-    font-size: 26px;
+	color: #060641;
+	font-size: 26px;
 }
 
 .email {
-    font-style: italic;
-    font-size: 20px;
+	font-style: italic;
+	font-size: 20px;
 }
 
 .control {
-    display: flex;
-    justify-content: right;
+	display: flex;
+	justify-content: right;
 }
 
 .control_btn {
-    display: flex;
-    justify-content: right;
+	display: flex;
+	justify-content: right;
 }
 
-.cancel_btn{
-    margin-right: 10px;
+.cancel_btn {
+	margin-right: 10px;
 }
 
 .appearance {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: rgba(0, 0, 0, 0.44);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+	color: rgba(0, 0, 0, 0.44);
 }

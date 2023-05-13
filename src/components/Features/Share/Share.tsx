@@ -21,6 +21,7 @@ export default function Share({ onClose }: ShareProps) {
 
 	function changeShare(value: boolean) {
 		setIsShare(value)
+		//TODO
 		setTimeout(() => setIsShare(false), 5000)
 	}
 
@@ -34,8 +35,7 @@ export default function Share({ onClose }: ShareProps) {
 					<span className={classes.user_span}>Текущие пользователи</span>
 					<div className={classes.users}>
 						<div className={classes.user_list}>
-							{users?.map(user => {
-								return (
+							{users?.map(user => (
 									<div className={classes.user} key={user._id}>
 										<div className={classes.avatar_wrapper}>
 											{user.avatar
@@ -51,8 +51,7 @@ export default function Share({ onClose }: ShareProps) {
 											</div>
 										</div>
 									</div>
-								)
-							})}
+								))}
 						</div>
 					</div>
 				</div>

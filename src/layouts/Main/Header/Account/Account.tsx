@@ -12,6 +12,7 @@ export default function Account() {
 	function closeInfo() {
 		setIsAccount(false)
 	}
+
 	function openInfo() {
 		setIsAccount(true)
 	}
@@ -19,6 +20,7 @@ export default function Account() {
 	function showHint() {
 		setIsHint(true)
 	}
+
 	function closeHint() {
 		setIsHint(false)
 	}

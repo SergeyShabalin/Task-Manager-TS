@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import { useActions } from '@/hooks/useActions/useActions'
 
 export default function AvatarEdit() {
-	const user = useTypedSelector(state => state.user)
-	const navigate = useNavigate()
+	const user = useTypedSelector(state => state.user),
+		navigate = useNavigate()
+
 	const [preview, setPreview] = useState('')
+
 	const { changeUser } = useActions()
 
 	function closePhoto() {
@@ -24,12 +26,12 @@ export default function AvatarEdit() {
 		navigate(`/user/${user._id}/configuration/profile`)
 	}
 
-	function downloadPhoto() {
+	async function downloadPhoto() {
 		const payload = {
 			_id: user._id,
 			avatar: preview
 		}
-		changeUser(payload)
+		await changeUser(payload)
 		closeModal()
 	}
 
@@ -42,7 +44,25 @@ export default function AvatarEdit() {
 				</span>
 
 				<div className={classes.select_avatar}>
-					<Avatar width={300} height={300} onClose={closePhoto} onCrop={cropPhoto} />
+					<Avatar
+						label='Выберите фото'
+						labelStyle={{
+							fontSize: '20px',
+							color: '#7a869A',
+							cursor: 'pointer',
+							padding: '75px',
+							height: '100%'
+						}}
+						cropColor={'yellow'}
+						shadingOpacity={0.75}
+						closeIconColor={'yellow'}
+						exportQuality={1}
+						shadingColor={'black'}
+						width={300}
+						height={300}
+						onClose={closePhoto}
+						onCrop={cropPhoto}
+					/>
 				</div>
 
 				<div className={classes.preview_wrapper}>
@@ -60,6 +80,7 @@ export default function AvatarEdit() {
 						<div className={classes.appearance}>Изображение в миниатюре</div>
 					)}
 				</div>
+
 				<div className={classes.control}>
 					<div className={classes.control_btn}>
 						<div className={classes.cancel_btn}>

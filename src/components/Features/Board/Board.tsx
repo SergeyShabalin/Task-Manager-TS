@@ -7,23 +7,11 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
-
+import useSocketOn from '@/hooks/useSocketOn'
 
 export default function Board() {
 	const {
-		getCurrentBoard,
-		changeBoard,
-		addNewColumn,
-		deleteColumn,
-		changeColumn,
-		addNewCard,
-		dragAndDropCard,
-		deleteCard,
-		changeCard,
-		addNewTask,
-		changeTask,
-		deleteTask,
-		dragDropColumn
+		getCurrentBoard
 	} = useActions()
 	const allColumns = useTypedSelector(state => state.board.allColumns)
 	const board = useTypedSelector(state => state.board.currentBoard)
@@ -31,49 +19,11 @@ export default function Board() {
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
 	const socket = user.socket
+	useSocketOn(socket)
 
 	useEffect(() => {
 		socket?.emit('JOIN_BOARD', boardId)
 	}, [])
-
-	useEffect(() => {
-		socket?.on('COLUMN_ADDED', newColumn => {
-			addNewColumn(newColumn)
-		})
-		socket?.on('COLUMN_DELETED', data => {
-			 deleteColumn(data)
-		})
-		socket?.on('COLUMN_CHANGED', data => {
-			changeColumn(data)
-		})
-		socket?.on('BOARD_CHANGED', newBoard => {
-			return	changeBoard(newBoard)
-		})
-		socket?.on('CARD_ADDED', newCard => {
-			addNewCard(newCard)
-		})
-		socket?.on('CARD_DROPPED', dataForDropCard => {
-			dragAndDropCard(dataForDropCard)
-		})
-		socket?.on('CARD_DELETED', cardId => {
-			deleteCard(cardId)
-		})
-		socket?.on('CARD_CHANGED', card => {
-			return changeCard(card)
-		})
-		socket?.on('TASK_ADDED', dataForAddTask => {
-			return addNewTask(dataForAddTask)
-		})
-		socket?.on('TASK_CHANGED', changedTask => {
-		return	changeTask(changedTask)
-		})
-		socket?.on('TASK_DELETED',  dataForDeleteTask => {
-			 deleteTask(dataForDeleteTask)
-		})
-		socket?.on('COLUMN_DROPPED',  allColumns => {
-			dragDropColumn(allColumns)
-		})
-	}, [socket])
 
 	useEffect(() => {
 		if (boardId) getCurrentBoard(boardId)
@@ -114,7 +64,7 @@ export default function Board() {
 			</div>
 
 			<div className={classes.wrapper_list}>
-				<div className={classes.columns} >{columns}</div>
+				<div className={classes.columns}>{columns}</div>
 				<div className={classes.add_list}>
 					<Editor
 						buttonSubmitTitle='добавление колонки'

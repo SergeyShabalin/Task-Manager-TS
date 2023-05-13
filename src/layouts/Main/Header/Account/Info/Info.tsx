@@ -27,7 +27,7 @@ export default function Info({ closeInfo }: InfoProps) {
 
 	function logout() {
 		logOut()
-		navigate(`/login`)
+		// navigate(`/login`)
 		if (socket) socket.emit('LEAVE_BOARD', boardId)
 	}
 

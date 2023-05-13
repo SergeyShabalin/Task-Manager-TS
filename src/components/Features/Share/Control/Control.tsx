@@ -39,7 +39,6 @@ export default function Control({ changeShare, userId, boardId }: ControlProps) 
 			<div className={classes.input}>
 				<Input
 					autoFocus
-					autoComplete='off'
 					rows={1}
 					defaultValue={email}
 					color='outlined'
