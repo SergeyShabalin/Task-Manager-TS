@@ -1,7 +1,8 @@
 import React from 'react'
 import classes from './Configuration.module.css'
 import { Button } from '@UI'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Route, Routes, useNavigate, useParams } from 'react-router-dom'
+import Profile from '@/pages/configuration/Profile'
 
 export default function Configuration(){
 

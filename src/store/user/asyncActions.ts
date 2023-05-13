@@ -3,6 +3,7 @@ import { UserActions } from '@/store/user/reducer'
 
 import UsersApi from '@/api/UsersApi'
 import {
+	error,
 	message,
 	PayloadForApplyInvite,
 	PayloadForMessageDelete,
@@ -72,7 +73,14 @@ export const usersActions = {
 	},
 	shareBoard: (payload: message[]) => async (dispatch: Dispatch<UserActions>) => {
 		try {
-			dispatch(UserAC.shareBoard(payload))
+			if (payload.error) {
+				const message = payload.error
+				Notification.error(message)
+			} else {
+				dispatch(UserAC.shareBoard(payload))
+				return true
+			}
+			
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
@@ -103,6 +111,17 @@ export const usersActions = {
 			const { data } = await UsersApi.deleteMessage(payload)
 			dispatch(UserAC.deleteMessage(data))
 		} catch (e) {
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
+		}
+	},
+
+	changeUser: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
+		try{
+			const {data} = await UsersApi.changeUser(payload)
+			dispatch(UserAC.updateUser(data))
+			return true
+		} catch (e){
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
 		}

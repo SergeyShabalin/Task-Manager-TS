@@ -79,6 +79,7 @@ export interface UsersInShare {
 	email: string
 	firstName: string
 	secondName: string
+	avatar: string
 }
 
 export interface BoardState extends BoardAPI {

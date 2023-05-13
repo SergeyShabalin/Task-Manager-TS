@@ -21,6 +21,9 @@
 .input.transparent {
     color: #f5f1f1;
 }
+.input.blue {
+    color: #596375;
+}
 
 .input.outlined {
     color: #2b4f72;
@@ -45,6 +48,10 @@
 .input_container.outlined {
     background-color: var(--input-container-background-color-transparent);
     border: 2px solid #5d9ac2;
+}
+.input_container.blue {
+    background-color: var(--input-container-background-color-blue);
+    box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.33);
 }
 
 .text_area {

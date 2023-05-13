@@ -12,6 +12,7 @@ export interface User {
 	messages: message[]
 	token: string
 	isAuth: boolean
+	avatar: string
 	socket:  Socket | null
 }
 
@@ -25,6 +26,10 @@ export interface UserForBoard {
 export interface message {
 	message: string
 	currentBoardId: string
+}
+
+export interface error {
+error: object
 }
 
 export interface UserState extends User {
@@ -41,7 +46,8 @@ export enum USER_TYPES {
 	ADD_BOARD = 'ADD_BOARD',
 	DELETE_MESSAGE = 'DELETE_MESSAGE',
 	SOCKET_INIT = 'SOCKET_INIT',
-	SHARE_BOARD = 'SHARE_BOARD'
+	SHARE_BOARD = 'SHARE_BOARD',
+	CHANGE_USER = 'CHANGE_USER',
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -52,6 +58,8 @@ export type AddBoard = Action<USER_TYPES.ADD_BOARD>
 export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 export type SocketInit = Action<USER_TYPES.SOCKET_INIT>
 export type ShareBoard = Action<USER_TYPES.SHARE_BOARD>
+export type ChangeUser = Action<USER_TYPES.CHANGE_USER>
+
 
 
 export interface PayloadForApplyInvite {
@@ -90,5 +98,9 @@ export interface PayloadForSocketInit extends SocketInit {
 }
 
 export interface PayloadForShareBoard extends ShareBoard {
-	payload: message[]
+	payload: message[] | boolean
+}
+
+export interface PayloadForChangeUser extends ChangeUser {
+	payload: Partial<User>
 }

@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Profile from '@/pages/configuration/Profile'
 import Email from '@/pages/configuration/Email'
 import Safety from '@/pages/configuration/Safety'
 import classes from './Main.module.css'
 
-export default function Main(page: string){
+interface MainProps {
+	profile: boolean
+	email: boolean
+	safety: boolean
+}
+
+export default function Main({ profile, email, safety }: MainProps) {
+
 
 	return (
-		<div className={classes.wrapper} >
-
-			{page === 'profile ' && <div><Profile/></div>  }
-			{page === 'email ' && <div><Email/></div>  }
-			{page === 'safety ' && <div><Safety/></div>  }
+		<div className={classes.wrapper}>
+			{profile && <Profile />}
+			{email && <Email />}
+			{safety && <Safety />}
 
 		</div>
 	)

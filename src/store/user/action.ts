@@ -1,9 +1,13 @@
 import {
-	Logout, message,
+	Logout,
+	message,
 	PayloadForAddBoard,
 	PayloadForAuthentication,
+	PayloadForChangeUser,
 	PayloadForCheckLogin,
-	PayloadForDeleteMessage, PayloadForShareBoard, PayloadForSocketInit,
+	PayloadForDeleteMessage,
+	PayloadForShareBoard,
+	PayloadForSocketInit,
 	PayloadForStartRegistration,
 	User,
 	USER_TYPES
@@ -18,5 +22,6 @@ export const UserAC = {
 	addBoard: (payload: string) : PayloadForAddBoard=> ({type: USER_TYPES.ADD_BOARD, payload}),
 	deleteMessage: (payload: Partial<User>): PayloadForDeleteMessage => ({type: USER_TYPES.DELETE_MESSAGE,	payload}),
 	socketInit: (payload: Socket | null): PayloadForSocketInit => ({type: USER_TYPES.SOCKET_INIT,	payload}),
-	shareBoard: (payload: message[]) : PayloadForShareBoard => ({type: USER_TYPES.SHARE_BOARD, payload})
+	shareBoard: (payload: message[]) : PayloadForShareBoard => ({type: USER_TYPES.SHARE_BOARD, payload}),
+	updateUser: (payload: Partial<User>) : PayloadForChangeUser => ({type: USER_TYPES.CHANGE_USER, payload}),
 }

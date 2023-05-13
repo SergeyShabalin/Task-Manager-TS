@@ -6,8 +6,9 @@
 }
 
 .header{
-    position: -webkit-sticky;
+    /*position: -webkit-sticky;*/
     position: sticky;
+    z-index: 5;
     top: 0;
-    background: rgba(26, 26, 23, 0.96);
+    background: rgba(26, 26, 23, 0.73);
 }

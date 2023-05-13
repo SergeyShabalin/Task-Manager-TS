@@ -105,6 +105,7 @@
     --input-container-background-color-white: rgb(243, 239, 239);
     --input-container-background-color-black: rgb(30, 25, 25);
     --input-container-background-color-transparent: transparent;
+    --input-container-background-color-blue: transparent;
 
     --input-font-weight: 600;
     --input-padding: 5px;

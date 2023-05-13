@@ -13,5 +13,6 @@ export const defaultState: UserState ={
 	email: '',
 	messages: [],
 	isAuth: false,
-	socket: null
+	socket: null,
+	avatar: ''
 }

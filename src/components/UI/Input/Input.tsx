@@ -7,7 +7,7 @@ interface inputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLTe
 	iconLeft?: React.ReactNode
 	iconRight?: React.ReactNode
 	variant?: 'normal' | 'large'
-	color?: 'black' | 'white' | 'transparent' | 'outlined'
+	color?: 'black' | 'white' | 'transparent' | 'outlined' | 'blue'
 	name?: string
 	autocomplete?: string
 }

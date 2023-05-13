@@ -39,6 +39,10 @@ class UsersApi {
 	async boardDelete(boardId: string, userId: string): Promise<AxiosResponse<User>> {
 		return Api.patch('/user/deleteBoard/', { boardId, userId })
 	}
+
+	async changeUser(payload: Partial<User>): Promise<AxiosResponse<User>> {
+		return Api.patch('/user/changeUser/', payload)
+	}
 }
 
 export default new UsersApi()

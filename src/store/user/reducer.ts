@@ -2,6 +2,7 @@ import {
 	Logout,
 	PayloadForAddBoard,
 	PayloadForAuthentication,
+	PayloadForChangeUser,
 	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
 	PayloadForShareBoard,
@@ -22,11 +23,14 @@ export type UserActions =
 	| payloadForDeleteBoard
 	| PayloadForSocketInit
 	| PayloadForShareBoard
+	| PayloadForChangeUser
+
 
 export default function userReducer(state = defaultState, action: UserActions) {
 	switch (action.type) {
 		case USER_TYPES.REGISTRATION: {
-			const { boardIds, email, _id, firstName, secondName, lastName, messages } = action.payload
+			const { boardIds, email, _id, firstName, secondName, lastName, messages, avatar } =
+				action.payload
 			return {
 				...state,
 				isAuth: true,
@@ -36,11 +40,12 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				messages,
 				firstName,
 				secondName,
-				lastName
+				lastName,
+				avatar
 			}
 		}
 		case USER_TYPES.CHECK_LOGIN: {
-			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth } =
+			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth, avatar } =
 				action.payload
 			return {
 				...state,
@@ -51,11 +56,13 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				email,
 				firstName,
 				secondName,
-				lastName
+				lastName,
+				avatar
 			}
 		}
 		case USER_TYPES.AUTHENTICATION: {
-			const { boardIds, _id, email, firstName, secondName, lastName, messages, isAuth } = action.payload
+			const { boardIds, _id, email, firstName, secondName, lastName, messages, isAuth, avatar } =
+				action.payload
 			return {
 				...state,
 				isAuth: isAuth,
@@ -65,7 +72,8 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				firstName,
 				lastName,
 				messages,
-				secondName
+				secondName,
+				avatar
 			}
 		}
 		case USER_TYPES.LOGOUT: {
@@ -97,10 +105,21 @@ export default function userReducer(state = defaultState, action: UserActions) {
 		}
 		case USER_TYPES.SHARE_BOARD: {
 			return {
-				...state, messages:  action.payload
+				...state,
+				messages: action.payload
 			}
 		}
 
+		case USER_TYPES.CHANGE_USER: {
+			return {
+				...state,
+				avatar: action.payload.avatar,
+				secondName: action.payload.secondName,
+				firstName: action.payload.firstName,
+				lastName: action.payload.avatar,
+				email: action.payload.email
+			}
+		}
 
 		default:
 			return state

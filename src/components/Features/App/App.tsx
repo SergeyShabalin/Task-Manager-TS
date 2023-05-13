@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -13,6 +13,10 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { UserAC } from '@/store/user/action'
 import '../../../GlobalStyles.css'
 import Configuration from '@/pages/configuration'
+import Profile from '@/pages/configuration/Profile'
+import Email from '@/pages/configuration/Email'
+import Safety from '@/pages/configuration/Safety'
+import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 
 function App() {
 	const location = useLocation()
@@ -45,6 +49,7 @@ function App() {
 		socket?.emit('JOIN_USER', user._id)
 		socket?.on('BOARD_SHARED', data => {
 			shareBoard(data)
+
 		})
 	}, [socket])
 
@@ -70,6 +75,7 @@ function App() {
 						<Routes>
 							<Route path='/user/:userId/greeting' element={<Greeting />} />
 							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
+							<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />
 						</Routes>
 					)}
 				</>

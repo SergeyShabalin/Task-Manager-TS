@@ -39,10 +39,17 @@ export default function Info({ closeInfo }: InfoProps) {
 		<div className={classes.wrapper} ref={accountRef}>
 			<h1>Учетная запись</h1>
 			<div className={classes.info}>
-				<span className={classes.icon}>{user.email[0].toUpperCase()}</span>
-				<div className={classes.names}>
-					<div className={classes.firstName}>{user.secondName}{' '}{user.firstName}</div>
-					<div className={classes.email}>{user.email}</div>
+				<div className={classes.background}></div>
+				<div className={classes.avatar_wrapper}>
+					{user.avatar
+						? <div className={classes.avatar}><img className={classes.img} src={user.avatar} /></div>
+						: <span className={classes.icon}>{user.email[0].toUpperCase()}</span>
+					}
+				</div>
+
+				<div className={classes.user_names}>
+					<h1 className={classes.firstName}>{user.secondName}{' '}{user.firstName}</h1>
+					<span className={classes.email}>{user.email}</span>
 				</div>
 			</div>
 			<hr />
