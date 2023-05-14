@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { Button, Input } from '@UI'
-import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Control.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
-interface ControlProps {
-	changeShare: (value: boolean) => void
-	userId?: string
-	boardId?: string
-}
 
-export default function Control({ changeShare, userId, boardId }: ControlProps) {
+export default function Control() {
 	const [email, setEmail] = useState('')
 	const socket = useTypedSelector(state => state.user.socket)
+	const { userId, boardId } = useParams()
 
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -24,14 +20,13 @@ export default function Control({ changeShare, userId, boardId }: ControlProps) 
 		if (e.code === 'Enter') void sendShare()
 	}
 
-	async function sendShare() {
+	function sendShare() {
 		const payload = {
 			email,
 			_id: userId,
 			boardId
 		}
 		socket?.emit('SHARE_BOARD', payload)
-		changeShare(true)
 	}
 
 	return (
@@ -39,6 +34,7 @@ export default function Control({ changeShare, userId, boardId }: ControlProps) 
 			<div className={classes.input}>
 				<Input
 					autoFocus
+
 					rows={1}
 					defaultValue={email}
 					color='outlined'

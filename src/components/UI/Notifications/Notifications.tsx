@@ -1,20 +1,35 @@
 import React from 'react'
-import { IoWarningOutline } from 'react-icons/all'
+import { BsCheck2Square, IoWarningOutline } from 'react-icons/all'
 import { render } from 'react-dom'
 
 import classes from './Notifications.module.css'
 
 interface NotificationsTypes {
 	message: string
+	type?: 'submit' | 'error' | 'warning'
 }
 
-function Notifications({ message }: NotificationsTypes) {
+function Notifications({ message, type = 'error' }: NotificationsTypes) {
 	return (
 		<div className={classes.wrapper}>
-			<div className={classes.header}>
-				<IoWarningOutline />
-				<span className={classes.title}>Произошла ошибка!</span>
-			</div>
+			{type === 'submit' && (
+				<div className={classes.header_submit}>
+					<BsCheck2Square />
+					<span className={classes.title}>Действие выполнено!</span>
+				</div>
+			)}
+			{type === 'error' && (
+				<div className={classes.header_error}>
+					<IoWarningOutline />
+					<span className={classes.title}>Произошла ошибка!</span>
+				</div>
+			)}
+			{type === 'warning' && (
+				<div className={classes.header_warning}>
+					<IoWarningOutline />
+					<span className={classes.title}>Внимание!</span>
+				</div>
+			)}
 			<div className={classes.footer}>
 				<span className={classes.message}>{message}</span>
 			</div>
@@ -23,7 +38,7 @@ function Notifications({ message }: NotificationsTypes) {
 }
 
 export default class Notification {
-	static error(message: string) {
+	static error(message: string, type?: 'submit' | 'error' | 'warning') {
 		const time = 4000
 		const id = 'Notification' + new Date().getTime()
 		const node = document.getElementById('notification')
@@ -35,6 +50,6 @@ export default class Notification {
 				node.removeChild(root)
 			}, time)
 		}
-		render(<Notifications message={message} />, root)
+		render(<Notifications message={message} type={type} />, root)
 	}
 }

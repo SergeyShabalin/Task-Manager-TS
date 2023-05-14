@@ -24,13 +24,14 @@ export interface UserForBoard {
 }
 
 export interface message {
+	currentBoardId: string,
 	message: string
-	currentBoardId: string
 }
 
 export interface payloadForShareBoard {
-	message?: message[],
-	error?: string
+	messages?: message[],
+	error?: string,
+	submit?: string
 }
 
 export interface error {
@@ -103,7 +104,7 @@ export interface PayloadForSocketInit extends SocketInit {
 }
 
 export interface PayloadForShareBoard extends ShareBoard {
-	payload: message[] | boolean
+	payload:  message[]
 }
 
 export interface PayloadForChangeUser extends ChangeUser {

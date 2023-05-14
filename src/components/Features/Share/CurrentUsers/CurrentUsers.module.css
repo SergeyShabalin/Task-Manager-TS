@@ -1,0 +1,49 @@
+
+.user_list {
+    margin: 5px;
+}
+
+.users {
+    margin: 15px 5px;
+}
+
+.user {
+    display: flex;
+    transition: 0.3s ease-in-out;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.icon {
+    position: absolute;
+    box-shadow: inset 0 0 10px 1px #075ea4;
+    border-radius: 100%;
+    color: #15074b;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0
+}
+
+
+.avatar_wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

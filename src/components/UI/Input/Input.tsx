@@ -41,6 +41,7 @@ export default function Input({
 				{iconLeft && iconLeft}
 				<input
 					name={name}
+					autoComplete='off'
 					className={`${classes.input} ${classes[variant]} ${classes[color]}`}
 					{...props}
 				/>

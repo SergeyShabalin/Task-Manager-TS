@@ -5,15 +5,27 @@
 	color: white;
 	border-radius: 5px;
 	align-items: center;
-	z-index: 20;
+	z-index: 120;
 }
-.header {
-	background-color: rgba(211, 47, 47, 0.94);
+.header_error, .header_submit, .header_warning {
 	padding: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 5px 5px 0 0;
+}
+
+.header_error{
+	background-color: rgba(211, 47, 47, 0.94);
+}
+
+.header_submit{
+	background-color: rgba(18, 134, 121, 0.68);
+}
+
+.header_warning{
+	background-color: rgba(230, 255, 0, 0.68);
+	color: black;
 }
 
 .title {

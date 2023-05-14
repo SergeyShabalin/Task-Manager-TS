@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 export default function Photo() {
-	const [image, setImage] = useState()
+	const [image, setImage] = useState<File | undefined>();
 	const location = useLocation()
 	const { _id, avatar, firstName, secondName } = useTypedSelector(state => state.user)
 	const inputRef = useRef<HTMLInputElement>(null)
@@ -20,7 +20,7 @@ export default function Photo() {
 	}
 
 	function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
-		const file = e.target.files?.[0]
+		const file = e.target.files?.[0];
 		setImage(file);
 	}
 

@@ -20,7 +20,7 @@ export default function Header({ _id }: Partial<User>) {
 	const navigate = useNavigate()
 	const { userId, boardId } = useParams()
 	const url = useLocation()
-	const { getUsersOneBoard, backToGreeting } = useActions()
+	const {  backToGreeting } = useActions()
 	const { isOpen, onClose, onOpen } = useOpenClose()
 	const messagesCount = useTypedSelector(state => state.user.messages.length)
 	const socket = useTypedSelector(({ user }) => user.socket)
@@ -35,11 +35,6 @@ export default function Header({ _id }: Partial<User>) {
 		}
 	}
 
-	function openShare() {
-		if (boardId) getUsersOneBoard(boardId)
-		onOpen()
-	}
-
 	return (
 		<div className={classes.header}>
 			<div className={classes.logo} onClick={backInGreeting}>
@@ -50,7 +45,7 @@ export default function Header({ _id }: Partial<User>) {
 			</div>
 			{boardId && (
 				<div className={classes.share}>
-					<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={openShare} />
+					<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
 					{isOpen && <Share onClose={onClose} />}
 				</div>
 			)}

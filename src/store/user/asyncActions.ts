@@ -85,7 +85,8 @@ export const usersActions = {
 				const message = payload.error
 				Notification.error(message)
 			} else {
-				dispatch(UserAC.shareBoard(payload))
+				{payload.submit &&	Notification.error(payload.submit, 'submit')}
+				{payload.messages &&	dispatch(UserAC.shareBoard(payload.messages))}
 				return true
 			}
 		} catch (e) {
