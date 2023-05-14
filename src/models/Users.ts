@@ -78,6 +78,10 @@ export interface PayloadForMessageDelete {
 	boardId: string
 }
 
+export interface payloadForChangePassword{
+	oldPass: string
+	newPass: string
+}
 
 export interface PayloadForStartRegistration extends StartRegistration {
 	payload: Partial<User>
@@ -110,3 +114,5 @@ export interface PayloadForShareBoard extends ShareBoard {
 export interface PayloadForChangeUser extends ChangeUser {
 	payload: Partial<User>
 }
+
+

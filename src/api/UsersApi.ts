@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import {
-	PayloadForApplyInvite,
+	PayloadForApplyInvite, payloadForChangePassword,
 	PayloadForMessageDelete,
 	PayloadForShareBoard,
 	User
@@ -40,7 +40,7 @@ class UsersApi {
 		return Api.patch('/user/deleteBoard/', { boardId, userId })
 	}
 
-	async changeUser(payload: Partial<User>): Promise<AxiosResponse<User>> {
+	async changeUser(payload: Partial<User> | payloadForChangePassword): Promise<AxiosResponse<User>> {
 		return Api.patch('/user/changeUser/', payload)
 	}
 }

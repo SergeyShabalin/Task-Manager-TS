@@ -27,12 +27,11 @@ export default function Info({ closeInfo }: InfoProps) {
 
 	function logout() {
 		logOut()
-		// navigate(`/login`)
 		if (socket) socket.emit('LEAVE_BOARD', boardId)
 	}
 
 	function goToConfiguration(){
-		if (user._id) navigate(`/user/${user._id}/configuration/profile`)
+		if (user._id) navigate(`/user/${user._id}/configuration`)
 	}
 
 	return (

@@ -5,7 +5,7 @@ import UsersApi from '@/api/UsersApi'
 import {
 	error,
 	message,
-	PayloadForApplyInvite,
+	PayloadForApplyInvite, payloadForChangePassword,
 	PayloadForMessageDelete, payloadForShareBoard,
 	User
 } from '@/models/Users'
@@ -124,7 +124,7 @@ export const usersActions = {
 		}
 	},
 
-	changeUser: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
+	changeUser: (payload: Partial<User> | payloadForChangePassword ) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.changeUser(payload)
 			dispatch(UserAC.updateUser(data))

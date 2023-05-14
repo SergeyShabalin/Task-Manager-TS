@@ -14,18 +14,16 @@ import Account from '@/layouts/Main/Header/Account'
 import { useActions } from '@/hooks/useActions/useActions'
 
 import classes from './Header.module.css'
-import Configuration from '@/layouts/Main/Header/Configuration'
+
 
 export default function Header({ _id }: Partial<User>) {
-	const navigate = useNavigate()
-	const { userId, boardId } = useParams()
-	const url = useLocation()
-	const {  backToGreeting } = useActions()
-	const { isOpen, onClose, onOpen } = useOpenClose()
-	const messagesCount = useTypedSelector(state => state.user.messages.length)
-	const socket = useTypedSelector(({ user }) => user.socket)
-	let configuration = url.pathname.includes('configuration')
-
+	const navigate = useNavigate(),
+	 { userId, boardId } = useParams(),
+	 { backToGreeting } = useActions(),
+	 { isOpen, onClose, onOpen } = useOpenClose(),
+		messagesCount = useTypedSelector(state => state.user.messages.length),
+	 	socket = useTypedSelector(({ user }) => user.socket),
+		url = useLocation()
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)
@@ -49,8 +47,6 @@ export default function Header({ _id }: Partial<User>) {
 					{isOpen && <Share onClose={onClose} />}
 				</div>
 			)}
-
-			{configuration && <Configuration />}
 
 			<div className={classes.control}>
 				<Account />

@@ -17,11 +17,7 @@ export default function MessageList({ onClose }: MessageListProps) {
 	useOnClickOutside(messageRef, () => onClose())
 	const { userId } = useParams()
 	const { applyInvite, deleteMessage } = useActions()
-	// const [isMessage, setIsMessage] = useState(false)
 	const isMessage = messages.length < 1
-	// useEffect(() => {
-	// 	if (messages.length < 1) setIsMessage(true)
-	// }, [messages])
 
 	function messageDelete(boardId: string) {
 		const payload = {
