@@ -21,7 +21,7 @@ function App() {
 	const socket = user.socket
 	const { checkLogin } = useActions()
 
-
+	console.log(user)
 	useEffect(() => {
 		socket?.connect()
 		checkLogin()

@@ -116,7 +116,7 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				avatar: action.payload.avatar,
 				secondName: action.payload.secondName,
 				firstName: action.payload.firstName,
-				lastName: action.payload.avatar,
+				lastName: action.payload.lastName,
 				email: action.payload.email
 			}
 		}

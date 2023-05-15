@@ -26,12 +26,12 @@ export default function AvatarEdit() {
 		navigate(`/user/${user._id}/configuration/profile`)
 	}
 
-	async function downloadPhoto() {
+	 function downloadPhoto() {
 		const payload = {
 			_id: user._id,
 			avatar: preview
 		}
-		await changeUser(payload)
+		 changeUser(payload)
 		closeModal()
 	}
 

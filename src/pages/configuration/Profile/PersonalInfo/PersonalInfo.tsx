@@ -12,7 +12,7 @@ export default function PersonalInfo() {
 
 	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		e.preventDefault()
-
+//TODO Есть баги с отчеством, в котором содержится аватарка
 		if (!e.target) return
 
 			setForm(prev => ({
