@@ -1,0 +1,31 @@
+.wrapper {
+    background: white;
+    padding: 10px;
+    top: 20%;
+    border-radius: 20px;
+    height: 750px;
+    min-width: 640px;
+}
+
+.editor {
+    position: relative;
+    width: 960px;
+    height: 540px;
+
+    padding: 30px;
+}
+
+.img {
+    max-width: 960px;
+    height: 540px;
+}
+
+.cropped{
+    width: 640px;
+    height: 117px;
+}
+
+.cropped_img{
+    width: 624px;
+    height: 112px;
+}

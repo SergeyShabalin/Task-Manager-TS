@@ -6,14 +6,13 @@ import { useActions } from '@/hooks/useActions/useActions'
 import classes from './PersonalInfo.module.css'
 
 export default function PersonalInfo() {
-	const { secondName, lastName, firstName, _id, email, organization, department, position } = useTypedSelector(state => state.user)
+	const { secondName, lastName, firstName, _id, organization, department, position } = useTypedSelector(state => state.user)
 	const { changeUser } = useActions()
 	const [form, setForm] = useState({
 		secondName,
 		lastName,
 		firstName,
 		_id,
-		email,
 		organization,
 		department,
 		position,
@@ -88,14 +87,7 @@ export default function PersonalInfo() {
 						value={form.position}
 						onChange={onSubmit}
 					/>
-					<span className={classes.placeholder}>Email</span>
-					<Input
-						color='blue'
-						variant='large'
-						name='email'
-						value={form.email}
-						onChange={onSubmit}
-					/>
+
 				</div>
 
 				<div className={classes.btn_wrapper}>

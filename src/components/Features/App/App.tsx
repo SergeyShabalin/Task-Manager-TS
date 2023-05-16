@@ -12,6 +12,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import '../../../GlobalStyles.css'
 import Configuration from '@/pages/configuration'
 import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
+import BackgroundEdit from '@/pages/configuration/Profile/BackgroundEdit'
 
 function App() {
 	const location = useLocation()
@@ -55,6 +56,7 @@ function App() {
 							<Route path='/user/:userId/greeting' element={<Greeting />} />
 							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 							<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />
+							<Route path='/user/:userId/configuration/backgroundEdit' element={<BackgroundEdit />} />
 						</Routes>
 					)}
 				</>
