@@ -6,20 +6,28 @@ import { useActions } from '@/hooks/useActions/useActions'
 import classes from './PersonalInfo.module.css'
 
 export default function PersonalInfo() {
-	const userInfo = useTypedSelector(state => state.user)
-	const {changeUser} = useActions()
-	const [form, setForm] = useState(userInfo)
+	const { secondName, lastName, firstName, _id, email, organization, department, position } = useTypedSelector(state => state.user)
+	const { changeUser } = useActions()
+	const [form, setForm] = useState({
+		secondName,
+		lastName,
+		firstName,
+		_id,
+		email,
+		organization,
+		department,
+		position,
+	})
 
 	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		e.preventDefault()
-//TODO Есть баги с отчеством, в котором содержится аватарка
+
 		if (!e.target) return
 
-			setForm(prev => ({
-				...prev,
-				[e.target.name]: e.target.value
-			}))
-
+		setForm(prev => ({
+			...prev,
+			[e.target.name]: e.target.value
+		}))
 	}
 
 	function saveInfo(e: React.FormEvent<HTMLFormElement>) {
@@ -56,6 +64,30 @@ export default function PersonalInfo() {
 						value={form.lastName}
 						onChange={onSubmit}
 					/>
+					<span className={classes.placeholder}>Организация</span>
+					<Input
+						color='blue'
+						variant='large'
+						name='organization'
+						value={form.organization}
+						onChange={onSubmit}
+					/>
+					<span className={classes.placeholder}>Отдел</span>
+					<Input
+						color='blue'
+						variant='large'
+						name='department'
+						value={form.department}
+						onChange={onSubmit}
+					/>
+					<span className={classes.placeholder}>Должность</span>
+					<Input
+						color='blue'
+						variant='large'
+						name='position'
+						value={form.position}
+						onChange={onSubmit}
+					/>
 					<span className={classes.placeholder}>Email</span>
 					<Input
 						color='blue'
@@ -70,8 +102,8 @@ export default function PersonalInfo() {
 					<Button
 						title='Сохранить'
 						color='primary'
-						type='submit'
 						variant='contained'
+						 type='submit'
 					/>
 				</div>
 			</div>

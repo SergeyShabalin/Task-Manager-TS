@@ -127,7 +127,6 @@ export const usersActions = {
 	changeUser: (payload: Partial<User> | payloadForChangePassword ) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.changeUser(payload)
-			console.log({ data })
 			dispatch(UserAC.updateUser(data))
 			Notification.error('Данные успешно сохранены', 'submit')
 			return true

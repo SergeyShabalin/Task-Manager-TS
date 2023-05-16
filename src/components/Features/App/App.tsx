@@ -15,13 +15,14 @@ import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 
 function App() {
 	const location = useLocation()
-	const background = location.state && location.state.background
-	const isAuth = useTypedSelector(state => state.user.isAuth)
-	const user = useTypedSelector(state => state.user)
-	const socket = user.socket
 	const { checkLogin } = useActions()
+	const
+		background = location.state && location.state.background,
+		isAuth = useTypedSelector(state => state.user.isAuth),
+		user = useTypedSelector(state => state.user),
+		socket = user.socket
 
-	console.log(user)
+
 	useEffect(() => {
 		socket?.connect()
 		checkLogin()

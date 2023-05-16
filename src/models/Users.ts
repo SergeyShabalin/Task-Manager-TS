@@ -14,14 +14,13 @@ export interface User {
 	isAuth: boolean
 	avatar: string
 	socket:  Socket | null
+	background: string
+	position: string
+	department: string
+	organization: string
+	birthDate: Date
 }
 
-export interface UserForBoard {
-	_id: string
-	email: string
-	firstName: string
-	secondName: string
-}
 
 export interface message {
 	currentBoardId: string,

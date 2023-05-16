@@ -45,7 +45,7 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			}
 		}
 		case USER_TYPES.CHECK_LOGIN: {
-			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth, avatar } =
+			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth, avatar, background, department, organization, position } =
 				action.payload
 			return {
 				...state,
@@ -57,11 +57,15 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				firstName,
 				secondName,
 				lastName,
+				background,
+				department,
+				organization,
+				position,
 				avatar
 			}
 		}
 		case USER_TYPES.AUTHENTICATION: {
-			const { boardIds, _id, email, firstName, secondName, lastName, messages, isAuth, avatar } =
+			const { boardIds, _id, email, firstName, secondName, lastName, messages, isAuth, avatar, background, department, organization, position } =
 				action.payload
 			return {
 				...state,
@@ -72,8 +76,12 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				firstName,
 				lastName,
 				messages,
+				department,
+				organization,
+				position,
 				secondName,
-				avatar
+				avatar,
+				background
 			}
 		}
 		case USER_TYPES.LOGOUT: {
@@ -82,6 +90,14 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				isAuth: false,
 				email: '',
 				_id: '',
+				avatar: '',
+				secondName: '',
+				firstName: '',
+				lastName: '',
+				background: '',
+				position: '',
+				department: '',
+				organization: '',
 				boardIds: []
 			}
 		}
@@ -117,7 +133,12 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				secondName: action.payload.secondName,
 				firstName: action.payload.firstName,
 				lastName: action.payload.lastName,
-				email: action.payload.email
+				email: action.payload.email,
+				background: action.payload.background,
+				position: action.payload.position,
+				department: action.payload.department,
+				organization: action.payload.organization,
+				birthDate: action.payload.birthDate,
 			}
 		}
 
