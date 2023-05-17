@@ -3,16 +3,31 @@
     padding: 10px;
     top: 20%;
     border-radius: 20px;
-    height: 750px;
-    min-width: 640px;
+    width: 800px;
 }
 
 .editor {
     position: relative;
-    width: 960px;
-    height: 540px;
+    padding: 5px;
+}
 
-    padding: 30px;
+
+.title_info{
+    width: 90%;
+    padding: 10px;
+}
+
+.btn_download{
+
+}
+
+.control {
+    display: flex;
+    align-items: center;
+}
+
+.crop{
+    padding: 5px;
 }
 
 .img {
@@ -20,12 +35,12 @@
     height: 540px;
 }
 
-.cropped{
+.cropped {
     width: 640px;
     height: 117px;
 }
 
-.cropped_img{
+.cropped_img {
     width: 624px;
     height: 112px;
 }

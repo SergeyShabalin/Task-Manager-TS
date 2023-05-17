@@ -68,7 +68,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
 }
 
 .second_name{
@@ -104,7 +103,6 @@
     width: 96%;
     height: 96%;
     border-radius: 100%;
-
 }
 
 .avatar_shadow{

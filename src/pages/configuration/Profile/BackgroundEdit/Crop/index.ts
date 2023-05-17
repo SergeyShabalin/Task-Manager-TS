@@ -1,1 +1,1 @@
-export {default} from './Crop'
+export {default} from './CropImage'

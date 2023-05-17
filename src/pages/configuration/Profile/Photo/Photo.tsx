@@ -1,39 +1,17 @@
-import React, { useRef, useState } from 'react'
-import classes from './Photo.module.css'
-import { AiOutlinePicture, MdAddAPhoto } from 'react-icons/all'
+import React, { useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
+import { AiOutlinePicture, MdAddAPhoto } from 'react-icons/all'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import useOnClickOutside from '@/hooks/UseOnClickOutside'
-import useOpenClose from '@/hooks/UseOpenClose'
 import ContextMenu from '@/pages/configuration/Profile/Photo/ContextMenu'
-import { useActions } from '@/hooks/useActions/useActions'
+import classes from './Photo.module.css'
 
 export default function Photo() {
-	const [image, setImage] = useState<File | undefined>()
+
 	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
-	const inputRef = useRef<HTMLInputElement>(null)
 	const inputAvatarRef = useRef<HTMLInputElement>(null)
 	const location = useLocation()
 	const urlAvatar = 'https://live.staticflickr.com/65535/52895494468_38474d353c_m.jpg'
-	const { changeUser } = useActions()
-
-	function handleImageClick() {
-		inputRef.current?.click()
-	}
-
-	function handleImageAvatarClick() {
-		inputAvatarRef.current?.click()
-	}
-
-	function handleImageChangeBackground(e: React.ChangeEvent<HTMLInputElement>) {
-		const file = e.target.files?.[0]
-		const payload = {
-			_id,
-			background: file
-		}
-
-
-	}
 
 	function handleImageAvatarChange(e: any) {
 		const file = e.target.files[0]
@@ -71,12 +49,10 @@ export default function Photo() {
 					)}
 					<div className={classes.frame_avatar}></div>
 					<div className={classes.avatar_shadow}>
-						{/*<Link state={{ background: location }} to={`/user/${_id}/configuration/avatarEdit`}>*/}
 						<div className={classes.logo_avatar}>
 							<MdAddAPhoto />
 						</div>
 						 <ContextMenu userId={_id}/>
-						{/*</Link>*/}
 					</div>
 				</div>
 
