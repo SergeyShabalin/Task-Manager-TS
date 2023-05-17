@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useRef, useState } from 'react'
 
-
 import { useNavigate } from 'react-router-dom'
 
 import classes from './BackgroundEdit.module.css'
@@ -13,7 +12,7 @@ export default function BackgroundEdit() {
 	const userId = useTypedSelector(state => state.user._id)
 	const navigate = useNavigate()
 	const myBlob = new Blob()
-	const [preview, setPreview] = useState(myBlob)
+	const [preview, setPreview] = useState('')
 	const inputRef = useRef<HTMLInputElement>(null)
 
 
@@ -27,9 +26,9 @@ export default function BackgroundEdit() {
 
 	function handleImageChangeBackground(e: ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files?.[0]
-		if (file) setPreview(file)
+		console.log(file)
+		  if (file) setPreview(file)
 	}
-
 
 	return (
 		<Modal onClose={closeModal} open>
@@ -43,7 +42,7 @@ export default function BackgroundEdit() {
 				</div>
 
 				<div className={classes.crop}>
-					{preview && <CropImage image={URL.createObjectURL(preview)} />}
+					{preview && <CropImage image={preview} />}
 					<input ref={inputRef} hidden type={'file'} onChange={handleImageChangeBackground} />
 				</div>
 			</div>

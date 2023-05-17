@@ -43,6 +43,15 @@ class UsersApi {
 	async changeUser(payload: Partial<User> | payloadForChangePassword): Promise<AxiosResponse<User>> {
 		return Api.patch('/user/changeUser/', payload)
 	}
+
+	async sendIMG(payload: Partial<User> | payloadForChangePassword): Promise<AxiosResponse<User>> {
+		return Api.post('/sendIMG', payload, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+	}
+
 }
 
 export default new UsersApi()

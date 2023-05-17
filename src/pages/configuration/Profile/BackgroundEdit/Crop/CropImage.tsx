@@ -6,6 +6,8 @@ import classesFromPhoto from '../../Photo/Photo.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
+import axios from 'axios'
+import { Api } from '@/api'
 
 
 interface cropProps {
@@ -14,13 +16,14 @@ interface cropProps {
 
 export default function CropImage({ image }: cropProps) {
 
-	const [croppedImage, setCroppedImage] = useState<string | null>(null)
+	const [croppedImage, setCroppedImage] = useState<string | ''>('')
 	const [scale, setScale] = useState<number>(1)
 	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
 	const { changeUser } = useActions()
 	const editorRef = useRef(null)
+	const formData = new FormData()
 
-	const onClickSave = () => {
+	const onMouseUp = () => {
 		if (editorRef.current) {
 			const canvasScaled = editorRef.current.getImageScaledToCanvas()
 			const dataURL = canvasScaled.toDataURL()
@@ -31,15 +34,19 @@ export default function CropImage({ image }: cropProps) {
 
 	function scaleImage(e) {
 		setScale(e.target.value)
-		onClickSave()
+		onMouseUp()
 	}
 
 	function saveBackground() {
-		const payload = {
-			_id,
-			background: croppedImage
-		}
-		changeUser(payload)
+
+	 	formData.append('file_background', image)
+		Api.post('/user/sendIMG', formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+
+		 // changeUser(formData)
 	}
 
 	return (
@@ -54,7 +61,7 @@ export default function CropImage({ image }: cropProps) {
 					color={[0, 0, 0, 0.7]}
 					scale={scale}
 					rotate={0}
-					onMouseUp={onClickSave}
+					onMouseUp={onMouseUp}
 				/>
 			</div>
 

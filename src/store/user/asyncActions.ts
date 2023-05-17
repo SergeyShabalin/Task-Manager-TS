@@ -126,10 +126,13 @@ export const usersActions = {
 
 	changeUser: (payload: Partial<User> | payloadForChangePassword ) => async (dispatch: Dispatch<UserActions>) => {
 		try {
-			const { data } = await UsersApi.changeUser(payload)
-			dispatch(UserAC.updateUser(data))
-			Notification.error('Данные успешно сохранены', 'submit')
-			return true
+			console.log(payload)
+
+			// const { data } = await UsersApi.changeUser(payload)
+			const { data } = await UsersApi.sendIMG(payload)
+			// dispatch(UserAC.updateUser(data))
+			// Notification.error('Данные успешно сохранены', 'submit')
+			// return true
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
