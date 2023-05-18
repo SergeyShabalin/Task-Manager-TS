@@ -37,17 +37,19 @@ export default function CropImage({ image }: cropProps) {
 		onMouseUp()
 	}
 
-	function saveBackground() {
+	async function saveBackground() {
 
-	 	formData.append('file_background', image)
-		Api.post('/user/sendIMG', formData, {
-			headers: {
-				'Content-Type': 'multipart/form-data'
-			}
-		})
+		formData.append('background', image, _id)
+		try {
+			const imageUrl = await Api.post(`/user/sendIMG`, formData)
+			console.log({ imageUrl })
+		} catch (e) {
+			console.log(e)
+		}
 
-		 // changeUser(formData)
+		// changeUser(formData)
 	}
+
 
 	return (
 		<div className={classes.wrapper}>
@@ -100,6 +102,7 @@ export default function CropImage({ image }: cropProps) {
 
 					<div className={classes.btn}>
 						<Button variant={'contained'} color={'primary'} title={'сохранить'} onClick={saveBackground} />
+						<Button variant={'contained'} color={'primary'} title={'сохранить redux'} onClick={saveBackground} />
 					</div>
 
 				</div>

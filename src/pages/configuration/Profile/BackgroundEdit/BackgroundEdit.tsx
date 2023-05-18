@@ -26,7 +26,7 @@ export default function BackgroundEdit() {
 
 	function handleImageChangeBackground(e: ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files?.[0]
-		console.log(file)
+		// console.log(file)
 		  if (file) setPreview(file)
 	}
 

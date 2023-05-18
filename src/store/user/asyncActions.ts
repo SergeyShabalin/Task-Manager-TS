@@ -129,7 +129,8 @@ export const usersActions = {
 			console.log(payload)
 
 			// const { data } = await UsersApi.changeUser(payload)
-			const { data } = await UsersApi.sendIMG(payload)
+			 const { data } = await UsersApi.sendIMG2(payload)
+			console.log(data)
 			// dispatch(UserAC.updateUser(data))
 			// Notification.error('Данные успешно сохранены', 'submit')
 			// return true
