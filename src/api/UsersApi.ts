@@ -44,9 +44,6 @@ class UsersApi {
 		return Api.patch('/user/changeUser/', payload)
 	}
 
-	async sendIMG2(payload: Partial<User> | payloadForChangePassword): Promise<AxiosResponse<User>> {
-		return Api.post('/sendIMG2', payload )}
-
 }
 
 export default new UsersApi()

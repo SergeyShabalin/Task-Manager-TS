@@ -5,13 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import classes from './BackgroundEdit.module.css'
 import { Button, Modal } from '@UI'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import CropImage from '@/pages/configuration/Profile/BackgroundEdit/Crop'
+import CropImage from '@/pages/configuration/Profile/BackgroundEdit/CropImage'
 
 
 export default function BackgroundEdit() {
 	const userId = useTypedSelector(state => state.user._id)
 	const navigate = useNavigate()
-	const myBlob = new Blob()
 	const [preview, setPreview] = useState('')
 	const inputRef = useRef<HTMLInputElement>(null)
 
@@ -42,7 +41,7 @@ export default function BackgroundEdit() {
 				</div>
 
 				<div className={classes.crop}>
-					{preview && <CropImage image={preview} />}
+					{preview && <CropImage closeModal={closeModal} image={preview} />}
 					<input ref={inputRef} hidden type={'file'} onChange={handleImageChangeBackground} />
 				</div>
 			</div>

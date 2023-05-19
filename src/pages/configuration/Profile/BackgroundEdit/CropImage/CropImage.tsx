@@ -12,12 +12,15 @@ import { Api } from '@/api'
 
 interface cropProps {
 	image: string
+	closeModal: () => void
 }
 
-export default function CropImage({ image }: cropProps) {
+export default function CropImage({ image, closeModal }: cropProps) {
 
 	const [croppedImage, setCroppedImage] = useState<string | ''>('')
 	const [scale, setScale] = useState<number>(1)
+	const myBlob = new Blob()
+	const [imageForBack, setImageForBack] = useState<File>(myBlob)
 	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
 	const { changeUser } = useActions()
 	const editorRef = useRef(null)
@@ -28,26 +31,40 @@ export default function CropImage({ image }: cropProps) {
 			const canvasScaled = editorRef.current.getImageScaledToCanvas()
 			const dataURL = canvasScaled.toDataURL()
 			setCroppedImage(dataURL)
+			const convertedImg =	dataURLtoFile(dataURL,Date.now() )
+			setImageForBack(convertedImg)
 		}
 	}
-
 
 	function scaleImage(e) {
 		setScale(e.target.value)
 		onMouseUp()
 	}
 
+	function dataURLtoFile(dataURL: string, filename: string) {
+		const [fileType, encodedData] = dataURL.split(',');
+		const decodedData = atob(encodedData);
+		const byteCharacters = Array.from(decodedData).map((char) => char.charCodeAt(0));
+		const byteArray = new Uint8Array(byteCharacters);
+		return new File([byteArray], filename, { type: fileType });
+	}
+
 	async function saveBackground() {
 
-		formData.append('background', image, _id)
+		formData.append('background', imageForBack, _id)
 		try {
 			const imageUrl = await Api.post(`/user/sendIMG`, formData)
-			console.log({ imageUrl })
+
+			const payload = {
+				_id,
+				background: imageUrl.data.imageUrl
+			}
+			changeUser(payload)
+			closeModal()
 		} catch (e) {
-			console.log(e)
+			console.log('ошибка сервера', e)
 		}
 
-		// changeUser(formData)
 	}
 
 
@@ -57,8 +74,8 @@ export default function CropImage({ image }: cropProps) {
 				<AvatarEditor
 					ref={editorRef}
 					image={image}
-					width={624}
-					height={112}
+					width={700}
+					height={160}
 					border={50}
 					color={[0, 0, 0, 0.7]}
 					scale={scale}
@@ -102,7 +119,6 @@ export default function CropImage({ image }: cropProps) {
 
 					<div className={classes.btn}>
 						<Button variant={'contained'} color={'primary'} title={'сохранить'} onClick={saveBackground} />
-						<Button variant={'contained'} color={'primary'} title={'сохранить redux'} onClick={saveBackground} />
 					</div>
 
 				</div>
