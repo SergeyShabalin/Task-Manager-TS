@@ -23,16 +23,18 @@ export default function Photo() {
 			<div className={classes.title_photo}>Фото профиля и изображение обложки</div>
 
 			<div className={classes.wrapper_photo}>
-				<div className={classes.background}  >
+				<div className={classes.background}>
 					<Link state={{ background: location }} to={`/user/${_id}/configuration/backgroundEdit`}>
-					{background && <img className={classes.background_img} src={background} />}
-					<div className={classes.background_shadow}>
-						<div className={classes.download_title}>Загрузить новое фото</div>
-						<span className={classes.download_logo}>
+						{background && <img className={classes.background_img} src={background} />}
+						<div className={classes.background_shadow}>
+							{!background
+								? <div>Загрузить фото</div>
+								: <div className={classes.download_title}>Загрузить новое фото</div>
+							}
+							<span className={classes.download_logo}>
 							<AiOutlinePicture />
 						</span>
-
-					</div>
+						</div>
 					</Link>
 				</div>
 
@@ -52,7 +54,7 @@ export default function Photo() {
 						<div className={classes.logo_avatar}>
 							<MdAddAPhoto />
 						</div>
-						 <ContextMenu userId={_id}/>
+						<ContextMenu userId={_id} />
 					</div>
 				</div>
 

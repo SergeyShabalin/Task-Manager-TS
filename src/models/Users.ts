@@ -13,7 +13,7 @@ export interface User {
 	token: string
 	isAuth: boolean
 	avatar: string
-	socket:  Socket | null
+	socket: Socket | null
 	background: string
 	position: string
 	department: string
@@ -34,7 +34,7 @@ export interface payloadForShareBoard {
 }
 
 export interface error {
-error: object
+	error: object
 }
 
 export interface UserState extends User {
@@ -53,6 +53,7 @@ export enum USER_TYPES {
 	SOCKET_INIT = 'SOCKET_INIT',
 	SHARE_BOARD = 'SHARE_BOARD',
 	CHANGE_USER = 'CHANGE_USER',
+	CHANGE_BACKGROUND_USER = 'CHANGE_BACKGROUND_USER'
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -64,7 +65,7 @@ export type DeleteMessage = Action<USER_TYPES.DELETE_MESSAGE>
 export type SocketInit = Action<USER_TYPES.SOCKET_INIT>
 export type ShareBoard = Action<USER_TYPES.SHARE_BOARD>
 export type ChangeUser = Action<USER_TYPES.CHANGE_USER>
-
+export type ChangeBackgroundUser = Action<USER_TYPES.CHANGE_BACKGROUND_USER>
 
 
 export interface PayloadForApplyInvite {
@@ -77,10 +78,17 @@ export interface PayloadForMessageDelete {
 	boardId: string
 }
 
-export interface payloadForChangePassword{
+export interface payloadForChangePassword {
 	oldPass: string
 	newPass: string
 }
+
+
+export interface payloadForChangeBackgroundUser {
+	_id: string
+	background: string
+}
+
 
 export interface PayloadForStartRegistration extends StartRegistration {
 	payload: Partial<User>
@@ -107,11 +115,16 @@ export interface PayloadForSocketInit extends SocketInit {
 }
 
 export interface PayloadForShareBoard extends ShareBoard {
-	payload:  message[]
+	payload: message[]
 }
 
 export interface PayloadForChangeUser extends ChangeUser {
 	payload: Partial<User>
+}
+
+export interface PayloadForChangeBackgroundUser extends ChangeBackgroundUser {
+	_id: string
+	background: string
 }
 
 

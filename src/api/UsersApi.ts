@@ -43,6 +43,9 @@ class UsersApi {
 	async changeUser(payload: Partial<User> | payloadForChangePassword): Promise<AxiosResponse<User>> {
 		return Api.patch('/user/changeUser/', payload)
 	}
+	async changeBackgroundUser(payload: FormData): Promise<AxiosResponse<User>> {
+		return Api.post('/user/sendIMG/', payload)
+	}
 
 }
 

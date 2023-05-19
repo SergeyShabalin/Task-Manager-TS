@@ -14,6 +14,7 @@ import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
 import { BoardAC } from '@/store/board/action'
 import { AxiosError } from 'axios'
+import { Api } from '@/api'
 
 export const usersActions = {
 	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
@@ -79,14 +80,18 @@ export const usersActions = {
 		}
 	},
 
-	shareBoard: (payload:payloadForShareBoard) => async (dispatch: Dispatch<UserActions>) => {
+	shareBoard: (payload: payloadForShareBoard) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			if (payload.error) {
 				const message = payload.error
 				Notification.error(message)
 			} else {
-				{payload.submit &&	Notification.error(payload.submit, 'submit')}
-				{payload.messages &&	dispatch(UserAC.shareBoard(payload.messages))}
+				{
+					payload.submit && Notification.error(payload.submit, 'submit')
+				}
+				{
+					payload.messages && dispatch(UserAC.shareBoard(payload.messages))
+				}
 				return true
 			}
 		} catch (e) {
@@ -124,14 +129,28 @@ export const usersActions = {
 		}
 	},
 
-	changeUser: (payload: Partial<User> | payloadForChangePassword ) => async (dispatch: Dispatch<UserActions>) => {
+	changeUser: (payload: Partial<User> | payloadForChangePassword) => async (dispatch: Dispatch<UserActions>) => {
 		try {
-			console.log(payload)
+			const { data } = await UsersApi.changeUser(payload)
+			dispatch(UserAC.updateUser(data))
+			Notification.error('Данные успешно сохранены', 'submit')
+			return true
+		} catch (e) {
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
+		}
+	},
 
-			// const { data } = await UsersApi.changeUser(payload)
-			 dispatch(UserAC.updateUser(payload))
-			// Notification.error('Данные успешно сохранены', 'submit')
-			// return true
+	changeBackgroundUser: (payload: FormData) => async (dispatch: Dispatch<UserActions>) => {
+		try {
+			const { data } = await UsersApi.changeBackgroundUser(payload)
+			const payloadForBackground = {
+				_id: data._id,
+				background: data.background
+			}
+			dispatch(UserAC.updateBackgroundUser(payloadForBackground))
+			Notification.error('Данные успешно сохранены', 'submit')
+			//TODO проблемы с загрузкой background
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)

@@ -22,8 +22,8 @@ export default function Header({ _id }: Partial<User>) {
 	 { backToGreeting } = useActions(),
 	 { isOpen, onClose, onOpen } = useOpenClose(),
 		messagesCount = useTypedSelector(state => state.user.messages.length),
-	 	socket = useTypedSelector(({ user }) => user.socket),
-		url = useLocation()
+	 	socket = useTypedSelector(({ user }) => user.socket)
+
 
 	function backInGreeting() {
 		if (_id) navigate(`/user/${userId}/greeting`)

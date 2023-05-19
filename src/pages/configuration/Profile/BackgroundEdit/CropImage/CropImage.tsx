@@ -19,10 +19,10 @@ export default function CropImage({ image, closeModal }: cropProps) {
 
 	const [croppedImage, setCroppedImage] = useState<string | ''>('')
 	const [scale, setScale] = useState<number>(1)
-	const myBlob = new Blob()
-	const [imageForBack, setImageForBack] = useState<File>(myBlob)
+	const blob = new Blob
+	const [imageForBack, setImageForBack] = useState<File>(blob)
 	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
-	const { changeUser } = useActions()
+	const { changeBackgroundUser } = useActions()
 	const editorRef = useRef(null)
 	const formData = new FormData()
 
@@ -31,40 +31,28 @@ export default function CropImage({ image, closeModal }: cropProps) {
 			const canvasScaled = editorRef.current.getImageScaledToCanvas()
 			const dataURL = canvasScaled.toDataURL()
 			setCroppedImage(dataURL)
-			const convertedImg =	dataURLtoFile(dataURL,Date.now() )
+			const convertedImg = dataURLtoFile(dataURL, Date.now().toString())
 			setImageForBack(convertedImg)
 		}
 	}
 
 	function scaleImage(e) {
-		setScale(e.target.value)
+		setScale(Number(e.target.value))
 		onMouseUp()
 	}
 
 	function dataURLtoFile(dataURL: string, filename: string) {
-		const [fileType, encodedData] = dataURL.split(',');
-		const decodedData = atob(encodedData);
-		const byteCharacters = Array.from(decodedData).map((char) => char.charCodeAt(0));
-		const byteArray = new Uint8Array(byteCharacters);
-		return new File([byteArray], filename, { type: fileType });
+		const [fileType, encodedData] = dataURL.split(',')
+		const decodedData = atob(encodedData)
+		const byteCharacters = Array.from(decodedData).map((char) => char.charCodeAt(0))
+		const byteArray = new Uint8Array(byteCharacters)
+		return new File([byteArray], filename, { type: fileType })
 	}
 
-	async function saveBackground() {
-
+	 function saveBackground() {
 		formData.append('background', imageForBack, _id)
-		try {
-			const imageUrl = await Api.post(`/user/sendIMG`, formData)
-
-			const payload = {
-				_id,
-				background: imageUrl.data.imageUrl
-			}
-			changeUser(payload)
-			closeModal()
-		} catch (e) {
-			console.log('ошибка сервера', e)
-		}
-
+		changeBackgroundUser(formData)
+		closeModal()
 	}
 
 
@@ -118,7 +106,7 @@ export default function CropImage({ image, closeModal }: cropProps) {
 					</div>
 
 					<div className={classes.btn}>
-						<Button variant={'contained'} color={'primary'} title={'сохранить'} onClick={saveBackground} />
+						{croppedImage &&	<Button variant={'contained'} color={'primary'} title={'сохранить'} onClick={saveBackground} />}
 					</div>
 
 				</div>

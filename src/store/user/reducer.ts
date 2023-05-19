@@ -1,7 +1,8 @@
 import {
+	ChangeBackgroundUser,
 	Logout,
 	PayloadForAddBoard,
-	PayloadForAuthentication,
+	PayloadForAuthentication, PayloadForChangeBackgroundUser,
 	PayloadForChangeUser,
 	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
@@ -24,6 +25,7 @@ export type UserActions =
 	| PayloadForSocketInit
 	| PayloadForShareBoard
 	| PayloadForChangeUser
+	|ChangeBackgroundUser
 
 
 export default function userReducer(state = defaultState, action: UserActions) {
@@ -45,6 +47,7 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			}
 		}
 		case USER_TYPES.CHECK_LOGIN: {
+
 			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth, avatar, background, department, organization, position } =
 				action.payload
 			return {
@@ -134,11 +137,17 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				firstName: action.payload.firstName,
 				lastName: action.payload.lastName,
 				email: action.payload.email,
-				background: action.payload.background,
 				position: action.payload.position,
 				department: action.payload.department,
 				organization: action.payload.organization,
 				birthDate: action.payload.birthDate,
+			}
+		}
+
+		case USER_TYPES.CHANGE_BACKGROUND_USER: {
+			return {
+				...state,
+				background: action.payload.background,
 			}
 		}
 
