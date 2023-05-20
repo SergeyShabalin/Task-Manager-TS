@@ -150,7 +150,6 @@ export const usersActions = {
 			}
 			dispatch(UserAC.updateBackgroundUser(payloadForBackground))
 			Notification.error('Данные успешно сохранены', 'submit')
-			//TODO проблемы с загрузкой background
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
