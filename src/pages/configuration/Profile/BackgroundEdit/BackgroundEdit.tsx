@@ -7,13 +7,11 @@ import { Button, Modal } from '@UI'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import CropImage from '@/pages/configuration/Profile/BackgroundEdit/CropImage'
 
-
 export default function BackgroundEdit() {
 	const userId = useTypedSelector(state => state.user._id)
 	const navigate = useNavigate()
 	const [preview, setPreview] = useState('')
 	const inputRef = useRef<HTMLInputElement>(null)
-
 
 	function handleImageClick() {
 		inputRef.current?.click()
@@ -25,8 +23,7 @@ export default function BackgroundEdit() {
 
 	function handleImageChangeBackground(e: ChangeEvent<HTMLInputElement>) {
 		const file = e.target.files?.[0]
-		// console.log(file)
-		  if (file) setPreview(file)
+		if (file) setPreview(file)
 	}
 
 	return (
@@ -34,10 +31,10 @@ export default function BackgroundEdit() {
 			<div className={classes.wrapper}>
 				<h1 className={classes.title}>Редактирование обоев</h1>
 				<div className={classes.control}>
-					<span className={classes.title_info}>Загрузите свое изображение</span>
-					<div className={classes.btn_download}>
-						<Button title='Загрузить изображение' variant='outlined' color='primary' onClick={handleImageClick} />
-					</div>
+					{!preview
+					?	<div className={classes.title_info} onClick={handleImageClick}>Загрузите ваше изображение </div>
+					 : 	<Button title='Загрузить изображение' variant='outlined' color='primary' onClick={handleImageClick} />
+					}
 				</div>
 
 				<div className={classes.crop}>
@@ -48,4 +45,3 @@ export default function BackgroundEdit() {
 		</Modal>
 	)
 }
-

@@ -9,17 +9,15 @@ import { useActions } from '@/hooks/useActions/useActions'
 import axios from 'axios'
 import { Api } from '@/api'
 
-
 interface cropProps {
 	image: string
 	closeModal: () => void
 }
 
 export default function CropImage({ image, closeModal }: cropProps) {
-
 	const [croppedImage, setCroppedImage] = useState<string | ''>('')
 	const [scale, setScale] = useState<number>(1)
-	const blob = new Blob
+	const blob = new Blob()
 	const [imageForBack, setImageForBack] = useState<File>(blob)
 	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
 	const { changeBackgroundUser } = useActions()
@@ -44,17 +42,16 @@ export default function CropImage({ image, closeModal }: cropProps) {
 	function dataURLtoFile(dataURL: string, filename: string) {
 		const [fileType, encodedData] = dataURL.split(',')
 		const decodedData = atob(encodedData)
-		const byteCharacters = Array.from(decodedData).map((char) => char.charCodeAt(0))
+		const byteCharacters = Array.from(decodedData).map(char => char.charCodeAt(0))
 		const byteArray = new Uint8Array(byteCharacters)
 		return new File([byteArray], filename, { type: fileType })
 	}
 
-	 function saveBackground() {
+	function saveBackground() {
 		formData.append('background', imageForBack, _id)
 		changeBackgroundUser(formData)
 		closeModal()
 	}
-
 
 	return (
 		<div className={classes.wrapper}>
@@ -87,7 +84,6 @@ export default function CropImage({ image, closeModal }: cropProps) {
 			</div>
 			<p>Миниатюра</p>
 			<div className={classes.cropped_area}>
-
 				<div className={classes.preview}>
 					<div className={classes.cropped_img}>
 						{croppedImage && <img className={classes.img} src={croppedImage} />}
@@ -106,14 +102,17 @@ export default function CropImage({ image, closeModal }: cropProps) {
 					</div>
 
 					<div className={classes.btn}>
-						{croppedImage &&	<Button variant={'contained'} color={'primary'} title={'сохранить'} onClick={saveBackground} />}
+						{croppedImage && (
+							<Button
+								variant={'contained'}
+								color={'primary'}
+								title={'сохранить'}
+								onClick={saveBackground}
+							/>
+						)}
 					</div>
-
 				</div>
-
 			</div>
-
-
 		</div>
 	)
 }
