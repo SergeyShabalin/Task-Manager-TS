@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import {
-	PayloadForApplyInvite, payloadForChangePassword,
+	PayloadForApplyInvite, payloadForChangePassword, payloadForChangePersonalInfo,
 	PayloadForMessageDelete,
 	PayloadForShareBoard,
 	User
@@ -43,8 +43,13 @@ class UsersApi {
 	async changeUser(payload: Partial<User> | payloadForChangePassword): Promise<AxiosResponse<User>> {
 		return Api.patch('/user/changeUser/', payload)
 	}
+
 	async changeBackgroundUser(payload: FormData): Promise<AxiosResponse<User>> {
 		return Api.post('/user/sendIMG/', payload)
+	}
+
+	async changePersonalInfo(payload: payloadForChangePersonalInfo): Promise<AxiosResponse<User>> {
+		return Api.post('/user/changePersonalInfo/', payload)
 	}
 
 }

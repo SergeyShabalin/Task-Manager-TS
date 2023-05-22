@@ -49,7 +49,7 @@ export default function Info({ closeInfo }: InfoProps) {
 				</div>
 
 				<div className={classes.user_names}>
-					<h1 className={classes.firstName}>{user.secondName} {'_'}{user.firstName}</h1>
+					<h1 className={classes.firstName}>{user.secondName} {user.firstName}</h1>
 					<span className={classes.email}>{user.email}</span>
 				</div>
 			</div>

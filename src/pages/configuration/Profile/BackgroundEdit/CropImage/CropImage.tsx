@@ -1,16 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ChangeEvent, useRef, useState } from 'react'
 import AvatarEditor from 'react-avatar-editor'
 
-import classes from './CropImage.module.css'
-import classesFromPhoto from '../../Photo/Photo.module.css'
+
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
-import axios from 'axios'
-import { Api } from '@/api'
+import classes from './CropImage.module.css'
+import classesFromPhoto from '../../Photo/Photo.module.css'
 
 interface cropProps {
-	image: string
+	image: File
 	closeModal: () => void
 }
 
@@ -18,13 +17,13 @@ export default function CropImage({ image, closeModal }: cropProps) {
 	const [croppedImage, setCroppedImage] = useState<string | ''>('')
 	const [scale, setScale] = useState<number>(1)
 	const blob = new Blob()
-	const [imageForBack, setImageForBack] = useState<File>(blob)
-	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
+	const [imageForBack, setImageForBack] = useState<File | Blob>(blob)
+	const { _id, avatar, firstName, secondName } = useTypedSelector(state => state.user)
 	const { changeBackgroundUser } = useActions()
-	const editorRef = useRef(null)
+	const editorRef = useRef<AvatarEditor>(null)
 	const formData = new FormData()
 
-	const onMouseUp = () => {
+	function onMouseUp() {
 		if (editorRef.current) {
 			const canvasScaled = editorRef.current.getImageScaledToCanvas()
 			const dataURL = canvasScaled.toDataURL()
@@ -34,7 +33,7 @@ export default function CropImage({ image, closeModal }: cropProps) {
 		}
 	}
 
-	function scaleImage(e) {
+	function scaleImage(e: ChangeEvent<HTMLInputElement>) {
 		setScale(Number(e.target.value))
 		onMouseUp()
 	}

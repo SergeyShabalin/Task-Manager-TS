@@ -25,7 +25,7 @@ export type UserActions =
 	| PayloadForSocketInit
 	| PayloadForShareBoard
 	| PayloadForChangeUser
-	|ChangeBackgroundUser
+	| PayloadForChangeBackgroundUser
 
 
 export default function userReducer(state = defaultState, action: UserActions) {

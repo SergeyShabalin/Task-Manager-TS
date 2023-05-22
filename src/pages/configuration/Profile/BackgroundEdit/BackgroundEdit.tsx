@@ -1,16 +1,15 @@
 import React, { ChangeEvent, useRef, useState } from 'react'
-
 import { useNavigate } from 'react-router-dom'
 
-import classes from './BackgroundEdit.module.css'
 import { Button, Modal } from '@UI'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import CropImage from '@/pages/configuration/Profile/BackgroundEdit/CropImage'
+import classes from './BackgroundEdit.module.css'
 
 export default function BackgroundEdit() {
 	const userId = useTypedSelector(state => state.user._id)
 	const navigate = useNavigate()
-	const [preview, setPreview] = useState('')
+	const [preview, setPreview] = useState<File | undefined>(undefined)
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	function handleImageClick() {

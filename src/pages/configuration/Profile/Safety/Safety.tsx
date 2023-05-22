@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
 import classes from './Safety.module.css'
-import { Button, Input } from '@UI'
+import { Button, Input, Notification } from '@UI'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
+import { BiShowAlt } from 'react-icons/bi'
 
 export default function Safety() {
-	const {changeUser} = useActions()
 	const _id = useTypedSelector(state => state.user._id)
-	const [form, setForm] = useState({
+	const initState = {
 		_id,
 		oldPass: '',
-		newPass: ''
-	})
+		newPass: '',
+		email: ''
+	}
+
+	const { changePersonalInfo } = useActions()
+	const [form, setForm] = useState(initState)
+	const [isPass, setIsPass] = useState(true)
+
+	function changePassView(e: React.FormEvent) {
+		e.preventDefault()
+		setIsPass(!isPass)
+	}
 
 	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		e.preventDefault()
@@ -22,13 +32,16 @@ export default function Safety() {
 			...prev,
 			[e.target.name]: e.target.value
 		}))
-
 	}
 
 
 	function savePassword(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
-		changeUser(form)
+		const confirm = window.confirm('Изменить пароль?')
+		if (confirm) {
+			changePersonalInfo(form)
+			setForm(initState)
+		}
 	}
 
 	return (
@@ -37,8 +50,10 @@ export default function Safety() {
 			<div className={classes.wrapper}>
 				<div className={classes.control}>
 					<span className={classes.placeholder}>Введите старый пароль</span>
+
 					<Input
 						color='blue'
+						type={!isPass ? 'text' : 'password'}
 						variant='large'
 						name='oldPass'
 						value={form.oldPass}
@@ -47,6 +62,7 @@ export default function Safety() {
 					<span className={classes.placeholder}>Введите старый пароль</span>
 					<Input
 						color='blue'
+						type={!isPass ? 'text' : 'password'}
 						variant='large'
 						name='newPass'
 						value={form.newPass}
@@ -54,6 +70,9 @@ export default function Safety() {
 					/>
 				</div>
 				<div className={classes.btn_wrapper}>
+					<div className={classes.control_pass} onClick={changePassView}>
+						<BiShowAlt />
+					</div>
 					<Button title='Сохранить' color='primary' type='submit' variant='contained' />
 				</div>
 			</div>

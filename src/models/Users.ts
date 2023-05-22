@@ -53,7 +53,8 @@ export enum USER_TYPES {
 	SOCKET_INIT = 'SOCKET_INIT',
 	SHARE_BOARD = 'SHARE_BOARD',
 	CHANGE_USER = 'CHANGE_USER',
-	CHANGE_BACKGROUND_USER = 'CHANGE_BACKGROUND_USER'
+	CHANGE_BACKGROUND_USER = 'CHANGE_BACKGROUND_USER',
+	CHANGE_PERSONAL_INFO = 'CHANGE_PERSONAL_INFO'
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -66,6 +67,7 @@ export type SocketInit = Action<USER_TYPES.SOCKET_INIT>
 export type ShareBoard = Action<USER_TYPES.SHARE_BOARD>
 export type ChangeUser = Action<USER_TYPES.CHANGE_USER>
 export type ChangeBackgroundUser = Action<USER_TYPES.CHANGE_BACKGROUND_USER>
+export type ChangePersonalInfo = Action<USER_TYPES.CHANGE_PERSONAL_INFO>
 
 
 export interface PayloadForApplyInvite {
@@ -85,10 +87,16 @@ export interface payloadForChangePassword {
 
 
 export interface payloadForChangeBackgroundUser {
-	_id: string
-	background: string
+	 payload: Partial<User>
 }
 
+
+export interface payloadForChangePersonalInfo{
+	_id: string
+	newPass?: string
+	oldPass?: string
+	newEmail?: string
+}
 
 export interface PayloadForStartRegistration extends StartRegistration {
 	payload: Partial<User>
@@ -123,8 +131,7 @@ export interface PayloadForChangeUser extends ChangeUser {
 }
 
 export interface PayloadForChangeBackgroundUser extends ChangeBackgroundUser {
-	_id: string
-	background: string
+	payload: Partial<User>
 }
 
 

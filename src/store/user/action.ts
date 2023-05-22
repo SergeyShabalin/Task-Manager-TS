@@ -24,5 +24,5 @@ export const UserAC = {
 	socketInit: (payload: Socket | null): PayloadForSocketInit => ({type: USER_TYPES.SOCKET_INIT,	payload}),
 	shareBoard: (payload: message[]) : PayloadForShareBoard => ({type: USER_TYPES.SHARE_BOARD, payload}),
 	updateUser: (payload: Partial<User>) : PayloadForChangeUser => ({type: USER_TYPES.CHANGE_USER, payload}),
-	updateBackgroundUser: (payload: payloadForChangeBackgroundUser ) : PayloadForChangeBackgroundUser => ({type: USER_TYPES.CHANGE_BACKGROUND_USER, payload}),
+	updateBackgroundUser: (payload: Partial<User> ) : PayloadForChangeBackgroundUser => ({type: USER_TYPES.CHANGE_BACKGROUND_USER, payload}),
 }

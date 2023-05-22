@@ -13,9 +13,6 @@ export default function Photo() {
 	const location = useLocation()
 	const urlAvatar = 'https://live.staticflickr.com/65535/52895494468_38474d353c_m.jpg'
 
-	function handleImageAvatarChange(e: any) {
-		const file = e.target.files[0]
-	}
 
 	return (
 		<div>
@@ -38,7 +35,7 @@ export default function Photo() {
 				</div>
 
 
-				<input hidden type={'file'} ref={inputAvatarRef} onChange={handleImageAvatarChange} />
+				<input hidden type={'file'} ref={inputAvatarRef} />
 				<div className={classes.avatar}>
 					{!avatar ? (
 						<img

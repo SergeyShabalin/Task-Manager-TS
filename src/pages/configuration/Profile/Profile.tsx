@@ -1,7 +1,7 @@
 import React from 'react'
 import Photo from '@/pages/configuration/Profile/Photo'
 import PersonalInfo from '@/pages/configuration/Profile/PersonalInfo'
-import Safety from '@/pages/configuration/Safety'
+import Safety from '@/pages/configuration/Profile/Safety'
 
 import classes from './Profile.module.css'
 
