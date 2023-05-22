@@ -12,27 +12,30 @@ interface NotificationsTypes {
 function Notifications({ message, type = 'error' }: NotificationsTypes) {
 	return (
 		<div className={classes.wrapper}>
-			{type === 'submit' && (
-				<div className={classes.header_submit}>
-					<BsCheck2Square />
-					<span className={classes.title}>Действие выполнено!</span>
+			<div className={classes.wrapper_notification}>
+				{type === 'submit' && (
+					<div className={classes.header_submit}>
+						<BsCheck2Square />
+						<span className={classes.title}>Действие выполнено!</span>
+					</div>
+				)}
+				{type === 'error' && (
+					<div className={classes.header_error}>
+						<IoWarningOutline />
+						<span className={classes.title}>Произошла ошибка!</span>
+					</div>
+				)}
+				{type === 'warning' && (
+					<div className={classes.header_warning}>
+						<IoWarningOutline />
+						<span className={classes.title}>Внимание!</span>
+					</div>
+				)}
+				<div className={classes.footer}>
+					<span className={classes.message}>{message}</span>
 				</div>
-			)}
-			{type === 'error' && (
-				<div className={classes.header_error}>
-					<IoWarningOutline />
-					<span className={classes.title}>Произошла ошибка!</span>
-				</div>
-			)}
-			{type === 'warning' && (
-				<div className={classes.header_warning}>
-					<IoWarningOutline />
-					<span className={classes.title}>Внимание!</span>
-				</div>
-			)}
-			<div className={classes.footer}>
-				<span className={classes.message}>{message}</span>
 			</div>
+
 		</div>
 	)
 }

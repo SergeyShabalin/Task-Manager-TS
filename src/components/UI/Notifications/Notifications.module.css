@@ -1,5 +1,8 @@
 .wrapper {
-	position: absolute;
+
+}
+.wrapper_notification{
+	position: fixed;
 	bottom: 50px;
 	right: 50px;
 	color: white;
@@ -7,6 +10,7 @@
 	align-items: center;
 	z-index: 120;
 }
+
 .header_error, .header_submit, .header_warning {
 	padding: 10px;
 	display: flex;

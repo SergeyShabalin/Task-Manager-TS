@@ -2,8 +2,10 @@ import React from 'react'
 import Photo from '@/pages/configuration/Profile/Photo'
 import PersonalInfo from '@/pages/configuration/Profile/PersonalInfo'
 import Safety from '@/pages/configuration/Profile/Safety'
+import Email from '@/pages/configuration/Profile/Email'
 
 import classes from './Profile.module.css'
+
 
 export default function Profile() {
 
@@ -14,6 +16,7 @@ export default function Profile() {
 				<Photo />
 				<PersonalInfo />
 				<Safety/>
+				<Email/>
 			</div>
 		</div>
 	)

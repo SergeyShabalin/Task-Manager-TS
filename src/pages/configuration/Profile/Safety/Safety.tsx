@@ -23,7 +23,7 @@ export default function Safety() {
 		setIsPass(!isPass)
 	}
 
-	function onSubmit(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+	function onSubmit(e: React.ChangeEvent<HTMLInputElement>) {
 		e.preventDefault()
 
 		if (!e.target) return
@@ -73,7 +73,7 @@ export default function Safety() {
 					<div className={classes.control_pass} onClick={changePassView}>
 						<BiShowAlt />
 					</div>
-					<Button title='Сохранить' color='primary' type='submit' variant='contained' />
+					{form.oldPass && form.newPass &&	<Button title='Сохранить' color='primary' type='submit' variant='contained' />}
 				</div>
 			</div>
 		</form>

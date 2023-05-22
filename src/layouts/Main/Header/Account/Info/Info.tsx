@@ -26,8 +26,13 @@ export default function Info({ closeInfo }: InfoProps) {
 	}
 
 	function logout() {
-		logOut()
-		if (socket) socket.emit('LEAVE_BOARD', boardId)
+		const confirm = window.confirm('Выйти из учетной записи?')
+		if (confirm) {
+			socket?.emit('LEAVE_USER', user._id)
+			socket?.emit('LEAVE_BOARD', boardId)
+			logOut()
+			navigate(`/login`)
+		}
 	}
 
 	function goToConfiguration(){

@@ -133,5 +133,8 @@ export interface PayloadForChangeUser extends ChangeUser {
 export interface PayloadForChangeBackgroundUser extends ChangeBackgroundUser {
 	payload: Partial<User>
 }
+export interface PayloadForChangePersonalInfo extends ChangePersonalInfo {
+	payload: string
+}
 
 

@@ -156,13 +156,16 @@ export const usersActions = {
 		}
 	},
 
-	changePersonalInfo : (payload: payloadForChangePersonalInfo) => async  (dispatch: Dispatch<UserActions>) =>{
+	changePersonalInfo: (payload: payloadForChangePersonalInfo) => async (dispatch: Dispatch<UserActions>) => {
 		try {
-			const {data} = await  UsersApi.changePersonalInfo(payload)
+			const { data } = await UsersApi.changePersonalInfo(payload)
 			localStorage.setItem('token', data.token)
 			localStorage.setItem('userId', payload._id)
+			console.log(data.token)
+			if (data.email) dispatch(UserAC.changePersonalInfo(data.email))
 			Notification.error('Данные успешно сохранены', 'submit')
-		} catch (e){
+
+		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
 		}

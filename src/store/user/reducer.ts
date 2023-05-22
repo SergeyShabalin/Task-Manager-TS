@@ -2,7 +2,7 @@ import {
 	ChangeBackgroundUser,
 	Logout,
 	PayloadForAddBoard,
-	PayloadForAuthentication, PayloadForChangeBackgroundUser,
+	PayloadForAuthentication, PayloadForChangeBackgroundUser, PayloadForChangePersonalInfo,
 	PayloadForChangeUser,
 	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
@@ -26,6 +26,7 @@ export type UserActions =
 	| PayloadForShareBoard
 	| PayloadForChangeUser
 	| PayloadForChangeBackgroundUser
+	| PayloadForChangePersonalInfo
 
 
 export default function userReducer(state = defaultState, action: UserActions) {
@@ -148,6 +149,12 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			return {
 				...state,
 				background: action.payload.background,
+			}
+		}
+		case USER_TYPES.CHANGE_PERSONAL_INFO: {
+			return {
+				...state,
+				email: action.payload,
 			}
 		}
 
