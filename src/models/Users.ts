@@ -21,6 +21,14 @@ export interface User {
 	birthDate: Date
 }
 
+export interface userOneCard {
+	_id: string
+	firstName: string
+	secondName: string
+	lastName: string
+	avatar: string
+	email: string
+}
 
 export interface message {
 	currentBoardId: string,

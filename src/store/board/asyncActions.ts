@@ -10,9 +10,10 @@ import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Col
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
-import { ChangeTaskData, PayloadForChangedTask, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
+import { ChangeTaskData, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
+import { User } from '@/models/Users'
 
 
 export const columnsActions = {
@@ -119,6 +120,14 @@ export const cardActions = {
 			dispatch(CardAC.getCardInfoCardAC(data))
 		} catch (e) {
 			Notification.error('Произошла ошибка получения данных о карточке')
+		}
+	},
+
+	gedMembersOneCard: (payload: { [key: string]: Partial<User> }) => async (dispatch: Dispatch<BoardActions>) =>{
+		try {
+			dispatch(CardAC.getMembersOneCard(payload))
+		} catch (e){
+
 		}
 	}
 }

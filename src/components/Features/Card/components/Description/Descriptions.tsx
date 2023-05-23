@@ -4,7 +4,6 @@ import { AiOutlineMenuUnfold } from 'react-icons/ai'
 import classes from './Description.module.css'
 import { Editor } from '@Features'
 import { Card } from '@/models/Cards'
-import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 type DescriptionProps = Pick<Card, 'description' | '_id'>

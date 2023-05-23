@@ -5,13 +5,13 @@ import {
 	BOARD_TYPES,
 	BoardAction,
 	BoardAPI,
-	DragDropColumn,
 	ErrorFetching,
 	FinishLoadingBoard,
 	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
-	payloadForDeleteBoard, PayloadForDragDropColumn,
+	payloadForDeleteBoard,
+	PayloadForDragDropColumn,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -36,7 +36,8 @@ import {
 	ChangeCard,
 	CloseCard,
 	DeleteCard,
-	GetCardInfo,
+	GetCardInfo, getMembersOneBoard,
+	GetMembersOneBoard,
 	PayloadForDeleteCard
 } from '@/models/Cards'
 import {
@@ -79,7 +80,8 @@ export const CardAC = {
 	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
-	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD})
+	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
+	getMembersOneCard : ( payload: { [key: string]: Partial<User> })  : getMembersOneBoard => ({type: CARD_TYPES.GET_MEMBERS_ONE_CARD, payload})
 }
 
 export const ChecklistAC = {

@@ -161,7 +161,6 @@ export const usersActions = {
 			const { data } = await UsersApi.changePersonalInfo(payload)
 			localStorage.setItem('token', data.token)
 			localStorage.setItem('userId', payload._id)
-			console.log(data.token)
 			if (data.email) dispatch(UserAC.changePersonalInfo(data.email))
 			Notification.error('Данные успешно сохранены', 'submit')
 

@@ -4,13 +4,14 @@ import {
 	AllBoardAction,
 	BackToGreeting,
 	BOARD_TYPES,
-	BoardAction, DragDropColumn,
+	BoardAction,
 	ErrorFetching,
 	FinishLoadingBoard,
 	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
-	payloadForDeleteBoard, PayloadForDragDropColumn,
+	payloadForDeleteBoard,
+	PayloadForDragDropColumn,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -24,7 +25,8 @@ import {
 	ChangeCard,
 	CloseCard,
 	DeleteCard,
-	GetCardInfo
+	GetCardInfo,
+	getMembersOneBoard
 } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
 
@@ -56,6 +58,7 @@ export type BoardActions =
 	| StartLoadingCard
 	| FinishLoadingCard
 	| PayloadForDragDropColumn
+	| getMembersOneBoard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -233,9 +236,16 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CARD_TYPES.GET_CARD_INFO: {
+			console.log(action.payload)
 			return {
 				...state,
 				cardInfo: action.payload
+			}
+		}
+		case CARD_TYPES.GET_MEMBERS_ONE_CARD: {
+			return {
+				...state,
+				cardInfo: {...state.cardInfo, usersOneCard: action.payload}
 			}
 		}
 		case CHECKLIST_TYPES.ADD_NEW_TASK: {

@@ -15,7 +15,9 @@ export enum SOCKET_TYPES {
 	TASK_ADDED = 'TASK_ADDED',
 	TASK_CHANGED = 'TASK_CHANGED',
 	TASK_DELETED = 'TASK_DELETED',
-	COLUMN_DROPPED = 'COLUMN_DROPPED'
+	COLUMN_DROPPED = 'COLUMN_DROPPED',
+	RECEIVED_MEMBERS = 'RECEIVED_MEMBERS'
+
 }
 
 export default function useSocketOn(socket: Socket | null) {
@@ -34,7 +36,8 @@ export default function useSocketOn(socket: Socket | null) {
 		changeTask,
 		deleteTask,
 		dragDropColumn,
-		shareBoard
+		shareBoard,
+		gedMembersOneCard
 	} = useActions()
 
 	useEffect(() => {
@@ -51,6 +54,8 @@ export default function useSocketOn(socket: Socket | null) {
 		socket.on(SOCKET_TYPES.TASK_CHANGED, changeTask)
 		socket.on(SOCKET_TYPES.TASK_DELETED, deleteTask)
 		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
+		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
+		socket.on(SOCKET_TYPES.RECEIVED_MEMBERS, gedMembersOneCard)
 	}, [socket])
 
 	return <div></div>

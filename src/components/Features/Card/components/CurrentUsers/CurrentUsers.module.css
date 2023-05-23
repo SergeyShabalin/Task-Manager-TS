@@ -1,0 +1,28 @@
+.wrapper{
+    margin: 20px 0 20px 0;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+}
+
+.icons{
+    transform: scale(1.35);
+    color: #030a36;
+}
+
+.description_title{
+    padding: 0 10px 0 12px;
+    margin: 5px;
+}
+
+.content{
+    margin: 0 30px 0 30px;
+    cursor: pointer;
+}
+
+.members{
+    display: flex;
+    margin-left: 20px;
+}

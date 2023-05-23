@@ -9,6 +9,7 @@ import Deadline from '@/components/Features/Card/components/Deadline'
 import Header from '@/components/Features/Card/components/Header'
 import Checklist from '@/components/Features/Card/components/Checklist'
 import classes from './Card.module.css'
+import CurrentUsers from '@/components/Features/Card/components/CurrentUsers'
 
 export default function Card() {
 	const navigate = useNavigate()
@@ -38,7 +39,9 @@ export default function Card() {
 				<>
 					<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />
 					<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
+					<CurrentUsers />
 					<Description description={cardInfo.description} _id={cardInfo._id} />
+
 					<Checklist
 						_id={cardInfo._id}
 						countTask={cardInfo.countTask}

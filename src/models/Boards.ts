@@ -89,6 +89,7 @@ export interface BoardState extends BoardAPI {
 	cardInfo: Card
 	allBoards: Board[]
 	allUsers: UsersInShare[]
+	usersOneCard: Partial<User>[]
 }
 
 export interface payloadForDeleteBoard extends DeleteBoard {

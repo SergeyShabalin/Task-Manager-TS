@@ -1,5 +1,6 @@
 import { CheckList } from '@/models/CheckList'
 import { Action } from 'redux'
+import { User } from '@/models/Users'
 
 export interface Card {
 	_id: string
@@ -11,6 +12,8 @@ export interface Card {
 	doneTask: number
 	order: number
 	checkList: CheckList[]
+	members: []
+	usersOneCard: []
 }
 
 export enum CARD_TYPES {
@@ -18,10 +21,12 @@ export enum CARD_TYPES {
 	DELETE_CARD = 'DELETE_CARD',
 	CHANGE_CARD = 'CHANGE_CARD',
 	GET_CARD_INFO = 'GET_CARD_INFO',
-	CLOSE_CARD = 'CLOSE_CARD'
+	CLOSE_CARD = 'CLOSE_CARD',
+	GET_MEMBERS_ONE_CARD = 'GET_MEMBERS_ONE_CARD'
 }
 
 export type CloseCard = Action<CARD_TYPES.CLOSE_CARD>
+export type GetMembersOneBoard = Action<CARD_TYPES.GET_MEMBERS_ONE_CARD>
 
 export interface PayloadForDeleteCard {
 	newCardIds: string[]
@@ -42,4 +47,8 @@ export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 
 export interface GetCardInfo extends Action<CARD_TYPES.GET_CARD_INFO> {
 	payload: Card
+}
+
+export interface getMembersOneBoard extends GetMembersOneBoard {
+	payload: { [key: string]: Partial<User> }
 }

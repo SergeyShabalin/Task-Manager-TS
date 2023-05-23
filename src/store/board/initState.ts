@@ -22,7 +22,9 @@ export const defaultState: BoardState = {
 		order: 0,
 		column_id: '',
 		countTask: 0,
-		doneTask: 0
+		doneTask: 0,
+		members: []
 	},
-	allUsers: []
+	allUsers: [],
+	usersOneCard: []
 }
