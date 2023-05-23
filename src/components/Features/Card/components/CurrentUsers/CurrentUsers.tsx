@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import classes from './CurrentUsers.module.css'
 import { AiOutlineUser } from 'react-icons/ai'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
@@ -8,9 +8,9 @@ import User from '@/components/Features/Card/components/CurrentUsers/User'
 
 
 export default function CurrentUsers() {
-	const usersOneCard = useTypedSelector(state => state.board.cardInfo.usersOneCard)
+	const usersOneCard = useTypedSelector(state => state.board.usersOneCard)
 	const socket = useTypedSelector(state => state.user.socket)
-	const [isHint, setIsHint] = useState(false)
+
 	const { cardId } = useParams()
 
 	useEffect(() => {
@@ -19,17 +19,11 @@ export default function CurrentUsers() {
 		}
 	}, [])
 
-	function showHint() {
-		setIsHint(true)
-	}
 
-	function closeHint() {
-		setIsHint(false)
-	}
 
 	const listMembers = usersOneCard?.map((user: userOneCard) => {
 		return (
-			<User user={user}/>
+			<User user={user} key = {user._id} />
 		)
 	})
 

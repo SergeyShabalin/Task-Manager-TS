@@ -3,7 +3,7 @@
 	padding: 10px 10px 20px 20px;
 	border-radius: 5px;
 	min-height: 30vh;
-	width: 30vw;
+	width: 600px;
 	color: var(--card-modal-text-color);
 	font: var(--prymary-font);
 	position: relative;

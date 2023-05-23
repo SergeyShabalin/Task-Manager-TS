@@ -232,11 +232,11 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 					column_id: '',
 					countTask: 0,
 					doneTask: 0
-				}
+				},
+				usersOneCard: []
 			}
 		}
 		case CARD_TYPES.GET_CARD_INFO: {
-			console.log(action.payload)
 			return {
 				...state,
 				cardInfo: action.payload
@@ -245,7 +245,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CARD_TYPES.GET_MEMBERS_ONE_CARD: {
 			return {
 				...state,
-				cardInfo: {...state.cardInfo, usersOneCard: action.payload}
+				  usersOneCard: action.payload
 			}
 		}
 		case CHECKLIST_TYPES.ADD_NEW_TASK: {
@@ -255,6 +255,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CHECKLIST_TYPES.CHANGE_TASK: {
+
 			return {
 				...state,
 				cardInfo: { ...state.cardInfo, checkList: action.payload }

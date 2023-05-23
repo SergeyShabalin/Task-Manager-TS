@@ -1,14 +1,13 @@
-
 .user{
+    position: relative;
     margin: 5px;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 100%;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
 .user:hover{
-    /*transform: scale(1.05);*/
     box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.57);
 }
 
@@ -23,8 +22,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     background: radial-gradient(white, #212b70);
     border-radius: 100%;
+}
+
+.hint{
+    transform: scale(1.3);
 }
