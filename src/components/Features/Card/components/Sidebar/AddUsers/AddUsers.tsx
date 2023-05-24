@@ -19,7 +19,8 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 	useOnClickOutside(addUsersRef, () => closeUsers())
 
 	const users = useTypedSelector(state => state.board.allUsers)
-	const { boardId } = useParams()
+	const	socket = useTypedSelector(({ user }) => user.socket)
+	const { boardId, cardId } = useParams()
 	const { getUsersOneBoard } = useActions()
 
 	useEffect(() => {
@@ -27,7 +28,11 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 	}, [])
 
 	function addUser(userId: string) {
-		console.log(userId)
+
+		const payload = {
+			userId, cardId
+		}
+		if (socket) socket.emit('ADD_MEMBER_ONE_CARD', payload)
 	}
 
 	return (
@@ -38,7 +43,7 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 			<div>Участники доски</div>
 			<div>
 				{users?.map(user => (
-					<div className={classes.user} key={user._id}>
+					<div className={classes.user} key={user._id} onClick={()=>addUser(user._id)}>
 
 						<div className={classes.avatar_wrapper}>
 							{user.avatar
@@ -54,7 +59,6 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 
 						</div>
 
-						<div className={classes.add_btn}><Button icon={<IoMdAdd />} onClick={(user_id)=>addUser(user._id)} variant={'just_icon'} /></div>
 					</div>
 				))}
 			</div>

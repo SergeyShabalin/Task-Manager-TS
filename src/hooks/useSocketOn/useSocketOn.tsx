@@ -16,7 +16,8 @@ export enum SOCKET_TYPES {
 	TASK_CHANGED = 'TASK_CHANGED',
 	TASK_DELETED = 'TASK_DELETED',
 	COLUMN_DROPPED = 'COLUMN_DROPPED',
-	RECEIVED_MEMBERS = 'RECEIVED_MEMBERS'
+	RECEIVED_MEMBERS = 'RECEIVED_MEMBERS',
+	CHANGE_COUNT_MEMBERS = 'CHANGE_COUNT_MEMBERS'
 
 }
 
@@ -56,6 +57,7 @@ export default function useSocketOn(socket: Socket | null) {
 		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
 		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
 		socket.on(SOCKET_TYPES.RECEIVED_MEMBERS, getUsersOneCard)
+		socket.on(SOCKET_TYPES.CHANGE_COUNT_MEMBERS, getUsersOneCard)
 	}, [socket])
 
 	return <div></div>

@@ -22,18 +22,23 @@ export default function CurrentUsers() {
 
 	const listMembers = usersOneCard?.map((user: userOneCard[]) => {
 		return (
-			<User user={user} key = {user._id} />
+			<User user={user} key={user._id} />
 		)
 	})
 
 	return (
-		<div className={classes.wrapper}>
-			<div className={classes.header}>
-				<AiOutlineUser className={classes.icons} />
-				<h4 className={classes.description_title}>Участники</h4>
-			</div>
-			<div className={classes.members}>{usersOneCard && listMembers}</div>
-			<div className={classes.content}></div>
-		</div>
-	)
-}
+		<>
+			{usersOneCard.length !== 0
+				&& <div className={classes.wrapper}>
+					<div className={classes.header}>
+						<AiOutlineUser className={classes.icons} />
+						<h4 className={classes.description_title}>Участники</h4>
+					</div>
+					<div className={classes.members}>{usersOneCard && listMembers}</div>
+					<div className={classes.content}></div>
+				</div>
+			}
+				</>
+
+				)
+			}
