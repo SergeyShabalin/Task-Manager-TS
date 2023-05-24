@@ -8,30 +8,41 @@ import { useActions } from '@/hooks/useActions/useActions'
 
 export default function AvatarEdit() {
 	const user = useTypedSelector(state => state.user),
-		navigate = useNavigate()
+				navigate = useNavigate()
 
 	const [preview, setPreview] = useState('')
-
-	const { changeUser } = useActions()
+	const [avatar, setAvatar] = useState<File | undefined>(undefined)
+	const formData = new FormData()
+	const { changeAvatarUser } = useActions()
 
 	function closePhoto() {
 		setPreview('')
 	}
 
 	function cropPhoto(photo: string) {
+		const file = dataURLtoFile(photo, 'avatar.png', 'image/png')
+		setAvatar(file)
 		setPreview(photo)
+	}
+
+	const dataURLtoFile = (dataURL: string, filename: string, fileType: string) => {
+		const arr = dataURL.split(',')
+		const decodedData = atob(arr[1])
+		const byteCharacters = Array.from(decodedData).map((char) =>
+			char.charCodeAt(0)
+		)
+		const byteArray = new Uint8Array(byteCharacters)
+		return new File([byteArray], filename, { type: fileType })
 	}
 
 	function closeModal() {
 		navigate(`/user/${user._id}/configuration/profile`)
 	}
 
-	 function downloadPhoto() {
-		const payload = {
-			_id: user._id,
-			avatar: preview
-		}
-		 changeUser(payload)
+	function downloadPhoto() {
+
+		formData.append('background', avatar, user._id)
+		changeAvatarUser(formData)
 		closeModal()
 	}
 

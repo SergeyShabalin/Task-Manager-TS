@@ -2,7 +2,7 @@ import {
 	Logout,
 	message,
 	PayloadForAddBoard,
-	PayloadForAuthentication,
+	PayloadForAuthentication, PayloadForChangeAvatarUser,
 	PayloadForChangeBackgroundUser,
 	PayloadForChangePersonalInfo,
 	PayloadForChangeUser,
@@ -27,5 +27,6 @@ export const UserAC = {
 	shareBoard: (payload: message[]) : PayloadForShareBoard => ({type: USER_TYPES.SHARE_BOARD, payload}),
 	updateUser: (payload: Partial<User>) : PayloadForChangeUser => ({type: USER_TYPES.CHANGE_USER, payload}),
 	updateBackgroundUser: (payload: Partial<User> ) : PayloadForChangeBackgroundUser => ({type: USER_TYPES.CHANGE_BACKGROUND_USER, payload}),
+	updateAvatarUser: (payload: Partial<User> ) : PayloadForChangeAvatarUser => ({type: USER_TYPES.CHANGE_AVATAR_USER, payload}),
 	changePersonalInfo: (payload: string) : PayloadForChangePersonalInfo => ({type: USER_TYPES.CHANGE_PERSONAL_INFO, payload})
 }

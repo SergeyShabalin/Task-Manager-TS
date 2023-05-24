@@ -156,6 +156,21 @@ export const usersActions = {
 		}
 	},
 
+	changeAvatarUser: (payload: FormData)=> async  (dispatch: Dispatch<UserActions>) => {
+		try {
+			const { data } = await UsersApi.changeAvatarUser(payload)
+			const payloadForAvatar = {
+				_id: data._id,
+				avatar: data.avatar
+			}
+			dispatch(UserAC.updateAvatarUser(payloadForAvatar))
+			Notification.error('Данные успешно сохранены', 'submit')
+		} catch (e) {
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
+		}
+	},
+
 	changePersonalInfo: (payload: payloadForChangePersonalInfo) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.changePersonalInfo(payload)

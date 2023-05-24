@@ -8,17 +8,8 @@ import User from '@/components/Features/Card/components/CurrentUsers/User'
 
 
 export default function CurrentUsers() {
+
 	const usersOneCard = useTypedSelector(state => state.board.usersOneCard)
-	const socket = useTypedSelector(state => state.user.socket)
-
-	const { cardId } = useParams()
-
-	useEffect(() => {
-		if (cardId) {
-			socket?.emit('GET_MEMBERS', { cardId })
-		}
-	}, [])
-
 
 	const listMembers = usersOneCard?.map((user: userOneCard[]) => {
 		return (

@@ -62,6 +62,7 @@ export enum USER_TYPES {
 	SHARE_BOARD = 'SHARE_BOARD',
 	CHANGE_USER = 'CHANGE_USER',
 	CHANGE_BACKGROUND_USER = 'CHANGE_BACKGROUND_USER',
+	CHANGE_AVATAR_USER = 'CHANGE_AVATAR_USER',
 	CHANGE_PERSONAL_INFO = 'CHANGE_PERSONAL_INFO'
 }
 
@@ -75,6 +76,7 @@ export type SocketInit = Action<USER_TYPES.SOCKET_INIT>
 export type ShareBoard = Action<USER_TYPES.SHARE_BOARD>
 export type ChangeUser = Action<USER_TYPES.CHANGE_USER>
 export type ChangeBackgroundUser = Action<USER_TYPES.CHANGE_BACKGROUND_USER>
+export type ChangeAvatarUser = Action<USER_TYPES.CHANGE_AVATAR_USER>
 export type ChangePersonalInfo = Action<USER_TYPES.CHANGE_PERSONAL_INFO>
 
 
@@ -95,11 +97,11 @@ export interface payloadForChangePassword {
 
 
 export interface payloadForChangeBackgroundUser {
-	 payload: Partial<User>
+	payload: Partial<User>
 }
 
 
-export interface payloadForChangePersonalInfo{
+export interface payloadForChangePersonalInfo {
 	_id: string
 	newPass?: string
 	oldPass?: string
@@ -141,6 +143,11 @@ export interface PayloadForChangeUser extends ChangeUser {
 export interface PayloadForChangeBackgroundUser extends ChangeBackgroundUser {
 	payload: Partial<User>
 }
+
+export interface PayloadForChangeAvatarUser extends ChangeAvatarUser {
+	payload: Partial<User>
+}
+
 export interface PayloadForChangePersonalInfo extends ChangePersonalInfo {
 	payload: string
 }

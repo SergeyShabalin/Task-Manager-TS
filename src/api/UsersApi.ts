@@ -48,6 +48,10 @@ class UsersApi {
 		return Api.post('/user/sendIMG/', payload)
 	}
 
+	async changeAvatarUser(payload: FormData): Promise<AxiosResponse<User>> {
+		return Api.post('/user/sendAvatar/', payload)
+	}
+
 	async changePersonalInfo(payload: payloadForChangePersonalInfo): Promise<AxiosResponse<User>> {
 		return Api.post('/user/changePersonalInfo/', payload)
 	}

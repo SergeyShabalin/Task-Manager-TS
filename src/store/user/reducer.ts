@@ -1,8 +1,7 @@
 import {
-	ChangeBackgroundUser,
 	Logout,
 	PayloadForAddBoard,
-	PayloadForAuthentication, PayloadForChangeBackgroundUser, PayloadForChangePersonalInfo,
+	PayloadForAuthentication, PayloadForChangeAvatarUser, PayloadForChangeBackgroundUser, PayloadForChangePersonalInfo,
 	PayloadForChangeUser,
 	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
@@ -26,6 +25,7 @@ export type UserActions =
 	| PayloadForShareBoard
 	| PayloadForChangeUser
 	| PayloadForChangeBackgroundUser
+	| PayloadForChangeAvatarUser
 	| PayloadForChangePersonalInfo
 
 
@@ -149,6 +149,12 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			return {
 				...state,
 				background: action.payload.background,
+			}
+		}
+		case USER_TYPES.CHANGE_AVATAR_USER: {
+			return {
+				...state,
+				avatar: action.payload.avatar,
 			}
 		}
 		case USER_TYPES.CHANGE_PERSONAL_INFO: {
