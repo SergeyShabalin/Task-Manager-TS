@@ -72,6 +72,22 @@
     --button-error-contained-color: #d5d5e0;
     --button-error-contained-color-hover: #dbdbe8;
 
+    --button-prymary-color-full_contain-background: #336afd;
+    --button-prymary-color-full_contain-background-hover: #1b47d7;
+    --button-prymary-full_contain-color: #d1d1dc;
+    --button-prymary-full_contain-color-hover: #babacc;
+    --button-secondary-color-full_contain-background: #c7e0ea;
+    --button-secondary-color-full_contain-background-hover: rgb(187, 214, 225);
+    --button-secondary-full_contain-color: #2c2c59;
+    --button-secondary-full_contain-color-hover: #3d3d70;
+    --button-error-color-full_contain-background: #d93434;
+    --button-error-color-full_contain-background-hover: #8d0519;
+    --button-error-full_contain-color: #d5d5e0;
+    --button-error-full_contain-color-hover: #dbdbe8;
+    --button-full_contain-background-disabled: gray;
+    --button-full_contain-color-disabled: #c4a9a9;
+    --button-full_contain-border-radius-disabled: 0;
+
 
     --button-contained-color-submit: #222622;
     --button-contained-color-blue: white;

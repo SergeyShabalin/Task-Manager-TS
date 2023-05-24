@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	endIcon?: React.ReactNode
 	disabled?: boolean
 	color?: 'primary' | 'secondary' | 'error'
-	variant?: 'contained' | 'outlined' | 'text' | 'just_icon'
+	variant?: 'contained' | 'outlined' | 'text' | 'just_icon' | 'full_contain'
 	fullSize?: boolean
 }
 

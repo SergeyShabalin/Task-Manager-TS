@@ -10,6 +10,7 @@ import Header from '@/components/Features/Card/components/Header'
 import Checklist from '@/components/Features/Card/components/Checklist'
 import classes from './Card.module.css'
 import CurrentUsers from '@/components/Features/Card/components/CurrentUsers'
+import Sidebar from '@/components/Features/Card/components/Sidebar'
 
 export default function Card() {
 	const navigate = useNavigate()
@@ -38,16 +39,20 @@ export default function Card() {
 				)}
 				<>
 					<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />
-					<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
-					<CurrentUsers />
-					<Description description={cardInfo.description} _id={cardInfo._id} />
-
-					<Checklist
-						_id={cardInfo._id}
-						countTask={cardInfo.countTask}
-						doneTask={cardInfo.doneTask}
-						checkList={cardInfo.checkList}
-					/>
+					<div className={classes.content}>
+					<div className={classes.main_components}>
+						<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
+						<CurrentUsers />
+						<Description description={cardInfo.description} _id={cardInfo._id} />
+						<Checklist
+							_id={cardInfo._id}
+							countTask={cardInfo.countTask}
+							doneTask={cardInfo.doneTask}
+							checkList={cardInfo.checkList}
+						/>
+					</div>
+					<Sidebar/>
+					</div>
 				</>
 			</div>
 		</Modal>

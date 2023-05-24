@@ -18,8 +18,10 @@ export default function CurrentUsers() {
 
 			<div className={classes.users}>
 				<div className={classes.user_list}>
+
 					{users?.map(user => (
 						<div className={classes.user} key={user._id}>
+
 							<div className={classes.avatar_wrapper}>
 								{user.avatar
 									?	<img className={classes.avatar} src={user.avatar} />
@@ -29,10 +31,9 @@ export default function CurrentUsers() {
 
 							<div className={classes.user_info}>
 								<div className={classes.email}>{user.email}</div>
-								<div className={classes.name}>
-									{user.secondName} {user.firstName}
-								</div>
+								<div className={classes.name}>{user.secondName} {user.firstName}</div>
 							</div>
+
 						</div>
 					))}
 				</div>

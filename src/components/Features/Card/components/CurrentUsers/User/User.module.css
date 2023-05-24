@@ -1,8 +1,8 @@
 .user{
     position: relative;
-    margin: 5px;
-    width: 45px;
-    height: 45px;
+    margin: 3px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     background: radial-gradient(white, #212b70);
     border-radius: 100%;

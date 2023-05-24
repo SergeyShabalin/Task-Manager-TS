@@ -12,7 +12,7 @@ export interface Card {
 	doneTask: number
 	order: number
 	checkList: CheckList[]
-	members: []
+	memberIds: []
 	usersOneCard: []
 }
 
@@ -22,11 +22,11 @@ export enum CARD_TYPES {
 	CHANGE_CARD = 'CHANGE_CARD',
 	GET_CARD_INFO = 'GET_CARD_INFO',
 	CLOSE_CARD = 'CLOSE_CARD',
-	GET_MEMBERS_ONE_CARD = 'GET_MEMBERS_ONE_CARD'
+	GET_USERS_ONE_CARD = 'GET_USERS_ONE_CARD'
 }
 
 export type CloseCard = Action<CARD_TYPES.CLOSE_CARD>
-export type GetMembersOneBoard = Action<CARD_TYPES.GET_MEMBERS_ONE_CARD>
+export type GetUsersOneCard = Action<CARD_TYPES.GET_USERS_ONE_CARD>
 
 export interface PayloadForDeleteCard {
 	newCardIds: string[]
@@ -49,6 +49,6 @@ export interface GetCardInfo extends Action<CARD_TYPES.GET_CARD_INFO> {
 	payload: Card
 }
 
-export interface getMembersOneBoard extends GetMembersOneBoard {
+export interface getUsersOneCard extends GetUsersOneCard {
 	payload: { [key: string]: Partial<User> }
 }

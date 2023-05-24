@@ -37,7 +37,7 @@ export default function useSocketOn(socket: Socket | null) {
 		deleteTask,
 		dragDropColumn,
 		shareBoard,
-		gedMembersOneCard
+		getUsersOneCard
 	} = useActions()
 
 	useEffect(() => {
@@ -55,7 +55,7 @@ export default function useSocketOn(socket: Socket | null) {
 		socket.on(SOCKET_TYPES.TASK_DELETED, deleteTask)
 		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
 		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
-		socket.on(SOCKET_TYPES.RECEIVED_MEMBERS, gedMembersOneCard)
+		socket.on(SOCKET_TYPES.RECEIVED_MEMBERS, getUsersOneCard)
 	}, [socket])
 
 	return <div></div>

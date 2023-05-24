@@ -36,8 +36,8 @@ import {
 	ChangeCard,
 	CloseCard,
 	DeleteCard,
-	GetCardInfo, getMembersOneBoard,
-	GetMembersOneBoard,
+	GetCardInfo,
+	getUsersOneCard,
 	PayloadForDeleteCard
 } from '@/models/Cards'
 import {
@@ -81,7 +81,7 @@ export const CardAC = {
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
-	getMembersOneCard : ( payload: { [key: string]: Partial<User> })  : getMembersOneBoard => ({type: CARD_TYPES.GET_MEMBERS_ONE_CARD, payload})
+	getUsersOneCard : ( payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload})
 }
 
 export const ChecklistAC = {

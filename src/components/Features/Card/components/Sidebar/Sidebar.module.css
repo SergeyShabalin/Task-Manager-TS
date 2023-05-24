@@ -1,0 +1,16 @@
+.wrapper{
+
+    width: 25%;
+    height: 400px;
+}
+
+.title{
+    font-size: 13px;
+    margin: 1px 1px 10px 5px ;
+    color: #172b4d;
+}
+
+.icon{
+    margin: 0 10px 0 5px  ;
+    transform: scale(1.2);
+}

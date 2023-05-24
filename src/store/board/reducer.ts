@@ -26,7 +26,7 @@ import {
 	CloseCard,
 	DeleteCard,
 	GetCardInfo,
-	getMembersOneBoard
+	getUsersOneCard
 } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
 
@@ -58,7 +58,7 @@ export type BoardActions =
 	| StartLoadingCard
 	| FinishLoadingCard
 	| PayloadForDragDropColumn
-	| getMembersOneBoard
+	| getUsersOneCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -242,7 +242,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				cardInfo: action.payload
 			}
 		}
-		case CARD_TYPES.GET_MEMBERS_ONE_CARD: {
+		case CARD_TYPES.GET_USERS_ONE_CARD: {
 			return {
 				...state,
 				  usersOneCard: action.payload
