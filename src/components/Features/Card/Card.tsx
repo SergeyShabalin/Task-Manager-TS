@@ -18,13 +18,10 @@ export default function Card() {
 	const cardInfo = useTypedSelector(state => state.board.cardInfo)
 	const isLoading = useTypedSelector(state => state.board.isLoadingCard)
 	const { getOneCard, closeCard } = useActions()
-	const socket = useTypedSelector(state => state.user.socket)
-
 
 
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
-		if (cardId) socket?.emit('GET_MEMBERS', { cardId })
 	}, [])
 
 	useEffect(() => {

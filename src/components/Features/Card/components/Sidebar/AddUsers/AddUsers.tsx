@@ -6,8 +6,7 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 import { useActions } from '@/hooks/useActions/useActions'
-import { Button } from '@UI'
-import { IoMdAdd } from 'react-icons/io'
+
 
 interface AddUsersProps {
 	closeUsers: () => void

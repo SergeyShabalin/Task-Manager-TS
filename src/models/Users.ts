@@ -63,6 +63,7 @@ export interface error {
 export interface UserState extends User {
 	isLoading: boolean
 	isError: boolean
+	profileUser: profileUser
 }
 
 export interface payloadForListMembers {

@@ -13,6 +13,7 @@ export interface Card {
 	order: number
 	checkList: CheckList[]
 	memberIds: []
+
 }
 
 export enum CARD_TYPES {
@@ -45,7 +46,10 @@ export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 }
 
 export interface GetCardInfo extends Action<CARD_TYPES.GET_CARD_INFO> {
-	payload: Card
+	payload: {
+		cardInfo: Partial<Card>
+		usersOneCard: User[]
+	}
 }
 
 export interface getUsersOneCard extends GetUsersOneCard {

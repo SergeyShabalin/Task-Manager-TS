@@ -59,8 +59,8 @@ export default function CropImage({ image, closeModal }: cropProps) {
 					ref={editorRef}
 					image={image}
 					width={700}
-					height={160}
-					border={50}
+					height={220}
+					border={25}
 					color={[0, 0, 0, 0.7]}
 					scale={scale}
 					rotate={0}

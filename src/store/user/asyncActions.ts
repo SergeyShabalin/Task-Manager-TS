@@ -188,7 +188,6 @@ export const usersActions = {
 	getUserInfo: (userId: string) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.getUserInfo(userId)
-			console.log(data)
 			dispatch(UserAC.getUserInfo(data))
 		} catch (e) {
 			const error = e as AxiosError<any>

@@ -239,7 +239,8 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CARD_TYPES.GET_CARD_INFO: {
 			return {
 				...state,
-				cardInfo: action.payload
+				cardInfo: action.payload.cardInfo,
+				usersOneCard: action.payload.usersOneCard
 			}
 		}
 		case CARD_TYPES.GET_USERS_ONE_CARD: {

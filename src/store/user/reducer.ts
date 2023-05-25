@@ -51,7 +51,6 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			}
 		}
 		case USER_TYPES.CHECK_LOGIN: {
-
 			const { boardIds, _id, messages, email, firstName, secondName, lastName, isAuth, avatar, background, department, organization, position } =
 				action.payload
 			return {
@@ -132,7 +131,6 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				messages: action.payload
 			}
 		}
-
 		case USER_TYPES.CHANGE_USER: {
 			return {
 				...state,
@@ -145,7 +143,6 @@ export default function userReducer(state = defaultState, action: UserActions) {
 				birthDate: action.payload.birthDate,
 			}
 		}
-
 		case USER_TYPES.CHANGE_BACKGROUND_USER: {
 			return {
 				...state,
