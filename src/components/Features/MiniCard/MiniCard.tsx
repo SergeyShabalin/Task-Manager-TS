@@ -3,7 +3,6 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 
 import { Card } from '@/models/Cards'
 import { Button } from '@UI'
-import { useActions } from '@/hooks/useActions/useActions'
 import { Checkout, DecisionDate } from '@/components/Features'
 import { BsThreeDots } from 'react-icons/bs'
 import Description from '@/components/Features/MiniCard/Description'

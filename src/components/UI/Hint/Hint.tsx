@@ -3,7 +3,7 @@ import classes from './Hint.module.css'
 
 interface HintProps {
 	visible: boolean
-	label: string
+	label: string | undefined
 }
 
 export default function Hint({ visible, label }: HintProps) {

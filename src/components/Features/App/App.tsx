@@ -13,6 +13,7 @@ import '../../../GlobalStyles.css'
 import Configuration from '@/pages/configuration'
 import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 import BackgroundEdit from '@/pages/configuration/Profile/BackgroundEdit'
+import Profile from '@/components/Features/Profile'
 
 function App() {
 	const location = useLocation()
@@ -46,6 +47,7 @@ function App() {
 						<Route path='/*' element={<Main />} />
 						<Route path='/user/:userId' element={<Main />} />
 						<Route path='/user/:userId/greeting' element={<Greeting />} />
+						<Route path='/user/:userId/profile' element={<Profile />} />
 						<Route path='/user/:userId/configuration/*' element={<Configuration />} />
 						<Route path='/user/:userId/board/:boardId' element={<Main />} />
 						<Route path='/ui' element={<UiKit />} />

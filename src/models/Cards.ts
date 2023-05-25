@@ -13,7 +13,6 @@ export interface Card {
 	order: number
 	checkList: CheckList[]
 	memberIds: []
-	usersOneCard: []
 }
 
 export enum CARD_TYPES {

@@ -14,7 +14,7 @@ import { UserAC } from '@/store/user/action'
 import { BoardActions } from '@/store/board/reducer'
 import { BoardAC } from '@/store/board/action'
 import { AxiosError } from 'axios'
-import { Api } from '@/api'
+
 
 export const usersActions = {
 	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
@@ -179,6 +179,17 @@ export const usersActions = {
 			if (data.email) dispatch(UserAC.changePersonalInfo(data.email))
 			Notification.error('Данные успешно сохранены', 'submit')
 
+		} catch (e) {
+			const error = e as AxiosError<any>
+			Notification.error(error.response?.data?.message)
+		}
+	},
+
+	getUserInfo: (userId: string) => async (dispatch: Dispatch<UserActions>) => {
+		try {
+			const { data } = await UsersApi.getUserInfo(userId)
+			console.log(data)
+			dispatch(UserAC.getUserInfo(data))
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)

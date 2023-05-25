@@ -21,13 +21,27 @@ export interface User {
 	birthDate: Date
 }
 
+export interface profileUser {
+	_id?: string
+	email?: string
+	firstName?: string
+	secondName?: string
+	lastName?: string
+	avatar?: string
+	background?: string
+	position?: string
+	department?: string
+	organization?: string
+	birthDate?: Date
+}
+
 export interface userOneCard {
-	_id: string
-	firstName: string
-	secondName: string
-	lastName: string
-	avatar: string
-	email: string
+	_id?: string
+	firstName?: string
+	secondName?: string
+	lastName?: string
+	avatar?: string
+	email?: string
 }
 
 export interface message {
@@ -39,6 +53,7 @@ export interface payloadForShareBoard {
 	messages?: message[],
 	error?: string,
 	submit?: string
+	profileUser: profileUser
 }
 
 export interface error {
@@ -48,7 +63,12 @@ export interface error {
 export interface UserState extends User {
 	isLoading: boolean
 	isError: boolean
+}
 
+export interface payloadForListMembers {
+	value: Partial<User>,
+	index: number,
+	array: Partial<User>[]
 }
 
 export enum USER_TYPES {
@@ -63,7 +83,10 @@ export enum USER_TYPES {
 	CHANGE_USER = 'CHANGE_USER',
 	CHANGE_BACKGROUND_USER = 'CHANGE_BACKGROUND_USER',
 	CHANGE_AVATAR_USER = 'CHANGE_AVATAR_USER',
-	CHANGE_PERSONAL_INFO = 'CHANGE_PERSONAL_INFO'
+	CHANGE_PERSONAL_INFO = 'CHANGE_PERSONAL_INFO',
+	GET_USER_INFO = 'GET_USER_INFO',
+	CLEAR_USER_INFO = 'CLEAR_USER_INFO'
+
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
@@ -78,6 +101,8 @@ export type ChangeUser = Action<USER_TYPES.CHANGE_USER>
 export type ChangeBackgroundUser = Action<USER_TYPES.CHANGE_BACKGROUND_USER>
 export type ChangeAvatarUser = Action<USER_TYPES.CHANGE_AVATAR_USER>
 export type ChangePersonalInfo = Action<USER_TYPES.CHANGE_PERSONAL_INFO>
+export type GetUserInfo = Action<USER_TYPES.GET_USER_INFO>
+export type ClearUserInfo = Action<USER_TYPES.CLEAR_USER_INFO>
 
 
 export interface PayloadForApplyInvite {
@@ -150,6 +175,10 @@ export interface PayloadForChangeAvatarUser extends ChangeAvatarUser {
 
 export interface PayloadForChangePersonalInfo extends ChangePersonalInfo {
 	payload: string
+}
+
+export interface PayloadForGetUserInfo extends GetUserInfo {
+	payload: Partial<User>
 }
 
 

@@ -56,6 +56,10 @@ class UsersApi {
 		return Api.post('/user/changePersonalInfo/', payload)
 	}
 
+	async getUserInfo(userId: string): Promise<AxiosResponse<User>> {
+		return Api.get(`/user/getUserInfo/${userId}`)
+	}
+
 }
 
 export default new UsersApi()

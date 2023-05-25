@@ -11,7 +11,7 @@ export default function CurrentUsers() {
 
 	const usersOneCard = useTypedSelector(state => state.board.usersOneCard)
 
-	const listMembers = usersOneCard?.map((user: userOneCard[]) => {
+	const listMembers = usersOneCard?.map((user: userOneCard) => {
 		return (
 			<User user={user} key={user._id} />
 		)

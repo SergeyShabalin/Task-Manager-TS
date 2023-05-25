@@ -123,13 +123,6 @@ export const cardActions = {
 		}
 	},
 
-	gedMembersOneCard: (payload: { [key: string]: Partial<User> }) => async (dispatch: Dispatch<BoardActions>) =>{
-		try {
-			dispatch(CardAC.getMembersOneCard(payload))
-		} catch (e){
-
-		}
-	}
 }
 
 export const boardActions = {

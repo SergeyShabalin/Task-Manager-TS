@@ -8,7 +8,7 @@ import { useActions } from '@/hooks/useActions/useActions'
 
 export default function AvatarEdit() {
 	const user = useTypedSelector(state => state.user),
-				navigate = useNavigate()
+		navigate = useNavigate()
 
 	const [preview, setPreview] = useState('')
 	const [avatar, setAvatar] = useState<File | undefined>(undefined)
@@ -40,8 +40,9 @@ export default function AvatarEdit() {
 	}
 
 	function downloadPhoto() {
-
-		formData.append('background', avatar, user._id)
+		if (avatar){
+			formData.append('background', avatar, user._id)
+		}
 		changeAvatarUser(formData)
 		closeModal()
 	}

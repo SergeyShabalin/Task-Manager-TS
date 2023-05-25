@@ -1,10 +1,11 @@
 import {
+	ClearUserInfo,
 	Logout,
 	PayloadForAddBoard,
 	PayloadForAuthentication, PayloadForChangeAvatarUser, PayloadForChangeBackgroundUser, PayloadForChangePersonalInfo,
 	PayloadForChangeUser,
 	PayloadForCheckLogin,
-	PayloadForDeleteMessage,
+	PayloadForDeleteMessage, PayloadForGetUserInfo,
 	PayloadForShareBoard,
 	PayloadForSocketInit,
 	PayloadForStartRegistration,
@@ -27,6 +28,8 @@ export type UserActions =
 	| PayloadForChangeBackgroundUser
 	| PayloadForChangeAvatarUser
 	| PayloadForChangePersonalInfo
+	| PayloadForGetUserInfo
+	| ClearUserInfo
 
 
 export default function userReducer(state = defaultState, action: UserActions) {
@@ -133,11 +136,9 @@ export default function userReducer(state = defaultState, action: UserActions) {
 		case USER_TYPES.CHANGE_USER: {
 			return {
 				...state,
-				avatar: action.payload.avatar,
 				secondName: action.payload.secondName,
 				firstName: action.payload.firstName,
 				lastName: action.payload.lastName,
-				email: action.payload.email,
 				position: action.payload.position,
 				department: action.payload.department,
 				organization: action.payload.organization,
@@ -161,6 +162,43 @@ export default function userReducer(state = defaultState, action: UserActions) {
 			return {
 				...state,
 				email: action.payload,
+			}
+		}
+		case USER_TYPES.GET_USER_INFO: {
+			return {
+				...state,
+				profileUser:
+					{
+						...state.profileUser,
+						avatar: action.payload.avatar,
+						background: action.payload.background,
+						secondName: action.payload.secondName,
+						firstName: action.payload.firstName,
+						lastName: action.payload.lastName,
+						email: action.payload.email,
+						position: action.payload.position,
+						department: action.payload.department,
+						organization: action.payload.organization,
+						birthDate: action.payload.birthDate,
+					}
+			}
+		}
+		case USER_TYPES.CLEAR_USER_INFO: {
+			return {
+				...state,
+				profileUser:
+					{
+						avatar: '',
+						background:'',
+						secondName: '',
+						firstName: '',
+						lastName: '',
+						email: '',
+						position: '',
+						department: '',
+						organization: '',
+						birthDate: Date.now(),
+					}
 			}
 		}
 

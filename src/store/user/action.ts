@@ -1,13 +1,16 @@
 import {
+	ClearUserInfo,
 	Logout,
 	message,
 	PayloadForAddBoard,
-	PayloadForAuthentication, PayloadForChangeAvatarUser,
+	PayloadForAuthentication,
+	PayloadForChangeAvatarUser,
 	PayloadForChangeBackgroundUser,
 	PayloadForChangePersonalInfo,
 	PayloadForChangeUser,
 	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
+	PayloadForGetUserInfo,
 	PayloadForShareBoard,
 	PayloadForSocketInit,
 	PayloadForStartRegistration,
@@ -28,5 +31,9 @@ export const UserAC = {
 	updateUser: (payload: Partial<User>) : PayloadForChangeUser => ({type: USER_TYPES.CHANGE_USER, payload}),
 	updateBackgroundUser: (payload: Partial<User> ) : PayloadForChangeBackgroundUser => ({type: USER_TYPES.CHANGE_BACKGROUND_USER, payload}),
 	updateAvatarUser: (payload: Partial<User> ) : PayloadForChangeAvatarUser => ({type: USER_TYPES.CHANGE_AVATAR_USER, payload}),
-	changePersonalInfo: (payload: string) : PayloadForChangePersonalInfo => ({type: USER_TYPES.CHANGE_PERSONAL_INFO, payload})
+	changePersonalInfo: (payload: string) : PayloadForChangePersonalInfo => ({type: USER_TYPES.CHANGE_PERSONAL_INFO, payload}),
+	getUserInfo: (payload: Partial<User>) : PayloadForGetUserInfo => ({type: USER_TYPES.GET_USER_INFO, payload}),
+	clearUserInfo: () : ClearUserInfo => ({type: USER_TYPES.CLEAR_USER_INFO}),
+
+
 }

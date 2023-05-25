@@ -9,8 +9,8 @@ export default function CurrentUsers() {
 	const { boardId } = useParams()
 	const { getUsersOneBoard } = useActions()
 
-	useEffect(()=>{
-		if (boardId)	getUsersOneBoard(boardId)
+	useEffect(() => {
+		if (boardId) getUsersOneBoard(boardId)
 	}, [])
 
 	return (
@@ -24,7 +24,7 @@ export default function CurrentUsers() {
 
 							<div className={classes.avatar_wrapper}>
 								{user.avatar
-									?	<img className={classes.avatar} src={user.avatar} />
+									? <img className={classes.avatar} src={user.avatar} />
 									: <div className={classes.icon}>{user.email[0].toUpperCase()}</div>
 								}
 							</div>

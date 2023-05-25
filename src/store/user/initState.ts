@@ -1,4 +1,4 @@
-import { UserState} from '@/models/Users'
+import { profileUser, UserState } from '@/models/Users'
 
 export const defaultState: UserState ={
 	isError: false,
@@ -14,5 +14,17 @@ export const defaultState: UserState ={
 	messages: [],
 	isAuth: false,
 	socket: null,
-	avatar: ''
+	avatar: '',
+	profileUser: {
+		_id: '',
+		email: '',
+		firstName: '',
+		secondName: '',
+		lastName: '',
+		avatar: '',
+		background: '',
+		position: '',
+		department: '',
+		organization: '',
+	}
 }
