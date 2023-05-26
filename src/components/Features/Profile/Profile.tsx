@@ -7,6 +7,10 @@ import { Button } from '@UI'
 import { UserAC } from '@/store/user/action'
 import { useDispatch } from 'react-redux'
 import Header from '@/layouts/Main/Header'
+import ProfileHeader from '@/components/Features/Profile/ProfileHeader'
+import Info from '@/components/Features/Profile/Info'
+
+
 
 export default function Profile() {
 	const { userId } = useParams()
@@ -27,22 +31,10 @@ export default function Profile() {
 
 	return (
 		<div className={classes.wrapper}>
-	<div className={classes.header}>	<Header/></div>
+			<div className={classes.header}><Header /></div>
 			<div className={classes.content}>
-				<div className={classes.photo}>
-					<img className={classes.background_img} src={user.background} />
-					<div className={classes.avatar}><img className={classes.avatar_img} src={user.avatar} /></div>
-				</div>
-
-				<div>{user.firstName}</div>
-				<div>{user.lastName}</div>
-				<div>{user.secondName}</div>
-				<div>{user.department}</div>
-				<div>{user.position}</div>
-				<div>{user.organization}</div>
-				<div>{user.email}</div>
-
-				<div>{user.organization}</div>
+				<ProfileHeader user = {user}/>
+				<Info user = {user} />
 				<Button onClick={back} title={'назад'} variant={'outlined'} />
 			</div>
 

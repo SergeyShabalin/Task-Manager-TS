@@ -20,14 +20,14 @@
 .preview {
 	position: relative;
 	width: 700px;
-	height: 272px;
+	height: 310px;
 	box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.29);
 	border-radius: 15px;
 }
 
 .avatar {
 	position: absolute;
-	top: 160px;
+	top: 140px;
 	left: 50px;
 	width: 130px;
 	height: 130px;
@@ -61,7 +61,7 @@
 }
 
 .person_name {
-	text-shadow: 1px 1px 2px #000000, 0 0 2em rgba(41, 232, 41, 0.91), 0 0 0.2em #090909;
+	text-shadow: 1px 2px 4px #000000, 0 0 1em rgba(1, 2, 3, 0.47), 0 0 0.4em #141e13;
     margin-left: 30%;
 	width: 50%;
 	white-space: nowrap;
@@ -70,14 +70,16 @@
 }
 
 .second_name {
-	font-size: 24px;
+	font-size: 26px;
+	color: rgb(255, 255, 255);
 }
 
 .first_name {
-	font-size: 24px;
+	font-size: 26px;
 	display: flex;
 	justify-content: center;
 	padding-right: 30%;
+	color: rgb(128, 153, 206);
 }
 
 .btn {

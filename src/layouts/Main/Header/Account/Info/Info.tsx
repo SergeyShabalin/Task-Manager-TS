@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
@@ -14,6 +14,7 @@ export default function Info({ closeInfo }: InfoProps) {
 	const navigate = useNavigate()
 	const { logOut, backToGreeting } = useActions()
 	const { boardId } = useParams()
+	const location = useLocation()
 	const user = useTypedSelector(state => state.user)
 	const socket = user.socket
 	const accountRef = useRef(null)
@@ -39,6 +40,11 @@ export default function Info({ closeInfo }: InfoProps) {
 		if (user._id) navigate(`/user/${user._id}/configuration`)
 	}
 
+	function goToMyProfile() {
+		if (user._id) navigate(`/user/${user._id}/profile`)
+		localStorage.setItem('prevLocation', location.pathname)
+	}
+
 	return (
 		<div className={classes.wrapper} ref={accountRef}>
 			<h1>Учетная запись</h1>
@@ -61,6 +67,7 @@ export default function Info({ closeInfo }: InfoProps) {
 			<hr />
 			<ul>
 				<li onClick={backInGreeting}>Рабочие пространства</li>
+				<li onClick={goToMyProfile}>Мой профиль</li>
 				<li onClick={goToConfiguration}>Настройки</li>
 				<li onClick={logout}>Выход</li>
 			</ul>
