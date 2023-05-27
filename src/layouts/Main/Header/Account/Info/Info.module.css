@@ -91,6 +91,16 @@ h1 {
     align-items: center;
 }
 
+.li_account{
+    display: flex;
+    align-items: center;
+}
+
+.icon_li{
+    transform: scale(1.2);
+    margin-right: 15px;
+}
+
 .avatar {
     position: absolute;
     width: 100px;

@@ -1,31 +1,38 @@
 .wrapper {
-    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.56);
-    width: 100%;
-    margin: 10px 0;
-    border-radius: 20px;
+	box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.56);
+	width: 100%;
+	margin: 10px 0;
+	border-radius: 20px;
 }
 
 .email,
 .organization,
 .department,
 .position {
-    padding: 10px;
-    display: flex;
-    align-items: center;
+    position: relative;
+	padding: 10px;
+	display: flex;
+	align-items: center;
 }
 
-.icon_email, .icon_organization, .icon_department, .icon_position {
-    padding: 0 10px;
+.icon {
+	padding: 0 10px;
+}
 
+.span{
+   position: absolute;
+    right: 20px;
+    color: #4c79b6;
+    font-size: 18px;
 }
 
 .content {
-    padding: 10px;
-    margin: 10px;
+	padding: 10px;
+	margin: 5px;
 }
 
 .info {
-    font-size: 20px;
-    font-family: var(--prymary-font);
-    color: #285049;
+	font-size: 18px;
+	font-family: var(--prymary-font);
+	color: #285049;
 }

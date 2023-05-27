@@ -16,14 +16,13 @@ export default function UserPreview({ closePreview, user }: UserPreviewProps) {
 
 	const previewRef = useRef(null)
 	const navigate = useNavigate()
-	const location = useLocation()
 	useOnClickOutside(previewRef, () => closePreview())
 	const socket = useTypedSelector(state => state.user.socket)
-	const {cardId} = useParams()
+	const {cardId, userId} = useParams()
 
 	function openProfile() {
 		if (user._id) navigate(`/user/${user._id}/profile`)
-		localStorage.setItem('prevLocation', location.pathname)
+		if(userId) localStorage.setItem('user_authenticated', userId)
 	}
 
 	function deleteUserFromCard(){
@@ -35,9 +34,14 @@ export default function UserPreview({ closePreview, user }: UserPreviewProps) {
 
 	return (
 		<div className={classes.wrapper} ref={previewRef}>
-			<div className={classes.avatar}><img src={user.avatar} /></div>
-			<h1>{user.firstName}</h1>
-			<h1>{user.secondName}</h1>
+			<div className={classes.avatar}>
+				<img src={user.avatar} />
+			</div>
+			<div className={classes.name}>
+				<h1>{user.firstName}</h1>
+				<h1>{user.secondName}</h1>
+			</div>
+
 			<ul>
 				<li onClick={openProfile}>Открыть профиль</li>
 				<li onClick={deleteUserFromCard}>Удалить с карточки</li>

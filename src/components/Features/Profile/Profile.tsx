@@ -15,19 +15,13 @@ import Info from '@/components/Features/Profile/Info'
 export default function Profile() {
 	const { userId } = useParams()
 	const { getUserInfo } = useActions()
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
+
 	const user = useTypedSelector(state => state.user.profileUser)
 
 	useEffect(() => {
 		if (userId) getUserInfo(userId)
-	}, [])
+	}, [userId])
 
-	function back() {
-		const prevRef = localStorage.getItem('prevLocation')
-		if (prevRef) navigate(prevRef)
-		dispatch(UserAC.clearUserInfo())
-	}
 
 	return (
 		<div className={classes.wrapper}>
@@ -35,7 +29,6 @@ export default function Profile() {
 			<div className={classes.content}>
 				<ProfileHeader user = {user}/>
 				<Info user = {user} />
-				<Button onClick={back} title={'назад'} variant={'outlined'} />
 			</div>
 
 		</div>

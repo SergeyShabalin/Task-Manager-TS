@@ -36,6 +36,7 @@ function App() {
 
 	return (
 		<>
+
 			{!isAuth ? (
 				<Routes location={background || location}>
 					<Route path='/registration' element={<Registration />} />
