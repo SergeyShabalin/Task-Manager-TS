@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import Header from '@/layouts/Main/Header'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import BoardCreator from '@/components/Features/BoardCreator'
@@ -11,10 +10,8 @@ import MiniBoard from '@/pages/greeting/MiniBoard'
 import { Loader } from '@UI'
 import classes from './Greeting.module.css'
 
-
 export default function Greeting() {
 	const allBoards = useTypedSelector(state => state.board.allBoards)
-	const user = useTypedSelector(state => state.user)
 	const isLoading = useTypedSelector(state => state.board.isLoadingBoard)
 
 	const navigate = useNavigate()
@@ -34,9 +31,7 @@ export default function Greeting() {
 
 	return (
 		<div className={classes.wrapper}>
-			<div className={classes.header}>
-				<Header email={user.email} />
-			</div>
+			<div className={classes.header}></div>
 			<div className={classes.body}>
 				<div className={classes.content}>
 					<span className={classes.title_workspaces}>ВАШИ РАБОЧИЕ ПРОСТРАНСТВА</span>

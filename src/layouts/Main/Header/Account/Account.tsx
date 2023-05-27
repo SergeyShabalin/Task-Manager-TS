@@ -28,7 +28,7 @@ export default function Account() {
 	return (
 		<>
 			<div className={classes.user} onMouseOver={showHint} onMouseOut={closeHint}>
-				<Button icon={<SlUser />} onClick={openInfo} />
+				<Button  icon={<SlUser />} onClick={openInfo} />
 				<Hint visible={isHint} label='Аккаунт' />
 			</div>
 			{isAccount && <Info closeInfo={closeInfo} />}

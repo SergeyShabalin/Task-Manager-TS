@@ -1,12 +1,5 @@
-.board_header {
-	width: 100vw;
-	margin: 8px 0 8px 0;
-	padding-left: 16px;
-	font-weight: 500;
-	color: rgba(220, 204, 204, 0.67);
-	cursor: pointer;
-}
 .title_wrapper {
+	margin-top: 65px;
 	width: 40%;
 }
 

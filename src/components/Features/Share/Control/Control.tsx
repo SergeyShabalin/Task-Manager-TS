@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Button, Input } from '@UI'
@@ -34,7 +34,6 @@ export default function Control() {
 			<div className={classes.input}>
 				<Input
 					autoFocus
-
 					rows={1}
 					defaultValue={email}
 					color='outlined'

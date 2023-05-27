@@ -1,5 +1,6 @@
 .hint, .hide{
     position: absolute;
+    z-index: 10;
     right: 0;
     top: 35px;
     color: #ded4d4;

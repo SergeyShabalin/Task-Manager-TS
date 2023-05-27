@@ -28,6 +28,7 @@ export default function Info({ closeInfo }: InfoProps) {
 	function backInGreeting() {
 		if (user._id) navigate(`/user/${user._id}/greeting`)
 		if (boardId) backToGreeting(boardId)
+		closeInfo()
 	}
 
 	function logout() {
@@ -42,11 +43,13 @@ export default function Info({ closeInfo }: InfoProps) {
 
 	function goToConfiguration() {
 		if (user._id) navigate(`/user/${user._id}/configuration`)
+		closeInfo()
 	}
 
 	function goToMyProfile() {
 		const userId = localStorage.getItem('user_authenticated')
 		if (userId) navigate(`/user/${userId}/profile`)
+		 closeInfo()
 	}
 
 	return (

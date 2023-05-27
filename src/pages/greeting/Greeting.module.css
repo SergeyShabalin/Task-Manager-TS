@@ -5,14 +5,15 @@
 }
 
 .wrapper {
-	background: rgba(29, 29, 201, 0.87);
+
+
 	overflow-x: hidden;
 	overflow-y: auto;
 	width: 100vw;
 }
 
 .body {
-	background: #ffffff;
+	margin-top: 50px;
 	height: 90vh;
 	overflow-x: hidden;
 }

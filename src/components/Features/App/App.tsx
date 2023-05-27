@@ -14,6 +14,7 @@ import Configuration from '@/pages/configuration'
 import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 import BackgroundEdit from '@/pages/configuration/Profile/BackgroundEdit'
 import Profile from '@/components/Features/Profile'
+import Header from '../Header'
 
 function App() {
 	const location = useLocation()
@@ -22,7 +23,8 @@ function App() {
 		background = location.state && location.state.background,
 		isAuth = useTypedSelector(state => state.user.isAuth),
 		user = useTypedSelector(state => state.user),
-		socket = user.socket
+		socket = user.socket,
+		userId = user._id
 
 
 	useEffect(() => {
@@ -36,7 +38,7 @@ function App() {
 
 	return (
 		<>
-
+			<Header userId={userId} />
 			{!isAuth ? (
 				<Routes location={background || location}>
 					<Route path='/registration' element={<Registration />} />
