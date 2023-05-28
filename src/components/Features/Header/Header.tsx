@@ -17,16 +17,18 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import classes from './Header.module.css'
 
 interface HeaderProps {
-	userId: string
+	userId?: string
+
 }
 
 export default function Header({ userId }: HeaderProps) {
 
 	const navigate = useNavigate(),
-		{ boardId } = useParams(),
+		{   } = useParams(),
 		{ backToGreeting } = useActions(),
 		{ isOpen, onClose, onOpen } = useOpenClose(),
 		location = useLocation(),
+		boardId = useTypedSelector(state => state.board.currentBoard._id),
 		messagesCount = useTypedSelector(state => state.user.messages?.length),
 		socket = useTypedSelector(({ user }) => user.socket),
 		[isShow, setIsShow] = useState(false),
@@ -59,12 +61,7 @@ export default function Header({ userId }: HeaderProps) {
 		const strings = [
 			'type1',
 			'type2',
-			'type3',
-			'type4',
-			'type5',
-			'type6',
-			'type7',
-			'type8'
+			'type3'
 		];
 
 		const randomIndex = Math.floor(Math.random() * strings.length);
@@ -87,7 +84,7 @@ export default function Header({ userId }: HeaderProps) {
 					{isShare && (
 						<div className={classes.share}>
 							<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
-							{isOpen && <Share onClose={onClose} />}
+							{isOpen && <Share boardId = {boardId} onClose={onClose} />}
 						</div>
 					)}
 

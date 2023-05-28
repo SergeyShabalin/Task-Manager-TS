@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useParams } from 'react-router-dom'
 
 import Main from '@/layouts/Main'
 import UiKit from '@/components/UIKit'
@@ -38,7 +38,9 @@ function App() {
 
 	return (
 		<>
-			<Header userId={userId} />
+
+					<Header userId={userId} />
+
 			{!isAuth ? (
 				<Routes location={background || location}>
 					<Route path='/registration' element={<Registration />} />
@@ -58,6 +60,7 @@ function App() {
 					</Routes>
 					{background && (
 						<Routes>
+							<Route path='/*' element={<Header userId={userId} />} />
 							<Route path='/user/:userId/greeting' element={<Greeting />} />
 							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 							<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />

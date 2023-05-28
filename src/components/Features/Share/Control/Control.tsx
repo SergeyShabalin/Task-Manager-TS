@@ -1,15 +1,18 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Button, Input } from '@UI'
 import classes from './Control.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
+interface ControlProps {
+	boardId: string
+}
 
-export default function Control() {
+export default function Control({ boardId }: ControlProps) {
 	const [email, setEmail] = useState('')
 	const socket = useTypedSelector(state => state.user.socket)
-	const { userId, boardId } = useParams()
+	const userId = useTypedSelector(({ user }) => user._id)
 
 
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {

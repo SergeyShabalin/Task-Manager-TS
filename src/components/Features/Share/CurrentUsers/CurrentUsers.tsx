@@ -4,9 +4,13 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useParams } from 'react-router-dom'
 import { useActions } from '@/hooks/useActions/useActions'
 
-export default function CurrentUsers() {
+interface CurrentUserProps{
+	boardId: string
+}
+
+export default function CurrentUsers({boardId}:CurrentUserProps ) {
 	const users = useTypedSelector(state => state.board.allUsers)
-	const { boardId } = useParams()
+
 	const { getUsersOneBoard } = useActions()
 
 	useEffect(() => {
