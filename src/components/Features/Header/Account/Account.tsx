@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { SlUser } from 'react-icons/sl'
 import { Button, Hint } from '@UI'
-import Info from '@/layouts/Main/Header/Account/Info'
+import Info from '@/components/Features/Header/Account/Info'
 import classes from './Account.module.css'
 
 export default function Account() {

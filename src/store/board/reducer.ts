@@ -28,7 +28,13 @@ import {
 	GetCardInfo,
 	getUsersOneCard
 } from '@/models/Cards'
-import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask } from '@/models/CheckList'
+import {
+	AddNewTask,
+	ChangeTask,
+	CHECKLIST_TYPES,
+	DeleteTask,
+	HideDoneTasks
+} from '@/models/CheckList'
 
 export type BoardActions =
 	| StartFetching
@@ -59,6 +65,7 @@ export type BoardActions =
 	| FinishLoadingCard
 	| PayloadForDragDropColumn
 	| getUsersOneCard
+	| HideDoneTasks
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -94,7 +101,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case BOARD_TYPES.DRAG_DROP_COLUMN:
 			return {
 				...state,
-				currentBoard: {...state.currentBoard, columns: action.payload}
+				currentBoard: { ...state.currentBoard, columns: action.payload }
 			}
 		case BOARD_TYPES.GET_ALL_BOARDS:
 			return {
@@ -246,7 +253,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CARD_TYPES.GET_USERS_ONE_CARD: {
 			return {
 				...state,
-				  usersOneCard: action.payload
+				usersOneCard: action.payload
 			}
 		}
 		case CHECKLIST_TYPES.ADD_NEW_TASK: {
@@ -256,7 +263,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case CHECKLIST_TYPES.CHANGE_TASK: {
-
 			return {
 				...state,
 				cardInfo: { ...state.cardInfo, checkList: action.payload }
@@ -268,6 +274,23 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				cardInfo: { ...state.cardInfo, checkList: action.payload }
 			}
 		}
+		case CHECKLIST_TYPES.HIDE_DONE_TASKS: {
+
+			let filteredTasks
+			if (!action.payload) {
+				filteredTasks = state.cardInfo.checkList.filter(task => {
+					if (!task.done) {
+						return task
+					}
+				})
+			}
+			console.log(filteredTasks)
+			return {
+				...state,
+				cardInfo: { ...state.cardInfo, checkList: filteredTasks }
+			}
+		}
+
 		case COLUMN_TYPES.DROP_CARD: {
 			const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
 

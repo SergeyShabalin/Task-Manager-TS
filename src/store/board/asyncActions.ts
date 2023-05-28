@@ -13,7 +13,7 @@ import { RootState } from '@/store'
 import { ChangeTaskData, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-import { User } from '@/models/Users'
+
 
 
 export const columnsActions = {
@@ -238,6 +238,14 @@ export const checklistActions = {
 			dispatch(BoardAC.dragDropColumn(allColumns))
 		} catch (error){
 			Notification.error('Произошла ошибка перемещения колонки')
+		}
+	},
+
+	openShowDoneTasks: (payload: boolean) => async (dispatch: Dispatch<BoardActions> )=> {
+		try {
+			dispatch(ChecklistAC.hideDoneTask(payload))
+		} catch (e) {
+			Notification.error('Произошла ошибка скрытия выполненных задач')
 		}
 	}
 }

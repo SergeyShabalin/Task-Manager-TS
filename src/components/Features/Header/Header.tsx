@@ -6,9 +6,9 @@ import { Button } from '@UI'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
 import Share from '@/components/Features/Share'
-import Account from '@/layouts/Main/Header/Account'
-import Messages from '@/layouts/Main/Header/Messages'
-import Logout from '@/layouts/Main/Header/Logout'
+import Account from '@/components/Features/Header/Account'
+import Messages from '@/components/Features/Header/Messages'
+import Logout from '@/components/Features/Header/Logout'
 
 import { useActions } from '@/hooks/useActions/useActions'
 import useOpenClose from '@/hooks/UseOpenClose'
@@ -18,13 +18,11 @@ import classes from './Header.module.css'
 
 interface HeaderProps {
 	userId?: string
-
 }
 
 export default function Header({ userId }: HeaderProps) {
-
 	const navigate = useNavigate(),
-		{   } = useParams(),
+		{} = useParams(),
 		{ backToGreeting } = useActions(),
 		{ isOpen, onClose, onOpen } = useOpenClose(),
 		location = useLocation(),
@@ -35,9 +33,9 @@ export default function Header({ userId }: HeaderProps) {
 		[color, setColor] = useState('type1'),
 		isShare = location.pathname.includes('board')
 
-	useEffect(()=>{
+	useEffect(() => {
 		getRandomColor()
-	},[location])
+	}, [location])
 
 	useEffect(() => {
 		if (userId) {
@@ -47,7 +45,6 @@ export default function Header({ userId }: HeaderProps) {
 		}
 	}, [userId])
 
-
 	function backInGreeting() {
 		if (userId) navigate(`/user/${userId}/greeting`)
 		if (boardId) {
@@ -56,46 +53,37 @@ export default function Header({ userId }: HeaderProps) {
 		}
 	}
 
-
 	function getRandomColor() {
-		const strings = [
-			'type1',
-			'type2',
-			'type3'
-		];
-
-		const randomIndex = Math.floor(Math.random() * strings.length);
-		const randomColor = strings[randomIndex];
-
+		const strings = ['type1', 'type2', 'type3']
+		const randomIndex = Math.floor(Math.random() * strings.length)
+		const randomColor = strings[randomIndex]
 		setColor(randomColor)
 	}
 
-
 	return (
 		<>
-			{isShow &&
+			{isShow && (
 				<div className={classes[color]}>
 					<div className={classes.logo} onClick={backInGreeting}>
-				<span className={classes.icon}>
-					<RiTrelloFill />
-				</span>
+						<span className={classes.icon}>
+							<RiTrelloFill />
+						</span>
 						<span>TASK MANAGER</span>
 					</div>
 					{isShare && (
 						<div className={classes.share}>
 							<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
-							{isOpen && <Share boardId = {boardId} onClose={onClose} />}
+							{isOpen && <Share boardId={boardId} onClose={onClose} />}
 						</div>
 					)}
 
 					<div className={classes.control}>
-						<Account  />
-						<Messages messagesCount={messagesCount} />
+						<Account />
+						<Messages userId={userId} messagesCount={messagesCount} />
 						<Logout boardId={boardId} userId={userId} />
 					</div>
 				</div>
-			}
+			)}
 		</>
-
 	)
 }

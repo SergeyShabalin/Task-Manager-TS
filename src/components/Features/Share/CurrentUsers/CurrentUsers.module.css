@@ -6,7 +6,7 @@
 .users {
     margin: 15px 5px;
     overflow: auto;
-    height: 500px;
+    max-height: 500px;
 }
 
 .user {

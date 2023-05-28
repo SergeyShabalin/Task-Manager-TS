@@ -6,13 +6,12 @@
     height: 100vh;
     z-index: 5;
     overflow: hidden;
-    padding: 20px 0;
     background-color: var(--modal-background-color);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+
 }
 
 .modal_wrapper {

@@ -15,6 +15,7 @@ export default function Control({ boardId }: ControlProps) {
 	const userId = useTypedSelector(({ user }) => user._id)
 
 
+
 	function changeInput({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		setEmail(target.value)
 	}
@@ -29,6 +30,7 @@ export default function Control({ boardId }: ControlProps) {
 			_id: userId,
 			boardId
 		}
+		console.log(payload)
 		socket?.emit('SHARE_BOARD', payload)
 	}
 

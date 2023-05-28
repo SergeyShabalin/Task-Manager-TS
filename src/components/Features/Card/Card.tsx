@@ -19,14 +19,11 @@ export default function Card() {
 	const isLoading = useTypedSelector(state => state.board.isLoadingCard)
 	const { getOneCard, closeCard } = useActions()
 
-
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
 	}, [])
 
-	useEffect(() => {
-
-	}, [])
+	useEffect(() => {}, [])
 
 	function closeModal() {
 		navigate(`/user/${userId}/board/${boardId}`)
@@ -35,30 +32,32 @@ export default function Card() {
 
 	return (
 		<Modal onClose={closeModal} open>
-			<div className={classes.card_modal_wrapper}>
-				{isLoading && (
-					<div className={classes.loader}>
-						<Loader color='lds-black' variant='local' />
+			<div className={classes.modal_content}>
+					<div className={classes.card_modal_wrapper}>
+						{isLoading && (
+							<div className={classes.loader}>
+								<Loader color='lds-black' variant='local' />
+							</div>
+						)}
+						<>
+							<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />
+							<div className={classes.content}>
+								<div className={classes.main_components}>
+									<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
+									<CurrentUsers />
+									<Description description={cardInfo.description} _id={cardInfo._id} />
+									<Checklist
+										_id={cardInfo._id}
+										countTask={cardInfo.countTask}
+										doneTask={cardInfo.doneTask}
+										checkList={cardInfo.checkList}
+									/>
+								</div>
+								<Sidebar />
+							</div>
+						</>
 					</div>
-				)}
-				<>
-					<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />
-					<div className={classes.content}>
-					<div className={classes.main_components}>
-						<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
-						<CurrentUsers />
-						<Description description={cardInfo.description} _id={cardInfo._id} />
-						<Checklist
-							_id={cardInfo._id}
-							countTask={cardInfo.countTask}
-							doneTask={cardInfo.doneTask}
-							checkList={cardInfo.checkList}
-						/>
-					</div>
-					<Sidebar/>
-					</div>
-				</>
-			</div>
+				</div>
 		</Modal>
 	)
 }

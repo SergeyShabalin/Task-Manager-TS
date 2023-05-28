@@ -9,13 +9,14 @@ import classes from './MessageList.module.css'
 
 interface MessageListProps {
 	onClose: () => void
+	userId?: string
 }
 
-export default function MessageList({ onClose }: MessageListProps) {
+export default function MessageList({ onClose, userId }: MessageListProps) {
 	const messageRef = useRef(null)
 	const messages = useTypedSelector(state => state.user.messages)
 	useOnClickOutside(messageRef, () => onClose())
-	const { userId } = useParams()
+
 	const { applyInvite, deleteMessage } = useActions()
 	const isMessage = messages.length < 1
 

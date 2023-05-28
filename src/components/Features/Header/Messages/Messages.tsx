@@ -3,14 +3,15 @@ import { BsBell } from 'react-icons/bs'
 
 import { Button, Hint } from '@UI'
 import useOpenClose from '@/hooks/UseOpenClose'
-import MessageList from '@/layouts/Main/Header/Messages/MessageList'
+import MessageList from '@/components/Features/Header/Messages/MessageList'
 import classes from './Messages.module.css'
 
 interface MessagesProps {
 	messagesCount: number
+	userId?: string
 }
 
-export default function Messages({ messagesCount }: MessagesProps) {
+export default function Messages({ messagesCount, userId }: MessagesProps) {
 	const [isHint, setIsHint] = useState(false)
 	const { isOpen, onClose, onOpen } = useOpenClose()
 
@@ -32,7 +33,7 @@ export default function Messages({ messagesCount }: MessagesProps) {
 				)}
 				<Hint visible={isHint} label='Показать уведомления' />
 			</div>
-			{isOpen && <MessageList onClose={onClose} />}
+			{isOpen && <MessageList userId={userId} onClose={onClose} />}
 		</div>
 	)
 }

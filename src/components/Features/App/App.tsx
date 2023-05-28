@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route, useLocation, useParams } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Main from '@/layouts/Main'
 import UiKit from '@/components/UIKit'
@@ -19,13 +19,11 @@ import Header from '../Header'
 function App() {
 	const location = useLocation()
 	const { checkLogin } = useActions()
-	const
-		background = location.state && location.state.background,
+	const background = location.state && location.state.background,
 		isAuth = useTypedSelector(state => state.user.isAuth),
 		user = useTypedSelector(state => state.user),
 		socket = user.socket,
 		userId = user._id
-
 
 	useEffect(() => {
 		socket?.connect()
@@ -38,8 +36,7 @@ function App() {
 
 	return (
 		<>
-
-					<Header userId={userId} />
+			<Header userId={userId} />
 
 			{!isAuth ? (
 				<Routes location={background || location}>
@@ -64,7 +61,10 @@ function App() {
 							<Route path='/user/:userId/greeting' element={<Greeting />} />
 							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
 							<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />
-							<Route path='/user/:userId/configuration/backgroundEdit' element={<BackgroundEdit />} />
+							<Route
+								path='/user/:userId/configuration/backgroundEdit'
+								element={<BackgroundEdit />}
+							/>
 						</Routes>
 					)}
 				</>
@@ -74,4 +74,3 @@ function App() {
 }
 
 export default App
-
