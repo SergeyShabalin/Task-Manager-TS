@@ -53,5 +53,5 @@ export interface DeleteTask extends Action<CHECKLIST_TYPES.DELETE_TASK> {
 }
 
 export interface HideDoneTasks extends Action<CHECKLIST_TYPES.HIDE_DONE_TASKS> {
-payload?: boolean
+payload?: CheckList[]
 }

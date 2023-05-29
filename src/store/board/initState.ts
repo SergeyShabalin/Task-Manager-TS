@@ -26,5 +26,5 @@ export const defaultState: BoardState = {
 		memberIds: []
 	},
 	allUsers: [],
-	usersOneCard: []
+	usersOneCard: [],
 }

@@ -13,7 +13,7 @@ export interface Card {
 	order: number
 	checkList: CheckList[]
 	memberIds: []
-
+	cardInfo?: any
 }
 
 export enum CARD_TYPES {

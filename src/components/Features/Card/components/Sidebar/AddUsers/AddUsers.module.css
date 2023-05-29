@@ -1,5 +1,5 @@
 .wrapper {
-    position: absolute;
+    position: fixed;
     z-index: 4;
     padding: 15px 10px;
     box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.37);
@@ -7,7 +7,8 @@
     border-radius: 5px;
     width: 300px;
     overflow: auto;
-    height: 500px;
+    max-height: 500px;
+    right: 10px;
     background-color: white;
 }
 

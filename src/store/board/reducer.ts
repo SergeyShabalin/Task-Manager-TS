@@ -276,18 +276,10 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		}
 		case CHECKLIST_TYPES.HIDE_DONE_TASKS: {
 
-			let filteredTasks
-			if (!action.payload) {
-				filteredTasks = state.cardInfo.checkList.filter(task => {
-					if (!task.done) {
-						return task
-					}
-				})
-			}
-			console.log(filteredTasks)
+
 			return {
 				...state,
-				cardInfo: { ...state.cardInfo, checkList: filteredTasks }
+				cardInfo: { ...state.cardInfo, checkList: action.payload }
 			}
 		}
 

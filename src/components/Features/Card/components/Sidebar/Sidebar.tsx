@@ -17,11 +17,11 @@ export default function Sidebar() {
 		<div className={classes.wrapper}>
 			<div className={classes.title}>Добавить на карточку</div>
 			<div className={classes.users}>
-				<Button startIcon={<AiOutlineUser className={classes.icon} />} title='Участники' variant={'full_contain'} onClick={openUsers} />
+				<Button startIcon={<AiOutlineUser className={classes.icon} />} title='Участники' variant='full_contain' onClick={openUsers} />
 				{isOpenUsers &&	<AddUsers closeUsers ={closeUsers} />}
 			</div>
-			<Button startIcon={<FiCheckSquare className={classes.icon} />} title='Чек-лист' variant={'full_contain'} />
-			<Button startIcon={<BsCalendar2Date className={classes.icon} />} title='Даты' variant={'full_contain'} />
+			<Button startIcon={<FiCheckSquare className={classes.icon} />} title='Чек-лист' variant='full_contain' />
+			<Button startIcon={<BsCalendar2Date className={classes.icon} />} title='Даты' variant='full_contain' />
 
 		</div>
 	)

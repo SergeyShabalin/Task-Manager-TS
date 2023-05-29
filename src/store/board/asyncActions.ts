@@ -10,10 +10,10 @@ import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Col
 import { Card, PayloadForDeleteCard } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
-import { ChangeTaskData, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
+import { ChangeTaskData, CheckList, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-
+import CheckListApi from '@/api/CheckListApi'
 
 
 export const columnsActions = {
@@ -121,7 +121,7 @@ export const cardActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка получения данных о карточке')
 		}
-	},
+	}
 
 }
 
@@ -233,17 +233,27 @@ export const checklistActions = {
 			},
 
 	dragDropColumn:
-		(allColumns: string[] ) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(BoardAC.dragDropColumn(allColumns))
-		} catch (error){
-			Notification.error('Произошла ошибка перемещения колонки')
-		}
-	},
+		(allColumns: string[]) => async (dispatch: Dispatch<BoardActions>) => {
+			try {
+				dispatch(BoardAC.dragDropColumn(allColumns))
+			} catch (error) {
+				Notification.error('Произошла ошибка перемещения колонки')
+			}
+		},
 
-	openShowDoneTasks: (payload: boolean) => async (dispatch: Dispatch<BoardActions> )=> {
+	openShowDoneTasks: (payload: boolean, checklist: CheckList[]) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
-			dispatch(ChecklistAC.hideDoneTask(payload))
+			const { board } = getState()
+			const originalChecklist = checklist.slice() // Создаем поверхностную копию исходного checklist
+			if (!payload) {
+				const tasks = originalChecklist.filter(task => !task.done)
+				dispatch(ChecklistAC.hideDoneTask(tasks))
+			} else {
+				const { data } = await CardsApi.getCardInfo(board.cardInfo._id)
+				dispatch(ChecklistAC.hideDoneTask(data.cardInfo.checkList))
+			}
+
+
 		} catch (e) {
 			Notification.error('Произошла ошибка скрытия выполненных задач')
 		}
