@@ -7,7 +7,6 @@
     z-index: 5;
     background-color: var(--modal-background-color);
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -37,4 +36,22 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.modal_background {
+    overflow-y: auto;
+}
+
+.modal_background::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal_background::-webkit-scrollbar-track {
+    background-color: transparent;
+    padding: 10px;
+}
+
+.modal_background::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 128, 128, 0.15);
+    border-radius: 4px;
 }

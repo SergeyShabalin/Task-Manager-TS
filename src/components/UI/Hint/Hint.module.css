@@ -1,4 +1,4 @@
-.hint, .hide{
+.hint, .hide, .transform{
     position: absolute;
     z-index: 10;
     right: 0;
@@ -16,4 +16,8 @@
     opacity: 0;
 }
 
+.transform{
+    transform: scale(1.5);
+
+}
 

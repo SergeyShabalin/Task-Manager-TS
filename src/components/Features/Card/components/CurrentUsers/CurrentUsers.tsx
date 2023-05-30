@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classes from './CurrentUsers.module.css'
 import { AiOutlineUser } from 'react-icons/ai'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { useParams } from 'react-router-dom'
 import { userOneCard } from '@/models/Users'
 import User from '@/components/Features/Card/components/CurrentUsers/User'
 

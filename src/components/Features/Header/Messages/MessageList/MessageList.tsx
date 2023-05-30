@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useRef } from 'react'
+
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'

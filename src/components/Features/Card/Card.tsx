@@ -32,6 +32,7 @@ export default function Card() {
 
 	return (
 		<Modal onClose={closeModal} open>
+
 					<div className={classes.card_modal_wrapper}>
 						{isLoading && (
 							<div className={classes.loader}>
@@ -57,6 +58,6 @@ export default function Card() {
 						</>
 					</div>
 
-		</Modal>
+</Modal>
 	)
 }

@@ -1,18 +1,21 @@
+.wrapper{
+	background-color: rgba(4, 87, 196, 0.48);
+	width: 100vw;
+	height: 100vh;
+}
+
 .card_modal_wrapper {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	position: relative;
 	max-height: calc(100vh - 60px);
 	background-color: var(--card-modal-background-color);
 	padding: 10px 10px 20px 20px;
 	border-radius: 5px;
-	min-height: 30vh;
+	min-height: 40vh;
 	width: 700px;
 	color: var(--card-modal-text-color);
 	margin-top: 0;
 	font: var(--primary-font);
-	overflow: initial;
+	overflow-y: auto;
 }
 
 .content {
@@ -46,20 +49,20 @@
 }
 
 
-.card_modal_wrapper {
-    overflow-y: auto;
-}
+/*.card_modal_wrapper {*/
+/*    overflow-y: auto;*/
+/*}*/
 
-.card_modal_wrapper::-webkit-scrollbar {
-    width: 8px;
-}
+/*.card_modal_wrapper::-webkit-scrollbar {*/
+/*    width: 8px;*/
+/*}*/
 
-.card_modal_wrapper::-webkit-scrollbar-track {
-    background-color: transparent;
-    padding: 10px;
-}
+/*.card_modal_wrapper::-webkit-scrollbar-track {*/
+/*    background-color: transparent;*/
+/*    padding: 10px;*/
+/*}*/
 
-.card_modal_wrapper::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 128, 128, 0.15);
-    border-radius: 4px;
-}
+/*.card_modal_wrapper::-webkit-scrollbar-thumb {*/
+/*    background-color: rgba(0, 128, 128, 0.15);*/
+/*    border-radius: 4px;*/
+/*}*/

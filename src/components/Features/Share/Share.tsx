@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react'
+import { BiChevronsDown } from 'react-icons/all'
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import Control from '@/components/Features/Share/Control'
+import CurrentUsers from '@/components/Features/Share/CurrentUsers'
 
 import classes from './Share.module.css'
-import CurrentUsers from '@/components/Features/Share/CurrentUsers'
-import { BiChevronsDown } from 'react-icons/all'
+
 import { Button } from '@UI'
-import { useParams } from 'react-router-dom'
 
 interface ShareProps {
 	onClose: () => void

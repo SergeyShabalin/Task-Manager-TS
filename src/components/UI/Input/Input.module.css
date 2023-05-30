@@ -51,7 +51,7 @@
 }
 .input_container.blue {
     background-color: var(--input-container-background-color-blue);
-    box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.15);
 }
 
 .text_area {

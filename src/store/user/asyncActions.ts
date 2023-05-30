@@ -3,8 +3,6 @@ import { UserActions } from '@/store/user/reducer'
 
 import UsersApi from '@/api/UsersApi'
 import {
-	error,
-	message,
 	PayloadForApplyInvite, payloadForChangePassword, payloadForChangePersonalInfo,
 	PayloadForMessageDelete, payloadForShareBoard,
 	User
@@ -156,7 +154,7 @@ export const usersActions = {
 		}
 	},
 
-	changeAvatarUser: (payload: FormData)=> async  (dispatch: Dispatch<UserActions>) => {
+	changeAvatarUser: (payload: FormData) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.changeAvatarUser(payload)
 			const payloadForAvatar = {
@@ -192,6 +190,14 @@ export const usersActions = {
 		} catch (e) {
 			const error = e as AxiosError<any>
 			Notification.error(error.response?.data?.message)
+		}
+	},
+
+	searchUser: (search: string) => async (dispatch:Dispatch<UserActions> ) => {
+		try {
+
+		} catch (e) {
+
 		}
 	}
 }

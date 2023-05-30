@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { userOneCard } from '@/models/Users'
