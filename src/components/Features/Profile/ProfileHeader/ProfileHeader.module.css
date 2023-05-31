@@ -10,7 +10,7 @@
     border-radius: 15px 15px 0 0;
 }
 
-.avatar{
+.avatar, .empty_avatar{
     position: absolute;
     background-color: #ffffff;
     width: 150px;
@@ -19,6 +19,14 @@
     left: 50px;
     border-radius: 100%;
     padding: 4px;
+}
+
+.empty_avatar{
+    background: radial-gradient(circle, #fddb92, #d1fdff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
 }
 
 .avatar_img{

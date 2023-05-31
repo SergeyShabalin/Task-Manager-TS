@@ -11,7 +11,7 @@ export default function Photo() {
 	const { _id, avatar, firstName, secondName, background } = useTypedSelector(state => state.user)
 	const inputAvatarRef = useRef<HTMLInputElement>(null)
 	const location = useLocation()
-	const urlAvatar = 'https://live.staticflickr.com/65535/52895494468_38474d353c_m.jpg'
+	const urlAvatar = 'https://res.cloudinary.com/dwkxptye4/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1685513730/i_xigz5a.jpg?_s=public-apps'
 
 
 	return (

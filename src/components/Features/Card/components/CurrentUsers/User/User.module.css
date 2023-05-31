@@ -22,6 +22,17 @@
     height: 100%;
 }
 
+
+.child {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #f00;
+    color: #fff;
+}
+
 .empty_avatar {
     width: 100%;
     height: 100%;
@@ -35,11 +46,11 @@
 }
 
 .hint {
-    position: absolute;
-    bottom:  50px;
-    display: flex;
-    justify-content: center;
-    left: 100px;
-    z-index: 115;
+    /*position: absolute;*/
+    /*bottom:  50px;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*left: 100px;*/
+    /*z-index: 115;*/
     transform: scale(1.5);
 }

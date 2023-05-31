@@ -79,13 +79,11 @@ h1 {
 }
 
 .icon {
+
     background: linear-gradient(45deg, black, blue);
-    border-radius: 100%;
-    color: white;
-    font-size: 40px;
-    padding: 3px;
-    width: 100px;
-    height: 100px;
+   color: white;
+    font-size: 30px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,7 +99,7 @@ h1 {
     margin-right: 15px;
 }
 
-.avatar {
+.avatar, .icon {
     position: absolute;
     width: 100px;
     height: 100px;

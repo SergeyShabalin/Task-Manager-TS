@@ -34,9 +34,12 @@ export default function UserPreview({ closePreview, user }: UserPreviewProps) {
 
 	return (
 		<div className={classes.wrapper} ref={previewRef}>
-			<div className={classes.avatar}>
-				<img src={user.avatar} />
-			</div>
+			{user.avatar
+				? <div className={classes.avatar}>
+					<img src={user.avatar} />
+				</div>
+				: <div className={classes.empty_avatar}>{user.secondName?.[0]}{user.firstName?.[0]}</div>
+			}
 			<div className={classes.name}>
 				<h1>{user.firstName}</h1>
 				<h1>{user.secondName}</h1>
