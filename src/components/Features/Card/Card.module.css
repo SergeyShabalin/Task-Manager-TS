@@ -15,7 +15,7 @@
 	color: var(--card-modal-text-color);
 	margin-top: 0;
 	font: var(--primary-font);
-	overflow-y: auto;
+	overflow-y: scroll;
 }
 
 .content {

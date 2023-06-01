@@ -11,7 +11,7 @@ import {
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
-	PayloadForDragDropColumn,
+	PayloadForDragDropColumn, PayloadForGetUsersOneCard,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -66,6 +66,7 @@ export type BoardActions =
 	| PayloadForDragDropColumn
 	| getUsersOneCard
 	| HideDoneTasks
+	| PayloadForGetUsersOneCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -166,6 +167,12 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allUsers: action.payload
 			}
 		}
+		case BOARD_TYPES.GET_USERS_ONE_CARD: {
+			return {
+				...state,
+				usersOneCard: action.payload
+			}
+		}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
 			return {
 				...state,
@@ -246,8 +253,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		case CARD_TYPES.GET_CARD_INFO: {
 			return {
 				...state,
-				cardInfo: action.payload.cardInfo,
-				usersOneCard: action.payload.usersOneCard
+				cardInfo: action.payload,
 			}
 		}
 		case CARD_TYPES.GET_USERS_ONE_CARD: {

@@ -74,6 +74,7 @@ export default function AvatarEdit() {
 						height={300}
 						onClose={closePhoto}
 						onCrop={cropPhoto}
+						exportSize={1920}
 					/>
 				</div>
 

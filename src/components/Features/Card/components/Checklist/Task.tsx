@@ -8,8 +8,7 @@ import { Editor } from '@Features'
 import classes from './CheckList.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
-
-export default function Task({ done, _id, cardId, task }: CheckList) {
+export default function Task({ done, _id, cardId, task}: CheckList,  ) {
 	const socket = useTypedSelector(state => state.user.socket)
 
 	const classNameForTask = done ? classes.checkbox_title_none : classes.checkbox_title_done

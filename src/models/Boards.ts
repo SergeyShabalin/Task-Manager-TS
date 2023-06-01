@@ -8,6 +8,7 @@ export interface Board {
 	title: string
 	background: string
 	columns: string[]
+	usersOneCard: []
 }
 
 export interface BoardAPI {
@@ -31,7 +32,8 @@ export enum BOARD_TYPES {
 	BACK_TO_GREETING = 'BACK_TO_GREETING',
 	START_LOADING_CARD = 'START_LOADING_CARD',
 	FINISH_LOADING_CARD = 'FINISH_LOADING_CARD',
-	DRAG_DROP_COLUMN = 'DRAG_DROP_COLUMN'
+	DRAG_DROP_COLUMN = 'DRAG_DROP_COLUMN',
+	GET_USERS_ONE_CARD = 'GET_USERS_ONE_CARD'
 }
 
 export type StartFetching = Action<BOARD_TYPES.START_FETCHING_BOARD>
@@ -49,6 +51,11 @@ export type StartLoadingCard = Action<BOARD_TYPES.START_LOADING_CARD>
 export type FinishLoadingCard = Action<BOARD_TYPES.FINISH_LOADING_CARD>
 export type BackToGreeting = Action<BOARD_TYPES.BACK_TO_GREETING>
 export type DragDropColumn = Action<BOARD_TYPES.DRAG_DROP_COLUMN>
+export type GetUsersOneCard = Action<BOARD_TYPES.GET_USERS_ONE_CARD>
+
+export interface PayloadForGetUsersOneCard extends GetUsersOneCard{
+	payload: Partial<User>[]
+}
 
 export interface PayloadForDragDropColumn extends DragDropColumn {
 	payload: string[]

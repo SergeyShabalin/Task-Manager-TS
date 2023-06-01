@@ -12,6 +12,7 @@ import {
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
 	PayloadForDragDropColumn,
+	PayloadForGetUsersOneCard,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -38,14 +39,16 @@ import {
 	DeleteCard,
 	GetCardInfo,
 	getUsersOneCard,
-	PayloadForDeleteCard
+	PayloadForDeleteCard,
+	PayloadForGetCardInfo
 } from '@/models/Cards'
 import {
 	AddNewTask,
 	ChangeTask,
 	CheckList,
 	CHECKLIST_TYPES,
-	DeleteTask, HideDoneTasks,
+	DeleteTask,
+	HideDoneTasks,
 	PayloadForChangedTask
 } from '@/models/CheckList'
 import { User } from '@/models/Users'
@@ -65,7 +68,8 @@ export const BoardAC = {
 	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
 	startLoadingCard : () : StartLoadingCard => ({type: BOARD_TYPES.START_LOADING_CARD}),
 	finishLoadingCard : () : FinishLoadingCard => ({type: BOARD_TYPES.FINISH_LOADING_CARD}),
-	dragDropColumn : (payload : string[]) : PayloadForDragDropColumn => ({type: BOARD_TYPES.DRAG_DROP_COLUMN, payload})
+	dragDropColumn : (payload : string[]) : PayloadForDragDropColumn => ({type: BOARD_TYPES.DRAG_DROP_COLUMN, payload}),
+	getUsersOneCard : (payload: Partial<User>[]) : PayloadForGetUsersOneCard => ({type: BOARD_TYPES.GET_USERS_ONE_CARD, payload})
 };
 
 export const ColumnAC = {
@@ -79,7 +83,7 @@ export const CardAC = {
 	newCardAC: (payload: Card) : AddNewCard => ({type: CARD_TYPES.ADD_NEW_CARD, payload}),
 	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
-	getCardInfoCardAC: (payload: Card) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
+	getCardInfoCardAC: (payload: PayloadForGetCardInfo) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
 	getUsersOneCard : ( payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload})
 }

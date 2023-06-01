@@ -23,6 +23,7 @@
 	padding: 0 10px 0 12px;
 	margin: 5px;
 	display: flex;
+	cursor: pointer;
 }
 
 .form_close {

@@ -44,7 +44,6 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 	function applySearch(e: ChangeEvent<HTMLInputElement>) {
 		const inputValue = e.target.value
 
-
 		const filteredUsers = inputValue
 			? currentUsers.filter(user => user.email?.includes(inputValue))
 			: currentUsers

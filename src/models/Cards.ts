@@ -3,6 +3,7 @@ import { Action } from 'redux'
 import { User } from '@/models/Users'
 
 export interface Card {
+
 	_id: string
 	title: string
 	description: string
@@ -46,10 +47,12 @@ export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 }
 
 export interface GetCardInfo extends Action<CARD_TYPES.GET_CARD_INFO> {
-	payload: {
-		cardInfo: Partial<Card>
-		usersOneCard: User[]
-	}
+	payload:  Partial<Card>
+
+}
+
+export interface PayloadForGetCardInfo  {
+	cardInfo: Card;
 }
 
 export interface getUsersOneCard extends GetUsersOneCard {

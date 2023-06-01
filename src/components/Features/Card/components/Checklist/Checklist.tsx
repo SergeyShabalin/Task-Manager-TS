@@ -14,7 +14,9 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 type ChecklistProps = Pick<Card, 'doneTask' | 'countTask' | 'checkList' | '_id'>
 
-export default function Checklist({ doneTask, countTask, _id, checkList }: ChecklistProps) {
+
+
+export default function Checklist({ doneTask, countTask, _id, checkList }: ChecklistProps ) {
 	const socket = useTypedSelector(state => state.user.socket)
 	const checklist = useTypedSelector(state => state.board.cardInfo.checkList)
 	const { openShowDoneTasks } = useActions()
@@ -59,7 +61,7 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 			</div>
 			<div className={classes.checklist}>
 				{checkList.map(checkItem => (
-					<Task key={checkItem._id} {...checkItem} />
+					<Task key={checkItem._id}  {...checkItem} />
 				))}
 			</div>
 			<Editor

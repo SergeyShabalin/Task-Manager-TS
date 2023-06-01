@@ -14,6 +14,7 @@ import { ChangeTaskData, CheckList, payloadForDeleteTask, PromiseChecklist } fro
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 import CheckListApi from '@/api/CheckListApi'
+import { User } from '@/models/Users'
 
 
 export const columnsActions = {
@@ -115,9 +116,10 @@ export const cardActions = {
 	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(BoardAC.startLoadingCard())
-			const { data } = await CardsApi.getCardInfo(cardId)
+			const { data }  = await CardsApi.getCardInfo(cardId)
 			dispatch(BoardAC.finishLoadingCard())
-			dispatch(CardAC.getCardInfoCardAC(data))
+			dispatch(CardAC.getCardInfoCardAC(data.cardInfo))
+			dispatch(BoardAC.getUsersOneCard(data.usersOneCard))
 		} catch (e) {
 			Notification.error('Произошла ошибка получения данных о карточке')
 		}

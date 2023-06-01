@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useActions } from '@/hooks/useActions/useActions'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import Description from '@/components/Features/Card/components/Description'
-import { Loader, Modal } from '@UI'
+import { Button, Loader, Modal } from '@UI'
 import Deadline from '@/components/Features/Card/components/Deadline'
 import Header from '@/components/Features/Card/components/Header'
 import Checklist from '@/components/Features/Card/components/Checklist'
@@ -18,12 +18,13 @@ export default function Card() {
 	const cardInfo = useTypedSelector(state => state.board.cardInfo)
 	const isLoading = useTypedSelector(state => state.board.isLoadingCard)
 	const { getOneCard, closeCard } = useActions()
+	const divRef = useRef<HTMLDivElement>(null);
+	const [scroll, setScroll] = useState<number>(0)
 
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
 	}, [])
 
-	useEffect(() => {}, [])
 
 	function closeModal() {
 		navigate(`/user/${userId}/board/${boardId}`)
@@ -32,7 +33,6 @@ export default function Card() {
 
 	return (
 		<Modal onClose={closeModal} open>
-
 					<div className={classes.card_modal_wrapper}>
 						{isLoading && (
 							<div className={classes.loader}>

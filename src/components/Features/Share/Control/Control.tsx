@@ -30,7 +30,6 @@ export default function Control({ boardId }: ControlProps) {
 			_id: userId,
 			boardId
 		}
-		console.log(payload)
 		socket?.emit('SHARE_BOARD', payload)
 	}
 
