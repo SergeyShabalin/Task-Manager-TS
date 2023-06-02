@@ -5,9 +5,9 @@
 	padding: 10px;
 	width: 250px;
 	height: 350px;
-	background: linear-gradient(to bottom right, #8bd7ff, #ffffff);
+	background: linear-gradient(to bottom right, #a7ddfc, #ffffff);
 	box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.37);
-	border-radius: 110px 30px 30px 30px;
+	border-radius: 110px 10px 10px 10px;
 }
 
 .avatar {

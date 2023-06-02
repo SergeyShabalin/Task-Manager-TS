@@ -54,7 +54,7 @@ export default function Info({ closeInfo }: InfoProps) {
 
 	return (
 		<div className={classes.wrapper} ref={accountRef}>
-			<h1>Учетная запись</h1>
+
 			<div className={classes.info}>
 				<div className={classes.background}>
 					{user.background && <img className={classes.background_img} src={user.background} />}
