@@ -26,7 +26,7 @@ import {
 	CloseCard,
 	DeleteCard,
 	GetCardInfo,
-	getUsersOneCard
+	getUsersOneCard, PayloadForApplySearchUser
 } from '@/models/Cards'
 import {
 	AddNewTask,
@@ -67,6 +67,7 @@ export type BoardActions =
 	| getUsersOneCard
 	| HideDoneTasks
 	| PayloadForGetUsersOneCard
+	| PayloadForApplySearchUser
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -262,6 +263,13 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				usersOneCard: action.payload
 			}
 		}
+		case CARD_TYPES.APPLY_SEARCH_USERS: {
+			return {
+				...state,
+				 allUsers: action.payload
+			}
+		}
+
 		case CHECKLIST_TYPES.ADD_NEW_TASK: {
 			return {
 				...state,

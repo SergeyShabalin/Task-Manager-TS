@@ -86,7 +86,7 @@ export enum USER_TYPES {
 	CHANGE_AVATAR_USER = 'CHANGE_AVATAR_USER',
 	CHANGE_PERSONAL_INFO = 'CHANGE_PERSONAL_INFO',
 	GET_USER_INFO = 'GET_USER_INFO',
-	CLEAR_USER_INFO = 'CLEAR_USER_INFO'
+	CLEAR_USER_INFO = 'CLEAR_USER_INFO',
 
 }
 
@@ -104,6 +104,7 @@ export type ChangeAvatarUser = Action<USER_TYPES.CHANGE_AVATAR_USER>
 export type ChangePersonalInfo = Action<USER_TYPES.CHANGE_PERSONAL_INFO>
 export type GetUserInfo = Action<USER_TYPES.GET_USER_INFO>
 export type ClearUserInfo = Action<USER_TYPES.CLEAR_USER_INFO>
+
 
 
 export interface PayloadForApplyInvite {
@@ -133,6 +134,7 @@ export interface payloadForChangePersonalInfo {
 	oldPass?: string
 	newEmail?: string
 }
+
 
 export interface PayloadForStartRegistration extends StartRegistration {
 	payload: Partial<User>
@@ -181,5 +183,6 @@ export interface PayloadForChangePersonalInfo extends ChangePersonalInfo {
 export interface PayloadForGetUserInfo extends GetUserInfo {
 	payload: Partial<User>
 }
+
 
 

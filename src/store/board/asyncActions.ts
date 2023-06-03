@@ -7,14 +7,14 @@ import CardsApi from '@/api/CardsApi'
 import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
 import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
-import { Card, PayloadForDeleteCard } from '@/models/Cards'
+import { Card, PayloadForDeleteCard, payloadForSearchUser } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
 import { ChangeTaskData, CheckList, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
-import CheckListApi from '@/api/CheckListApi'
-import { User } from '@/models/Users'
+
+
 
 
 export const columnsActions = {
@@ -122,6 +122,16 @@ export const cardActions = {
 			dispatch(BoardAC.getUsersOneCard(data.usersOneCard))
 		} catch (e) {
 			Notification.error('Произошла ошибка получения данных о карточке')
+		}
+	},
+
+	searchUser: (payload: payloadForSearchUser) => async (dispatch:Dispatch<UserActions> ) => {
+		try {
+			const { data } = await UsersApi.searchUser(payload)
+			console.log(data)
+			dispatch(CardAC.applySearchUser(data))
+		} catch (e) {
+			Notification.error('Произошла ошибка поиска участников')
 		}
 	}
 

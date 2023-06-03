@@ -41,41 +41,15 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 		if (socket) socket.emit('ADD_MEMBER_ONE_CARD', payload)
 	}
 
-	function applySearch(e: ChangeEvent<HTMLInputElement>) {
-		const inputValue = e.target.value
-
-		const filteredUsers = inputValue
-			? currentUsers.filter(user => user.email?.includes(inputValue))
-			: currentUsers
-		setCurrentUsers(filteredUsers)
-
-		if (inputValue && filteredUsers.length === 0) {
-			Notification.error('Пользователь не найден в списке доступных', 'warning')
-		}
-	}
-
-	function clearSearch(e: React.KeyboardEvent<HTMLInputElement>) {
-		const inputValue = e.currentTarget.value
 
 
-		if (!inputValue) {
-			setCurrentUsers(users)
-		} else {
-			const filteredUsers = users.filter(user => user.email?.includes(inputValue))
-			setCurrentUsers(filteredUsers)
-
-			if (filteredUsers.length === 0) {
-				Notification.error('Пользователь не найден в списке доступных', 'warning')
-			}
-		}
-	}
 
 	return (
 		<div className={classes.wrapper} ref={addUsersRef}>
 			<h1> Добавление участников</h1>
 			<hr />
 			<span>Поиск участника</span>
-			<Search clearSearch={clearSearch} applySearch={applySearch} />
+			<Search boardId={boardId} />
 
 			<div>Участники доски</div>
 			{currentUsers.length > 0 ? (

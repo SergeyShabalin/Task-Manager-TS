@@ -1,6 +1,6 @@
 import { CheckList } from '@/models/CheckList'
 import { Action } from 'redux'
-import { User } from '@/models/Users'
+import { User, USER_TYPES } from '@/models/Users'
 
 export interface Card {
 
@@ -23,11 +23,13 @@ export enum CARD_TYPES {
 	CHANGE_CARD = 'CHANGE_CARD',
 	GET_CARD_INFO = 'GET_CARD_INFO',
 	CLOSE_CARD = 'CLOSE_CARD',
-	GET_USERS_ONE_CARD = 'GET_USERS_ONE_CARD'
+	GET_USERS_ONE_CARD = 'GET_USERS_ONE_CARD',
+	APPLY_SEARCH_USERS = 'APPLY_SEARCH_USERS'
 }
 
 export type CloseCard = Action<CARD_TYPES.CLOSE_CARD>
 export type GetUsersOneCard = Action<CARD_TYPES.GET_USERS_ONE_CARD>
+export type ApplySearchUser = Action<CARD_TYPES.APPLY_SEARCH_USERS>
 
 export interface PayloadForDeleteCard {
 	newCardIds: string[]
@@ -48,7 +50,11 @@ export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 
 export interface GetCardInfo extends Action<CARD_TYPES.GET_CARD_INFO> {
 	payload:  Partial<Card>
+}
 
+export interface payloadForSearchUser {
+	boardId : string
+	search: string
 }
 
 export interface PayloadForGetCardInfo  {
@@ -57,4 +63,8 @@ export interface PayloadForGetCardInfo  {
 
 export interface getUsersOneCard extends GetUsersOneCard {
 	payload: { [key: string]: Partial<User> }
+}
+
+export interface PayloadForApplySearchUser extends ApplySearchUser {
+	payload: Partial<User>[]
 }

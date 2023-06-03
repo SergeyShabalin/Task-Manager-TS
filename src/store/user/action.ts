@@ -35,5 +35,4 @@ export const UserAC = {
 	getUserInfo: (payload: Partial<User>) : PayloadForGetUserInfo => ({type: USER_TYPES.GET_USER_INFO, payload}),
 	clearUserInfo: () : ClearUserInfo => ({type: USER_TYPES.CLEAR_USER_INFO}),
 
-
 }

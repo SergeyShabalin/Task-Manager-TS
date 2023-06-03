@@ -40,7 +40,8 @@ import {
 	GetCardInfo,
 	getUsersOneCard,
 	PayloadForDeleteCard,
-	PayloadForGetCardInfo
+	PayloadForGetCardInfo,
+	PayloadForApplySearchUser
 } from '@/models/Cards'
 import {
 	AddNewTask,
@@ -51,7 +52,7 @@ import {
 	HideDoneTasks,
 	PayloadForChangedTask
 } from '@/models/CheckList'
-import { User } from '@/models/Users'
+import {User, USER_TYPES } from '@/models/Users'
 
 export const BoardAC = {
 	startFetching: (): StartFetching => ({type: BOARD_TYPES.START_FETCHING_BOARD}),
@@ -85,7 +86,8 @@ export const CardAC = {
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	getCardInfoCardAC: (payload: PayloadForGetCardInfo) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
-	getUsersOneCard : ( payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload})
+	getUsersOneCard : ( payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload}),
+	applySearchUser: (payload:Partial<User>[]) : PayloadForApplySearchUser => ({type: CARD_TYPES.APPLY_SEARCH_USERS, payload})
 }
 
 export const ChecklistAC = {

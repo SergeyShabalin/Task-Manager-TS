@@ -4,7 +4,7 @@ import { UserActions } from '@/store/user/reducer'
 import UsersApi from '@/api/UsersApi'
 import {
 	PayloadForApplyInvite, payloadForChangePassword, payloadForChangePersonalInfo,
-	PayloadForMessageDelete, payloadForShareBoard,
+	PayloadForMessageDelete, payloadForSearchUser, payloadForShareBoard,
 	User
 } from '@/models/Users'
 import { Notification } from '@UI'
@@ -193,11 +193,5 @@ export const usersActions = {
 		}
 	},
 
-	searchUser: (search: string) => async (dispatch:Dispatch<UserActions> ) => {
-		try {
 
-		} catch (e) {
-
-		}
-	}
 }

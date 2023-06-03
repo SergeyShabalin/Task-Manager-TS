@@ -6,6 +6,7 @@ import {
 	User
 } from '@/models/Users'
 import { Api } from '@/api/index'
+import { payloadForSearchUser } from '@/models/Cards'
 
 class UsersApi {
 	async registration(payload: Partial<User>): Promise<AxiosResponse<User>> {
@@ -58,6 +59,10 @@ class UsersApi {
 
 	async getUserInfo(userId: string): Promise<AxiosResponse<User>> {
 		return Api.get(`/user/getUserInfo/${userId}`)
+	}
+
+	async searchUser(payload: payloadForSearchUser): Promise<AxiosResponse<User>> {
+		return Api.patch(`/user/searchUser/${payload.boardId}`, {search: payload.search})
 	}
 
 }
