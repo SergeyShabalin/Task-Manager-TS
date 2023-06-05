@@ -16,7 +16,9 @@
 	margin-top: 0;
 	font: var(--primary-font);
 	overflow-y: scroll;
+
 }
+
 
 .content {
 	display: flex;
@@ -32,7 +34,7 @@
 
 .loader {
 	position: absolute;
-	left: 11vw;
+	left: 36%;
 	top: 35%;
 }
 

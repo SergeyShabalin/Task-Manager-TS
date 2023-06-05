@@ -18,8 +18,6 @@ export default function Card() {
 	const cardInfo = useTypedSelector(state => state.board.cardInfo)
 	const isLoading = useTypedSelector(state => state.board.isLoadingCard)
 	const { getOneCard, closeCard } = useActions()
-	const divRef = useRef<HTMLDivElement>(null);
-	const [scroll, setScroll] = useState<number>(0)
 
 	useEffect(() => {
 		if (cardId) getOneCard(cardId)
