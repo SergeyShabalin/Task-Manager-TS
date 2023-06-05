@@ -23,6 +23,10 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 	const { boardId, cardId } = useParams()
 	const { getUsersOneBoard } = useActions()
 	const [currentUsers, setCurrentUsers] = useState(users)
+	const card = useTypedSelector(state => state.board.cardInfo.memberIds)
+
+	const filteredUsers = users.filter((user) => card.includes(user._id));
+	console.log(filteredUsers);
 
 
 	useEffect(() => {
@@ -33,6 +37,7 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 		setCurrentUsers(users)
 	}, [users])
 
+
 	function addUser(userId: string) {
 		const payload = {
 			userId,
@@ -40,8 +45,6 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 		}
 		if (socket) socket.emit('ADD_MEMBER_ONE_CARD', payload)
 	}
-
-
 
 
 	return (

@@ -1,32 +1,32 @@
-import React, { ChangeEvent } from 'react'
-import classes from './Search.module.css'
-import { Input } from '@UI'
-import { useActions } from '@/hooks/useActions/useActions'
+import React, { ChangeEvent } from 'react';
+import { debounce } from 'lodash';
+import classes from './Search.module.css';
+import { Input } from '@UI';
+import { useActions } from '@/hooks/useActions/useActions';
 
-
-interface usersProps{
-	boardId: string | undefined
+interface UsersProps {
+	boardId: string | undefined;
 }
 
-export default function Search({boardId}: usersProps) {
-
-	const { searchUser } = useActions()
+export default function Search({ boardId }: UsersProps) {
+	const { searchUser } = useActions();
 
 	function applySearch(e: ChangeEvent<HTMLInputElement>) {
-
-		if(boardId){
-			const inputValue = e.target.value
+		if (boardId) {
+			const inputValue = e.target.value;
 			const payload = {
 				search: inputValue,
-				boardId
-			}
-			searchUser(payload)
+				boardId,
+			};
+			debouncedSearchUser(payload);
 		}
 	}
 
+	const debouncedSearchUser = debounce(searchUser, 400);
+
 	return (
-		<form  className={classes.wrapper}>
-			<Input placeholder='введите email' color={'blue'} onChange={applySearch}/>
+		<form className={classes.wrapper}>
+			<Input placeholder="введите email" color={'blue'} onChange={applySearch} />
 		</form>
-	)
+	);
 }
