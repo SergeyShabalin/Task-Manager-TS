@@ -133,8 +133,26 @@ export const cardActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка поиска участников')
 		}
-	}
+	},
 
+	changeViewUserOneCard: (payload: string) => (dispatch:Dispatch<UserActions>, getState: () => RootState) => {
+		try {
+			const { board } = getState()
+			let newMemberIds
+		if(board.cardInfo.memberIds.includes(payload)){
+			 newMemberIds = 	board.cardInfo.memberIds.filter(id=> id!== payload)
+			console.log('newMemberIds', newMemberIds)
+		}
+		else {
+			newMemberIds =[...board.cardInfo.memberIds, payload]
+			console.log('newMemberIds', newMemberIds)
+		}
+
+			// dispatch(CardAC.changeViewUserOneCard(payload))
+		} catch (e) {
+
+		}
+	}
 }
 
 export const boardActions = {

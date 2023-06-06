@@ -7,8 +7,9 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 import { useActions } from '@/hooks/useActions/useActions'
 import Search from '@/components/Features/Card/components/Sidebar/AddUsers/Search'
-import { Notification } from '@UI'
+
 import { TbFaceIdError } from 'react-icons/all'
+import UserList from '@/components/Features/Card/components/Sidebar/AddUsers/UserList'
 
 interface AddUsersProps {
 	closeUsers: () => void
@@ -21,14 +22,11 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 	const users = useTypedSelector(state => state.board.allUsers)
 	const socket = useTypedSelector(({ user }) => user.socket)
 	const { boardId, cardId } = useParams()
-	const { getUsersOneBoard } = useActions()
+	const { getUsersOneBoard, changeViewUserOneCard } = useActions()
 	const [currentUsers, setCurrentUsers] = useState(users)
 	const card = useTypedSelector(state => state.board.cardInfo.memberIds)
 
-	const filteredUsers = users.filter((user) => card.includes(user._id));
-	console.log(filteredUsers);
-
-
+	console.log(card)
 	useEffect(() => {
 		if (boardId) getUsersOneBoard(boardId)
 	}, [])
@@ -44,6 +42,7 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 			cardId
 		}
 		if (socket) socket.emit('ADD_MEMBER_ONE_CARD', payload)
+		changeViewUserOneCard(userId)
 	}
 
 
@@ -57,30 +56,20 @@ export default function AddUsers({ closeUsers }: AddUsersProps) {
 			<div>Участники доски</div>
 			{currentUsers.length > 0 ? (
 				<div>
-					{currentUsers?.map(user => (
-						<div className={classes.user} key={user._id} onClick={() => addUser(user._id)}>
-							<div className={classes.avatar_wrapper}>
-								{user.avatar ? (
-									<img className={classes.avatar} src={user.avatar} />
-								) : (
-									<div className={classes.icon}>
-										{user.secondName[0].toUpperCase() + user.firstName[0].toUpperCase()}
-									</div>
-								)}
+					{currentUsers?.map(user => {
+						let added
+						added = card.includes(user._id);
+						return(
+							<div key={user._id}>
+								<UserList added={added} addUser={addUser} user={user} />
 							</div>
-
-							<div className={classes.user_info}>
-								<div className={classes.email}>{user.email}</div>
-								<div className={classes.name}>
-									{user.secondName} {user.firstName}
-								</div>
-							</div>
-						</div>
-					))}
+						)
+						}
+					)}
 				</div>
 			) : (
 				<div className={classes.empty_users}>
-					<TbFaceIdError className = {classes.icon_empty}/>
+					<TbFaceIdError className={classes.icon_empty} />
 					<div className={classes.empty_title}>Пользователей не найдено</div>
 				</div>
 			)}

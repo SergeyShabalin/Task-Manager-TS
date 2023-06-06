@@ -59,7 +59,6 @@
 }
 .logo:hover .icon{
 	transform: rotateY(180deg) scale(1.4);
-
 }
 
 .logo:hover {

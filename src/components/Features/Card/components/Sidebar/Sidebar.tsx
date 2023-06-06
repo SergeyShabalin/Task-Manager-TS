@@ -6,9 +6,11 @@ import { FiCheckSquare } from 'react-icons/fi'
 import { BsCalendar2Date } from 'react-icons/bs'
 import AddUsers from '@/components/Features/Card/components/Sidebar/AddUsers'
 
+
 export default function Sidebar() {
 
 	const [isOpenUsers, setIsOpenUsers] = useState(false)
+
 
 	function openUsers(){setIsOpenUsers(true)}
 	function closeUsers(){setIsOpenUsers(false)}

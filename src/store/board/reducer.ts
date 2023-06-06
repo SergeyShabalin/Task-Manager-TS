@@ -11,7 +11,8 @@ import {
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
-	PayloadForDragDropColumn, PayloadForGetUsersOneCard,
+	PayloadForDragDropColumn,
+	PayloadForGetUsersOneCard,
 	PayloadForSuccessFetching,
 	payloadForUsersOneBoard,
 	StartFetching,
@@ -26,15 +27,10 @@ import {
 	CloseCard,
 	DeleteCard,
 	GetCardInfo,
-	getUsersOneCard, PayloadForApplySearchUser
+	getUsersOneCard,
+	PayloadForApplySearchUser, PayloadForChangeViewUserOneCard
 } from '@/models/Cards'
-import {
-	AddNewTask,
-	ChangeTask,
-	CHECKLIST_TYPES,
-	DeleteTask,
-	HideDoneTasks
-} from '@/models/CheckList'
+import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask, HideDoneTasks } from '@/models/CheckList'
 
 export type BoardActions =
 	| StartFetching
@@ -68,6 +64,7 @@ export type BoardActions =
 	| HideDoneTasks
 	| PayloadForGetUsersOneCard
 	| PayloadForApplySearchUser
+	| PayloadForChangeViewUserOneCard
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
@@ -261,8 +258,19 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			return {
 				...state,
 				usersOneCard: action.payload
+
 			}
 		}
+
+		case CARD_TYPES.CHANGE_VIEW_USER_ONE_CARD: {
+			console.log(action.payload)
+			return {
+				...state,
+				//TODO работает только на добавление, на удаление не работает
+				cardInfo: {...state.cardInfo, memberIds: [...state.cardInfo.memberIds, action.payload ]}
+			}
+		}
+
 		case CARD_TYPES.APPLY_SEARCH_USERS: {
 			return {
 				...state,
