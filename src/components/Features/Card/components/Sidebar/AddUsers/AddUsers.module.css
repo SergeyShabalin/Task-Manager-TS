@@ -6,69 +6,10 @@
     color: #5e6c84;
     border-radius: 5px;
     width: 300px;
-    overflow: auto;
-    max-height: 500px;
+    overflow-y: scroll;
+    max-height: 550px;
     right: 20%;
-    background-color: white;
-}
-
-.user {
-    display: flex;
-    transition: 0.3s ease-in-out;
-    margin: 10px 0;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-}
-
-.user:hover {
-    background-color: #b8ecec;
-    border-radius: 30px 0 0 30px;
-}
-
-.user:hover .add_btn {
-    opacity: 70%;
-}
-
-.icon {
-    position: absolute;
-    color: black;
-    border-radius: 100%;
-    background: radial-gradient(#caff16, orange, #211f18);
-    font-size: 20px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.avatar {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-}
-
-.avatar_wrapper {
-    position: relative;
-    width: 45px;
-    height: 45px;
-    margin-right: 15px;
-}
-
-.img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.add_btn {
-    position: absolute;
-    transition: 0.6s ease-in-out;
-    right: 5px;
-    transform: scale(1.3);
-    opacity: 0;
+    background-color: #ffffff;
 }
 
 .empty_users {
@@ -88,16 +29,4 @@
     position: absolute;
     top: 75%;
     left: 15%;
-}
-
-.user_info {
-    width: 80%;
-}
-
-.done {
-    position: absolute;
-    transform: scale(1.2);
-    left: 40px;
-    bottom: 35px;
-    color: #ea5607;
 }

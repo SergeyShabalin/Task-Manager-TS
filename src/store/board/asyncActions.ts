@@ -15,8 +15,6 @@ import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
 
-
-
 export const columnsActions = {
 
 	addNewColumn:
@@ -116,7 +114,7 @@ export const cardActions = {
 	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(BoardAC.startLoadingCard())
-			const { data }  = await CardsApi.getCardInfo(cardId)
+			const { data } = await CardsApi.getCardInfo(cardId)
 			dispatch(BoardAC.finishLoadingCard())
 			dispatch(CardAC.getCardInfoCardAC(data.cardInfo))
 			dispatch(BoardAC.getUsersOneCard(data.usersOneCard))
@@ -125,30 +123,28 @@ export const cardActions = {
 		}
 	},
 
-	searchUser: (payload: payloadForSearchUser) => async (dispatch:Dispatch<UserActions> ) => {
+	searchUser: (payload: payloadForSearchUser) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.searchUser(payload)
-			console.log(data)
 			dispatch(CardAC.applySearchUser(data))
 		} catch (e) {
 			Notification.error('Произошла ошибка поиска участников')
 		}
 	},
 
-	changeViewUserOneCard: (payload: string) => (dispatch:Dispatch<UserActions>, getState: () => RootState) => {
+	changeViewUserOneCard: (payload: string) => (dispatch: Dispatch<UserActions>, getState: () => RootState) => {
 		try {
 			const { board } = getState()
-			let newMemberIds
-		if(board.cardInfo.memberIds.includes(payload)){
-			 newMemberIds = 	board.cardInfo.memberIds.filter(id=> id!== payload)
-			console.log('newMemberIds', newMemberIds)
-		}
-		else {
-			newMemberIds =[...board.cardInfo.memberIds, payload]
-			console.log('newMemberIds', newMemberIds)
-		}
+			const memberIds: string[] = board.cardInfo.memberIds
 
-			// dispatch(CardAC.changeViewUserOneCard(payload))
+			let newMemberIds
+
+			if (memberIds.includes(payload)) {
+				newMemberIds = memberIds.filter(id => id !== payload)
+			} else {
+				newMemberIds = [...memberIds, payload]
+			}
+			dispatch(CardAC.changeViewUserOneCard(newMemberIds))
 		} catch (e) {
 
 		}

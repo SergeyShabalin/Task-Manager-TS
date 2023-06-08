@@ -89,7 +89,7 @@ export const CardAC = {
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
 	getUsersOneCard : ( payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload}),
 	applySearchUser: (payload:Partial<User>[]) : PayloadForApplySearchUser => ({type: CARD_TYPES.APPLY_SEARCH_USERS, payload}),
-	changeViewUserOneCard: (payload: string) : PayloadForChangeViewUserOneCard => ({type: CARD_TYPES.CHANGE_VIEW_USER_ONE_CARD, payload})
+	changeViewUserOneCard: (payload: string[]) : PayloadForChangeViewUserOneCard => ({type: CARD_TYPES.CHANGE_VIEW_USER_ONE_CARD, payload})
 }
 
 export const ChecklistAC = {

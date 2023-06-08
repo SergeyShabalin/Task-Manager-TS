@@ -28,7 +28,8 @@ import {
 	DeleteCard,
 	GetCardInfo,
 	getUsersOneCard,
-	PayloadForApplySearchUser, PayloadForChangeViewUserOneCard
+	PayloadForApplySearchUser,
+	PayloadForChangeViewUserOneCard
 } from '@/models/Cards'
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask, HideDoneTasks } from '@/models/CheckList'
 
@@ -263,11 +264,9 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 		}
 
 		case CARD_TYPES.CHANGE_VIEW_USER_ONE_CARD: {
-			console.log(action.payload)
 			return {
 				...state,
-				//TODO работает только на добавление, на удаление не работает
-				cardInfo: {...state.cardInfo, memberIds: [...state.cardInfo.memberIds, action.payload ]}
+				cardInfo: {...state.cardInfo, memberIds: action.payload}
 			}
 		}
 
@@ -277,7 +276,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				 allUsers: action.payload
 			}
 		}
-
 		case CHECKLIST_TYPES.ADD_NEW_TASK: {
 			return {
 				...state,
@@ -304,7 +302,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				cardInfo: { ...state.cardInfo, checkList: action.payload }
 			}
 		}
-
 		case COLUMN_TYPES.DROP_CARD: {
 			const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
 

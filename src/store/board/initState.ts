@@ -1,11 +1,13 @@
 import { BoardState } from '@/models/Boards'
+import { User } from '@/models/Users'
 
 export const defaultState: BoardState = {
 	currentBoard: {
 		_id: '',
 		title: '',
 		background: '',
-		columns: []
+		columns: [],
+		usersOneCard: []
 	},
 	isLoadingBoard: false,
 	isLoadingCard: false,
@@ -26,5 +28,5 @@ export const defaultState: BoardState = {
 		memberIds: []
 	},
 	allUsers: [],
-	usersOneCard: [],
+	usersOneCard:  [],
 }

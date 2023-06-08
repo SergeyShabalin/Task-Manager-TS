@@ -1,9 +1,8 @@
 import { CheckList } from '@/models/CheckList'
 import { Action } from 'redux'
-import { User, USER_TYPES } from '@/models/Users'
+import { User } from '@/models/Users'
 
 export interface Card {
-
 	_id: string
 	title: string
 	description: string
@@ -13,7 +12,7 @@ export interface Card {
 	doneTask: number
 	order: number
 	checkList: CheckList[]
-	memberIds: []
+	memberIds: string[]
 	cardInfo?: any
 }
 
@@ -35,7 +34,7 @@ export type ChangeViewUserOneCard = Action<CARD_TYPES.CHANGE_VIEW_USER_ONE_CARD>
 
 
 export interface PayloadForChangeViewUserOneCard extends ChangeViewUserOneCard{
- payload: string
+ payload: string[]
 }
 
 export interface PayloadForDeleteCard {
