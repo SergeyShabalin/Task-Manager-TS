@@ -6,8 +6,8 @@
     color: #5e6c84;
     border-radius: 5px;
     width: 300px;
-    overflow-y: scroll;
-    max-height: 550px;
+    overflow-y: auto;
+    max-height: 500px;
     right: 20%;
     background-color: #ffffff;
 }

@@ -1,5 +1,5 @@
 import { BoardState } from '@/models/Boards'
-import { User } from '@/models/Users'
+
 
 export const defaultState: BoardState = {
 	currentBoard: {
