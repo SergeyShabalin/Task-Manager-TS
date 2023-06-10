@@ -41,7 +41,9 @@ export default function Card() {
 					<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />
 					<div className={classes.content}>
 						<div className={classes.main_components}>
-							<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
+							{cardInfo.decisionDate &&
+								<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
+							}
 							<CurrentUsers />
 							<Description description={cardInfo.description} _id={cardInfo._id} />
 							{cardInfo.checkList.length>0 &&

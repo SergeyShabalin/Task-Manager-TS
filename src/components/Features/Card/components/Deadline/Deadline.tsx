@@ -9,7 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Button from '@/components/UI/Button'
 import useOnClickOutside from '../../../../../hooks/UseOnClickOutside'
 import useOpenClose from '@/hooks/UseOpenClose'
-import { useActions } from '@/hooks/useActions/useActions'
+
 import { Card } from '@/models/Cards'
 import classes from './Deadline.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'

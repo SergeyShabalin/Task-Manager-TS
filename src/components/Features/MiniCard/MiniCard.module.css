@@ -44,6 +44,7 @@
 	cursor: pointer;
 	padding: 5px;
 	font-size: 16px;
+	min-width: 220px;
 }
 
 .list_card:hover {
