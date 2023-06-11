@@ -12,6 +12,7 @@ import classes from './CheckList.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 
 
+
 type ChecklistProps = Pick<Card, 'doneTask' | 'countTask' | 'checkList' | '_id'>
 
 

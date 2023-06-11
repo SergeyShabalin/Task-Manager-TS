@@ -63,7 +63,7 @@
 }
 
 .checkbox:hover {
-    background-color: rgba(0, 0, 0, 0.11);
+    background-color: rgba(50, 132, 197, 0.13);
 }
 
 .checkbox:hover .delete_btn {
@@ -73,4 +73,12 @@
 
 .delete_btn {
     opacity: 0;
+}
+
+.btn_wrapper{
+    display: flex;
+}
+
+.hint{
+    transform: scale(1.5);
 }
