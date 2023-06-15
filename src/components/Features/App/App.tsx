@@ -15,61 +15,91 @@ import AvatarEdit from '@/pages/configuration/Profile/AvatarEdit'
 import BackgroundEdit from '@/pages/configuration/Profile/BackgroundEdit'
 import Profile from '@/components/Features/Profile'
 import Header from '../Header'
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment, incrementByAmount } from '@/toolkit/toolkitReducer'
+import { RootState } from '@/store'
 
 function App() {
-	const location = useLocation()
-	const { checkLogin } = useActions()
-	const background = location.state && location.state.background,
-		isAuth = useTypedSelector(state => state.user.isAuth),
-		user = useTypedSelector(state => state.user),
-		socket = user.socket,
-		userId = user._id
+	// const dispatch = useDispatch()
+	// const count = useSelector(state => state)
+	// const location = useLocation()
+	// const { checkLogin } = useActions()
+	// const background = location.state && location.state.background,
+	// 	isAuth = useTypedSelector(state => state.user.isAuth),
+	// 	user = useTypedSelector(state => state.user),
+	// 	socket = user.socket,
+	// 	userId = user._id
+	//
+	// useEffect(() => {
+	// 	socket?.connect()
+	// 	checkLogin()
+	// }, [])
+	//
+	// useEffect(() => {
+	// 	socket?.emit('JOIN_USER', user._id)
+	// }, [socket])
 
-	useEffect(() => {
-		socket?.connect()
-		checkLogin()
-	}, [])
 
-	useEffect(() => {
-		socket?.emit('JOIN_USER', user._id)
-	}, [socket])
+	// return (
+	// 	<>
+			{/*<Header userId={userId} />*/}
+
+			{/*{!isAuth ? (*/}
+			{/*	<Routes location={background || location}>*/}
+			{/*		<Route path='/registration' element={<Registration />} />*/}
+			{/*		<Route path='/login' element={<Login />} />*/}
+			{/*	</Routes>*/}
+			{/*) : (*/}
+			{/*	<>*/}
+			{/*		<Routes location={background || location}>*/}
+			{/*			<Route path='/*' element={<Main />} />*/}
+			{/*			<Route path='/user/:userId' element={<Main />} />*/}
+			{/*			<Route path='/user/:userId/greeting' element={<Greeting />} />*/}
+			{/*			<Route path='/user/:userId/profile' element={<Profile />} />*/}
+			{/*			<Route path='/user/:userId/configuration/*' element={<Configuration />} />*/}
+			{/*			<Route path='/user/:userId/board/:boardId' element={<Main />} />*/}
+			{/*			<Route path='/ui' element={<UiKit />} />*/}
+			{/*			<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />*/}
+			{/*		</Routes>*/}
+			{/*		{background && (*/}
+			{/*			<Routes>*/}
+			{/*				<Route path='/*' element={<Header userId={userId} />} />*/}
+			{/*				<Route path='/user/:userId/greeting' element={<Greeting />} />*/}
+			{/*				<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />*/}
+			{/*				<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />*/}
+			{/*				<Route*/}
+			{/*					path='/user/:userId/configuration/backgroundEdit'*/}
+			{/*					element={<BackgroundEdit />}*/}
+			{/*				/>*/}
+			{/*			</Routes>*/}
+			{/*		)}*/}
+			{/*	</>*/}
+			{/*)}*/}
+
+// 	)
+// }
+
+	const count = useSelector((state: RootState) => state.counter.value)
+	const dispatch = useDispatch()
 
 	return (
-		<>
-			<Header userId={userId} />
-
-			{!isAuth ? (
-				<Routes location={background || location}>
-					<Route path='/registration' element={<Registration />} />
-					<Route path='/login' element={<Login />} />
-				</Routes>
-			) : (
-				<>
-					<Routes location={background || location}>
-						<Route path='/*' element={<Main />} />
-						<Route path='/user/:userId' element={<Main />} />
-						<Route path='/user/:userId/greeting' element={<Greeting />} />
-						<Route path='/user/:userId/profile' element={<Profile />} />
-						<Route path='/user/:userId/configuration/*' element={<Configuration />} />
-						<Route path='/user/:userId/board/:boardId' element={<Main />} />
-						<Route path='/ui' element={<UiKit />} />
-						<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
-					</Routes>
-					{background && (
-						<Routes>
-							<Route path='/*' element={<Header userId={userId} />} />
-							<Route path='/user/:userId/greeting' element={<Greeting />} />
-							<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />
-							<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />
-							<Route
-								path='/user/:userId/configuration/backgroundEdit'
-								element={<BackgroundEdit />}
-							/>
-						</Routes>
-					)}
-				</>
-			)}
-		</>
+		<div>
+			<div>
+				<button
+					aria-label="Increment value"
+					onClick={() => dispatch(increment())}
+				>
+					Increment
+				</button>
+				<span>{count}</span>
+				<button
+					aria-label="Decrement value"
+					onClick={() => dispatch(incrementByAmount(7))}
+				>
+					Decrement
+				</button>
+			</div>
+		</div>
 	)
 }
 
