@@ -16,32 +16,35 @@ import BackgroundEdit from '@/pages/configuration/Profile/BackgroundEdit'
 import Profile from '@/components/Features/Profile'
 import Header from '../Header'
 import { useDispatch, useSelector } from 'react-redux'
-import { decrement, increment, incrementByAmount } from '@/toolkit/toolkitReducer'
+import { increment, incrementByAmount } from '@/toolkit/toolkitReducer'
 import { RootState } from '@/store'
+import { vaas } from '@/toolkit/user/Reducer'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 function App() {
-	// const dispatch = useDispatch()
-	// const count = useSelector(state => state)
-	// const location = useLocation()
-	// const { checkLogin } = useActions()
+	const dispatch = useDispatch()
+	const count = useSelector(state => state)
+	const location = useLocation()
+	const { checkLogin } = useActionsToolkit()
 	// const background = location.state && location.state.background,
 	// 	isAuth = useTypedSelector(state => state.user.isAuth),
 	// 	user = useTypedSelector(state => state.user),
-	// 	socket = user.socket,
-	// 	userId = user._id
-	//
-	// useEffect(() => {
-	// 	socket?.connect()
-	// 	checkLogin()
-	// }, [])
-	//
+		// socket = user.socket,
+		// userId = user._id
+
+	useEffect(() => {
+		// socket?.connect()
+		checkLogin()
+	}, [])
+
 	// useEffect(() => {
 	// 	socket?.emit('JOIN_USER', user._id)
 	// }, [socket])
 
 
-	// return (
-	// 	<>
+	return (
+		<>
+		hello
 			{/*<Header userId={userId} />*/}
 
 			{/*{!isAuth ? (*/}
@@ -75,32 +78,9 @@ function App() {
 			{/*		)}*/}
 			{/*	</>*/}
 			{/*)}*/}
-
-// 	)
-// }
-
-	const count = useSelector((state: RootState) => state.counter.value)
-	const dispatch = useDispatch()
-
-	return (
-		<div>
-			<div>
-				<button
-					aria-label="Increment value"
-					onClick={() => dispatch(increment())}
-				>
-					Increment
-				</button>
-				<span>{count}</span>
-				<button
-					aria-label="Decrement value"
-					onClick={() => dispatch(incrementByAmount(7))}
-				>
-					Decrement
-				</button>
-			</div>
-		</div>
+</>
 	)
+
 }
 
 export default App

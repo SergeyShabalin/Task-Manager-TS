@@ -1,6 +1,8 @@
 import { AxiosResponse } from 'axios'
 import {
-	PayloadForApplyInvite, payloadForChangePassword, payloadForChangePersonalInfo,
+	PayloadForApplyInvite,
+	payloadForChangePassword,
+	payloadForChangePersonalInfo,
 	PayloadForMessageDelete,
 	PayloadForShareBoard,
 	User
@@ -17,9 +19,9 @@ class UsersApi {
 		return Api.post(`/user/login/`, payload)
 	}
 
-	async loginCheck(): Promise<AxiosResponse<User>> {
-		return Api.get(`/user/checkLogin/`)
-	}
+	// async loginCheck(): Promise<AxiosResponse<User>> {
+	// 	return Api.get(`/user/checkLogin/`)
+	// }
 
 	async shareBoard(payload: PayloadForShareBoard): Promise<AxiosResponse<User>> {
 		return Api.post('/user/shareBoard/', payload)

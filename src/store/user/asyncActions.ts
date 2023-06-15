@@ -41,22 +41,22 @@ export const usersActions = {
 			return false
 		}
 	},
-	checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
-		let payload: Partial<{ user: User | null; isAuth: boolean }> = {
-			user: null,
-			isAuth: false
-		}
-		try {
-			const token = localStorage.getItem('token')
-			if (token) {
-				const { data } = await UsersApi.loginCheck()
-				payload = data
-			}
-			dispatch(UserAC.checkLogin(payload))
-		} catch (e) {
-			Notification.error('произошла ошибка проверки аккаунта')
-		}
-	},
+	// checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
+	// 	let payload: Partial<{ user: User | null; isAuth: boolean }> = {
+	// 		user: null,
+	// 		isAuth: false
+	// 	}
+	// 	try {
+	// 		const token = localStorage.getItem('token')
+	// 		if (token) {
+	// 			const { data } = await UsersApi.loginCheck()
+	// 			payload = data
+	// 		}
+	// 		dispatch(UserAC.checkLogin(payload))
+	// 	} catch (e) {
+	// 		Notification.error('произошла ошибка проверки аккаунта')
+	// 	}
+	// },
 	login: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
 		try {
 			const { data } = await UsersApi.login(payload)

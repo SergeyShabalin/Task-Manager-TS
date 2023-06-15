@@ -2,23 +2,23 @@ import { Action } from 'redux'
 import { Socket } from 'socket.io-client'
 
 export interface User {
-	_id: string
-	email: string
-	password: string
-	boardIds: string[]
-	firstName: string
-	secondName: string
-	lastName: string
-	messages: message[]
-	token: string
-	isAuth: boolean
-	avatar: string
-	socket: Socket | null
-	background: string
-	position: string
-	department: string
-	organization: string
-	birthDate: Date
+// 	_id: string
+// 	email: string
+// 	password: string
+// 	boardIds: string[]
+// 	firstName: string
+// 	secondName: string
+// 	lastName: string
+// 	messages: message[]
+// 	token: string
+// 	isAuth: boolean
+// 	avatar: string
+// 	socket: Socket | null
+// 	background: string
+// 	position: string
+// 	department: string
+// 	organization: string
+// 	birthDate: Date
 }
 
 export interface profileUser {
@@ -76,7 +76,7 @@ export enum USER_TYPES {
 	REGISTRATION = 'REGISTRATION',
 	AUTHENTICATION = 'AUTHENTICATION',
 	LOGOUT = 'LOGOUT',
-	CHECK_LOGIN = 'CHECK_LOGIN',
+	// CHECK_LOGIN = 'CHECK_LOGIN',
 	ADD_BOARD = 'ADD_BOARD',
 	DELETE_MESSAGE = 'DELETE_MESSAGE',
 	SOCKET_INIT = 'SOCKET_INIT',
@@ -91,7 +91,7 @@ export enum USER_TYPES {
 }
 
 export type StartRegistration = Action<USER_TYPES.REGISTRATION>
-export type CheckLogin = Action<USER_TYPES.CHECK_LOGIN>
+// export type CheckLogin = Action<USER_TYPES.CHECK_LOGIN>
 export type Authentication = Action<USER_TYPES.AUTHENTICATION>
 export type Logout = Action<USER_TYPES.LOGOUT>
 export type AddBoard = Action<USER_TYPES.ADD_BOARD>
@@ -144,9 +144,9 @@ export interface PayloadForAuthentication extends Authentication {
 	payload: Partial<User>
 }
 
-export interface PayloadForCheckLogin extends CheckLogin {
-	payload: Partial<User>
-}
+// export interface PayloadForCheckLogin extends CheckLogin {
+// 	payload: Partial<User>
+// }
 
 export interface PayloadForAddBoard extends AddBoard {
 	payload: string
