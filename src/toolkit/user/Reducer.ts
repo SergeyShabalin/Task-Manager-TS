@@ -1,26 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import {defaultState as userState} from './InitState'
+import { User } from '@/models/toolkit/Users'
 
-export interface userState {
-	value: number
-}
 
-const initialState: userState = {
-	value: 0,
+const initialState = {
+	userState
 }
 
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		vaas: (state) => {
-			state.value += 1
+		checkLogin: (state, action: PayloadAction<User>) => {
+			state.userState = action.payload
+			// state._id = action.payload._id
+			// state.firstName = action.payload.firstName
+			// state.lastName = action.payload.lastName
 		},
 
 	},
 })
 
 
-export const { vaas } = userSlice.actions
+export const { checkLogin } = userSlice.actions
 
 export default userSlice.reducer

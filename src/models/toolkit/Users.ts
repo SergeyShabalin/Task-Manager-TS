@@ -18,7 +18,6 @@ export interface User {
 	position: string
 	department: string
 	organization: string
-	birthDate: Date
 }
 
 export enum USER_TYPES {

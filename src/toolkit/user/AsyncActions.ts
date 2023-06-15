@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import { UserActions } from '@/store/user/reducer'
 import { User } from '@/models/Users'
 import UserApi from '@/api/UserApi'
-import { UserAC } from '@/store/user/action'
+import { checkLogin } from '@/toolkit/user/Reducer'
 import { Notification } from '@UI'
 
 
@@ -20,7 +20,7 @@ export const userActions = {
 				payload = data
 			}
 			console.log(payload)
-			// dispatch(UserAC.checkLogin(payload))
+			 dispatch(checkLogin(payload))
 		} catch (e) {
 			Notification.error('произошла ошибка проверки аккаунта')
 		}

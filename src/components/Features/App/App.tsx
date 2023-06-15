@@ -23,11 +23,11 @@ import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 function App() {
 	const dispatch = useDispatch()
-	const count = useSelector(state => state)
+	const user = useSelector(state => state.user.userState)
 	const location = useLocation()
 	const { checkLogin } = useActionsToolkit()
-	// const background = location.state && location.state.background,
-	// 	isAuth = useTypedSelector(state => state.user.isAuth),
+	 const background = location.state && location.state.background,
+  	isAuth =  user.isAuth
 	// 	user = useTypedSelector(state => state.user),
 		// socket = user.socket,
 		// userId = user._id
@@ -36,7 +36,7 @@ function App() {
 		// socket?.connect()
 		checkLogin()
 	}, [])
-
+	console.log('sd',  user )
 	// useEffect(() => {
 	// 	socket?.emit('JOIN_USER', user._id)
 	// }, [socket])
@@ -44,17 +44,21 @@ function App() {
 
 	return (
 		<>
-		hello
+			{user && <div>hello
+				<h1>{user.email}</h1>
+				<h1>{user.firstName}</h1>
+				<h1>{user.lastName}</h1>
+			</div>}
 			{/*<Header userId={userId} />*/}
 
-			{/*{!isAuth ? (*/}
-			{/*	<Routes location={background || location}>*/}
-			{/*		<Route path='/registration' element={<Registration />} />*/}
-			{/*		<Route path='/login' element={<Login />} />*/}
-			{/*	</Routes>*/}
-			{/*) : (*/}
-			{/*	<>*/}
-			{/*		<Routes location={background || location}>*/}
+			{!isAuth ?
+				<Routes location={background || location}>
+					<Route path='/registration' element={<Registration />} />
+					<Route path='/login' element={<Login />} />
+				</Routes>
+				:
+				<></>}
+					{/*<Routes location={background || location}>*/}
 			{/*			<Route path='/*' element={<Main />} />*/}
 			{/*			<Route path='/user/:userId' element={<Main />} />*/}
 			{/*			<Route path='/user/:userId/greeting' element={<Greeting />} />*/}
