@@ -18,7 +18,7 @@ import Header from '../Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { increment, incrementByAmount } from '@/toolkit/toolkitReducer'
 import { RootState } from '@/store'
-import { vaas } from '@/toolkit/user/Reducer'
+
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 function App() {
@@ -26,17 +26,17 @@ function App() {
 	const user = useSelector(state => state.user.userState)
 	const location = useLocation()
 	const { checkLogin } = useActionsToolkit()
-	 const background = location.state && location.state.background,
-  	isAuth =  user.isAuth
+	const background = location.state && location.state.background,
+		isAuth = user.isAuth
 	// 	user = useTypedSelector(state => state.user),
-		// socket = user.socket,
-		// userId = user._id
+	// socket = user.socket,
+	// userId = user._id
 
 	useEffect(() => {
 		// socket?.connect()
 		checkLogin()
 	}, [])
-	console.log('sd',  user )
+	// console.log('sd', user)
 	// useEffect(() => {
 	// 	socket?.emit('JOIN_USER', user._id)
 	// }, [socket])
@@ -44,12 +44,8 @@ function App() {
 
 	return (
 		<>
-			{user && <div>hello
-				<h1>{user.email}</h1>
-				<h1>{user.firstName}</h1>
-				<h1>{user.lastName}</h1>
-			</div>}
-			{/*<Header userId={userId} />*/}
+
+			<Header userId={user._id} />
 
 			{!isAuth ?
 				<Routes location={background || location}>
@@ -57,17 +53,17 @@ function App() {
 					<Route path='/login' element={<Login />} />
 				</Routes>
 				:
-				<></>}
-					{/*<Routes location={background || location}>*/}
-			{/*			<Route path='/*' element={<Main />} />*/}
-			{/*			<Route path='/user/:userId' element={<Main />} />*/}
-			{/*			<Route path='/user/:userId/greeting' element={<Greeting />} />*/}
-			{/*			<Route path='/user/:userId/profile' element={<Profile />} />*/}
-			{/*			<Route path='/user/:userId/configuration/*' element={<Configuration />} />*/}
-			{/*			<Route path='/user/:userId/board/:boardId' element={<Main />} />*/}
-			{/*			<Route path='/ui' element={<UiKit />} />*/}
-			{/*			<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />*/}
-			{/*		</Routes>*/}
+
+				<Routes location={background || location}>
+					<Route path='/*' element={<Main />} />
+					<Route path='/user/:userId' element={<Main />} />
+					<Route path='/user/:userId/greeting' element={<Main />} />
+					{/*			<Route path='/user/:userId/profile' element={<Profile />} />*/}
+					{/*			<Route path='/user/:userId/configuration/*' element={<Configuration />} />*/}
+					{/*			<Route path='/user/:userId/board/:boardId' element={<Main />} />*/}
+					{/*			<Route path='/ui' element={<UiKit />} />*/}
+					{/*			<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />*/}
+				</Routes>}
 			{/*		{background && (*/}
 			{/*			<Routes>*/}
 			{/*				<Route path='/*' element={<Header userId={userId} />} />*/}
@@ -82,7 +78,7 @@ function App() {
 			{/*		)}*/}
 			{/*	</>*/}
 			{/*)}*/}
-</>
+		</>
 	)
 
 }

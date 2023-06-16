@@ -8,7 +8,6 @@ import {
 	PayloadForChangeBackgroundUser,
 	PayloadForChangePersonalInfo,
 	PayloadForChangeUser,
-	PayloadForCheckLogin,
 	PayloadForDeleteMessage,
 	PayloadForGetUserInfo,
 	PayloadForShareBoard,
@@ -21,7 +20,7 @@ import { Socket } from 'socket.io-client'
 
 export const UserAC = {
 	registration: (payload: Partial<User>) : PayloadForStartRegistration => ({type: USER_TYPES.REGISTRATION, payload}),
-	checkLogin: (payload: Partial<User>): PayloadForCheckLogin => ({type: USER_TYPES.CHECK_LOGIN, payload}),
+	// checkLogin: (payload: Partial<User>): PayloadForCheckLogin => ({type: USER_TYPES.CHECK_LOGIN, payload}),
 	login: (payload: Partial<User>) : PayloadForAuthentication => ({type: USER_TYPES.AUTHENTICATION, payload}),
 	logout: (): Logout=> ({type: USER_TYPES.LOGOUT}),
 	addBoard: (payload: string) : PayloadForAddBoard=> ({type: USER_TYPES.ADD_BOARD, payload}),

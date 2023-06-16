@@ -6,6 +6,7 @@ import { RiLogoutCircleRLine } from 'react-icons/ri'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Logout.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 interface LogoutProps{
 	boardId?: string
@@ -13,10 +14,10 @@ interface LogoutProps{
 }
 
 export default function Logout({boardId, userId}: LogoutProps ) {
-	const { logOut } = useActions()
+	const { logOut } = useActionsToolkit()
 	const navigate = useNavigate()
 	const [isHint, setIsHint] = useState(false)
-	const socket = useTypedSelector(({ user }) => user.socket)
+	// const socket = useTypedSelector(({ user }) => user.socket)
 
 	function showHint() {
 		setIsHint(true)
@@ -29,8 +30,8 @@ export default function Logout({boardId, userId}: LogoutProps ) {
 	function logout() {
 		const confirm = window.confirm('Выйти из учетной записи?')
 		if (confirm) {
-			socket?.emit('LEAVE_USER', userId)
-			socket?.emit('LEAVE_BOARD', boardId)
+			// socket?.emit('LEAVE_USER', userId)
+			// socket?.emit('LEAVE_BOARD', boardId)
 			logOut()
 			navigate(`/login`)
 		}

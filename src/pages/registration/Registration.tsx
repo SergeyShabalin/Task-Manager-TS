@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { BiShowAlt } from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { useActions } from '@/hooks/useActions/useActions'
 import { Button, Input } from '@UI'
 import 'react-datepicker/dist/react-datepicker.css'
 import classes from './Registration.module.css'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export default function Registration() {
-	const { registration } = useActions()
+	const { registration } = useActionsToolkit()
 	const navigate = useNavigate()
 
 	const [form, setForm] = useState({

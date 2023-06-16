@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button, Input } from '@UI'
 import { BiShowAlt } from 'react-icons/bi'
 
-import { Link, useNavigate } from 'react-router-dom'
-import { useActions } from '@/hooks/useActions/useActions'
-
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 import classes from './Login.module.css'
 
 export default function Login() {
 	const [isPass, setIsPass] = useState(true)
 
 	const navigate = useNavigate()
-	const { login } = useActions()
+	const { login } = useActionsToolkit()
 	const [form, setForm] = useState({
 		email: '',
 		password: ''

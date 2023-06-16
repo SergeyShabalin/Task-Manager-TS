@@ -11,13 +11,13 @@ import { Api } from '@/api/index'
 import { payloadForSearchUser } from '@/models/Cards'
 
 class UsersApi {
-	async registration(payload: Partial<User>): Promise<AxiosResponse<User>> {
-		return Api.post(`/user/registration/`, payload)
-	}
-
-	async login(payload: Partial<User>): Promise<AxiosResponse<User>> {
-		return Api.post(`/user/login/`, payload)
-	}
+	// async registration(payload: Partial<User>): Promise<AxiosResponse<User>> {
+	// 	return Api.post(`/user/registration/`, payload)
+	// }
+	//
+	// async login(payload: Partial<User>): Promise<AxiosResponse<User>> {
+	// 	return Api.post(`/user/login/`, payload)
+	// }
 
 	// async loginCheck(): Promise<AxiosResponse<User>> {
 	// 	return Api.get(`/user/checkLogin/`)

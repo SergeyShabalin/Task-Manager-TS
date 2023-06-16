@@ -10,6 +10,7 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Info.module.css'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 
 interface InfoProps {
@@ -18,10 +19,11 @@ interface InfoProps {
 
 export default function Info({ closeInfo }: InfoProps) {
 	const navigate = useNavigate()
-	const { logOut, backToGreeting } = useActions()
+	const {  backToGreeting } = useActions()
+	const { logOut } = useActionsToolkit()
 	const { boardId } = useParams()
-	const user = useTypedSelector(state => state.user)
-	const socket = user.socket
+	const user = useTypedSelector(state => state.user.userState)
+	// const socket = user.socket
 	const accountRef = useRef(null)
 	useOnClickOutside(accountRef, () => closeInfo())
 
@@ -34,8 +36,8 @@ export default function Info({ closeInfo }: InfoProps) {
 	function logout() {
 		const confirm = window.confirm('Выйти из учетной записи?')
 		if (confirm) {
-			socket?.emit('LEAVE_USER', user._id)
-			socket?.emit('LEAVE_BOARD', boardId)
+			// socket?.emit('LEAVE_USER', user._id)
+			// socket?.emit('LEAVE_BOARD', boardId)
 			logOut()
 			navigate(`/login`)
 		}
@@ -65,7 +67,7 @@ export default function Info({ closeInfo }: InfoProps) {
 							<img className={classes.img} src={user.avatar} />
 						</div>
 					) : (
-						<span className={classes.icon}>{user.email[0].toUpperCase()}</span>
+						<span className={classes.icon}>{user.email[0]?.toUpperCase()}</span>
 					)}
 				</div>
 

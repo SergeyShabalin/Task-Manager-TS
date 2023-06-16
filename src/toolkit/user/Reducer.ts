@@ -14,15 +14,20 @@ export const userSlice = createSlice({
 	reducers: {
 		checkLogin: (state, action: PayloadAction<User>) => {
 			state.userState = action.payload
-			// state._id = action.payload._id
-			// state.firstName = action.payload.firstName
-			// state.lastName = action.payload.lastName
 		},
-
+		login: (state, action: PayloadAction<User>) => {
+			state.userState = action.payload
+		},
+		registration:  (state, action: PayloadAction<User>) => {
+			state.userState = action.payload
+		},
+		logout: (state) => {
+			state.userState = userState
+		}
 	},
 })
 
 
-export const { checkLogin } = userSlice.actions
+export const { checkLogin, login, registration, logout } = userSlice.actions
 
 export default userSlice.reducer

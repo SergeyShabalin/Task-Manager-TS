@@ -18,29 +18,29 @@ import { AxiosError } from 'axios'
 
 
 export const usersActions = {
-	registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
-		try {
-			if (
-				payload.email === '' ||
-				payload.password === '' ||
-				payload.firstName === '' ||
-				payload.secondName === ''
-			) {
-				Notification.error('заполните все поля')
-			} else {
-				const { data } = await UsersApi.registration(payload)
-				const dataUser = data
-				localStorage.setItem('token', data.token)
-				localStorage.setItem('userId', data._id)
-				dispatch(UserAC.registration(dataUser))
-				return data._id
-			}
-		} catch (e) {
-			const error = e as AxiosError<any>
-			Notification.error(error.response?.data?.message)
-			return false
-		}
-	},
+	// registration: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
+	// 	try {
+	// 		if (
+	// 			payload.email === '' ||
+	// 			payload.password === '' ||
+	// 			payload.firstName === '' ||
+	// 			payload.secondName === ''
+	// 		) {
+	// 			Notification.error('заполните все поля')
+	// 		} else {
+	// 			const { data } = await UsersApi.registration(payload)
+	// 			const dataUser = data
+	// 			localStorage.setItem('token', data.token)
+	// 			localStorage.setItem('userId', data._id)
+	// 			dispatch(UserAC.registration(dataUser))
+	// 			return data._id
+	// 		}
+	// 	} catch (e) {
+	// 		const error = e as AxiosError<any>
+	// 		Notification.error(error.response?.data?.message)
+	// 		return false
+	// 	}
+	// },
 	// checkLogin: () => async (dispatch: Dispatch<UserActions>) => {
 	// 	let payload: Partial<{ user: User | null; isAuth: boolean }> = {
 	// 		user: null,
@@ -57,29 +57,29 @@ export const usersActions = {
 	// 		Notification.error('произошла ошибка проверки аккаунта')
 	// 	}
 	// },
-	login: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
-		try {
-			const { data } = await UsersApi.login(payload)
-			localStorage.setItem('token', data.token)
-			localStorage.setItem('userId', data._id)
-			dispatch(UserAC.login(data))
-			return data._id
-		} catch (e) {
-			const error = e as AxiosError<any>
-			Notification.error(error.response?.data?.message)
-			return false
-		}
-	},
-	logOut: () => async (dispatch: Dispatch<UserActions | BoardActions>) => {
-		try {
-			localStorage.removeItem('token')
-			dispatch(UserAC.logout())
-			dispatch(BoardAC.logout())
-		} catch (e) {
-			const error = e as AxiosError<any>
-			Notification.error(error.response?.data?.message)
-		}
-	},
+	// login: (payload: Partial<User>) => async (dispatch: Dispatch<UserActions>) => {
+	// 	try {
+	// 		const { data } = await UsersApi.login(payload)
+	// 		localStorage.setItem('token', data.token)
+	// 		localStorage.setItem('userId', data._id)
+	// 		dispatch(UserAC.login(data))
+	// 		return data._id
+	// 	} catch (e) {
+	// 		const error = e as AxiosError<any>
+	// 		Notification.error(error.response?.data?.message)
+	// 		return false
+	// 	}
+	// },
+	// logOut: () => async (dispatch: Dispatch<UserActions | BoardActions>) => {
+	// 	try {
+	// 		localStorage.removeItem('token')
+	// 		dispatch(UserAC.logout())
+	// 		dispatch(BoardAC.logout())
+	// 	} catch (e) {
+	// 		const error = e as AxiosError<any>
+	// 		Notification.error(error.response?.data?.message)
+	// 	}
+	// },
 
 	shareBoard: (payload: payloadForShareBoard) => async (dispatch: Dispatch<UserActions>) => {
 		try {

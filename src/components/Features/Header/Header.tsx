@@ -26,9 +26,9 @@ export default function Header({ userId }: HeaderProps) {
 		{ backToGreeting } = useActions(),
 		{ isOpen, onClose, onOpen } = useOpenClose(),
 		location = useLocation(),
-		boardId = useTypedSelector(state => state.board.currentBoard._id),
-		messagesCount = useTypedSelector(state => state.user.messages?.length),
-		socket = useTypedSelector(({ user }) => user.socket),
+		// boardId = useTypedSelector(state => state.board.currentBoard._id),
+		// messagesCount = useTypedSelector(state => state.user.messages?.length),
+		// socket = useTypedSelector(({ user }) => user.socket),
 		[isShow, setIsShow] = useState(false),
 		[color, setColor] = useState('type1'),
 		isShare = location.pathname.includes('board')
@@ -64,7 +64,9 @@ export default function Header({ userId }: HeaderProps) {
 		<>
 			{isShow && (
 				<div className={classes[color]}>
-					<div className={classes.logo} onClick={backInGreeting}>
+					<div className={classes.logo}
+							 // onClick={backInGreeting}
+					>
 						<span className={classes.icon}>
 							<RiTrelloFill />
 						</span>
@@ -73,14 +75,14 @@ export default function Header({ userId }: HeaderProps) {
 					{isShare && (
 						<div className={classes.share}>
 							<Button title='Поделиться' endIcon={<MdKeyboardArrowDown />} onClick={onOpen} />
-							{isOpen && <Share boardId={boardId} onClose={onClose} />}
+							{/*{isOpen && <Share boardId={boardId} onClose={onClose} />}*/}
 						</div>
 					)}
 
 					<div className={classes.control}>
 						<Account />
-						<Messages userId={userId} messagesCount={messagesCount} />
-						<Logout boardId={boardId} userId={userId} />
+						{/*<Messages userId={userId} messagesCount={messagesCount} />*/}
+						<Logout />
 					</div>
 				</div>
 			)}
