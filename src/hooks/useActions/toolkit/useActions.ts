@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {userActions} from '@/toolkit/user/AsyncActions'
+import { boardActions } from '@/toolkit/board/AsyncActions'
 
 
 export const useActionsToolkit = () => {
@@ -8,7 +9,8 @@ export const useActionsToolkit = () => {
 
 	return bindActionCreators(
 		{
-			...userActions
+			...userActions,
+			...boardActions
 		},
 		dispatch
 	)

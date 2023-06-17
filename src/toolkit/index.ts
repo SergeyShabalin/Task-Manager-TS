@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import counterReducer from './toolkitReducer'
 import userReducer from '@/toolkit/user/Reducer'
+import boardReducer from '@/toolkit/board/Reducer'
 
 const reducer = combineReducers({
-	counter: counterReducer,
+	board: boardReducer,
 	user: userReducer
 })
 

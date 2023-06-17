@@ -9,8 +9,7 @@ import { AxiosError } from 'axios/'
 import { User } from '@/models/toolkit/Users'
 import { defaultState as userState } from '@/toolkit/user/InitState'
 import { BoardActions } from '@/store/board/reducer'
-import { UserAC } from '@/store/user/action'
-import { BoardAC } from '@/store/board/action'
+
 
 export const userActions = {
 

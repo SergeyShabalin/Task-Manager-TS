@@ -9,15 +9,17 @@ import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import MiniBoard from '@/pages/greeting/MiniBoard'
 import { Loader } from '@UI'
 import classes from './Greeting.module.css'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
+import { useSelector } from 'react-redux'
 
 export default function Greeting() {
-	const allBoards = useTypedSelector(state => state.board.allBoards)
-	const isLoading = useTypedSelector(state => state.board.isLoadingBoard)
-
+	// const allBoards = useTypedSelector(state => state.board.allBoards)
+	// const isLoading = useTypedSelector(state => state.board.isLoadingBoard)
+	const allBoards = useSelector(state => state.board.boardState.allBoards)
 	const navigate = useNavigate()
 	const { userId } = useParams()
 	const addBoardRef = useRef(null)
-	const { getAllBoard } = useActions()
+	const { getAllBoard } = useActionsToolkit()
 	const { onOpen, onClose, isOpen } = useOpenClose()
 	useOnClickOutside(addBoardRef, onClose)
 
@@ -36,7 +38,7 @@ export default function Greeting() {
 				<div className={classes.content}>
 					<span className={classes.title_workspaces}>ВАШИ РАБОЧИЕ ПРОСТРАНСТВА</span>
 					<div className={classes.workspaces}>
-						{allBoards.map(board => {
+						{allBoards?.map(board => {
 							return (
 								<MiniBoard key={board._id} board={board} openBoard={openBoard} userId={userId!} />
 							)
@@ -48,7 +50,7 @@ export default function Greeting() {
 				</div>
 			</div>
 			<div ref={addBoardRef}>{isOpen && <BoardCreator userId={userId!} />}</div>
-			{isLoading && <Loader size={'large'} />}
+			{/*{isLoading && <Loader size={'large'} />}*/}
 		</div>
 	)
 }

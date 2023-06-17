@@ -57,25 +57,26 @@ function App() {
 				<Routes location={background || location}>
 					<Route path='/*' element={<Main />} />
 					<Route path='/user/:userId' element={<Main />} />
-					<Route path='/user/:userId/greeting' element={<Main />} />
+					<Route path='/user/:userId/greeting' element={<Greeting />} />
 					{/*			<Route path='/user/:userId/profile' element={<Profile />} />*/}
 					{/*			<Route path='/user/:userId/configuration/*' element={<Configuration />} />*/}
-					{/*			<Route path='/user/:userId/board/:boardId' element={<Main />} />*/}
+								<Route path='/user/:userId/board/:boardId' element={<Main />} />
 					{/*			<Route path='/ui' element={<UiKit />} />*/}
 					{/*			<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />*/}
-				</Routes>}
-			{/*		{background && (*/}
-			{/*			<Routes>*/}
+				</Routes>
+			}
+					{background && (
+						<Routes>
 			{/*				<Route path='/*' element={<Header userId={userId} />} />*/}
-			{/*				<Route path='/user/:userId/greeting' element={<Greeting />} />*/}
+							<Route path='/user/:userId/greeting' element={<Greeting />} />
 			{/*				<Route path='/user/:userId/board/:boardId/card/:cardId' element={<Card />} />*/}
 			{/*				<Route path='/user/:userId/configuration/avatarEdit' element={<AvatarEdit />} />*/}
 			{/*				<Route*/}
 			{/*					path='/user/:userId/configuration/backgroundEdit'*/}
 			{/*					element={<BackgroundEdit />}*/}
 			{/*				/>*/}
-			{/*			</Routes>*/}
-			{/*		)}*/}
+						</Routes>
+					)}
 			{/*	</>*/}
 			{/*)}*/}
 		</>

@@ -152,16 +152,16 @@ export const cardActions = {
 }
 
 export const boardActions = {
-	getCurrentBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(BoardAC.startFetching())
-			const resp = await BoardApi.getBoard(boardId)
-			dispatch(BoardAC.successFetching(resp.data))
-		} catch (error) {
-			Notification.error('Произошла ошибка открытия доски')
-			dispatch(BoardAC.errorFetching())
-		}
-	},
+	// getCurrentBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
+	// 	try {
+	// 		dispatch(BoardAC.startFetching())
+	// 		const resp = await BoardApi.getBoard(boardId)
+	// 		dispatch(BoardAC.successFetching(resp.data))
+	// 	} catch (error) {
+	// 		Notification.error('Произошла ошибка открытия доски')
+	// 		dispatch(BoardAC.errorFetching())
+	// 	}
+	// },
 	changeBoard: (data: Board) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(BoardAC.changeBoardAC(data))
@@ -180,16 +180,16 @@ export const boardActions = {
 			return false
 		}
 	},
-	getAllBoard: (payload: string) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(BoardAC.startLoadingBoard())
-			const { data } = await BoardApi.getAllBoardAPI(payload)
-			dispatch(BoardAC.finishLoadingBoard())
-			dispatch(BoardAC.getAllBoard(data))
-		} catch (e) {
-			Notification.error('Произошла ошибка получения досок')
-		}
-	},
+	// getAllBoard: (payload: string) => async (dispatch: Dispatch<BoardActions>) => {
+	// 	try {
+	// 		dispatch(BoardAC.startLoadingBoard())
+	// 		const { data } = await BoardApi.getAllBoardAPI(payload)
+	// 		dispatch(BoardAC.finishLoadingBoard())
+	// 		dispatch(BoardAC.getAllBoard(data))
+	// 	} catch (e) {
+	// 		Notification.error('Произошла ошибка получения досок')
+	// 	}
+	// },
 	backToGreeting: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(BoardAC.backToGreeting())
