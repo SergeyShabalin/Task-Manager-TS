@@ -16,7 +16,7 @@ import BackgroundEdit from '@/pages/configuration/Profile/BackgroundEdit'
 import Profile from '@/components/Features/Profile'
 import Header from '../Header'
 import { useDispatch, useSelector } from 'react-redux'
-import { increment, incrementByAmount } from '@/toolkit/toolkitReducer'
+
 import { RootState } from '@/store'
 
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'

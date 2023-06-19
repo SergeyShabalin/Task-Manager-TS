@@ -1,4 +1,4 @@
-import { User } from '@/models/toolkit/Users'
+import { User } from '@/models/toolkit/User'
 import { message } from '@/models/Users'
 import { Board } from '@/models/toolkit/Board'
 

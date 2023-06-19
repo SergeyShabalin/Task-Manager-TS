@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import { User } from '@/models/toolkit/Users'
+import { User } from '@/models/toolkit/User'
 import { Api } from '@/api'
 
 class UserApi {

@@ -13,11 +13,29 @@ export const boardSlice = createSlice({
 		getAllBoards: (state, action: PayloadAction<Board>) => {
 			state.boardState.allBoards = action.payload
 		},
-
-	},
+		startLoadingBoards: (state) => {
+			state.boardState.isLoadingBoard = true
+		},
+		finishLoadingBoards: (state) => {
+			state.boardState.isLoadingBoard = false
+		},
+		startFetching: (state) => {
+			state.boardState.isLoadingBoard = true
+		},
+		successFetching: (state, action: PayloadAction<Board>) => {
+			state.boardState.isLoadingBoard = false
+			state.boardState.currentBoard = action.payload
+		}
+	}
 })
 
 
-export const {getAllBoards} = boardSlice.actions
+export const {
+	getAllBoards,
+	startLoadingBoards,
+	finishLoadingBoards,
+	startFetching,
+	successFetching
+} = boardSlice.actions
 
 export default boardSlice.reducer

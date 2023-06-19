@@ -6,7 +6,7 @@ import { checkLogin, login, registration, logout } from '@/toolkit/user/Reducer'
 import { Notification } from '@UI'
 
 import { AxiosError } from 'axios/'
-import { User } from '@/models/toolkit/Users'
+import { User } from '@/models/toolkit/User'
 import { defaultState as userState } from '@/toolkit/user/InitState'
 import { BoardActions } from '@/store/board/reducer'
 
