@@ -14,22 +14,22 @@ import { BoardAC } from '@/store/board/action'
 
 
 export const boardActions = {
-	getAllBoard: (payload: string) => async (dispatch: Dispatch<BoardActions>) => {
+	getAllBoard: (payload: string) => async (dispatch: Dispatch) => {
 		try {
 			dispatch(startLoadingBoards())
 			const { data } = await BoardApi.getAllBoardAPI(payload)
-			console.log(data)
 			dispatch(finishLoadingBoards())
 			dispatch(getAllBoards(data))
 		} catch (e) {
 			Notification.error('Произошла ошибка получения досок')
 		}
 	},
-	getCurrentBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
+	getCurrentBoard: (boardId: string) => async (dispatch: Dispatch) => {
 		try {
 			dispatch(startFetching())
 			const { data } = await BoardApi.getBoard(boardId)
-			dispatch(successFetching(data.currentBoard))
+			console.log(data)
+			dispatch(successFetching(data))
 		} catch (error) {
 			Notification.error('Произошла ошибка открытия доски')
 			dispatch(BoardAC.errorFetching())

@@ -14,7 +14,8 @@ import { useSelector } from 'react-redux'
 
 export default function Greeting() {
 	// const allBoards = useTypedSelector(state => state.board.allBoards)
-	// const isLoading = useTypedSelector(state => state.board.isLoadingBoard)
+	const isLoading = useTypedSelector(state => state.board.boardState.isLoadingBoard)
+
 	const allBoards = useSelector(state => state.board.boardState.allBoards)
 	const navigate = useNavigate()
 	const { userId } = useParams()
@@ -50,7 +51,7 @@ export default function Greeting() {
 				</div>
 			</div>
 			<div ref={addBoardRef}>{isOpen && <BoardCreator userId={userId!} />}</div>
-			{/*{isLoading && <Loader size={'large'} />}*/}
+			{isLoading && <Loader size={'large'} />}
 		</div>
 	)
 }

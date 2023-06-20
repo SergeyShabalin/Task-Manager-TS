@@ -14,4 +14,6 @@ export const defaultState: BoardState = {
 	allBoards: [],
 	allUsers: [],
 	usersOneCard: [],
+	allColumns: {},
+	allCards: {}
 }

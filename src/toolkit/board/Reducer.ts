@@ -10,7 +10,7 @@ export const boardSlice = createSlice({
 	name: 'board',
 	initialState,
 	reducers: {
-		getAllBoards: (state, action: PayloadAction<Board>) => {
+		getAllBoards: (state, action: PayloadAction<Board[]>) => {
 			state.boardState.allBoards = action.payload
 		},
 		startLoadingBoards: (state) => {
@@ -24,7 +24,9 @@ export const boardSlice = createSlice({
 		},
 		successFetching: (state, action: PayloadAction<Board>) => {
 			state.boardState.isLoadingBoard = false
-			state.boardState.currentBoard = action.payload
+			state.boardState.currentBoard = action.payload.currentBoard
+			state.boardState.allColumns = action.payload.allColumns
+			state.boardState.allCards = action.payload.allCards
 		}
 	}
 })

@@ -20,7 +20,7 @@ export default function Card() {
 	const { getOneCard, closeCard } = useActions()
 
 	useEffect(() => {
-		if (cardId) getOneCard(cardId)
+		// if (cardId) getOneCard(cardId)
 	}, [])
 
 
@@ -32,32 +32,32 @@ export default function Card() {
 	return (
 		<Modal onClose={closeModal} open>
 			<div className={classes.card_modal_wrapper}>
-				{isLoading && (
-					<div className={classes.loader}>
-						<Loader color='lds-black' variant='local' />
-					</div>
-				)}
-				<>
-					<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />
-					<div className={classes.content}>
-						<div className={classes.main_components}>
-							{cardInfo.decisionDate &&
-								<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />
-							}
-							<CurrentUsers />
-							<Description description={cardInfo.description} _id={cardInfo._id} />
-							{cardInfo.checkList.length>0 &&
-								<Checklist
-									_id={cardInfo._id}
-									countTask={cardInfo.countTask}
-									doneTask={cardInfo.doneTask}
-									checkList={cardInfo.checkList}
-								/>
-							}
-						</div>
-						<Sidebar />
-					</div>
-				</>
+			{/*	{isLoading && (*/}
+			{/*		<div className={classes.loader}>*/}
+			{/*			<Loader color='lds-black' variant='local' />*/}
+			{/*		</div>*/}
+			{/*	)}*/}
+			{/*	<>*/}
+			{/*		<Header closeModal={closeModal} _id={cardInfo._id} title={cardInfo.title} />*/}
+			{/*		<div className={classes.content}>*/}
+			{/*			<div className={classes.main_components}>*/}
+			{/*				{cardInfo.decisionDate &&*/}
+			{/*					<Deadline _id={cardInfo._id} decisionDate={cardInfo.decisionDate} />*/}
+			{/*				}*/}
+			{/*				<CurrentUsers />*/}
+			{/*				<Description description={cardInfo.description} _id={cardInfo._id} />*/}
+			{/*				{cardInfo.checkList.length > 0 &&*/}
+			{/*					<Checklist*/}
+			{/*						_id={cardInfo._id}*/}
+			{/*						countTask={cardInfo.countTask}*/}
+			{/*						doneTask={cardInfo.doneTask}*/}
+			{/*						checkList={cardInfo.checkList}*/}
+			{/*					/>*/}
+			{/*				}*/}
+			{/*			</div>*/}
+			{/*			<Sidebar />*/}
+			{/*		</div>*/}
+			{/*	</>*/}
 			</div>
 
 		</Modal>

@@ -12,10 +12,10 @@ import { useSelector } from 'react-redux'
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export default function Board() {
-	const {
-		getCurrentBoard
-	} = useActionsToolkit()
-	// const allColumns = useTypedSelector(state => state.board.allColumns)
+	const {getCurrentBoard} = useActionsToolkit()
+
+
+	const allColumns = useTypedSelector(state => state.board.boardState.allColumns)
 	const board = useTypedSelector(state => state.board.boardState.currentBoard)
 	const user = useSelector(state => state.user.userState)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
@@ -26,7 +26,7 @@ export default function Board() {
 	// useEffect(() => {
 	// 	// socket?.emit('JOIN_BOARD', boardId)
 	// }, [])
-	console.log(board)
+
 	useEffect(() => {
 		if (boardId) getCurrentBoard(boardId)
 	}, [currentBoardId])
@@ -37,11 +37,11 @@ export default function Board() {
 		// }
 	}
 
-	// const columns = board.columns?.map(id => {
-	// 	const column = allColumns[id]
-	// 	return <Column key={column._id} {...column} />
-	// })
-	//
+	const columns = board.columns?.map(id => {
+		const column = allColumns[id]
+		return <Column key={column._id} {...column} />
+	})
+
 	function changeTitleBoard(title: string) {
 		// if (socket?.emit('BOARD_CHANGE', { title, _id: board._id })) {
 		// 	return true
@@ -66,7 +66,7 @@ export default function Board() {
 			</div>
 
 			<div className={classes.wrapper_list}>
-					{/*<div className={classes.columns}>{columns}</div>*/}
+					<div className={classes.columns}>{columns}</div>
 					<div className={classes.add_list}>
 						<Editor
 							buttonSubmitTitle='добавление колонки'

@@ -14,8 +14,8 @@ export interface Board {
 
 export interface BoardAPI {
 	currentBoard: Board
-	// allCards: { [key: string]: Card }
-	// allColumns: { [key: string]: Column }
+	allCards: { [key: string]: Card }
+	allColumns: { [key: string]: Column }
 }
 
 export interface BoardState extends BoardAPI {

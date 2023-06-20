@@ -13,10 +13,10 @@ import classes from './Column.module.css'
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
-	const allCards = useTypedSelector(({ board }) => board.allCards)
-	const socket = useTypedSelector(({ user }) => user.socket)
+	  const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
+	// const socket = useTypedSelector(({ user }) => user.socket)
 
-
+	console.log(allCards)
 	function addCard(value: string) {
 		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })) {
 			return true
