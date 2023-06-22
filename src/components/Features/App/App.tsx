@@ -23,7 +23,7 @@ import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 function App() {
 	const dispatch = useDispatch()
-	const user = useSelector(state => state.user.userState)
+	const user = useTypedSelector(state => state.user.userState)
 	const location = useLocation()
 	const { checkLogin } = useActionsToolkit()
 	const background = location.state && location.state.background,

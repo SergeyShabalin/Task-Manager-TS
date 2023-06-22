@@ -12,12 +12,12 @@ import { useSelector } from 'react-redux'
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export default function Board() {
-	const {getCurrentBoard} = useActionsToolkit()
+	const {getCurrentBoard, changeBoard} = useActionsToolkit()
 
 
 	const allColumns = useTypedSelector(state => state.board.boardState.allColumns)
 	const board = useTypedSelector(state => state.board.boardState.currentBoard)
-	const user = useSelector(state => state.user.userState)
+	const user = useTypedSelector(state => state.user.userState)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
 	// const socket = user.socket
@@ -43,11 +43,13 @@ export default function Board() {
 	})
 
 	function changeTitleBoard(title: string) {
-		// if (socket?.emit('BOARD_CHANGE', { title, _id: board._id })) {
-		// 	return true
+		const payload = {
+			title,
+			_id: board._id
 		}
-	// 	//TODO лоадер
-	// }
+		return changeBoard(payload)
+	}
+
 
 	return (
 		<div>

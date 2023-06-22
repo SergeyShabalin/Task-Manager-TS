@@ -1,6 +1,6 @@
 import { defaultState as boardState } from '@/toolkit/board/InitState'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Board } from '@/models/toolkit/Board'
+import { Board, BoardAPI } from '@/models/toolkit/Board'
 
 const initialState = {
 	boardState
@@ -22,7 +22,7 @@ export const boardSlice = createSlice({
 		startFetching: (state) => {
 			state.boardState.isLoadingBoard = true
 		},
-		successFetching: (state, action: PayloadAction<Board>) => {
+		successFetching: (state, action: PayloadAction<BoardAPI>) => {
 			state.boardState.isLoadingBoard = false
 			state.boardState.currentBoard = action.payload.currentBoard
 			state.boardState.allColumns = action.payload.allColumns

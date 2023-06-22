@@ -12,10 +12,11 @@ export default function Main() {
 	const background = useTypedSelector(state => state.board.boardState.currentBoard.background)
 	const isLoading = useTypedSelector(state => state.board.boardState.isLoadingBoard)
 
+
 	return (
 		<div className={background ? classes[background] : classes.main}>
 			<div className={classes.header_main}>
-				{isLoading && <Loader size={'large'} />}
+				{isLoading && <Loader size='large' />}
 				<Board />
 			</div>
 		</div>

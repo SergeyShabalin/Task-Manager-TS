@@ -1,6 +1,6 @@
 import { Api } from './index'
 import { AxiosResponse } from 'axios'
-import { Board, BoardAPI } from '@/models/Boards'
+import { Board, BoardAPI } from '@/models/toolkit/Board'
 
 class BoardApi {
 	async getBoard(boardId: string): Promise<AxiosResponse<BoardAPI>> {

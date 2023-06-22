@@ -16,7 +16,7 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	  const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
 	// const socket = useTypedSelector(({ user }) => user.socket)
 
-	console.log(allCards)
+
 	function addCard(value: string) {
 		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })) {
 			return true

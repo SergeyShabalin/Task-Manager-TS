@@ -9,10 +9,10 @@ export interface Board {
 	title: string
 	background: string
 	columns: string[]
-	usersOneCard: []
+	usersOneCard: Partial<User>[]
 }
 
-export interface BoardAPI {
+export interface BoardAPI extends Board{
 	currentBoard: Board
 	allCards: { [key: string]: Card }
 	allColumns: { [key: string]: Column }
@@ -23,6 +23,9 @@ export interface BoardState extends BoardAPI {
 	isError: boolean
 	allBoards: Board[]
 	allUsers: UsersInShare[]
-	usersOneCard: Partial<User>[]
 }
 
+export interface payloadForChangeBoard {
+	title: string
+	_id: string
+}

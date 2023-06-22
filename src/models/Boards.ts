@@ -90,6 +90,7 @@ export interface UsersInShare {
 }
 
 export interface BoardState extends BoardAPI {
+
 	isLoadingBoard: boolean
 	isLoadingCard: boolean
 	isError: boolean

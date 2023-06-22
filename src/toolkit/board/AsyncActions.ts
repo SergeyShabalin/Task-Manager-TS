@@ -11,6 +11,7 @@ import {
 	successFetching
 } from '@/toolkit/board/Reducer'
 import { BoardAC } from '@/store/board/action'
+import { Board, payloadForChangeBoard } from '@/models/toolkit/Board'
 
 
 export const boardActions = {
@@ -26,13 +27,22 @@ export const boardActions = {
 	},
 	getCurrentBoard: (boardId: string) => async (dispatch: Dispatch) => {
 		try {
+			//TODO вызвать вместо сокетов
 			dispatch(startFetching())
 			const { data } = await BoardApi.getBoard(boardId)
-			console.log(data)
 			dispatch(successFetching(data))
 		} catch (error) {
 			Notification.error('Произошла ошибка открытия доски')
 			dispatch(BoardAC.errorFetching())
+		}
+	},
+	changeBoard: (payload: payloadForChangeBoard) => async (dispatch: Dispatch) => {
+		try {
+			const { data } = await BoardApi.change(payload)
+			console.log(data)
+			return true
+		} catch (e) {
+			Notification.error('Произошла ошибка изменения доски')
 		}
 	}
 }
