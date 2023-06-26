@@ -1,6 +1,6 @@
 import { Card } from '@/models/Cards'
-import { Column } from '@/models/Columns'
-import { User } from '@/models/Users'
+import { Column } from '@/models/toolkit/Column'
+import { User } from '@/models/toolkit/User'
 import { UsersInShare } from '@/models/Boards'
 
 

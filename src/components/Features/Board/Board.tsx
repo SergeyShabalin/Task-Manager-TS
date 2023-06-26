@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux'
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export default function Board() {
-	const {getCurrentBoard, changeBoard} = useActionsToolkit()
+	const { getCurrentBoard, changeBoard, addNewColumn } = useActionsToolkit()
 
 
 	const allColumns = useTypedSelector(state => state.board.boardState.allColumns)
@@ -32,10 +32,10 @@ export default function Board() {
 	}, [currentBoardId])
 
 	async function addColumn(title: string) {
-		// if (socket?.emit('COLUMN_ADD', { title, boardId })) {
-		// 	return true
-		// }
+		const payload = { title, boardId }
+		return addNewColumn(payload)
 	}
+
 
 	const columns = board.columns?.map(id => {
 		const column = allColumns[id]
@@ -68,18 +68,18 @@ export default function Board() {
 			</div>
 
 			<div className={classes.wrapper_list}>
-					<div className={classes.columns}>{columns}</div>
-					<div className={classes.add_list}>
-						<Editor
-							buttonSubmitTitle='добавление колонки'
-							placeholder='введите значение'
-							onSubmit={addColumn}
-						>
-							<div>
-								<Button variant='contained' color='secondary' title='Добавить колонку' />
-							</div>
-						</Editor>
-					</div>
+				<div className={classes.columns}>{columns}</div>
+				<div className={classes.add_list}>
+					<Editor
+						buttonSubmitTitle='добавление колонки'
+						placeholder='введите значение'
+						onSubmit={addColumn}
+					>
+						<div>
+							<Button variant='contained' color='secondary' title='Добавить колонку' />
+						</div>
+					</Editor>
+				</div>
 			</div>
 		</div>
 	)

@@ -4,6 +4,7 @@ import { BoardActions } from '@/store/board/reducer'
 import BoardApi from '@/api/BoardApi'
 import { Notification } from '@UI'
 import {
+	changeBoard,
 	finishLoadingBoards,
 	getAllBoards,
 	startFetching,
@@ -39,7 +40,7 @@ export const boardActions = {
 	changeBoard: (payload: payloadForChangeBoard) => async (dispatch: Dispatch) => {
 		try {
 			const { data } = await BoardApi.change(payload)
-			console.log(data)
+			dispatch(changeBoard(data))
 			return true
 		} catch (e) {
 			Notification.error('Произошла ошибка изменения доски')

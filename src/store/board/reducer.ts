@@ -173,14 +173,14 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case COLUMN_TYPES.ADD_NEW_COLUMN: {
-			return {
-				...state,
-				currentBoard: {
-					...state.currentBoard,
-					columns: [...state.currentBoard.columns, action.payload._id]
-				},
-				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
-			}
+			// return {
+			// 	...state,
+			// 	currentBoard: {
+			// 		...state.currentBoard,
+			// 		columns: [...state.currentBoard.columns, action.payload._id]
+			// 	},
+			// 	allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
+			// }
 		}
 		case COLUMN_TYPES.DELETE_COLUMN: {
 			const newAllColumns = { ...state.allColumns }

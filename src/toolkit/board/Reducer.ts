@@ -1,6 +1,7 @@
 import { defaultState as boardState } from '@/toolkit/board/InitState'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Board, BoardAPI } from '@/models/toolkit/Board'
+import { Column } from '@/models/toolkit/Column'
 
 const initialState = {
 	boardState
@@ -27,7 +28,14 @@ export const boardSlice = createSlice({
 			state.boardState.currentBoard = action.payload.currentBoard
 			state.boardState.allColumns = action.payload.allColumns
 			state.boardState.allCards = action.payload.allCards
-		}
+		},
+		changeBoard: (state, action: PayloadAction<Board>) => {
+			state.boardState.currentBoard = action.payload
+		},
+		addNewColumn: (state, action: PayloadAction<Column>) => {
+		 	state.boardState.currentBoard.columns = [...state.boardState.currentBoard.columns, action.payload._id]
+			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
+		},
 	}
 })
 
@@ -37,7 +45,9 @@ export const {
 	startLoadingBoards,
 	finishLoadingBoards,
 	startFetching,
-	successFetching
+	successFetching,
+	changeBoard,
+	addNewColumn
 } = boardSlice.actions
 
 export default boardSlice.reducer
