@@ -3,13 +3,10 @@ import { useParams } from 'react-router-dom'
 
 import { Column } from '@Features'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { useActions } from '@/hooks/useActions/useActions'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 import { Button } from '@UI'
 import { Editor } from '@Features'
 import classes from './Board.module.css'
-import useSocketOn from '@/hooks/useSocketOn'
-import { useSelector } from 'react-redux'
-import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export default function Board() {
 	const { getCurrentBoard, changeBoard, addNewColumn } = useActionsToolkit()
@@ -20,12 +17,6 @@ export default function Board() {
 	const user = useTypedSelector(state => state.user.userState)
 	const currentBoardId = user.boardIds[user.boardIds.length - 1]
 	const { boardId } = useParams()
-	// const socket = user.socket
-	// useSocketOn(socket)
-
-	// useEffect(() => {
-	// 	// socket?.emit('JOIN_BOARD', boardId)
-	// }, [])
 
 	useEffect(() => {
 		if (boardId) getCurrentBoard(boardId)

@@ -6,6 +6,7 @@ import { Button } from '@UI'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './ContextMenu.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export interface ContextMenuProps {
 	columnId: string
@@ -15,11 +16,12 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 	const refContextMenu = useRef(null)
 	const [isModalOpen, setModalOpen] = useState(false)
 	useOnClickOutside(refContextMenu, () => setModalOpen(false))
-	const socket = useTypedSelector(({ user }) => user.socket)
+ const {deleteColumn}	= useActionsToolkit()
+	// const socket = useTypedSelector(({ user }) => user.socket)
 
 	function columnDelete() {
 		const confirm = window.confirm('Удалить колонку?')
-		if (confirm) socket?.emit('COLUMN_DELETE',  columnId )
+		if (confirm)  deleteColumn(columnId)
 	}
 
 	function modalOpen() {

@@ -1,25 +1,22 @@
 import { defaultState } from './initState'
 
 import {
-	AllBoardAction,
 	BackToGreeting,
 	BOARD_TYPES,
 	BoardAction,
 	ErrorFetching,
-	FinishLoadingBoard,
 	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
 	PayloadForDragDropColumn,
 	PayloadForGetUsersOneCard,
-	PayloadForSuccessFetching,
+
 	payloadForUsersOneBoard,
-	StartFetching,
-	StartLoadingBoard,
+
 	StartLoadingCard
 } from '@/models/Boards'
-import { AddNewColumn, ChangeColumn, COLUMN_TYPES, DeleteColumn, DropCard } from '@/models/Columns'
+import {  ChangeColumn, COLUMN_TYPES,  DropCard } from '@/models/Columns'
 import {
 	AddNewCard,
 	CARD_TYPES,
@@ -34,11 +31,7 @@ import {
 import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask, HideDoneTasks } from '@/models/CheckList'
 
 export type BoardActions =
-	| StartFetching
-	| PayloadForSuccessFetching
 	| ErrorFetching
-	| AddNewColumn
-	| DeleteColumn
 	| AddNewCard
 	| DeleteCard
 	| ChangeCard
@@ -50,12 +43,9 @@ export type BoardActions =
 	| BoardAction
 	| DropCard
 	| Logout
-	| AllBoardAction
 	| payloadForApplyInvite
 	| payloadForUsersOneBoard
 	| payloadForDeleteBoard
-	| StartLoadingBoard
-	| FinishLoadingBoard
 	| BackToGreeting
 	| CloseCard
 	| StartLoadingCard
@@ -69,19 +59,7 @@ export type BoardActions =
 
 export default function boardReducer(state = defaultState, action: BoardActions) {
 	switch (action.type) {
-		case BOARD_TYPES.START_FETCHING_BOARD:
-			return {
-				...state,
-				isLoadingBoard: true,
-				isError: false
-			}
-		case BOARD_TYPES.SUCCESS_FETCHING_BOARD:
-			return {
-				...state,
-				isLoadingBoard: false,
-				isError: false,
-				...action.payload
-			}
+
 		case BOARD_TYPES.ERROR_FETCHING_BOARD:
 			return {
 				...state,
@@ -103,11 +81,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				...state,
 				currentBoard: { ...state.currentBoard, columns: action.payload }
 			}
-		case BOARD_TYPES.GET_ALL_BOARDS:
-			return {
-				...state,
-				allBoards: action.payload
-			}
+
 		case BOARD_TYPES.APPLY_INVITE: {
 			return {
 				...state,
@@ -120,18 +94,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				allBoards: action.payload
 			}
 		}
-		case BOARD_TYPES.START_LOADING_BOARD: {
-			return {
-				...state,
-				isLoadingBoard: true
-			}
-		}
-		case BOARD_TYPES.FINISH_LOADING_BOARD: {
-			return {
-				...state,
-				isLoadingBoard: false
-			}
-		}
+
 		case BOARD_TYPES.START_LOADING_CARD: {
 			return {
 				...state,
@@ -172,25 +135,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				usersOneCard: action.payload
 			}
 		}
-		case COLUMN_TYPES.ADD_NEW_COLUMN: {
-			// return {
-			// 	...state,
-			// 	currentBoard: {
-			// 		...state.currentBoard,
-			// 		columns: [...state.currentBoard.columns, action.payload._id]
-			// 	},
-			// 	allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
-			// }
-		}
-		case COLUMN_TYPES.DELETE_COLUMN: {
-			const newAllColumns = { ...state.allColumns }
-			delete newAllColumns[action.payload.columnId]
-			return {
-				...state,
-				currentBoard: { ...state.currentBoard, columns: action.payload.columnIds },
-				allColumns: newAllColumns
-			}
-		}
+
 		case COLUMN_TYPES.CHANGE_COLUMN: {
 			return {
 				...state,

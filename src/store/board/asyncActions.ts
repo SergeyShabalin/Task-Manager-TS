@@ -6,7 +6,7 @@ import BoardApi from '@/api/BoardApi'
 import CardsApi from '@/api/CardsApi'
 import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
-import { Column, PayloadForDeleteColumn, PayloadForDropCard } from '@/models/Columns'
+import {  PayloadForDropCard } from '@/models/Columns'
 import { Card, PayloadForDeleteCard, payloadForSearchUser } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
@@ -16,35 +16,6 @@ import { UserActions } from '@/store/user/reducer'
 
 
 export const columnsActions = {
-
-	addNewColumn:
-		(data: Column) => async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				const newColumn = {
-					title: data.title,
-					_id: data._id,
-					cards: [],
-					sortArr: [],
-					boardId: data.boardId
-				}
-				dispatch(ColumnAC.addColumnAC(newColumn))
-			} catch (e) {
-				Notification.error('Произошла ошибка добавления колонки')
-				return false
-			}
-		},
-	deleteColumn:
-		(data: PayloadForDeleteColumn) => async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				const payload: PayloadForDeleteColumn = {
-					columnIds: data.columnIds,
-					columnId: data.columnId
-				}
-				dispatch(ColumnAC.deleteColumnAC(payload))
-			} catch (e) {
-				Notification.error('Произошла ошибка удаления колонки')
-			}
-		},
 
 	changeColumn: (data: Column) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
@@ -152,16 +123,7 @@ export const cardActions = {
 }
 
 export const boardActions = {
-	// getCurrentBoard: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
-	// 	try {
-	// 		dispatch(BoardAC.startFetching())
-	// 		const resp = await BoardApi.getBoard(boardId)
-	// 		dispatch(BoardAC.successFetching(resp.data))
-	// 	} catch (error) {
-	// 		Notification.error('Произошла ошибка открытия доски')
-	// 		dispatch(BoardAC.errorFetching())
-	// 	}
-	// },
+
 	changeBoard: (data: Board) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(BoardAC.changeBoardAC(data))
@@ -180,16 +142,7 @@ export const boardActions = {
 			return false
 		}
 	},
-	// getAllBoard: (payload: string) => async (dispatch: Dispatch<BoardActions>) => {
-	// 	try {
-	// 		dispatch(BoardAC.startLoadingBoard())
-	// 		const { data } = await BoardApi.getAllBoardAPI(payload)
-	// 		dispatch(BoardAC.finishLoadingBoard())
-	// 		dispatch(BoardAC.getAllBoard(data))
-	// 	} catch (e) {
-	// 		Notification.error('Произошла ошибка получения досок')
-	// 	}
-	// },
+
 	backToGreeting: (boardId: string) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(BoardAC.backToGreeting())
