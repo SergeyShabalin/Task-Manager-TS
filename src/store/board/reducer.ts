@@ -136,12 +136,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 
-		case COLUMN_TYPES.CHANGE_COLUMN: {
-			return {
-				...state,
-				allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
-			}
-		}
 		case CARD_TYPES.ADD_NEW_CARD: {
 			const id = action.payload._id
 			const card = action.payload

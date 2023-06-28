@@ -5,7 +5,6 @@ import { Socket } from 'socket.io-client'
 export enum SOCKET_TYPES {
 	BOARD_SHARED = 'BOARD_SHARED',
 	BOARD_CHANGED = 'BOARD_CHANGED',
-	COLUMN_CHANGED = 'COLUMN_CHANGED',
 	CARD_ADDED = 'CARD_ADDED',
 	CARD_DROPPED = 'CARD_DROPPED',
 	CARD_DELETED = 'CARD_DELETED',
@@ -24,7 +23,6 @@ export default function useSocketOn(socket: Socket | null) {
 
 	const {
 		changeBoard,
-		changeColumn,
 		addNewCard,
 		dragAndDropCard,
 		deleteCard,
@@ -39,7 +37,6 @@ export default function useSocketOn(socket: Socket | null) {
 
 	useEffect(() => {
 		socket.on(SOCKET_TYPES.BOARD_SHARED, shareBoard)
-		socket.on(SOCKET_TYPES.COLUMN_CHANGED, changeColumn)
 		socket.on(SOCKET_TYPES.BOARD_CHANGED, changeBoard)
 		socket.on(SOCKET_TYPES.CARD_ADDED, addNewCard)
 		socket.on(SOCKET_TYPES.CARD_DROPPED, dragAndDropCard)

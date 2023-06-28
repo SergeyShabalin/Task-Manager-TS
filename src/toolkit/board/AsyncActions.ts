@@ -12,7 +12,7 @@ import {
 	successFetching
 } from '@/toolkit/board/Reducer'
 import { BoardAC } from '@/store/board/action'
-import { Board, payloadForChangeBoard } from '@/models/toolkit/Board'
+import { payloadForChangeBoard } from '@/models/toolkit/Board'
 
 
 export const boardActions = {

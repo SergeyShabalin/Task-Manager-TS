@@ -10,8 +10,6 @@ import classes from './Board.module.css'
 
 export default function Board() {
 	const { getCurrentBoard, changeBoard, addNewColumn } = useActionsToolkit()
-
-
 	const allColumns = useTypedSelector(state => state.board.boardState.allColumns)
 	const board = useTypedSelector(state => state.board.boardState.currentBoard)
 	const user = useTypedSelector(state => state.user.userState)
@@ -27,7 +25,6 @@ export default function Board() {
 		return addNewColumn(payload)
 	}
 
-
 	const columns = board.columns?.map(id => {
 		const column = allColumns[id]
 		return <Column key={column._id} {...column} />
@@ -40,7 +37,6 @@ export default function Board() {
 		}
 		return changeBoard(payload)
 	}
-
 
 	return (
 		<div>

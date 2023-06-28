@@ -1,4 +1,4 @@
-import { Api } from './index'
+import { Api } from '../index'
 import { AxiosResponse } from 'axios'
 import { Board, BoardAPI } from '@/models/toolkit/Board'
 

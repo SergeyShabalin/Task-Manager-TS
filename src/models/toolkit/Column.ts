@@ -11,11 +11,7 @@ export interface PayloadForAddNewColumn {
 	boardId: string | undefined
 }
 
-// return {
-// 	...state,
-// 	currentBoard: {
-// 		...state.currentBoard,
-// 		columns: [...state.currentBoard.columns, action.payload._id]
-// 	},
-// 	allColumns: { ...state.allColumns, [action.payload._id]: action.payload }
-// }
+export interface PayloadForChangeColumn {
+	title: string
+	column_id: string
+}

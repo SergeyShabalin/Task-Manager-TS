@@ -47,10 +47,6 @@ export default function Header({ userId }: HeaderProps) {
 
 	function backInGreeting() {
 		if (userId) navigate(`/user/${userId}/greeting`)
-		if (boardId) {
-			backToGreeting(boardId)
-			if (socket) socket.emit('LEAVE_BOARD', boardId)
-		}
 	}
 
 	function getRandomColor() {
@@ -64,9 +60,7 @@ export default function Header({ userId }: HeaderProps) {
 		<>
 			{isShow && (
 				<div className={classes[color]}>
-					<div className={classes.logo}
-							 // onClick={backInGreeting}
-					>
+					<div className={classes.logo} onClick={backInGreeting}>
 						<span className={classes.icon}>
 							<RiTrelloFill />
 						</span>

@@ -62,7 +62,6 @@ export const BoardAC = {
 };
 
 export const ColumnAC = {
-	changeColumnAC: (payload: PayloadForChangeColumn) : ChangeColumn => ({type: COLUMN_TYPES.CHANGE_COLUMN, payload}),
 	dropCard: (payload: PayloadForDropCard) : DropCard => ({type: COLUMN_TYPES.DROP_CARD, payload})
 }
 

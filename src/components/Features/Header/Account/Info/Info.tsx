@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { MdSpaceDashboard } from 'react-icons/md'
@@ -11,6 +11,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActions } from '@/hooks/useActions/useActions'
 import classes from './Info.module.css'
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
+import Loader from '@/components/UI/Loader'
 
 
 interface InfoProps {
@@ -19,12 +20,12 @@ interface InfoProps {
 
 export default function Info({ closeInfo }: InfoProps) {
 	const navigate = useNavigate()
-	const {  backToGreeting } = useActions()
+	const { backToGreeting } = useActions()
 	const { logOut } = useActionsToolkit()
 	const { boardId } = useParams()
 	const user = useTypedSelector(state => state.user.userState)
-	// const socket = user.socket
 	const accountRef = useRef(null)
+	const [onLoad, setOnLoad] = useState(false)
 	useOnClickOutside(accountRef, () => closeInfo())
 
 	function backInGreeting() {
@@ -36,8 +37,6 @@ export default function Info({ closeInfo }: InfoProps) {
 	function logout() {
 		const confirm = window.confirm('Выйти из учетной записи?')
 		if (confirm) {
-			// socket?.emit('LEAVE_USER', user._id)
-			// socket?.emit('LEAVE_BOARD', boardId)
 			logOut()
 			navigate(`/login`)
 		}
@@ -54,23 +53,39 @@ export default function Info({ closeInfo }: InfoProps) {
 		 closeInfo()
 	}
 
+	function handleImageLoad(){
+		console.log('background загружен')
+	}
+	function handleImageLoad2(){
+		console.log('аватар загружен')
+	}
+
+
 	return (
 		<div className={classes.wrapper} ref={accountRef}>
 
-			<div className={classes.info}>
+
+
+				<div className={classes.info}>
+					{!onLoad ? <div className={classes.loader} ><Loader/></div>
+						: <>
+
 				<div className={classes.background}>
-					{user.background && <img className={classes.background_img} src={user.background} />}
+					{user.background &&
+						<img onLoad={handleImageLoad} className={classes.background_img} src={user.background} />
+					}
 				</div>
+
 				<div className={classes.avatar_wrapper}>
 					{user.avatar ? (
 						<div className={classes.avatar}>
-							<img className={classes.img} src={user.avatar} />
+							<img onLoad={handleImageLoad2} className={classes.img} src={user.avatar} />
 						</div>
 					) : (
 						<span className={classes.icon}>{user.email[0]?.toUpperCase()}</span>
 					)}
 				</div>
-
+						</>}
 				<div className={classes.user_names}>
 					<h1 className={classes.firstName}>
 						{user.secondName} {user.firstName}

@@ -8,14 +8,14 @@ import { useActions } from '@/hooks/useActions/useActions'
 import { Editor } from '@Features'
 import ContextMenu from '@/components/Features/Column/ContextMenu'
 import classes from './Column.module.css'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 
 let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnT) {
-	  const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
-	// const socket = useTypedSelector(({ user }) => user.socket)
-
+	const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
+	const { changeColumn } = useActionsToolkit()
 
 	function addCard(value: string) {
 		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })) {
@@ -24,8 +24,8 @@ export default function Column({ title, cards, _id }: ColumnT) {
 	}
 
 	function columnChange(value: string) {
-		if (socket?.emit('COLUMN_CHANGE', { title: value, column_id: _id }))
-			return true
+		const payload = { title: value, column_id: _id }
+		return changeColumn(payload)
 	}
 
 	function onDragStartCard(e: React.DragEvent<HTMLDivElement>, columnId: string, cardId: string) {

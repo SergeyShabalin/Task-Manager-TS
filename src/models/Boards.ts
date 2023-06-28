@@ -1,5 +1,4 @@
-import { Column } from '@/models/Columns'
-import { Card } from '@/models/Cards'
+
 import { Action } from 'redux'
 import { User } from '@/models/Users'
 

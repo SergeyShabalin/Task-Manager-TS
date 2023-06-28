@@ -17,15 +17,7 @@ import { UserActions } from '@/store/user/reducer'
 
 export const columnsActions = {
 
-	changeColumn: (data: Column) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(ColumnAC.changeColumnAC(data))
-			return true
-		} catch (e) {
-			Notification.error('Произошла ошибка изменения колонки')
-			return false
-		}
-	},
+
 	dragAndDropCard:
 		(payload: PayloadForDropCard) =>
 			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {

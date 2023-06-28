@@ -37,7 +37,13 @@ export const boardSlice = createSlice({
 			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
 		},
 		deleteColumn: (state, action: PayloadAction<string[]>) => {
-			  state.boardState.currentBoard.columns = action.payload
+			state.boardState.currentBoard.columns = action.payload
+		},
+		changeColumn: (state, action: PayloadAction<Column>) => {
+			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
+		},
+		addNewCard:(state, action: PayloadAction<Column>) => {
+
 		}
 	}
 })
@@ -51,7 +57,8 @@ export const {
 	successFetching,
 	changeBoard,
 	addNewColumn,
-	deleteColumn
+	deleteColumn,
+	changeColumn
 } = boardSlice.actions
 
 export default boardSlice.reducer

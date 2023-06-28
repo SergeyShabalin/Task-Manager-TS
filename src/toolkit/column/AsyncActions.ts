@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux'
 import { Notification } from '@UI'
-import { PayloadForAddNewColumn } from '@/models/toolkit/Column'
+import { PayloadForAddNewColumn, PayloadForChangeColumn } from '@/models/toolkit/Column'
 import ColumnsApi from '@/api/ColumnApi/'
-import { addNewColumn, deleteColumn } from '@/toolkit/board/Reducer'
+import { addNewColumn, changeColumn, deleteColumn } from '@/toolkit/board/Reducer'
 import { RootState } from '@/toolkit'
 
 
@@ -26,6 +26,16 @@ export const columnActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка удаления колонки')
 		}
+	},
+	changeColumn: (payload: PayloadForChangeColumn) => async (dispatch: Dispatch, getState: () => RootState) => {
+		try {
+			const { data } = await ColumnsApi.changeColumn(payload)
+			dispatch(changeColumn(data))
+			return true
+		} catch (e) {
+			Notification.error('Произошла ошибка именения колонки')
+		}
 	}
 
-}
+
+	}
