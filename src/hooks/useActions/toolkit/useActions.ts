@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import {userActions} from '@/toolkit/user/AsyncActions'
 import { boardActions } from '@/toolkit/board/AsyncActions'
 import { columnActions } from '@/toolkit/column/AsyncActions'
+import { cardActions } from '@/toolkit/card/AsyncActions'
 
 
 export const useActionsToolkit = () => {
@@ -12,7 +13,8 @@ export const useActionsToolkit = () => {
 		{
 			...userActions,
 			...boardActions,
-			...columnActions
+			...columnActions,
+			...cardActions
 		},
 		dispatch
 	)

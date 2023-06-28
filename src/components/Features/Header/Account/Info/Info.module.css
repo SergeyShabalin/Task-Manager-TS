@@ -11,8 +11,20 @@
     color: #071821;
 }
 
-.loader{
+.loader {
+    position: absolute;
+    z-index: 5;
+    width: 67%;
+    height: 105%;
+    padding-left: 33%;
+    background: rgba(214, 220, 227, 0.93);
+}
 
+.hint_load{
+    padding-left: 5%;
+    font-size: 26px;
+    font-weight: 600;
+    color: #7387a4;
 }
 
 h1 {
@@ -87,7 +99,7 @@ h1 {
 .icon {
 
     background: linear-gradient(45deg, black, blue);
-   color: white;
+    color: white;
     font-size: 30px;
 
     display: flex;
@@ -95,12 +107,12 @@ h1 {
     align-items: center;
 }
 
-.li_account{
+.li_account {
     display: flex;
     align-items: center;
 }
 
-.icon_li{
+.icon_li {
     transform: scale(1.2);
     margin-right: 15px;
 }

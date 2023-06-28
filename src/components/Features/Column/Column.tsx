@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 
 import { MiniCard } from '@Features'
-import { Column as ColumnT } from '@/models/Columns'
+import { Column } from '@/models/toolkit/Column'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
-import { useActions } from '@/hooks/useActions/useActions'
 import { Editor } from '@Features'
 import ContextMenu from '@/components/Features/Column/ContextMenu'
 import classes from './Column.module.css'
@@ -13,14 +12,13 @@ import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 let targetCardId = ''
 
-export default function Column({ title, cards, _id }: ColumnT) {
+export default function Column({ title, cards, _id }: Column) {
 	const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
-	const { changeColumn } = useActionsToolkit()
+	const { changeColumn, addNewCard } = useActionsToolkit()
 
 	function addCard(value: string) {
-		if (socket?.emit('CARD_ADD', { title: value, column_id: _id })) {
-			return true
-		}
+		const payload = { title: value, column_id: _id }
+		return addNewCard(payload)
 	}
 
 	function columnChange(value: string) {

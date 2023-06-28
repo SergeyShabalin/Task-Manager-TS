@@ -15,3 +15,4 @@ export interface PayloadForChangeColumn {
 	title: string
 	column_id: string
 }
+

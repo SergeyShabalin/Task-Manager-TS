@@ -41,14 +41,7 @@ export const columnsActions = {
 }
 
 export const cardActions = {
-	addNewCard: (newCard: Card) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(CardAC.newCardAC(newCard))
-		} catch (e) {
-			Notification.error('Произошла ошибка добавления карточки')
-			return false
-		}
-	},
+
 	deleteCard:
 		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {

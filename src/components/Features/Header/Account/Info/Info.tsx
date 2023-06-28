@@ -25,7 +25,8 @@ export default function Info({ closeInfo }: InfoProps) {
 	const { boardId } = useParams()
 	const user = useTypedSelector(state => state.user.userState)
 	const accountRef = useRef(null)
-	const [onLoad, setOnLoad] = useState(false)
+	const [onLoadAvatar, setOnLoadAvatar] = useState(false)
+	const [onLoadBackground, setOnLoadBackground] = useState(false)
 	useOnClickOutside(accountRef, () => closeInfo())
 
 	function backInGreeting() {
@@ -50,42 +51,44 @@ export default function Info({ closeInfo }: InfoProps) {
 	function goToMyProfile() {
 		const userId = localStorage.getItem('user_authenticated')
 		if (userId) navigate(`/user/${userId}/profile`)
-		 closeInfo()
+		closeInfo()
 	}
 
-	function handleImageLoad(){
-		console.log('background загружен')
+	function handleAvatarLoad() {
+		setOnLoadAvatar(true)
 	}
-	function handleImageLoad2(){
-		console.log('аватар загружен')
+
+	function handleBackgroundLoad() {
+		setOnLoadBackground(true)
 	}
 
 
 	return (
 		<div className={classes.wrapper} ref={accountRef}>
-
-
-
-				<div className={classes.info}>
-					{!onLoad ? <div className={classes.loader} ><Loader/></div>
-						: <>
-
+			
+			<div className={classes.info}>
+				{!(onLoadAvatar && onLoadBackground) &&
+					<div className={classes.loader}>
+						<span className={classes.hint_load}>Загрузка...</span>
+						<Loader variant='local'  color='lds-black' />
+					</div>
+				}
 				<div className={classes.background}>
 					{user.background &&
-						<img onLoad={handleImageLoad} className={classes.background_img} src={user.background} />
+						<img onLoad={handleBackgroundLoad} className={classes.background_img} src={user.background} />
 					}
 				</div>
 
 				<div className={classes.avatar_wrapper}>
 					{user.avatar ? (
 						<div className={classes.avatar}>
-							<img onLoad={handleImageLoad2} className={classes.img} src={user.avatar} />
+							<img onLoad={handleAvatarLoad} className={classes.img} src={user.avatar} />
 						</div>
 					) : (
 						<span className={classes.icon}>{user.email[0]?.toUpperCase()}</span>
 					)}
 				</div>
-						</>}
+
 				<div className={classes.user_names}>
 					<h1 className={classes.firstName}>
 						{user.secondName} {user.firstName}
