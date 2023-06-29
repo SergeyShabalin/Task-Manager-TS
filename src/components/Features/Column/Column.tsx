@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import { MiniCard } from '@Features'
-import { Column } from '@/models/toolkit/Column'
+import { Column as ColumnType} from '@/models/toolkit/Column'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { Button } from '@UI'
 import { Editor } from '@Features'
@@ -12,7 +12,7 @@ import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 let targetCardId = ''
 
-export default function Column({ title, cards, _id }: Column) {
+export default function Column({ title, cards, _id }: ColumnType) {
 	const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
 	const { changeColumn, addNewCard } = useActionsToolkit()
 
