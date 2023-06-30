@@ -42,22 +42,22 @@ export const columnsActions = {
 
 export const cardActions = {
 
-	deleteCard:
-		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-			try {
-				const { board } = getState()
-				const columnId = board.allCards[cardId].column_id
-				const currentColumn = board.allColumns[columnId]
-				const newCardIds = currentColumn.cards.filter(id => id !== cardId)
-				const payload: PayloadForDeleteCard = {
-					newCardIds,
-					cardId
-				}
-				dispatch(CardAC.deleteCardAC(payload))
-			} catch (e) {
-				Notification.error('Произошла ошибка удаления карточки')
-			}
-		},
+	// deleteCard:
+	// 	(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+	// 		try {
+	// 			const { board } = getState()
+	// 			const columnId = board.allCards[cardId].column_id
+	// 			const currentColumn = board.allColumns[columnId]
+	// 			const newCardIds = currentColumn.cards.filter(id => id !== cardId)
+	// 			const payload: PayloadForDeleteCard = {
+	// 				newCardIds,
+	// 				cardId
+	// 			}
+	// 			dispatch(CardAC.deleteCardAC(payload))
+	// 		} catch (e) {
+	// 			Notification.error('Произошла ошибка удаления карточки')
+	// 		}
+	// 	},
 	changeCard: (payload: Partial<Card>) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(CardAC.changeCardAC(payload))
