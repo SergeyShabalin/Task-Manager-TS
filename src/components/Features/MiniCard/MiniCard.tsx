@@ -9,6 +9,7 @@ import Description from '@/components/Features/MiniCard/Description'
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
 import classes from './MiniCard.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 export default function MiniCard({
 	title,
@@ -22,12 +23,12 @@ export default function MiniCard({
 	const location = useLocation()
 	const [isOpenContext, setIsOpenContext] = useState(false)
 	const socket = useTypedSelector(({ user }) => user.socket)
+	const { deleteCard } = useActionsToolkit()
 
 	function cardDelete() {
 		const confirm = window.confirm('Удалить карточку?')
 		if (confirm) {
-
-			socket?.emit('CARD_DELETE', _id)
+			deleteCard(_id)
 		}
 	}
 

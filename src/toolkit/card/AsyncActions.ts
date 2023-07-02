@@ -21,9 +21,10 @@ export const cardActions = {
 	deleteCard:
 		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 			try {
-				const { data } = await CardsApi.deleteCard(payload)
-
-				// const { board } = getState()
+				const { data } = await CardsApi.deleteCard(cardId)
+				console.log(data)
+				const { board } = getState()
+				console.log(board)
 				// const columnId = board.allCards[cardId].column_id
 				// const currentColumn = board.allColumns[columnId]
 				// const newCardIds = currentColumn.cards.filter(id => id !== cardId)
@@ -31,6 +32,7 @@ export const cardActions = {
 				// 	newCardIds,
 				// 	cardId
 				// }
+
 				// dispatch(CardAC.deleteCardAC(payload))
 			} catch (e) {
 				Notification.error('Произошла ошибка удаления карточки')
