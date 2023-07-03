@@ -18,3 +18,8 @@ export interface PayloadForAddCard {
 	title: string
 	column_id: string
 }
+
+export interface PayloadForDeleteCard {
+	newCardIds: string[]
+	card_id: string
+}

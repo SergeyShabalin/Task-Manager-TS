@@ -2,7 +2,7 @@ import { defaultState as boardState } from '@/toolkit/board/InitState'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Board, BoardAPI } from '@/models/toolkit/Board'
 import { Column } from '@/models/toolkit/Column'
-import { Card } from '@/models/toolkit/Card'
+import { Card, PayloadForDeleteCard } from '@/models/toolkit/Card'
 
 const initialState = {
 	boardState
@@ -34,7 +34,7 @@ export const boardSlice = createSlice({
 			state.boardState.currentBoard = action.payload
 		},
 		addNewColumn: (state, action: PayloadAction<Column>) => {
-		 	state.boardState.currentBoard.columns = [...state.boardState.currentBoard.columns, action.payload._id]
+		 	state.boardState.currentBoard.columns.push(action.payload._id)
 			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
 		},
 		deleteColumn: (state, action: PayloadAction<string[]>) => {
@@ -44,13 +44,21 @@ export const boardSlice = createSlice({
 			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
 		},
 		addNewCard:(state, action: PayloadAction<Card>) => {
-			const id = action.payload._id
-			const card = action.payload
-			const columnId = action.payload.column_id
-			const currentColumn = state.boardState.allColumns[columnId]
-			const currentCards = [...currentColumn.cards, id]
-			state.boardState.allCards = { ...state.boardState.allCards, [id]: card }
-			state.boardState.allColumns = { ...state.boardState.allColumns, [columnId]: { ...currentColumn, cards: currentCards } }
+			const currentColumn = state.boardState.allColumns[action.payload.column_id]
+			currentColumn.cards.push(action.payload._id)
+			state.boardState.allCards = { ...state.boardState.allCards, [action.payload._id]: action.payload }
+			state.boardState.allColumns = { ...state.boardState.allColumns, [action.payload.column_id]: { ...currentColumn, cards: currentColumn.cards } }
+		},
+		deleteCard:(state, action: PayloadAction<PayloadForDeleteCard>) => {
+			const newCardIds = action.payload.newCardIds
+			const cardId = action.payload.card_id
+			const columnId = state.boardState.allCards[cardId].column_id
+			const newCurrentColumn = { ...state.boardState.allColumns[columnId], cards: newCardIds }
+			const newAllColumns = { ...state.boardState.allColumns, [columnId]: newCurrentColumn }
+			const newAllCards = { ...state.boardState.allCards }
+			delete newAllCards[cardId]
+			state.boardState.allColumns = newAllColumns
+			state.boardState.allCards = newAllCards
 		}
 	}
 })
@@ -66,7 +74,8 @@ export const {
 	addNewColumn,
 	deleteColumn,
 	changeColumn,
-	addNewCard
+	addNewCard,
+	deleteCard
 } = boardSlice.actions
 
 export default boardSlice.reducer

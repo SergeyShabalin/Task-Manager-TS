@@ -18,11 +18,9 @@ import {
 } from '@/models/Boards'
 import {  ChangeColumn, COLUMN_TYPES,  DropCard } from '@/models/Columns'
 import {
-	AddNewCard,
 	CARD_TYPES,
 	ChangeCard,
 	CloseCard,
-	DeleteCard,
 	GetCardInfo,
 	getUsersOneCard,
 	PayloadForApplySearchUser,
@@ -32,8 +30,6 @@ import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask, HideDoneTasks } fr
 
 export type BoardActions =
 	| ErrorFetching
-	| AddNewCard
-	| DeleteCard
 	| ChangeCard
 	| ChangeColumn
 	| GetCardInfo
@@ -136,22 +132,6 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 
-		case CARD_TYPES.DELETE_CARD: {
-			const newCardIds = action.payload.newCardIds
-			const cardId = action.payload.cardId
-			const columnId = state.allCards[cardId].column_id
-			const currentColumn = state.allColumns[columnId]
-			const newCurrentColumn = { ...currentColumn, cards: newCardIds }
-			const newAllColumns = { ...state.allColumns, [columnId]: newCurrentColumn }
-			const newAllCards = { ...state.allCards }
-			delete newAllCards[action.payload.cardId]
-
-			return {
-				...state,
-				allColumns: newAllColumns,
-				allCards: newAllCards
-			}
-		}
 		case CARD_TYPES.CHANGE_CARD: {
 			return {
 				...state,

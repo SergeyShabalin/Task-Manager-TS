@@ -4,35 +4,28 @@ import {
 	BOARD_TYPES,
 	BoardAction,
 	ErrorFetching,
-	FinishLoadingCard,
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
 	PayloadForDragDropColumn,
 	PayloadForGetUsersOneCard,
 	payloadForUsersOneBoard,
-
-	StartLoadingCard
 } from '@/models/Boards'
 import {
-	ChangeColumn,
 	COLUMN_TYPES,
 	DropCard,
-	PayloadForChangeColumn,
 	PayloadForDropCard
 } from '@/models/Columns'
 import {
-	AddNewCard,
 	Card,
 	CARD_TYPES,
 	ChangeCard,
 	CloseCard,
-	DeleteCard,
 	GetCardInfo,
 	getUsersOneCard,
 	PayloadForApplySearchUser,
 	PayloadForChangeViewUserOneCard,
-	PayloadForDeleteCard,
+
 	PayloadForGetCardInfo
 } from '@/models/Cards'
 import {
@@ -47,7 +40,6 @@ import {
 import { User } from '@/models/Users'
 
 export const BoardAC = {
-
 	errorFetching: (): ErrorFetching => ({type: BOARD_TYPES.ERROR_FETCHING_BOARD}),
 	changeBoardAC: (payload: Board): BoardAction  => ({type: BOARD_TYPES.CHANGE_BOARD, payload}),
 	logout: (): Logout => ({type: BOARD_TYPES.LOGOUT}),
@@ -55,8 +47,6 @@ export const BoardAC = {
 	getUsersOneBoard: (payload: User) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload}),
 	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload}),
 	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
-	startLoadingCard : () : StartLoadingCard => ({type: BOARD_TYPES.START_LOADING_CARD}),
-	finishLoadingCard : () : FinishLoadingCard => ({type: BOARD_TYPES.FINISH_LOADING_CARD}),
 	dragDropColumn : (payload : string[]) : PayloadForDragDropColumn => ({type: BOARD_TYPES.DRAG_DROP_COLUMN, payload}),
 	getUsersOneCard : (payload: Partial<User>[]) : PayloadForGetUsersOneCard => ({type: BOARD_TYPES.GET_USERS_ONE_CARD, payload})
 };
@@ -66,7 +56,6 @@ export const ColumnAC = {
 }
 
 export const CardAC = {
-	deleteCardAC: (payload: PayloadForDeleteCard ): DeleteCard =>({type: CARD_TYPES.DELETE_CARD, payload}),
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	getCardInfoCardAC: (payload: PayloadForGetCardInfo) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),

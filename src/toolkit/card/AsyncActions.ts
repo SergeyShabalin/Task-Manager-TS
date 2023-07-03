@@ -2,9 +2,8 @@ import { Dispatch } from 'redux'
 
 import { Notification } from '@UI'
 import CardsApi from '@/api/CardApi'
-import { PayloadForAddCard } from '@/models/toolkit/Card'
-import { addNewCard } from '@/toolkit/board/Reducer'
-import { BoardActions } from '@/store/board/reducer'
+import { PayloadForAddCard, PayloadForDeleteCard } from '@/models/toolkit/Card'
+import { addNewCard, deleteCard } from '@/toolkit/board/Reducer'
 import { RootState } from '@/store'
 
 
@@ -19,21 +18,20 @@ export const cardActions = {
 		}
 	},
 	deleteCard:
-		(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
+		(cardId: string) => async (dispatch: Dispatch, getState: () => RootState) => {
 			try {
 				const { data } = await CardsApi.deleteCard(cardId)
-				console.log(data)
+				const card_id = data.toString()
 				const { board } = getState()
-				console.log(board)
-				// const columnId = board.allCards[cardId].column_id
-				// const currentColumn = board.allColumns[columnId]
-				// const newCardIds = currentColumn.cards.filter(id => id !== cardId)
-				// const payload: PayloadForDeleteCard = {
-				// 	newCardIds,
-				// 	cardId
-				// }
-
-				// dispatch(CardAC.deleteCardAC(payload))
+				const columnId = board.boardState.allCards[cardId].column_id
+				const currentColumn = board.boardState.allColumns[columnId]
+				const newCardIds = currentColumn.cards.filter((id: string) => id !== card_id)
+				const payload: PayloadForDeleteCard = {
+					newCardIds,
+					card_id
+				}
+			  dispatch(deleteCard(payload))
+				Notification.error('Карточка удалена', 'submit')
 			} catch (e) {
 				Notification.error('Произошла ошибка удаления карточки')
 			}

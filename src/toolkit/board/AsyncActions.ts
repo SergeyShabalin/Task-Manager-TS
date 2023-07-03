@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux'
-import { BoardActions } from '@/store/board/reducer'
 
 import BoardApi from '@/api/BoardApi'
 import { Notification } from '@UI'

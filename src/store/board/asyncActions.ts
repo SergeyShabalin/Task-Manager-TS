@@ -7,7 +7,7 @@ import CardsApi from '@/api/CardsApi'
 import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
 import {  PayloadForDropCard } from '@/models/Columns'
-import { Card, PayloadForDeleteCard, payloadForSearchUser } from '@/models/Cards'
+import { Card, payloadForSearchUser } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
 import { ChangeTaskData, CheckList, payloadForDeleteTask, PromiseChecklist } from '@/models/CheckList'
@@ -16,7 +16,6 @@ import { UserActions } from '@/store/user/reducer'
 
 
 export const columnsActions = {
-
 
 	dragAndDropCard:
 		(payload: PayloadForDropCard) =>
@@ -42,22 +41,6 @@ export const columnsActions = {
 
 export const cardActions = {
 
-	// deleteCard:
-	// 	(cardId: string) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-	// 		try {
-	// 			const { board } = getState()
-	// 			const columnId = board.allCards[cardId].column_id
-	// 			const currentColumn = board.allColumns[columnId]
-	// 			const newCardIds = currentColumn.cards.filter(id => id !== cardId)
-	// 			const payload: PayloadForDeleteCard = {
-	// 				newCardIds,
-	// 				cardId
-	// 			}
-	// 			dispatch(CardAC.deleteCardAC(payload))
-	// 		} catch (e) {
-	// 			Notification.error('Произошла ошибка удаления карточки')
-	// 		}
-	// 	},
 	changeCard: (payload: Partial<Card>) => async (dispatch: Dispatch<BoardActions>) => {
 		try {
 			dispatch(CardAC.changeCardAC(payload))

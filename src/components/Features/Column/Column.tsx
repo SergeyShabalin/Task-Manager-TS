@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { MiniCard } from '@Features'
 import { Column as ColumnType} from '@/models/toolkit/Column'

@@ -136,17 +136,7 @@ export interface payloadForChangePersonalInfo {
 }
 
 
-export interface PayloadForStartRegistration extends StartRegistration {
-	payload: Partial<User>
-}
 
-export interface PayloadForAuthentication extends Authentication {
-	payload: Partial<User>
-}
-
-// export interface PayloadForCheckLogin extends CheckLogin {
-// 	payload: Partial<User>
-// }
 
 export interface PayloadForAddBoard extends AddBoard {
 	payload: string

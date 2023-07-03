@@ -22,13 +22,12 @@ export default function MiniCard({
 	const { userId, boardId } = useParams()
 	const location = useLocation()
 	const [isOpenContext, setIsOpenContext] = useState(false)
-	const socket = useTypedSelector(({ user }) => user.socket)
 	const { deleteCard } = useActionsToolkit()
 
 	function cardDelete() {
 		const confirm = window.confirm('Удалить карточку?')
 		if (confirm) {
-			deleteCard(_id)
+		 deleteCard(_id)
 		}
 	}
 
