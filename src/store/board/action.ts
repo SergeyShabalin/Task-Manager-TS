@@ -47,7 +47,6 @@ export const BoardAC = {
 	getUsersOneBoard: (payload: User) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload}),
 	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload}),
 	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
-	dragDropColumn : (payload : string[]) : PayloadForDragDropColumn => ({type: BOARD_TYPES.DRAG_DROP_COLUMN, payload}),
 	getUsersOneCard : (payload: Partial<User>[]) : PayloadForGetUsersOneCard => ({type: BOARD_TYPES.GET_USERS_ONE_CARD, payload})
 };
 

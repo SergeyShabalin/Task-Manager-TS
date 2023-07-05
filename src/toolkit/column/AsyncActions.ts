@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux'
 import { Notification } from '@UI'
-import { PayloadForAddNewColumn, PayloadForChangeColumn } from '@/models/toolkit/Column'
+import { PayloadForAddNewColumn, PayloadForChangeColumn, PayloadForDragDropColumn } from '@/models/toolkit/Column'
 import ColumnsApi from '@/api/ColumnApi/'
-import { addNewColumn, changeColumn, deleteColumn } from '@/toolkit/board/Reducer'
+import { addNewColumn, changeColumn, deleteColumn, dragDropColumn } from '@/toolkit/board/Reducer'
 import { RootState } from '@/toolkit'
 
 
@@ -35,7 +35,15 @@ export const columnActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка именения колонки')
 		}
-	}
+	},
+	dragDropColumn: (payload: PayloadForDragDropColumn) => async (dispatch: Dispatch) => {
+		try {
+			const { data } = await ColumnsApi.dragDropColumn(payload)
+			dispatch(dragDropColumn(data))
+		} catch (e) {
+			Notification.error('Произошла ошибка именения колонки')
+		}
+	},
 
 
 	}

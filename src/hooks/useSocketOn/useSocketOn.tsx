@@ -26,7 +26,6 @@ export default function useSocketOn(socket: Socket | null) {
 		addNewTask,
 		changeTask,
 		deleteTask,
-		dragDropColumn,
 		shareBoard,
 		getUsersOneCard
 	} = useActions()
@@ -39,8 +38,6 @@ export default function useSocketOn(socket: Socket | null) {
 		socket.on(SOCKET_TYPES.TASK_ADDED, addNewTask)
 		socket.on(SOCKET_TYPES.TASK_CHANGED, changeTask)
 		socket.on(SOCKET_TYPES.TASK_DELETED, deleteTask)
-		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
-		socket.on(SOCKET_TYPES.COLUMN_DROPPED, dragDropColumn)
 		socket.on(SOCKET_TYPES.RECEIVED_MEMBERS, getUsersOneCard)
 		socket.on(SOCKET_TYPES.CHANGE_COUNT_MEMBERS, getUsersOneCard)
 	}, [socket])

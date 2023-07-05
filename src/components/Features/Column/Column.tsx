@@ -14,7 +14,7 @@ let targetCardId = ''
 
 export default function Column({ title, cards, _id }: ColumnType) {
 	const allCards = useTypedSelector(({ board }) => board.boardState.allCards)
-	const { changeColumn, addNewCard } = useActionsToolkit()
+	const { changeColumn, addNewCard, dragDropColumn } = useActionsToolkit()
 
 	function addCard(value: string) {
 		const payload = { title: value, column_id: _id }
@@ -86,7 +86,7 @@ export default function Column({ title, cards, _id }: ColumnType) {
 			targetColumnId
 		}
 		if (!currentCardId) {
-			socket?.emit('COLUMN_DROP', dataForDropColumn)
+			dragDropColumn(dataForDropColumn)
 		}
 	}
 

@@ -7,9 +7,9 @@ import { Checkout, DecisionDate } from '@/components/Features'
 import { BsThreeDots } from 'react-icons/bs'
 import Description from '@/components/Features/MiniCard/Description'
 import ContextMenu from '@/components/Features/MiniCard/ContextMenu/ContextMenu'
-import classes from './MiniCard.module.css'
-import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
 import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
+import classes from './MiniCard.module.css'
+
 
 export default function MiniCard({
 	title,
@@ -26,9 +26,7 @@ export default function MiniCard({
 
 	function cardDelete() {
 		const confirm = window.confirm('Удалить карточку?')
-		if (confirm) {
-		 deleteCard(_id)
-		}
+		if (confirm) deleteCard(_id)
 	}
 
 	function contextClose() {

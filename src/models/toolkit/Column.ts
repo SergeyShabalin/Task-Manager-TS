@@ -16,3 +16,7 @@ export interface PayloadForChangeColumn {
 	column_id: string
 }
 
+export interface PayloadForDragDropColumn {
+	currentColumnId: string
+	targetColumnId: string
+}

@@ -43,6 +43,9 @@ export const boardSlice = createSlice({
 		changeColumn: (state, action: PayloadAction<Column>) => {
 			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
 		},
+		dragDropColumn : (state, action: PayloadAction<string[]>) => {
+			 state.boardState.currentBoard.columns = action.payload
+		},
 		addNewCard:(state, action: PayloadAction<Card>) => {
 			const currentColumn = state.boardState.allColumns[action.payload.column_id]
 			currentColumn.cards.push(action.payload._id)
@@ -74,6 +77,7 @@ export const {
 	addNewColumn,
 	deleteColumn,
 	changeColumn,
+	dragDropColumn,
 	addNewCard,
 	deleteCard
 } = boardSlice.actions

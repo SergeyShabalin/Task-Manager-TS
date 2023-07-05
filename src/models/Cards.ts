@@ -35,11 +35,6 @@ export interface PayloadForChangeViewUserOneCard extends ChangeViewUserOneCard{
  payload: string[]
 }
 
-export interface PayloadForDeleteCard {
-	newCardIds: string[]
-	cardId: string
-}
-
 export interface ChangeCard extends Action<CARD_TYPES.CHANGE_CARD> {
 	payload: Partial<Card>
 }

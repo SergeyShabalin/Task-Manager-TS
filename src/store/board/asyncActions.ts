@@ -179,15 +179,6 @@ export const checklistActions = {
 				}
 			},
 
-	dragDropColumn:
-		(allColumns: string[]) => async (dispatch: Dispatch<BoardActions>) => {
-			try {
-				dispatch(BoardAC.dragDropColumn(allColumns))
-			} catch (error) {
-				Notification.error('Произошла ошибка перемещения колонки')
-			}
-		},
-
 	openShowDoneTasks: (payload: boolean, checklist: CheckList[]) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
 			const { board } = getState()

@@ -11,7 +11,6 @@ import {
 	payloadForDeleteBoard,
 	PayloadForDragDropColumn,
 	PayloadForGetUsersOneCard,
-
 	payloadForUsersOneBoard,
 
 	StartLoadingCard
@@ -72,11 +71,7 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 				...state,
 				currentBoard: action.payload
 			}
-		case BOARD_TYPES.DRAG_DROP_COLUMN:
-			return {
-				...state,
-				currentBoard: { ...state.currentBoard, columns: action.payload }
-			}
+
 
 		case BOARD_TYPES.APPLY_INVITE: {
 			return {
