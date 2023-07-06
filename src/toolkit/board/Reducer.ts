@@ -2,7 +2,7 @@ import { defaultState as boardState } from '@/toolkit/board/InitState'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Board, BoardAPI } from '@/models/toolkit/Board'
 import { Column } from '@/models/toolkit/Column'
-import { Card, PayloadForDeleteCard } from '@/models/toolkit/Card'
+import { Card, PayloadForDeleteCard, PayloadForDragDropCard } from '@/models/toolkit/Card'
 
 const initialState = {
 	boardState
@@ -62,6 +62,29 @@ export const boardSlice = createSlice({
 			delete newAllCards[cardId]
 			state.boardState.allColumns = newAllColumns
 			state.boardState.allCards = newAllCards
+		},
+		dragDropCard:(state, action: PayloadAction<PayloadForDragDropCard>) => {
+			const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
+
+			const targetColumn = JSON.parse(JSON.stringify(state.allColumns[targetColumnId]))
+			const currentColumn =
+				targetColumnId === currentColumnId
+					? targetColumn
+					: JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
+
+			let newArr = []
+			currentColumn.cards = currentColumn.cards.filter((id: string) => id !== currentCardId)
+			if (targetColumn.cards.length === 0) {
+				targetColumn.cards.push(currentCardId)
+			} else {
+				while (targetColumn.cards.length) {
+					const cardId = targetColumn.cards.shift()
+					if (cardId !== targetCardId) newArr.push(cardId)
+					else newArr.push(cardId, currentCardId)
+				}
+				targetColumn.cards = newArr
+			}
+
 		}
 	}
 })
@@ -79,7 +102,8 @@ export const {
 	changeColumn,
 	dragDropColumn,
 	addNewCard,
-	deleteCard
+	deleteCard,
+	dragDropCard
 } = boardSlice.actions
 
 export default boardSlice.reducer

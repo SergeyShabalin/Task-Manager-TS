@@ -205,42 +205,42 @@ export default function boardReducer(state = defaultState, action: BoardActions)
 			}
 		}
 		case COLUMN_TYPES.DROP_CARD: {
-			const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
-
-			const targetColumn = JSON.parse(JSON.stringify(state.allColumns[targetColumnId]))
-			const currentColumn =
-				targetColumnId === currentColumnId
-					? targetColumn
-					: JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
-
-			let newArr = []
-			currentColumn.cards = currentColumn.cards.filter((id: string) => id !== currentCardId)
-			if (targetColumn.cards.length === 0) {
-				targetColumn.cards.push(currentCardId)
-			} else {
-				while (targetColumn.cards.length) {
-					const cardId = targetColumn.cards.shift()
-					if (cardId !== targetCardId) newArr.push(cardId)
-					else newArr.push(cardId, currentCardId)
-				}
-				targetColumn.cards = newArr
-			}
-
-			return {
-				...state,
-				allColumns: {
-					...state.allColumns,
-					[currentColumnId]: currentColumn,
-					[targetColumnId]: targetColumn
-				},
-				allCards: {
-					...state.allCards,
-					[currentCardId]: {
-						...state.allCards[currentCardId],
-						column_id: targetColumnId
-					}
-				}
-			}
+			// const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
+			//
+			// const targetColumn = JSON.parse(JSON.stringify(state.allColumns[targetColumnId]))
+			// const currentColumn =
+			// 	targetColumnId === currentColumnId
+			// 		? targetColumn
+			// 		: JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
+			//
+			// let newArr = []
+			// currentColumn.cards = currentColumn.cards.filter((id: string) => id !== currentCardId)
+			// if (targetColumn.cards.length === 0) {
+			// 	targetColumn.cards.push(currentCardId)
+			// } else {
+			// 	while (targetColumn.cards.length) {
+			// 		const cardId = targetColumn.cards.shift()
+			// 		if (cardId !== targetCardId) newArr.push(cardId)
+			// 		else newArr.push(cardId, currentCardId)
+			// 	}
+			// 	targetColumn.cards = newArr
+			// }
+			//
+			// return {
+			// 	...state,
+			// 	allColumns: {
+			// 		...state.allColumns,
+			// 		[currentColumnId]: currentColumn,
+			// 		[targetColumnId]: targetColumn
+			// 	},
+			// 	allCards: {
+			// 		...state.allCards,
+			// 		[currentCardId]: {
+			// 			...state.allCards[currentCardId],
+			// 			column_id: targetColumnId
+			// 		}
+			// 	}
+			// }
 		}
 
 		default:

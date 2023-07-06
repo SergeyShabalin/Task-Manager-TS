@@ -41,7 +41,7 @@ export const columnActions = {
 			const { data } = await ColumnsApi.dragDropColumn(payload)
 			dispatch(dragDropColumn(data))
 		} catch (e) {
-			Notification.error('Произошла ошибка именения колонки')
+			Notification.error('Произошла ошибка перемещения колонки')
 		}
 	},
 
