@@ -7,15 +7,10 @@ import {
 	Logout,
 	payloadForApplyInvite,
 	payloadForDeleteBoard,
-	PayloadForDragDropColumn,
 	PayloadForGetUsersOneCard,
 	payloadForUsersOneBoard,
 } from '@/models/Boards'
-import {
-	COLUMN_TYPES,
-	DropCard,
-	PayloadForDropCard
-} from '@/models/Columns'
+
 import {
 	Card,
 	CARD_TYPES,
@@ -49,10 +44,6 @@ export const BoardAC = {
 	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
 	getUsersOneCard : (payload: Partial<User>[]) : PayloadForGetUsersOneCard => ({type: BOARD_TYPES.GET_USERS_ONE_CARD, payload})
 };
-
-export const ColumnAC = {
-	dropCard: (payload: PayloadForDropCard) : DropCard => ({type: COLUMN_TYPES.DROP_CARD, payload})
-}
 
 export const CardAC = {
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),

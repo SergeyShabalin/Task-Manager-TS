@@ -6,7 +6,7 @@ import BoardApi from '@/api/BoardApi'
 import CardsApi from '@/api/CardsApi'
 import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
-import {  PayloadForDropCard } from '@/models/Columns'
+
 import { Card, payloadForSearchUser } from '@/models/Cards'
 import { Notification } from '@UI'
 import { RootState } from '@/store'
@@ -14,30 +14,7 @@ import { ChangeTaskData, CheckList, payloadForDeleteTask, PromiseChecklist } fro
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
-
-export const columnsActions = {
-
-	dragAndDropCard:
-		(payload: PayloadForDropCard) =>
-			async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
-				try {
-					const { targetColumnId, currentCardId, targetCardId } = payload
-					const { board } = getState()
-					const targetColumn = board.allColumns[targetColumnId]
-					if (
-						(currentCardId === targetCardId && targetColumn.cards.length !== 0) || //перенос в пределах одной колонки
-						(targetCardId === '' && targetColumn.cards.length !== 0) //перенос в пустую колонку
-					) {
-					} else {
-
-						// await ColumnsApi.dragDropCard(payload)
-						dispatch(ColumnAC.dropCard(payload))
-					}
-				} catch (error) {
-					Notification.error('Произошла ошибка переноса карточки')
-				}
-			}
-}
+ 
 
 export const cardActions = {
 

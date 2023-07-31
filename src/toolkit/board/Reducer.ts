@@ -34,25 +34,28 @@ export const boardSlice = createSlice({
 			state.boardState.currentBoard = action.payload
 		},
 		addNewColumn: (state, action: PayloadAction<Column>) => {
-		 	state.boardState.currentBoard.columns.push(action.payload._id)
-			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
+			state.boardState.currentBoard.columns.push(action.payload._id)
+			state.boardState.allColumns = { ...state.boardState.allColumns, [action.payload._id]: action.payload }
 		},
 		deleteColumn: (state, action: PayloadAction<string[]>) => {
 			state.boardState.currentBoard.columns = action.payload
 		},
 		changeColumn: (state, action: PayloadAction<Column>) => {
-			state.boardState.allColumns = { ...state.boardState.allColumns,	[action.payload._id]: action.payload}
+			state.boardState.allColumns = { ...state.boardState.allColumns, [action.payload._id]: action.payload }
 		},
-		dragDropColumn : (state, action: PayloadAction<string[]>) => {
-			 state.boardState.currentBoard.columns = action.payload
+		dragDropColumn: (state, action: PayloadAction<string[]>) => {
+			state.boardState.currentBoard.columns = action.payload
 		},
-		addNewCard:(state, action: PayloadAction<Card>) => {
+		addNewCard: (state, action: PayloadAction<Card>) => {
 			const currentColumn = state.boardState.allColumns[action.payload.column_id]
 			currentColumn.cards.push(action.payload._id)
 			state.boardState.allCards = { ...state.boardState.allCards, [action.payload._id]: action.payload }
-			state.boardState.allColumns = { ...state.boardState.allColumns, [action.payload.column_id]: { ...currentColumn, cards: currentColumn.cards } }
+			state.boardState.allColumns = {
+				...state.boardState.allColumns,
+				[action.payload.column_id]: { ...currentColumn, cards: currentColumn.cards }
+			}
 		},
-		deleteCard:(state, action: PayloadAction<PayloadForDeleteCard>) => {
+		deleteCard: (state, action: PayloadAction<PayloadForDeleteCard>) => {
 			const newCardIds = action.payload.newCardIds
 			const cardId = action.payload.card_id
 			const columnId = state.boardState.allCards[cardId].column_id
@@ -63,14 +66,15 @@ export const boardSlice = createSlice({
 			state.boardState.allColumns = newAllColumns
 			state.boardState.allCards = newAllCards
 		},
-		dragDropCard:(state, action: PayloadAction<PayloadForDragDropCard>) => {
+		dragDropCard: (state, action: PayloadAction<PayloadForDragDropCard>) => {
 			const { targetColumnId, currentColumnId, currentCardId, targetCardId } = action.payload
 
-			const targetColumn = JSON.parse(JSON.stringify(state.allColumns[targetColumnId]))
+			const targetColumn = JSON.parse(JSON.stringify(state.boardState.allColumns[targetColumnId]))
+
 			const currentColumn =
 				targetColumnId === currentColumnId
 					? targetColumn
-					: JSON.parse(JSON.stringify(state.allColumns[currentColumnId]))
+					: JSON.parse(JSON.stringify(state.boardState.allColumns[currentColumnId]))
 
 			let newArr = []
 			currentColumn.cards = currentColumn.cards.filter((id: string) => id !== currentCardId)
@@ -85,7 +89,20 @@ export const boardSlice = createSlice({
 				targetColumn.cards = newArr
 			}
 
-		}
+			state.boardState.allColumns = {
+				...state.boardState.allColumns,
+				[currentColumnId]: currentColumn,
+				[targetColumnId]: targetColumn
+			}
+			state.boardState.allCards = {
+				...state.boardState.allCards,
+				[currentCardId]: {
+					...state.boardState.allCards[currentCardId],
+					column_id: targetColumnId
+				}
+			}
+		},
+
 	}
 })
 

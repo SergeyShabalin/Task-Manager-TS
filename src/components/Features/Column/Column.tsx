@@ -59,10 +59,7 @@ export default function Column({ title, cards, _id }: ColumnType) {
 			targetCardId
 		}
 
-		if (currentCardId && currentCardId && targetColumnId) {
-			dragDropCard(dataForDropCard)
-
-		}
+		if (currentCardId && currentCardId && targetColumnId) dragDropCard(dataForDropCard)
 	}
 
 	function onDragLeaveCard(e: React.DragEvent<HTMLDivElement>) {

@@ -13,8 +13,6 @@ export interface Board {
 
 
 export enum BOARD_TYPES {
-
-
 	ERROR_FETCHING_BOARD = 'ERROR_FETCHING_BOARD',
 	CHANGE_BOARD = 'CHANGE_BOARD',
 	LOGOUT = 'LOGOUT',

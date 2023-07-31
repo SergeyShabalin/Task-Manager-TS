@@ -25,6 +25,7 @@ export interface PayloadForChangedTask {
 	task?: string
 	done?: boolean
 	cardId: string
+
 }
 
 export interface ChangeTaskData{

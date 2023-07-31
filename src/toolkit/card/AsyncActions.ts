@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux'
-
 import { Notification } from '@UI'
 import CardsApi from '@/api/CardApi'
 import { PayloadForAddCard, PayloadForDeleteCard, PayloadForDragDropCard } from '@/models/toolkit/Card'
@@ -38,19 +37,16 @@ export const cardActions = {
 
 	dragDropCard: (payload: PayloadForDragDropCard) => async (dispatch: Dispatch, getState: () => RootState) => {
 		try {
-			const { data } = await CardsApi.dragDropCard(payload)
+
 			const { targetColumnId, currentCardId, targetCardId } = payload
 			const { board } = getState()
-			const targetColumn = board.allColumns[targetColumnId]
+			const targetColumn = board.boardState.allColumns[targetColumnId]
 			if (
-				(currentCardId === targetCardId && targetColumn.cards.length !== 0) || //перенос в пределах одной колонки
-				(targetCardId === '' && targetColumn.cards.length !== 0) //перенос в пустую колонку
+				!(currentCardId === targetCardId && targetColumn.cards.length !== 0) && //перенос в пределах одной колонки
+				!(targetCardId === '' && targetColumn.cards.length !== 0) //перенос в пустую колонку
 			) {
-			} else {
-
-				console.log(payload)
-				console.log(data)
-				dispatch(dragDropCard(data))
+				await CardsApi.dragDropCard(payload)
+				dispatch(dragDropCard(payload))
 			}
 		} catch (e) {
 			Notification.error('Произошла ошибка перемещения карточки')
