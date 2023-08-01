@@ -34,6 +34,10 @@ export default function User({ user }: UserProps) {
 		setIsPreview(false)
 	}
 
+	function handleAvatarLoad() {
+		console.log('ватарки загружены')
+	}
+
 	return (
 		<div
 			className={classes.user}
@@ -64,7 +68,7 @@ export default function User({ user }: UserProps) {
 				</div>
 			)}
 			{user.avatar ? (
-				<img className={classes.user_avatar} src={user.avatar} />
+				<img onLoad={handleAvatarLoad} className={classes.user_avatar} src={user.avatar} />
 			) : (
 				<div className={classes.empty_avatar}>
 					{firstInitial && secondInitial && firstInitial + secondInitial}

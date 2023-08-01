@@ -3,7 +3,7 @@
 :root {
 
     --header-color: rgba(0, 0, 0, 0.38);
-    --primary-font: "ubuntu";
+    --primary-font: 'Noto Sans', sans-serif;;
     --main-font-size: 17px;
     --main-background-color: rgba(39, 13, 155, 0.81);
 
@@ -222,4 +222,8 @@
     --type6_background: url('https://uhdwallpapers.org/uploads/converted/18/03/14/green-leaves-1920x1080_78966-mm-90.webp');
     --type7_background: url('https://uhdwallpapers.org/uploads/converted/20/10/11/mountain-landscape-photography-gesause-park-1920x1080_947788-mm-90.webp');
     --type8_background: url('https://uhdwallpapers.org/uploads/converted/18/05/22/super-sunset-from-princes-pier-1920x1080_54544-mm-90.webp');
+}
+
+html{
+    font-family: NotoSans;
 }

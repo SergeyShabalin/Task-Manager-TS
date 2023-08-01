@@ -7,7 +7,7 @@
     font-weight: var(--button-font-weight);
     font-size: var(--button-font-size);
     border-radius: var(--button-border-radius);
-    font-family: var(--prymary-font);
+    font-family: var(--primary-font);
     cursor: pointer;
     padding: var(--button-padding);
     margin: var(--button-margin);
@@ -30,7 +30,9 @@
     display: flex;
     transition: all 0.2s ease;
     border: none;
-    background-color: initial;
+    font-family: var(--primary-font);
+    font-weight: 500;
+    background-color: transparent;
 }
 
 .text:disabled {
@@ -65,7 +67,7 @@
 
 .outlined {
     display: flex;
-    font-family: var(--prymary-font);
+    font-family: var(--primary-font);
     border: var(--button-outlined-border);
     background-color: transparent;
     color: var(--button-outlined-color);
@@ -110,7 +112,7 @@
 
 .contained {
     display: flex;
-    font-family: var(--prymary-font);
+    font-family: var(--primary-font);
     border: none;
 }
 
@@ -155,7 +157,7 @@
 
 .full_contain {
     display: flex;
-    font-family: var(--prymary-font);
+    font-family: var(--primary-font);
     border: none;
     padding: 7px 10px;
     color: white;

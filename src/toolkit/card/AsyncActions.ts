@@ -3,7 +3,10 @@ import { Notification } from '@UI'
 import CardsApi from '@/api/CardApi'
 import { PayloadForAddCard, PayloadForDeleteCard, PayloadForDragDropCard } from '@/models/toolkit/Card'
 import { addNewCard, deleteCard, dragDropCard } from '@/toolkit/board/Reducer'
+import { finishLoadingCard, getCardInfo, startLoadingCard } from '@/toolkit/card/Reducer'
 import { RootState } from '@/store'
+import { BoardActions } from '@/store/board/reducer'
+import { BoardAC, CardAC } from '@/store/board/action'
 
 
 export const cardActions = {
@@ -51,5 +54,16 @@ export const cardActions = {
 		} catch (e) {
 			Notification.error('Произошла ошибка перемещения карточки')
 		}
-	}
+	},
+
+	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
+		try {
+			dispatch(startLoadingCard())
+			const { data } = await CardsApi.getCardInfo(cardId)
+			dispatch(getCardInfo(data))
+			dispatch(finishLoadingCard())
+		} catch (e) {
+			Notification.error('Произошла ошибка получения данных о карточке')
+		}
+	},
 }

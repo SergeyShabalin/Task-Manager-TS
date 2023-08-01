@@ -42,12 +42,10 @@ export const BoardAC = {
 	getUsersOneBoard: (payload: User) : payloadForUsersOneBoard => ({type: BOARD_TYPES.GET_USERS_ONE_BOARD, payload}),
 	deleteBoard: (payload: Partial<Board>[]) : payloadForDeleteBoard => ({type: BOARD_TYPES.DELETE_BOARD, payload}),
 	backToGreeting : () : BackToGreeting => ({type: BOARD_TYPES.BACK_TO_GREETING}),
-	getUsersOneCard : (payload: Partial<User>[]) : PayloadForGetUsersOneCard => ({type: BOARD_TYPES.GET_USERS_ONE_CARD, payload})
 };
 
 export const CardAC = {
 	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
-	getCardInfoCardAC: (payload: PayloadForGetCardInfo) : GetCardInfo => ({type: CARD_TYPES.GET_CARD_INFO, payload}),
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
 	getUsersOneCard : (payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload}),
 	applySearchUser: (payload:Partial<User>[]) : PayloadForApplySearchUser => ({type: CARD_TYPES.APPLY_SEARCH_USERS, payload}),

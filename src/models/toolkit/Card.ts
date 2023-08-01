@@ -1,4 +1,5 @@
 import { CheckList } from '@/models/CheckList'
+import { User } from '@/models/toolkit/User'
 
 export interface Card {
 	_id: string
@@ -11,7 +12,6 @@ export interface Card {
 	order: number
 	checkList: CheckList[]
 	memberIds: string[]
-	cardInfo?: any
 }
 
 export interface PayloadForAddCard {
@@ -31,3 +31,8 @@ export interface PayloadForDragDropCard {
 	targetCardId?: string
 }
 
+export interface CardState {
+	cardInfo: Card
+	usersOneCard: Partial<User>[]
+	isLoading: boolean
+}

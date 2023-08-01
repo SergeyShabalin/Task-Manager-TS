@@ -7,7 +7,8 @@ import User from '@/components/Features/Card/components/CurrentUsers/User'
 import classes from './CurrentUsers.module.css'
 
 export default function CurrentUsers() {
-	const usersOneCard = useTypedSelector(state => state.board.usersOneCard)
+	const usersOneCard = useTypedSelector(({card}) => card.cardState.usersOneCard)
+
 
 	const listMembers = usersOneCard?.map((user: userOneCard) => {
 		return <User user={user} key={user._id} />

@@ -20,8 +20,7 @@ import {
 	CARD_TYPES,
 	ChangeCard,
 	CloseCard,
-	GetCardInfo,
-	getUsersOneCard,
+
 	PayloadForApplySearchUser,
 	PayloadForChangeViewUserOneCard
 } from '@/models/Cards'
@@ -31,7 +30,7 @@ export type BoardActions =
 	| ErrorFetching
 	| ChangeCard
 	| ChangeColumn
-	| GetCardInfo
+
 	| AddNewTask
 	| ChangeTask
 	| DeleteTask
@@ -46,7 +45,6 @@ export type BoardActions =
 	| StartLoadingCard
 	| FinishLoadingCard
 
-	| getUsersOneCard
 	| HideDoneTasks
 	| PayloadForGetUsersOneCard
 	| PayloadForApplySearchUser
@@ -121,12 +119,7 @@ export default function boardReducer(state = defaultState,
 				allUsers: action.payload
 			}
 		}
-		case BOARD_TYPES.GET_USERS_ONE_CARD: {
-			return {
-				...state,
-				usersOneCard: action.payload
-			}
-		}
+
 
 		case CARD_TYPES.CHANGE_CARD: {
 			return {
@@ -152,12 +145,7 @@ export default function boardReducer(state = defaultState,
 				usersOneCard: []
 			}
 		}
-		case CARD_TYPES.GET_CARD_INFO: {
-			return {
-				...state,
-				cardInfo: action.payload,
-			}
-		}
+
 		case CARD_TYPES.GET_USERS_ONE_CARD: {
 			return {
 				...state,

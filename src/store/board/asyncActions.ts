@@ -3,7 +3,7 @@ import { Dispatch } from 'redux'
 import { BoardAC, CardAC, ChecklistAC, ColumnAC } from './action'
 import { UserAC } from '@/store/user/action'
 import BoardApi from '@/api/BoardApi'
-import CardsApi from '@/api/CardsApi'
+
 import UsersApi from '@/api/UsersApi'
 import { BoardActions } from '@/store/board/reducer'
 
@@ -14,7 +14,7 @@ import { ChangeTaskData, CheckList, payloadForDeleteTask, PromiseChecklist } fro
 import { Board } from '@/models/Boards'
 import { UserActions } from '@/store/user/reducer'
 
- 
+
 
 export const cardActions = {
 
@@ -28,15 +28,15 @@ export const cardActions = {
 		}
 	},
 	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(BoardAC.startLoadingCard())
-			const { data } = await CardsApi.getCardInfo(cardId)
-			dispatch(BoardAC.finishLoadingCard())
-			dispatch(CardAC.getCardInfoCardAC(data.cardInfo))
-			dispatch(BoardAC.getUsersOneCard(data.usersOneCard))
-		} catch (e) {
-			Notification.error('Произошла ошибка получения данных о карточке')
-		}
+		// try {
+		// 	dispatch(BoardAC.startLoadingCard())
+		// 	const { data } = await CardsApi.getCardInfo(cardId)
+		// 	dispatch(BoardAC.finishLoadingCard())
+		// 	dispatch(CardAC.getCardInfoCardAC(data.cardInfo))
+		// 	dispatch(BoardAC.getUsersOneCard(data.usersOneCard))
+		// } catch (e) {
+		// 	Notification.error('Произошла ошибка получения данных о карточке')
+		// }
 	},
 
 	searchUser: (payload: payloadForSearchUser) => async (dispatch: Dispatch<UserActions>) => {

@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { GoKebabHorizontal } from 'react-icons/go'
 
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 import useOnClickOutside from '@/hooks/UseOnClickOutside'
 import { Button } from '@UI'
-import { useActions } from '@/hooks/useActions/useActions'
 import classes from './ContextMenu.module.css'
-import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
-import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
+
 
 export interface ContextMenuProps {
 	columnId: string
@@ -16,12 +15,11 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 	const refContextMenu = useRef(null)
 	const [isModalOpen, setModalOpen] = useState(false)
 	useOnClickOutside(refContextMenu, () => setModalOpen(false))
- const {deleteColumn}	= useActionsToolkit()
-	// const socket = useTypedSelector(({ user }) => user.socket)
+	const { deleteColumn } = useActionsToolkit()
 
 	function columnDelete() {
 		const confirm = window.confirm('Удалить колонку?')
-		if (confirm)  deleteColumn(columnId)
+		if (confirm) deleteColumn(columnId)
 	}
 
 	function modalOpen() {
@@ -30,7 +28,7 @@ export default function ContextMenu({ columnId }: ContextMenuProps) {
 
 	return (
 		<>
-			<Button onClick={modalOpen} variant={'just_icon'} icon={<GoKebabHorizontal />}></Button>
+			<Button onClick={modalOpen} variant='just_icon' icon={<GoKebabHorizontal />}></Button>
 			{isModalOpen && (
 				<form ref={refContextMenu}>
 					<div className={classes.context_menu}>
