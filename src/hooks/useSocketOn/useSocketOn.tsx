@@ -6,7 +6,7 @@ export enum SOCKET_TYPES {
 	BOARD_SHARED = 'BOARD_SHARED',
 	BOARD_CHANGED = 'BOARD_CHANGED',
 	CARD_CHANGED = 'CARD_CHANGED',
-	TASK_ADDED = 'TASK_ADDED',
+	// TASK_ADDED = 'TASK_ADDED',
 	TASK_CHANGED = 'TASK_CHANGED',
 	TASK_DELETED = 'TASK_DELETED',
 	RECEIVED_MEMBERS = 'RECEIVED_MEMBERS',
@@ -19,7 +19,7 @@ export default function useSocketOn(socket: Socket | null) {
 	const {
 		changeBoard,
 		changeCard,
-		addNewTask,
+		  addNewTask,
 		changeTask,
 		deleteTask,
 		shareBoard,
@@ -30,7 +30,7 @@ export default function useSocketOn(socket: Socket | null) {
 		socket.on(SOCKET_TYPES.BOARD_SHARED, shareBoard)
 		socket.on(SOCKET_TYPES.BOARD_CHANGED, changeBoard)
 		socket.on(SOCKET_TYPES.CARD_CHANGED, changeCard)
-		socket.on(SOCKET_TYPES.TASK_ADDED, addNewTask)
+		// socket.on(SOCKET_TYPES.TASK_ADDED, addNewTask)
 		socket.on(SOCKET_TYPES.TASK_CHANGED, changeTask)
 		socket.on(SOCKET_TYPES.TASK_DELETED, deleteTask)
 		socket.on(SOCKET_TYPES.RECEIVED_MEMBERS, getUsersOneCard)

@@ -8,12 +8,12 @@ export enum CHECKLIST_TYPES {
 	HIDE_DONE_TASKS = 'HIDE_DONE_TASKS'
 }
 
-export interface CheckList {
-	_id: string
-	task: string
-	done: boolean
-	cardId: string
-}
+// export interface CheckList {
+// 	_id: string
+// 	task: string
+// 	done: boolean
+// 	cardId: string
+// }
 
 export interface PromiseChecklist {
 	card: Card

@@ -6,7 +6,7 @@ import cardReducer from '@/toolkit/card/Reducer'
 const reducer = combineReducers({
 	board: boardReducer,
 	user: userReducer,
-	card: cardReducer
+	card: cardReducer,
 })
 
 export const store = configureStore({

@@ -4,6 +4,7 @@ import {userActions} from '@/toolkit/user/AsyncActions'
 import { boardActions } from '@/toolkit/board/AsyncActions'
 import { columnActions } from '@/toolkit/column/AsyncActions'
 import { cardActions } from '@/toolkit/card/AsyncActions'
+import { CheckListActions } from '@/toolkit/CheckList/AsyncActions'
 
 
 export const useActionsToolkit = () => {
@@ -14,7 +15,8 @@ export const useActionsToolkit = () => {
 			...userActions,
 			...boardActions,
 			...columnActions,
-			...cardActions
+			...cardActions,
+			...CheckListActions
 		},
 		dispatch
 	)

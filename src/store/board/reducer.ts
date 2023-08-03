@@ -122,11 +122,11 @@ export default function boardReducer(state = defaultState,
 
 
 		case CARD_TYPES.CHANGE_CARD: {
-			return {
-				...state,
-				allCards: { ...state.allCards, [action.payload._id!]: action.payload },
-				cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
-			}
+			// return {
+			// 	...state,
+			// 	allCards: { ...state.allCards, [action.payload._id!]: action.payload },
+			// 	cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
+			// }
 		}
 		case CARD_TYPES.CLOSE_CARD: {
 			return {
@@ -168,10 +168,10 @@ export default function boardReducer(state = defaultState,
 			}
 		}
 		case CHECKLIST_TYPES.ADD_NEW_TASK: {
-			return {
-				...state,
-				cardInfo: { ...state.cardInfo, checkList: [...state.cardInfo.checkList, action.payload] }
-			}
+			// return {
+			// 	...state,
+			// 	cardInfo: { ...state.cardInfo, checkList: [...state.cardInfo.checkList, action.payload] }
+			// }
 		}
 		case CHECKLIST_TYPES.CHANGE_TASK: {
 			return {

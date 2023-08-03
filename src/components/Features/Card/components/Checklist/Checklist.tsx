@@ -10,6 +10,7 @@ import Task from '@/components/Features/Card/components/Checklist/Task'
 
 import classes from './CheckList.module.css'
 import { useTypedSelector } from '@/hooks/useTypedSelector/useTypedSelector'
+import { useActionsToolkit } from '@/hooks/useActions/toolkit/useActions'
 
 
 
@@ -18,9 +19,10 @@ type ChecklistProps = Pick<Card, 'doneTask' | 'countTask' | 'checkList' | '_id'>
 
 
 export default function Checklist({ doneTask, countTask, _id, checkList }: ChecklistProps ) {
-	const socket = useTypedSelector(state => state.user.socket)
-	const checklist = useTypedSelector(state => state.board.cardInfo.checkList)
+	// const socket = useTypedSelector(state => state.user.socket)
+	// const checklist = useTypedSelector(state => state.board.cardInfo.checkList)
 	const { openShowDoneTasks } = useActions()
+	const { addNewTask } = useActionsToolkit()
 	const [isShowDone, setIsShowDone] = useState(true)
 
 
@@ -30,13 +32,13 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 				cardId: _id,
 				task: value
 			}
-			if (socket?.emit('TASK_ADD', payload)) return true
+			addNewTask(payload)
 		}
 	}
 
 	function hideDoneChecklist() {
-		openShowDoneTasks(!isShowDone, checklist)
-		setIsShowDone(!isShowDone)
+		// openShowDoneTasks(!isShowDone, checklist)
+		// setIsShowDone(!isShowDone)
 	}
 
 	return (

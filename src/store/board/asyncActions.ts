@@ -27,17 +27,7 @@ export const cardActions = {
 			return false
 		}
 	},
-	getOneCard: (cardId: string) => async (dispatch: Dispatch<BoardActions>) => {
-		// try {
-		// 	dispatch(BoardAC.startLoadingCard())
-		// 	const { data } = await CardsApi.getCardInfo(cardId)
-		// 	dispatch(BoardAC.finishLoadingCard())
-		// 	dispatch(CardAC.getCardInfoCardAC(data.cardInfo))
-		// 	dispatch(BoardAC.getUsersOneCard(data.usersOneCard))
-		// } catch (e) {
-		// 	Notification.error('Произошла ошибка получения данных о карточке')
-		// }
-	},
+
 
 	searchUser: (payload: payloadForSearchUser) => async (dispatch: Dispatch<UserActions>) => {
 		try {

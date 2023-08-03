@@ -17,6 +17,7 @@ export default function Card() {
 	const navigate = useNavigate()
 	const { userId, boardId, cardId } = useParams()
 	const cardInfo = useTypedSelector(({card}) => card.cardState.cardInfo)
+	const car = useTypedSelector(state => state.board)
 
 	const isLoading = useTypedSelector(({card}) => card.cardState.isLoading)
 	const { closeCard } = useActions()
@@ -30,6 +31,7 @@ export default function Card() {
 		navigate(`/user/${userId}/board/${boardId}`)
 		closeCard()
 	}
+
 
 	return (
 		<Modal onClose={closeModal} open>
@@ -48,14 +50,14 @@ export default function Card() {
 							}
 							<CurrentUsers />
 							<Description description={cardInfo.description} _id={cardInfo._id} />
-							{/*{cardInfo.checkList.length > 0 &&*/}
-							{/*	<Checklist*/}
-							{/*		_id={cardInfo._id}*/}
-							{/*		countTask={cardInfo.checklist.countTask}*/}
-							{/*		doneTask={cardInfo.checklist.doneTask}*/}
-							{/*		checkList={cardInfo.checklist.checkList}*/}
-							{/*	/>*/}
-							{/*}*/}
+							{cardInfo.checkList.length > 0 &&
+								<Checklist
+									_id={cardInfo._id}
+									countTask={cardInfo.countTask}
+									doneTask={cardInfo.doneTask}
+									checkList={cardInfo.checkList}
+								/>
+							}
 						</div>
 						<Sidebar />
 					</div>

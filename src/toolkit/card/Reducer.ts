@@ -19,7 +19,18 @@ export const cardSlice = createSlice({
 		},
 		getCardInfo: (state, action: PayloadAction<Card>) => {
 			state.cardState = action.payload
+		},
+		addNewTask: (state, action: PayloadAction) => {
+			state.cardState.cardInfo.checkList.push(action.payload)
+		},
+		changeCard: (state, action: PayloadAction) =>{
+
+			// allCards: { ...state.allCards, [action.payload._id!]: action.payload },
+			//   state.cardState.cardInfo.checkList = action.payload.checkList
+			// cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
 		}
+
+
 	}
 })
 
@@ -27,6 +38,8 @@ export const {
 	startLoadingCard,
 	finishLoadingCard,
 	getCardInfo,
+	addNewTask,
+	changeCard
 
 } = cardSlice.actions
 
