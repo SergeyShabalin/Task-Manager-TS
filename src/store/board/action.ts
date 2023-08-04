@@ -24,7 +24,7 @@ import {
 	PayloadForGetCardInfo
 } from '@/models/Cards'
 import {
-	AddNewTask,
+
 	ChangeTask,
 	CheckList,
 	CHECKLIST_TYPES,
@@ -45,7 +45,7 @@ export const BoardAC = {
 };
 
 export const CardAC = {
-	changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
+	// changeCardAC: (payload : Partial<Card>) : ChangeCard => ({type: CARD_TYPES.CHANGE_CARD, payload}),
 	closeCard : () : CloseCard => ({type: CARD_TYPES.CLOSE_CARD}),
 	getUsersOneCard : (payload: { [key: string]: Partial<User> })  : getUsersOneCard => ({type: CARD_TYPES.GET_USERS_ONE_CARD, payload}),
 	applySearchUser: (payload:Partial<User>[]) : PayloadForApplySearchUser => ({type: CARD_TYPES.APPLY_SEARCH_USERS, payload}),
@@ -53,7 +53,7 @@ export const CardAC = {
 }
 
 export const ChecklistAC = {
-	addNewTaskAC: (payload: CheckList) : AddNewTask => ({type: CHECKLIST_TYPES.ADD_NEW_TASK, payload}),
+
 	changeTaskAC: (payload: PayloadForChangedTask[]) : ChangeTask  => ({type: CHECKLIST_TYPES.CHANGE_TASK, payload}),
 	deleteTaskAC: (payload: CheckList[]) : DeleteTask => ({type: CHECKLIST_TYPES.DELETE_TASK, payload}),
 	hideDoneTask: (payload: CheckList[]) : HideDoneTasks => ({type: CHECKLIST_TYPES.HIDE_DONE_TASKS, payload})

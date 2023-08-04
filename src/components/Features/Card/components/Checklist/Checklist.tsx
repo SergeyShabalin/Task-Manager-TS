@@ -32,7 +32,7 @@ export default function Checklist({ doneTask, countTask, _id, checkList }: Check
 				cardId: _id,
 				task: value
 			}
-			addNewTask(payload)
+		return 	addNewTask(payload)
 		}
 	}
 

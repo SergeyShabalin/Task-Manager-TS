@@ -95,16 +95,7 @@ export const boardActions = {
 }
 
 export const checklistActions = {
-	addNewTask: (data: PromiseChecklist) => async (dispatch: Dispatch<BoardActions>) => {
-		try {
-			dispatch(ChecklistAC.addNewTaskAC(data.task))
-			dispatch(CardAC.changeCardAC(data.card))
-			return true
-		} catch (error) {
-			Notification.error('Произошла ошибка добавления задачи')
-			return false
-		}
-	},
+
 	changeTask: (payload: ChangeTaskData) => async (dispatch: Dispatch<BoardActions>, getState: () => RootState) => {
 		try {
 			const { board } = getState()

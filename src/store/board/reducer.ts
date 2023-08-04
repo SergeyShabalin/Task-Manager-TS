@@ -24,18 +24,15 @@ import {
 	PayloadForApplySearchUser,
 	PayloadForChangeViewUserOneCard
 } from '@/models/Cards'
-import { AddNewTask, ChangeTask, CHECKLIST_TYPES, DeleteTask, HideDoneTasks } from '@/models/CheckList'
+import {   ChangeTask, CHECKLIST_TYPES, DeleteTask, HideDoneTasks } from '@/models/CheckList'
 
 export type BoardActions =
 	| ErrorFetching
 	| ChangeCard
 	| ChangeColumn
-
-	| AddNewTask
 	| ChangeTask
 	| DeleteTask
 	| BoardAction
-
 	| Logout
 	| payloadForApplyInvite
 	| payloadForUsersOneBoard
@@ -44,7 +41,6 @@ export type BoardActions =
 	| CloseCard
 	| StartLoadingCard
 	| FinishLoadingCard
-
 	| HideDoneTasks
 	| PayloadForGetUsersOneCard
 	| PayloadForApplySearchUser
@@ -167,12 +163,7 @@ export default function boardReducer(state = defaultState,
 				 allUsers: action.payload
 			}
 		}
-		case CHECKLIST_TYPES.ADD_NEW_TASK: {
-			// return {
-			// 	...state,
-			// 	cardInfo: { ...state.cardInfo, checkList: [...state.cardInfo.checkList, action.payload] }
-			// }
-		}
+
 		case CHECKLIST_TYPES.CHANGE_TASK: {
 			return {
 				...state,

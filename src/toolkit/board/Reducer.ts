@@ -102,7 +102,10 @@ export const boardSlice = createSlice({
 				}
 			}
 		},
-
+		changeCard: (state, action: PayloadAction<Card>) =>{
+			state.boardState.allCards[action.payload._id] = action.payload
+			// 	cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
+		}
 	}
 })
 
@@ -120,7 +123,8 @@ export const {
 	dragDropColumn,
 	addNewCard,
 	deleteCard,
-	dragDropCard
+	dragDropCard,
+	changeCard
 } = boardSlice.actions
 
 export default boardSlice.reducer

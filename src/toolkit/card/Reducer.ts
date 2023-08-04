@@ -23,12 +23,7 @@ export const cardSlice = createSlice({
 		addNewTask: (state, action: PayloadAction) => {
 			state.cardState.cardInfo.checkList.push(action.payload)
 		},
-		changeCard: (state, action: PayloadAction) =>{
 
-			// allCards: { ...state.allCards, [action.payload._id!]: action.payload },
-			//   state.cardState.cardInfo.checkList = action.payload.checkList
-			// cardInfo: { ...action.payload, checkList: state.cardInfo.checkList }
-		}
 
 
 	}
